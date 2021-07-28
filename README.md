@@ -33,8 +33,8 @@ expandable unit system, providing unit conversion on small and large scale
     console.log(convertable.unit);  // output: Unit { 'km' }
     ```
 - `UnitCollection<G extends UnitGroups>` ✅
-  - The concept of unit collections is the core of this library. A unit collection is (suprise!) a collection of units. Moreover it offers typed `Convertables`{:.js} via
-    `Collection.Convertable(...)`, typed `GroupSettings` via `Collection.Preferences(...)` and the method `Collection.convertWithPreferences(...)`, which is able to convert
+  - The concept of unit collections is the core of this library. A unit collection is (suprise!) a collection of units. Moreover it offers typed `Convertables` via
+    `Collection.Convertable(...)`, typed `GroupSettings` via `Collection.GroupSettings(...)` and the method `Collection.convertWithPreferences(...)`, which is able to convert
     large data sets (object structures, arrays, ...).
   - Every user can create its own `UnitCollection` by extending from the `UnitCollection` class. Added to that a `UnitGroups` class is necessary to define all available groups     (see below). An additional awesome thing is, that you don't have to create a `UnitCollection` from scratch, you also can extend already existing `UnitCollections` like the     `DefaultUnitCollection` (see below).
   - Most users won't need a custom `UnitCollection` they just can use the `DefaultUnitCollection`, which is the default export of _unitjs_.
