@@ -1,30 +1,34 @@
 import Unit from "../Unit";
 import Convertable from "../Convertable";
-import UnitPreferences from "../UnitPreferences";
+import UnitPreferences, { PreferenceLike } from "../UnitPreferences";
 import UnitGroups from "./groups/UnitGroups";
 import ParseError from "../errors/ParseError";
 
 
-export type ConvertableData = {
-    [property: string]: Convertable | ConvertableData | any,
-    [property: number]: Convertable | ConvertableData | any,
-} | Convertable | (Convertable | any)[];
+export type ConvertableData<T extends UnitCollection<any>> = {
+    [property: string]: Convertable<T> | ConvertableData<T> | any,
+    [property: number]: Convertable<T> | ConvertableData<T> | any,
+} | Convertable<T> | (Convertable<T> | any)[];
 
-export default abstract class UnitCollection<T extends UnitGroups> {
-    public Groups: T;
+export default abstract class UnitCollection<G extends UnitGroups> {
+    public Groups: G;
 
-    public constructor(groups: T) {
+    public constructor(groups: G) {
         this.Groups = groups;
     }
 
-    Convertable(value: number | string, unit?: Unit): Convertable {
+    Convertable(value: number | string, unit?: Unit<this>): Convertable<this> {
         if (typeof value === "string" && !unit) return Convertable.parse(value, this);
         else if (unit) return new Convertable(Number(value), unit, this);
         else throw new Error("Invalid arguments.");
     }
 
-    convertWithPreferences(data: ConvertableData, preferences: UnitPreferences): ConvertableData {
-        preferences.validate(this.Groups);
+    Preferences(preferences: PreferenceLike<this>): UnitPreferences<this> {
+        return new UnitPreferences(preferences, this);
+    }
+
+    convertWithPreferences(data: ConvertableData<this>, preferences: UnitPreferences<this>): ConvertableData<this> {
+        //preferences.validate(this.Groups);
         if (data instanceof Convertable) {
             data.assignPreferences(preferences);
             return data;
@@ -44,7 +48,7 @@ export default abstract class UnitCollection<T extends UnitGroups> {
         }
     }
 
-    getUnit(unitString: string): Unit | undefined {
+    getUnit(unitString: string): Unit<this> | undefined {
         for (const property in this) {
             const propertyValue = this[property];
             if (propertyValue instanceof Unit) {
@@ -53,7 +57,7 @@ export default abstract class UnitCollection<T extends UnitGroups> {
         }
     }
 
-    parseUnit(unitString: string): Unit {
+    parseUnit(unitString: string): Unit<this> {
         for (const property in this) {
             const propertyValue = this[property];
             if (propertyValue instanceof Unit) {

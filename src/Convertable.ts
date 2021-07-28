@@ -5,12 +5,12 @@ import UnitCollection from "./collections/UnitCollection";
 import ConversionError from "./errors/ConversionError";
 import ParseError from "./errors/ParseError";
 
-export default class Convertable {
+export default class Convertable<C extends UnitCollection<any>> {
     public value: number;
-    public unit: Unit;
-    public readonly collection: UnitCollection<any>;
+    public unit: Unit<C>;
+    public readonly collection: C;
 
-    constructor(value: number, unit: Unit, collection: UnitCollection<any>) {
+    constructor(value: number, unit: Unit<C>, collection: C) {
         this.value = value;
         this.unit = unit;
         this.collection = collection;
@@ -44,7 +44,7 @@ export default class Convertable {
         return new Convertable(parsedNumber, parsedUnit, collection);
     }
 
-    public to(targetUnit: Unit | string): Convertable {
+    public to(targetUnit: Unit<C> | string): Convertable<C> {
         if (targetUnit === this.unit) return this;
         if (typeof targetUnit === "string") {
             targetUnit = this.collection.parseUnit(targetUnit);
@@ -56,7 +56,7 @@ export default class Convertable {
         return this;
     }
 
-    public assignPreferences(preferences: UnitPreferences): boolean {
+    public assignPreferences(preferences: UnitPreferences<C>): boolean {
         const groupName = this.unit.group;
         if (groupName && preferences[groupName]) {
             this.to(preferences[groupName]);

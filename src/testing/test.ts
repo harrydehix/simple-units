@@ -1,28 +1,30 @@
-import UnitPreferences from "../UnitPreferences";
-import Units from "./MyCustomCollection";
+import MyUnits from "./MyCustomCollection";
+import DefaultUnits from "../collections/DefaultUnitCollection";
 
-console.log(Units.Groups.CustomGroup)
+console.log(MyUnits.Convertable("3cm"))
 
-console.log(Units.Convertable("300CU"));
+DefaultUnits.Convertable("3cm").to(MyUnits.CustomUnit);
+
+console.log(MyUnits.Convertable("300CU"));
 
 const data = {
-    temperature: Units.Convertable(12, Units.Celsius),
+    temperature: MyUnits.Convertable(12, MyUnits.Celsius),
     length:
-        Units.Convertable("3.432dam"),
+        MyUnits.Convertable("3.432dam"),
     humidities: [
-        Units.Convertable("12m").to("cm"),
-        Units.Convertable("1009°C"),
-        Units.Convertable(12, Units.Celsius),
-        Units.Convertable(12, Units.Celsius),
+        MyUnits.Convertable("12m").to("cm"),
+        MyUnits.Convertable("1009°C"),
+        MyUnits.Convertable(12, MyUnits.Celsius),
+        MyUnits.Convertable(12, MyUnits.Celsius),
         1001,
         2322,
         "dfsdf"
     ]
 }
 
-const convertedData = Units.convertWithPreferences(data, new UnitPreferences({
-    [Units.Groups.Length]: Units.Micrometre,
-    [Units.Groups.Temperature]: Units.Celsius,
+const convertedData = MyUnits.convertWithPreferences(data, MyUnits.Preferences({
+    [MyUnits.Groups.Length]: MyUnits.Micrometre,
+    [MyUnits.Groups.Temperature]: MyUnits.Celsius,
 }));
 
 console.log(convertedData);

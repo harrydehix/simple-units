@@ -1,11 +1,12 @@
 import { inspect } from "util";
+import UnitCollection from "./collections/UnitCollection";
 
 export type Converter =
     { from: string, convert: (val: number) => number }
     |
     { to: string, convert: (val: number) => number }
 
-export default class Unit {
+export default class Unit<C extends UnitCollection<any>> {
     public readonly stringRepresentation: string;
     public readonly converters: Converter[];
     public readonly group?: number;
@@ -16,7 +17,7 @@ export default class Unit {
         this.group = group;
     }
 
-    public findConverter(targetUnit: Unit): Converter | undefined {
+    public findConverter(targetUnit: Unit<C>): Converter | undefined {
         for (const converter of this.converters) {
             if ("to" in converter && converter.to === targetUnit.stringRepresentation) {
                 return converter;
