@@ -34,9 +34,9 @@ expandable unit system, providing unit conversion on small and large scale
     ```
 - `UnitCollection<G extends UnitGroups>` ✅
   - The concept of unit collections is the core of this library. A unit collection is (suprise!) a collection of units. Moreover it offers typed `Convertables` via
-    `Collection.Convertable(...)`, typed `GroupSettings` via `Collection.GroupSettings(...)` and the method `Collection.convertWithPreferences(...)`, which is able to convert
-    large data sets (object structures, arrays, ...).
-  - Every user can create its own `UnitCollection` by extending from the `UnitCollection` class. Added to that a `UnitGroups` class is necessary to define all available groups     (see below). An additional awesome thing is, that you don't have to create a `UnitCollection` from scratch, you also can extend already existing `UnitCollections` like the     `DefaultUnitCollection` (see below).
+    `Collection.Convertable(...)`, typed `GroupSettings` via `Collection.GroupSettings(...)` and the method `Collection.convertByGroupSettings(...)`, which is able to convert
+    large data sets (object structures, arrays, ... - see below).
+  - Every user can create its own `UnitCollection` by extending from the `UnitCollection` class. Added to that a `UnitGroups` class is necessary to define all available groups (see below). An additional awesome thing is, that you don't have to create a `UnitCollection` from scratch, you also can extend already existing `UnitCollections` like the `DefaultUnitCollection` (see below).
   - Most users won't need a custom `UnitCollection` they just can use the `DefaultUnitCollection`, which is the default export of _unitjs_.
     ```typescript
     import Units from "unitjs";
@@ -46,6 +46,7 @@ expandable unit system, providing unit conversion on small and large scale
     ```
   - `DefaultUnitCollection<G extends DefaultUnitGroups>` ❌
     - A collection of all important units. The common user will not need more than this.
+    - See current state in detailed <a href="#detailsDefaultUnit">here</a>
 - `UnitGroups` ✅
   - In combination with `GroupSettings` `UnitGroups` make it easy to convert a huge set of data without loops or sth. like that. It is recommendend to bound any unit to a group. If you want to convert a huge
     set of data which contains many `Convertables` you are able to select one unit for every unit group. Your data gets converted accordingly - with one line of code.
@@ -88,3 +89,97 @@ expandable unit system, providing unit conversion on small and large scale
 - `GroupSettings<C extends UnitCollection<any>>` ✅
   - In combination with `UnitGroups` `GroupSettings` make it easy to convert a huge set of data without loops or sth. like that. It is recommendend to bound any unit to a group. If you want to convert a huge
     set of data which contains many `Convertable`s you are able to select one unit for every unit group (using a `GroupSettings` instance). Your data gets converted accordingly - with one line of code.
+
+### DefaultUnitCollection - Current State
+<div id="detailsDefaultUnit"></div>
+<details>
+  <summary>Length ❌</summary>
+  
+  ❌ Ym
+  ❌ Zm
+  ❌ Em
+  ❌ Pm
+  ❌ Tm
+  ❌ Gm
+  ❌ Mm
+  ❌ hm
+  ❌ dam
+  ❌ m
+  ❌ dm
+  ❌ cm
+  ❌ mm
+  ❌ μm
+  ❌ nm
+  ❌ pm
+  ❌ fm
+  ❌ am
+  ❌ zm
+  ❌ ym
+  ❌ in
+  ❌ yard
+  ❌ foot
+  ❌ mile
+  ❌ thou
+</details>
+<details>
+  <summary>Temperature ✅</summary>
+  
+  ✅ °C
+  ✅ °F
+  ✅ °R
+  ✅ K
+</details>
+<details>
+  <summary>Speed ❌</summary>
+</details>
+<details>
+  <summary>Area ❌</summary>
+</details>
+<details>
+  <summary>Mass ❌</summary>
+</details>
+<details>
+  <summary>Volume ❌</summary>
+</details>
+<details>
+  <summary>Time ❌</summary>
+</details>
+<details>
+  <summary>Acceleration ❌</summary>
+</details>
+<details>
+  <summary>Force ❌</summary>
+</details>
+<details>
+  <summary>Voltage ❌</summary>
+</details>
+<details>
+  <summary>Current ❌</summary>
+</details>
+<details>
+  <summary>Power ❌</summary>
+</details>
+<details>
+  <summary>Energy ❌</summary>
+</details>
+<details>
+  <summary>Pace ❌</summary>
+</details>
+<details>
+  <summary>Pressure ❌</summary>
+</details>
+<details>
+  <summary>Illuminance ❌</summary>
+</details>
+<details>
+  <summary>PartsPer ❌</summary>
+</details>
+<details>
+  <summary>Speed ❌</summary>
+</details>
+<details>
+  <summary>Angle ❌</summary>
+</details>
+<details>
+  <summary>Frequency ❌</summary>
+</details>
