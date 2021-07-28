@@ -28,7 +28,6 @@ export default abstract class UnitCollection<G extends UnitGroups> {
     }
 
     convertWithPreferences(data: ConvertableData<this>, preferences: UnitPreferences<this>): ConvertableData<this> {
-        //preferences.validate(this.Groups);
         if (data instanceof Convertable) {
             data.assignPreferences(preferences);
             return data;

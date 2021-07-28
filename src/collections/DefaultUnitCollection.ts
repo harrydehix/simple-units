@@ -8,25 +8,25 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "°F", convert: (val) => val * 1.8 + 32 },
         { to: "K", convert: (val) => val + 273.15 },
         { to: "°R", convert: (val) => val * 9 / 5 + 491.67 }
-    ], this.Groups.Temperature);
+    ], this, this.Groups.Temperature);
 
     Fahrenheit = new Unit<this>("°F", [
         { to: "°C", convert: (val) => (val - 32) / 1.8 },
         { to: "K", convert: (val) => (val - 32) * 5 / 9 + 273.15 },
         { to: "°R", convert: (val) => val + 459.67 }
-    ], this.Groups.Temperature);
+    ], this, this.Groups.Temperature);
 
     Kelvin = new Unit<this>("K", [
         { to: "°C", convert: (val) => val - 273.15 },
         { to: "°F", convert: (val) => (val - 273.15) * 9 / 5 + 32 },
         { to: "°R", convert: (val) => val * 1.8 }
-    ], this.Groups.Temperature);
+    ], this, this.Groups.Temperature);
 
     Rankine = new Unit<this>("°R", [
         { to: "°C", convert: (val) => (val - 491.67) * 5 / 9 },
         { to: "°F", convert: (val) => val - 459.67 },
         { to: "K", convert: (val) => val * 5 / 9 }
-    ], this.Groups.Temperature)
+    ], this, this.Groups.Temperature)
 
     // LENGTH
     Kilometre = new Unit<this>("km", [
@@ -50,7 +50,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e21 },
         { to: "zm", convert: (val) => val * 1e24 },
         { to: "ym", convert: (val) => val * 1e27 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 
     Hectometre = new Unit<this>("hm", [
         { to: "Ym", convert: (val) => val * 1e-22 },
@@ -73,7 +73,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e20 },
         { to: "zm", convert: (val) => val * 1e23 },
         { to: "ym", convert: (val) => val * 1e26 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 
     Decametre = new Unit<this>("dam", [
         { to: "Ym", convert: (val) => val * 1e-23 },
@@ -96,7 +96,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e19 },
         { to: "zm", convert: (val) => val * 1e22 },
         { to: "ym", convert: (val) => val * 1e25 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 
     Metre = new Unit<this>("m", [
         { to: "Ym", convert: (val) => val * 1e-24 },
@@ -119,7 +119,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e18 },
         { to: "zm", convert: (val) => val * 1e21 },
         { to: "ym", convert: (val) => val * 1e24 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 
     Decimetre = new Unit<this>("dm", [
         { to: "Ym", convert: (val) => val * 1e-25 },
@@ -142,7 +142,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e17 },
         { to: "zm", convert: (val) => val * 1e20 },
         { to: "ym", convert: (val) => val * 1e23 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 
     Centimetre = new Unit<this>("cm", [
         { to: "Ym", convert: (val) => val * 1e-26 },
@@ -165,7 +165,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e16 },
         { to: "zm", convert: (val) => val * 1e19 },
         { to: "ym", convert: (val) => val * 1e22 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 
     Millimetre = new Unit<this>("mm", [
         { to: "Ym", convert: (val) => val * 1e-27 },
@@ -188,7 +188,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e15 },
         { to: "zm", convert: (val) => val * 1e18 },
         { to: "ym", convert: (val) => val * 1e21 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 
     Micrometre = new Unit<this>("μm", [
         { to: "Ym", convert: (val) => val * 1e-30 },
@@ -211,7 +211,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e12 },
         { to: "zm", convert: (val) => val * 1e15 },
         { to: "ym", convert: (val) => val * 1e18 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 
     TODO = new Unit<this>("μm", [
         { to: "Ym", convert: (val) => val * 1e-30 },
@@ -234,7 +234,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "am", convert: (val) => val * 1e12 },
         { to: "zm", convert: (val) => val * 1e15 },
         { to: "ym", convert: (val) => val * 1e18 },
-    ], this.Groups.Length);
+    ], this, this.Groups.Length);
 }
 
 export default new DefaultUnitCollection(new DefaultUnitGroups());

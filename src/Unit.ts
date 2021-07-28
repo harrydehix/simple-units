@@ -10,10 +10,12 @@ export default class Unit<C extends UnitCollection<any>> {
     public readonly stringRepresentation: string;
     public readonly converters: Converter[];
     public readonly group?: number;
+    public readonly collection: C;
 
-    constructor(stringRepresentation: string, converters: Converter[] = [], group?: number) {
+    constructor(stringRepresentation: string, converters: Converter[] = [], collection: C, group?: number) {
         this.converters = converters;
         this.stringRepresentation = stringRepresentation;
+        this.collection = collection;
         this.group = group;
     }
 
