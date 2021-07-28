@@ -1,6 +1,6 @@
 import Unit from "./Unit";
 import { inspect } from "util";
-import UnitPreferences from "./UnitPreferences";
+import GroupSettings from "./GroupSettings";
 import UnitCollection from "./collections/UnitCollection";
 import ConversionError from "./errors/ConversionError";
 import ParseError from "./errors/ParseError";
@@ -56,7 +56,7 @@ export default class Convertable<C extends UnitCollection<any>> {
         return this;
     }
 
-    public assignPreferences(preferences: UnitPreferences<C>): boolean {
+    public assignPreferences(preferences: GroupSettings<C>): boolean {
         const groupName = this.unit.group;
         if (groupName && preferences[groupName]) {
             this.to(preferences[groupName]);

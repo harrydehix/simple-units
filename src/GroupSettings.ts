@@ -5,7 +5,7 @@ import Unit from "./Unit";
 
 export type PreferenceLike<C extends UnitCollection<any>> = { [groupname: number]: Unit<C> };
 
-export default class UnitPreferences<C extends UnitCollection<any>> {
+export default class GroupSettings<C extends UnitCollection<any>> {
     [groupname: number]: Unit<C>,
 
     constructor(preferences: PreferenceLike<C>, collection: C) {

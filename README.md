@@ -34,7 +34,7 @@ expandable unit system, providing unit conversion on small and large scale
     ```
 - `UnitCollection<G extends UnitGroups>` ✅
   - The concept of unit collections is the core of this library. A unit collection is (suprise!) a collection of units. Moreover it offers typed `Convertables`{:.js} via
-    `Collection.Convertable(...)`, typed `UnitPreferences` via `Collection.Preferences(...)` and the method `Collection.convertWithPreferences(...)`, which is able to convert
+    `Collection.Convertable(...)`, typed `GroupSettings` via `Collection.Preferences(...)` and the method `Collection.convertWithPreferences(...)`, which is able to convert
     large data sets (object structures, arrays, ...).
   - Every user can create its own `UnitCollection` by extending from the `UnitCollection` class. Added to that a `UnitGroups` class is necessary to define all available groups     (see below). An additional awesome thing is, that you don't have to create a `UnitCollection` from scratch, you also can extend already existing `UnitCollections` like the     `DefaultUnitCollection` (see below).
   - Most users won't need a custom `UnitCollection` they just can use the `DefaultUnitCollection`, which is the default export of _unitjs_.
@@ -47,8 +47,44 @@ expandable unit system, providing unit conversion on small and large scale
   - `DefaultUnitCollection<G extends DefaultUnitGroups>` ❌
     - A collection of all important units. The common user will not need more than this.
 - `UnitGroups` ✅
-  - In combination with `UnitPreferences` `UnitGroups` make it easy to convert a huge set of data without loops or sth. like that. It is recommendend to bound any unit to a group. If you want to convert a huge
+  - In combination with `GroupSettings` `UnitGroups` make it easy to convert a huge set of data without loops or sth. like that. It is recommendend to bound any unit to a group. If you want to convert a huge
     set of data which contains many `Convertables` you are able to select one unit for every unit group. Your data gets converted accordingly - with one line of code.
-- `UnitPreferences<C extends UnitCollection<any>>` ✅
-  - In combination with `UnitGroups` `UnitPreferences` make it easy to convert a huge set of data without loops or sth. like that.It is recommendend to bound any unit to a group. If you want to convert a huge
-    set of data which contains many `Convertable`s you are able to select one unit for every unit group (using a `UnitPreferences` instance). Your data gets converted accordingly - with one line of code.
+    ```typescript
+    const players = [
+        {
+            x: Collection.Convertable("3m"),
+            y: Collection.Convertable("12cm"),
+            temperature: Collection.Convertable(37, Collection.Celsius),
+            name: "player001",
+        },
+        {
+            x: Collection.Convertable("1.01dm"),
+            y: Collection.Convertable("12cm"),
+            name: "player003",
+        },
+    ]
+    const settings = Collection.GroupSettings({
+        [Collection.Groups.Temperature]: Collection.Fahrenheit,
+        [Collection.Groups.Length]: Collection.Metre,
+    });
+
+    const convertedData = Collection.convertByGroup(players, settings);
+
+    console.log(convertedData);
+    ```
+    output:
+    ```typescript
+    [
+        {
+            x: 3m,
+            y: 0.12m,
+            temperature: 98.60000000000001°F,
+            name: 'player001'
+        },
+        { x: 0.101m, y: 0.12m, name: 'player003' }
+    ]
+    
+    ```
+- `GroupSettings<C extends UnitCollection<any>>` ✅
+  - In combination with `UnitGroups` `GroupSettings` make it easy to convert a huge set of data without loops or sth. like that. It is recommendend to bound any unit to a group. If you want to convert a huge
+    set of data which contains many `Convertable`s you are able to select one unit for every unit group (using a `GroupSettings` instance). Your data gets converted accordingly - with one line of code.

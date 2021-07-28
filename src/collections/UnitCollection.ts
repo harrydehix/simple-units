@@ -1,6 +1,6 @@
 import Unit from "../Unit";
 import Convertable from "../Convertable";
-import UnitPreferences, { PreferenceLike } from "../UnitPreferences";
+import GroupSettings, { PreferenceLike } from "../GroupSettings";
 import UnitGroups from "./groups/UnitGroups";
 import ParseError from "../errors/ParseError";
 
@@ -23,23 +23,23 @@ export default abstract class UnitCollection<G extends UnitGroups> {
         else throw new Error("Invalid arguments.");
     }
 
-    Preferences(preferences: PreferenceLike<this>): UnitPreferences<this> {
-        return new UnitPreferences(preferences, this);
+    GroupSettings(preferences: PreferenceLike<this>): GroupSettings<this> {
+        return new GroupSettings(preferences, this);
     }
 
-    convertWithPreferences(data: ConvertableData<this>, preferences: UnitPreferences<this>): ConvertableData<this> {
+    convertByGroup(data: ConvertableData<this>, preferences: GroupSettings<this>): ConvertableData<this> {
         if (data instanceof Convertable) {
             data.assignPreferences(preferences);
             return data;
         } else if (data instanceof Array) {
             data.forEach((element, index) => {
-                element = this.convertWithPreferences(element, preferences);
+                element = this.convertByGroup(element, preferences);
                 data[index] = element;
             });
             return data;
         } else if (typeof data === "object") {
             for (const property in data) {
-                data[property] = this.convertWithPreferences(data[property], preferences);
+                data[property] = this.convertByGroup(data[property], preferences);
             }
             return data;
         } else {
