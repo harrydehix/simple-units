@@ -94,7 +94,7 @@ expandable unit system, providing unit conversion on small and large scale
 ### DefaultUnitCollection - Current State
 <div id="detailsDefaultUnit"></div>
 <details>
-  <summary>Length ❌</summary>
+  <summary>Length ✅</summary>
   
   * ✅ Ym
   * ✅ Zm
@@ -116,11 +116,10 @@ expandable unit system, providing unit conversion on small and large scale
   * ✅ am
   * ✅ zm
   * ✅ ym
-  * ❌ in
-  * ❌ yard
-  * ❌ foot
-  * ❌ mile
-  * ❌ thou
+  * ✅ in
+  * ✅ yd
+  * ✅ ft
+  * ✅ mi
 </details>
 <details>
   <summary>Temperature ✅</summary>
