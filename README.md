@@ -11,7 +11,7 @@ expandable unit system, providing unit conversion on small and large scale
     console.log(convertable); // output: 0.012km
     ```
 - Units ✅
-  - Units are the base of this library. A unit is an instance of the `Unit` class. It is always part of a `UnitGroup`, holds so called `converters`, which "tell" unitjs how
+  - Units are the base of this library. A unit is an instance of the `Unit` class. It is always part of a `UnitGroup` and holds so called `converters`, which "tell" unitjs how
     convert values to other units.
     ```typescript
     const myUnit = new Unit("°F", [
@@ -21,7 +21,7 @@ expandable unit system, providing unit conversion on small and large scale
     ```
 - UnitCollections ✅
   - Unit Collections like the `DefaultUnitCollection` are the core entry point to any feature this library provides. They are also the key to the library's expandability
-    flexibility.
+    flexibility. You can extend the `UnitCollection` class to define your own set of units or extend the `DefaultUnitCollection` class to add your own set of units to the default ones.
   - DefaultUnitCollection ❌
     - A collection of all important units. The common user will not need more than this.
 - UnitGroups ✅
