@@ -20,7 +20,7 @@ expandable unit system, providing unit conversion on small and large scale
     ], myUnitGroup);
     ```
 - UnitCollections ✅
-  - Unit Collections like the `DefaultUnitCollection` are the core entry point to any feature this library provides. They are also the key to the library's expandability
+  - Unit Collections like the `DefaultUnitCollection` are the core entry point to any feature this library provides. They are also the key to the library's expandability and 
     flexibility. You can extend the `UnitCollection` class to define your own set of units or extend the `DefaultUnitCollection` class to add your own set of units to the default ones.
   - DefaultUnitCollection ❌
     - A collection of all important units. The common user will not need more than this.
