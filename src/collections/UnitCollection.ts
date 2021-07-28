@@ -1,13 +1,14 @@
 import Unit from "../Unit";
-import UnitNumber from "../UnitNumber";
-import UnitPreferences from "../UnitPreference";
+import Convertable from "../Convertable";
+import UnitPreferences from "../UnitPreferences";
 import UnitGroups from "./groups/UnitGroups";
+import ParseError from "../errors/ParseError";
 
 
 export type ConvertableData = {
-    [property: string]: UnitNumber | ConvertableData | any,
-    [property: number]: UnitNumber | ConvertableData | any,
-} | UnitNumber | (UnitNumber | any)[];
+    [property: string]: Convertable | ConvertableData | any,
+    [property: number]: Convertable | ConvertableData | any,
+} | Convertable | (Convertable | any)[];
 
 export default abstract class UnitCollection<T extends UnitGroups> {
     public Groups: T;
@@ -16,13 +17,15 @@ export default abstract class UnitCollection<T extends UnitGroups> {
         this.Groups = groups;
     }
 
-    convert(value: number, sourceUnit: Unit, targetUnit: Unit) {
-        return new UnitNumber(value, sourceUnit).toUnit(targetUnit);
+    Convertable(value: number | string, unit?: Unit): Convertable {
+        if (typeof value === "string" && !unit) return Convertable.parse(value, this);
+        else if (unit) return new Convertable(Number(value), unit, this);
+        else throw new Error("Invalid arguments.");
     }
 
     convertWithPreferences(data: ConvertableData, preferences: UnitPreferences): ConvertableData {
         preferences.validate(this.Groups);
-        if (data instanceof UnitNumber) {
+        if (data instanceof Convertable) {
             data.assignPreferences(preferences);
             return data;
         } else if (data instanceof Array) {
@@ -41,6 +44,15 @@ export default abstract class UnitCollection<T extends UnitGroups> {
         }
     }
 
+    getUnit(unitString: string): Unit | undefined {
+        for (const property in this) {
+            const propertyValue = this[property];
+            if (propertyValue instanceof Unit) {
+                if (propertyValue.stringRepresentation === unitString) return propertyValue;
+            }
+        }
+    }
+
     parseUnit(unitString: string): Unit {
         for (const property in this) {
             const propertyValue = this[property];
@@ -48,6 +60,13 @@ export default abstract class UnitCollection<T extends UnitGroups> {
                 if (propertyValue.stringRepresentation === unitString) return propertyValue;
             }
         }
-        throw new Error(`Failed to parse unit '${unitString}'!`);
+        unitString = unitString.trim();
+        for (const property in this) {
+            const propertyValue = this[property];
+            if (propertyValue instanceof Unit) {
+                if (propertyValue.stringRepresentation === unitString) return propertyValue;
+            }
+        }
+        throw new ParseError(`Failed to parse unit '${unitString}'!`)
     }
 }

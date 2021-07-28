@@ -3,17 +3,6 @@ import DefaultUnitGroups from "./groups/DefaultUnitGroups";
 import UnitCollection from "./UnitCollection";
 
 export class DefaultUnitCollection<T extends DefaultUnitGroups> extends UnitCollection<T> {
-    private static singleton = new DefaultUnitCollection(new DefaultUnitGroups());
-
-    public static getInstance() {
-        return this.singleton;
-    }
-
-    protected constructor(unitGroups: T) {
-        super(unitGroups);
-    }
-
-
     // TEMPERATURE
     Celsius = new Unit("°C", [
         { to: "°F", convert: (val) => val * 1.8 + 32 },
@@ -223,6 +212,29 @@ export class DefaultUnitCollection<T extends DefaultUnitGroups> extends UnitColl
         { to: "zm", convert: (val) => val * 1e15 },
         { to: "ym", convert: (val) => val * 1e18 },
     ], this.Groups.Length);
+
+    TODO = new Unit("μm", [
+        { to: "Ym", convert: (val) => val * 1e-30 },
+        { to: "Zm", convert: (val) => val * 1e-27 },
+        { to: "Em", convert: (val) => val * 1e-24 },
+        { to: "Pm", convert: (val) => val * 1e-21 },
+        { to: "Tm", convert: (val) => val * 1e-18 },
+        { to: "Gm", convert: (val) => val * 1e-15 },
+        { to: "Mm", convert: (val) => val * 1e-12 },
+        { to: "km", convert: (val) => val * 1e-9 },
+        { to: "hm", convert: (val) => val * 1e-8 },
+        { to: "dam", convert: (val) => val * 1e-7 },
+        { to: "m", convert: (val) => val * 1e-6 },
+        { to: "dm", convert: (val) => val * 1e-5 },
+        { to: "cm", convert: (val) => val * 1e-4 },
+        { to: "mm", convert: (val) => val * 1e-3 },
+        { to: "nm", convert: (val) => val * 1e3 },
+        { to: "pm", convert: (val) => val * 1e6 },
+        { to: "fm", convert: (val) => val * 1e9 },
+        { to: "am", convert: (val) => val * 1e12 },
+        { to: "zm", convert: (val) => val * 1e15 },
+        { to: "ym", convert: (val) => val * 1e18 },
+    ], this.Groups.Length);
 }
 
-export default DefaultUnitCollection.getInstance();
+export default new DefaultUnitCollection(new DefaultUnitGroups());

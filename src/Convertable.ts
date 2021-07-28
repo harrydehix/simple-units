@@ -1,16 +1,19 @@
 import Unit from "./Unit";
 import { inspect } from "util";
-import UnitPreferences from "./UnitPreference";
+import UnitPreferences from "./UnitPreferences";
 import UnitCollection from "./collections/UnitCollection";
 import ConversionError from "./errors/ConversionError";
+import ParseError from "./errors/ParseError";
 
-export default class UnitNumber {
+export default class Convertable {
     public value: number;
     public unit: Unit;
+    public readonly collection: UnitCollection<any>;
 
-    constructor(value: number, unit: Unit) {
+    constructor(value: number, unit: Unit, collection: UnitCollection<any>) {
         this.value = value;
         this.unit = unit;
+        this.collection = collection;
     }
 
     public static parse<T extends UnitCollection<any>>(text: string, collection: T) {
@@ -35,28 +38,28 @@ export default class UnitNumber {
                 unitString += char;
             }
         }
-        try {
-            const parsedNumber = Number.parseFloat(numberString);
-            const parsedUnit = collection.parseUnit(unitString);
-            return new UnitNumber(parsedNumber, parsedUnit);
-        } catch (err) {
-            throw new Error(`Failed to parse '${text}'!`);
-        }
+        const parsedNumber = Number.parseFloat(numberString);
+        if (Number.isNaN(parsedNumber)) throw new ParseError(`Failed to parse '${text}'. Invalid number format.`);
+        const parsedUnit = collection.parseUnit(unitString);
+        return new Convertable(parsedNumber, parsedUnit, collection);
     }
 
-    public toUnit(targetUnit: Unit): number {
-        if (targetUnit === this.unit) return this.value;
+    public to(targetUnit: Unit | string): Convertable {
+        if (targetUnit === this.unit) return this;
+        if (typeof targetUnit === "string") {
+            targetUnit = this.collection.parseUnit(targetUnit);
+        }
         const converter = this.unit.findConverter(targetUnit);
         if (!converter) throw new ConversionError(`Cannot convert from ${this.unit.toString()} to ${targetUnit.toString()}!`);
         this.value = converter.convert(this.value);
         this.unit = targetUnit;
-        return this.value;
+        return this;
     }
 
     public assignPreferences(preferences: UnitPreferences): boolean {
         const groupName = this.unit.group;
         if (groupName && preferences[groupName]) {
-            this.toUnit(preferences[groupName]);
+            this.to(preferences[groupName]);
             return true;
         }
         return false;
