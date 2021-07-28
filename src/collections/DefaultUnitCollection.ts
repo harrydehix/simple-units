@@ -1,4 +1,5 @@
 import Unit from "../Unit";
+import FromPreToPre, { Prefix } from "../utils/FromPreToPre";
 import DefaultUnitGroups from "./groups/DefaultUnitGroups";
 import UnitCollection from "./UnitCollection";
 
@@ -29,211 +30,88 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
     ], this, this.Groups.Temperature)
 
     // LENGTH
-    Kilometre = new Unit<this>("km", [
-        { to: "Ym", convert: (val) => val * 1e-21 },
-        { to: "Zm", convert: (val) => val * 1e-18 },
-        { to: "Em", convert: (val) => val * 1e-15 },
-        { to: "Pm", convert: (val) => val * 1e-12 },
-        { to: "Tm", convert: (val) => val * 1e-9 },
-        { to: "Gm", convert: (val) => val * 1e-6 },
-        { to: "Mm", convert: (val) => val * 1e-3 },
-        { to: "hm", convert: (val) => val * 1e1 },
-        { to: "dam", convert: (val) => val * 1e2 },
-        { to: "m", convert: (val) => val * 1e3 },
-        { to: "dm", convert: (val) => val * 1e4 },
-        { to: "cm", convert: (val) => val * 1e5 },
-        { to: "mm", convert: (val) => val * 1e6 },
-        { to: "μm", convert: (val) => val * 1e9 },
-        { to: "nm", convert: (val) => val * 1e12 },
-        { to: "pm", convert: (val) => val * 1e15 },
-        { to: "fm", convert: (val) => val * 1e18 },
-        { to: "am", convert: (val) => val * 1e21 },
-        { to: "zm", convert: (val) => val * 1e24 },
-        { to: "ym", convert: (val) => val * 1e27 },
+    Yottameter = new Unit<this>("Ym", [
+        ...FromPreToPre.Converters(Prefix.Y, "m"),
     ], this, this.Groups.Length);
 
-    Hectometre = new Unit<this>("hm", [
-        { to: "Ym", convert: (val) => val * 1e-22 },
-        { to: "Zm", convert: (val) => val * 1e-19 },
-        { to: "Em", convert: (val) => val * 1e-16 },
-        { to: "Pm", convert: (val) => val * 1e-13 },
-        { to: "Tm", convert: (val) => val * 1e-10 },
-        { to: "Gm", convert: (val) => val * 1e-7 },
-        { to: "Mm", convert: (val) => val * 1e-4 },
-        { to: "km", convert: (val) => val * 1e-1 },
-        { to: "dam", convert: (val) => val * 1e1 },
-        { to: "m", convert: (val) => val * 1e2 },
-        { to: "dm", convert: (val) => val * 1e3 },
-        { to: "cm", convert: (val) => val * 1e4 },
-        { to: "mm", convert: (val) => val * 1e5 },
-        { to: "μm", convert: (val) => val * 1e8 },
-        { to: "nm", convert: (val) => val * 1e11 },
-        { to: "pm", convert: (val) => val * 1e14 },
-        { to: "fm", convert: (val) => val * 1e17 },
-        { to: "am", convert: (val) => val * 1e20 },
-        { to: "zm", convert: (val) => val * 1e23 },
-        { to: "ym", convert: (val) => val * 1e26 },
+    Zettameter = new Unit<this>("Zm", [
+        ...FromPreToPre.Converters(Prefix.Z, "m"),
     ], this, this.Groups.Length);
 
-    Decametre = new Unit<this>("dam", [
-        { to: "Ym", convert: (val) => val * 1e-23 },
-        { to: "Zm", convert: (val) => val * 1e-20 },
-        { to: "Em", convert: (val) => val * 1e-17 },
-        { to: "Pm", convert: (val) => val * 1e-14 },
-        { to: "Tm", convert: (val) => val * 1e-11 },
-        { to: "Gm", convert: (val) => val * 1e-8 },
-        { to: "Mm", convert: (val) => val * 1e-5 },
-        { to: "km", convert: (val) => val * 1e-2 },
-        { to: "hm", convert: (val) => val * 1e-1 },
-        { to: "m", convert: (val) => val * 1e1 },
-        { to: "dm", convert: (val) => val * 1e2 },
-        { to: "cm", convert: (val) => val * 1e3 },
-        { to: "mm", convert: (val) => val * 1e4 },
-        { to: "μm", convert: (val) => val * 1e7 },
-        { to: "nm", convert: (val) => val * 1e10 },
-        { to: "pm", convert: (val) => val * 1e13 },
-        { to: "fm", convert: (val) => val * 1e16 },
-        { to: "am", convert: (val) => val * 1e19 },
-        { to: "zm", convert: (val) => val * 1e22 },
-        { to: "ym", convert: (val) => val * 1e25 },
+    Exameter = new Unit<this>("Em", [
+        ...FromPreToPre.Converters(Prefix.E, "m"),
     ], this, this.Groups.Length);
 
-    Metre = new Unit<this>("m", [
-        { to: "Ym", convert: (val) => val * 1e-24 },
-        { to: "Zm", convert: (val) => val * 1e-21 },
-        { to: "Em", convert: (val) => val * 1e-18 },
-        { to: "Pm", convert: (val) => val * 1e-15 },
-        { to: "Tm", convert: (val) => val * 1e-12 },
-        { to: "Gm", convert: (val) => val * 1e-9 },
-        { to: "Mm", convert: (val) => val * 1e-6 },
-        { to: "km", convert: (val) => val * 1e-3 },
-        { to: "hm", convert: (val) => val * 1e-2 },
-        { to: "dam", convert: (val) => val * 1e-1 },
-        { to: "dm", convert: (val) => val * 1e1 },
-        { to: "cm", convert: (val) => val * 1e2 },
-        { to: "mm", convert: (val) => val * 1e3 },
-        { to: "μm", convert: (val) => val * 1e6 },
-        { to: "nm", convert: (val) => val * 1e9 },
-        { to: "pm", convert: (val) => val * 1e12 },
-        { to: "fm", convert: (val) => val * 1e15 },
-        { to: "am", convert: (val) => val * 1e18 },
-        { to: "zm", convert: (val) => val * 1e21 },
-        { to: "ym", convert: (val) => val * 1e24 },
+    Petameter = new Unit<this>("Pm", [
+        ...FromPreToPre.Converters(Prefix.P, "m"),
     ], this, this.Groups.Length);
 
-    Decimetre = new Unit<this>("dm", [
-        { to: "Ym", convert: (val) => val * 1e-25 },
-        { to: "Zm", convert: (val) => val * 1e-22 },
-        { to: "Em", convert: (val) => val * 1e-19 },
-        { to: "Pm", convert: (val) => val * 1e-16 },
-        { to: "Tm", convert: (val) => val * 1e-13 },
-        { to: "Gm", convert: (val) => val * 1e-10 },
-        { to: "Mm", convert: (val) => val * 1e-7 },
-        { to: "km", convert: (val) => val * 1e-4 },
-        { to: "hm", convert: (val) => val * 1e-3 },
-        { to: "dam", convert: (val) => val * 1e-2 },
-        { to: "m", convert: (val) => val * 1e-1 },
-        { to: "cm", convert: (val) => val * 1e1 },
-        { to: "mm", convert: (val) => val * 1e2 },
-        { to: "μm", convert: (val) => val * 1e5 },
-        { to: "nm", convert: (val) => val * 1e8 },
-        { to: "pm", convert: (val) => val * 1e11 },
-        { to: "fm", convert: (val) => val * 1e14 },
-        { to: "am", convert: (val) => val * 1e17 },
-        { to: "zm", convert: (val) => val * 1e20 },
-        { to: "ym", convert: (val) => val * 1e23 },
+    Terameter = new Unit<this>("Tm", [
+        ...FromPreToPre.Converters(Prefix.T, "m"),
     ], this, this.Groups.Length);
 
-    Centimetre = new Unit<this>("cm", [
-        { to: "Ym", convert: (val) => val * 1e-26 },
-        { to: "Zm", convert: (val) => val * 1e-23 },
-        { to: "Em", convert: (val) => val * 1e-20 },
-        { to: "Pm", convert: (val) => val * 1e-17 },
-        { to: "Tm", convert: (val) => val * 1e-14 },
-        { to: "Gm", convert: (val) => val * 1e-11 },
-        { to: "Mm", convert: (val) => val * 1e-8 },
-        { to: "km", convert: (val) => val * 1e-5 },
-        { to: "hm", convert: (val) => val * 1e-4 },
-        { to: "dam", convert: (val) => val * 1e-3 },
-        { to: "m", convert: (val) => val * 1e-2 },
-        { to: "dm", convert: (val) => val * 1e-1 },
-        { to: "mm", convert: (val) => val * 1e1 },
-        { to: "μm", convert: (val) => val * 1e4 },
-        { to: "nm", convert: (val) => val * 1e7 },
-        { to: "pm", convert: (val) => val * 1e10 },
-        { to: "fm", convert: (val) => val * 1e13 },
-        { to: "am", convert: (val) => val * 1e16 },
-        { to: "zm", convert: (val) => val * 1e19 },
-        { to: "ym", convert: (val) => val * 1e22 },
+    Gigameter = new Unit<this>("Gm", [
+        ...FromPreToPre.Converters(Prefix.G, "m"),
     ], this, this.Groups.Length);
 
-    Millimetre = new Unit<this>("mm", [
-        { to: "Ym", convert: (val) => val * 1e-27 },
-        { to: "Zm", convert: (val) => val * 1e-24 },
-        { to: "Em", convert: (val) => val * 1e-21 },
-        { to: "Pm", convert: (val) => val * 1e-18 },
-        { to: "Tm", convert: (val) => val * 1e-15 },
-        { to: "Gm", convert: (val) => val * 1e-12 },
-        { to: "Mm", convert: (val) => val * 1e-9 },
-        { to: "km", convert: (val) => val * 1e-6 },
-        { to: "hm", convert: (val) => val * 1e-5 },
-        { to: "dam", convert: (val) => val * 1e-4 },
-        { to: "m", convert: (val) => val * 1e-3 },
-        { to: "dm", convert: (val) => val * 1e-2 },
-        { to: "cm", convert: (val) => val * 1e-1 },
-        { to: "μm", convert: (val) => val * 1e3 },
-        { to: "nm", convert: (val) => val * 1e6 },
-        { to: "pm", convert: (val) => val * 1e9 },
-        { to: "fm", convert: (val) => val * 1e12 },
-        { to: "am", convert: (val) => val * 1e15 },
-        { to: "zm", convert: (val) => val * 1e18 },
-        { to: "ym", convert: (val) => val * 1e21 },
+    Megameter = new Unit<this>("Mm", [
+        ...FromPreToPre.Converters(Prefix.M, "m"),
     ], this, this.Groups.Length);
 
-    Micrometre = new Unit<this>("μm", [
-        { to: "Ym", convert: (val) => val * 1e-30 },
-        { to: "Zm", convert: (val) => val * 1e-27 },
-        { to: "Em", convert: (val) => val * 1e-24 },
-        { to: "Pm", convert: (val) => val * 1e-21 },
-        { to: "Tm", convert: (val) => val * 1e-18 },
-        { to: "Gm", convert: (val) => val * 1e-15 },
-        { to: "Mm", convert: (val) => val * 1e-12 },
-        { to: "km", convert: (val) => val * 1e-9 },
-        { to: "hm", convert: (val) => val * 1e-8 },
-        { to: "dam", convert: (val) => val * 1e-7 },
-        { to: "m", convert: (val) => val * 1e-6 },
-        { to: "dm", convert: (val) => val * 1e-5 },
-        { to: "cm", convert: (val) => val * 1e-4 },
-        { to: "mm", convert: (val) => val * 1e-3 },
-        { to: "nm", convert: (val) => val * 1e3 },
-        { to: "pm", convert: (val) => val * 1e6 },
-        { to: "fm", convert: (val) => val * 1e9 },
-        { to: "am", convert: (val) => val * 1e12 },
-        { to: "zm", convert: (val) => val * 1e15 },
-        { to: "ym", convert: (val) => val * 1e18 },
+    Kilometer = new Unit<this>("km", [
+        ...FromPreToPre.Converters(Prefix.k, "m"),
     ], this, this.Groups.Length);
 
-    TODO = new Unit<this>("μm", [
-        { to: "Ym", convert: (val) => val * 1e-30 },
-        { to: "Zm", convert: (val) => val * 1e-27 },
-        { to: "Em", convert: (val) => val * 1e-24 },
-        { to: "Pm", convert: (val) => val * 1e-21 },
-        { to: "Tm", convert: (val) => val * 1e-18 },
-        { to: "Gm", convert: (val) => val * 1e-15 },
-        { to: "Mm", convert: (val) => val * 1e-12 },
-        { to: "km", convert: (val) => val * 1e-9 },
-        { to: "hm", convert: (val) => val * 1e-8 },
-        { to: "dam", convert: (val) => val * 1e-7 },
-        { to: "m", convert: (val) => val * 1e-6 },
-        { to: "dm", convert: (val) => val * 1e-5 },
-        { to: "cm", convert: (val) => val * 1e-4 },
-        { to: "mm", convert: (val) => val * 1e-3 },
-        { to: "nm", convert: (val) => val * 1e3 },
-        { to: "pm", convert: (val) => val * 1e6 },
-        { to: "fm", convert: (val) => val * 1e9 },
-        { to: "am", convert: (val) => val * 1e12 },
-        { to: "zm", convert: (val) => val * 1e15 },
-        { to: "ym", convert: (val) => val * 1e18 },
+    Hectometer = new Unit<this>("hm", [
+        ...FromPreToPre.Converters(Prefix.k, "m"),
+    ], this, this.Groups.Length);
+
+    Decameter = new Unit<this>("dam", [
+        ...FromPreToPre.Converters(Prefix.da, "m"),
+    ], this, this.Groups.Length);
+
+    Meter = new Unit<this>("m", [
+        ...FromPreToPre.Converters(Prefix.none, "m"),
+    ], this, this.Groups.Length);
+
+    Decimeter = new Unit<this>("dm", [
+        ...FromPreToPre.Converters(Prefix.d, "m"),
+    ], this, this.Groups.Length);
+
+    Centimeter = new Unit<this>("cm", [
+        ...FromPreToPre.Converters(Prefix.c, "m"),
+    ], this, this.Groups.Length);
+
+    Millimeter = new Unit<this>("mm", [
+        ...FromPreToPre.Converters(Prefix.m, "m"),
+    ], this, this.Groups.Length);
+
+    Micrometer = new Unit<this>("μm", [
+        ...FromPreToPre.Converters(Prefix.μ, "m"),
+    ], this, this.Groups.Length);
+
+    Nanometer = new Unit<this>("nm", [
+        ...FromPreToPre.Converters(Prefix.n, "m"),
+    ], this, this.Groups.Length);
+
+    Picometer = new Unit<this>("pm", [
+        ...FromPreToPre.Converters(Prefix.p, "m"),
+    ], this, this.Groups.Length);
+
+    Femtometer = new Unit<this>("fm", [
+        ...FromPreToPre.Converters(Prefix.f, "m"),
+    ], this, this.Groups.Length);
+
+    Attometer = new Unit<this>("am", [
+        ...FromPreToPre.Converters(Prefix.a, "m"),
+    ], this, this.Groups.Length);
+
+    Zeptometer = new Unit<this>("zm", [
+        ...FromPreToPre.Converters(Prefix.z, "m"),
+    ], this, this.Groups.Length);
+
+    Yoctometer = new Unit<this>("ym", [
+        ...FromPreToPre.Converters(Prefix.y, "m"),
     ], this, this.Groups.Length);
 }
 

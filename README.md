@@ -95,26 +95,26 @@ expandable unit system, providing unit conversion on small and large scale
 <details>
   <summary>Length ❌</summary>
   
-  * ❌ Ym
-  * ❌ Zm
-  * ❌ Em
-  * ❌ Pm
-  * ❌ Tm
-  * ❌ Gm
-  * ❌ Mm
-  * ❌ hm
-  * ❌ dam
-  * ❌ m
-  * ❌ dm
-  * ❌ cm
-  * ❌ mm
-  * ❌ μm
-  * ❌ nm
-  * ❌ pm
-  * ❌ fm
-  * ❌ am
-  * ❌ zm
-  * ❌ ym
+  * ✅ Ym
+  * ✅ Zm
+  * ✅ Em
+  * ✅ Pm
+  * ✅ Tm
+  * ✅ Gm
+  * ✅ Mm
+  * ✅ hm
+  * ✅ dam
+  * ✅ m
+  * ✅ dm
+  * ✅ cm
+  * ✅ mm
+  * ✅ μm
+  * ✅ nm
+  * ✅ pm
+  * ✅ fm
+  * ✅ am
+  * ✅ zm
+  * ✅ ym
   * ❌ in
   * ❌ yard
   * ❌ foot

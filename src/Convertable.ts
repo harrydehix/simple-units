@@ -45,10 +45,10 @@ export default class Convertable<C extends UnitCollection<any>> {
     }
 
     public to(targetUnit: Unit<C> | string): Convertable<C> {
-        if (targetUnit === this.unit) return this;
         if (typeof targetUnit === "string") {
             targetUnit = this.collection.parseUnit(targetUnit);
         }
+        if (targetUnit === this.unit) return this;
         const converter = this.unit.findConverter(targetUnit);
         if (!converter) throw new ConversionError(`Cannot convert from ${this.unit.toString()} to ${targetUnit.toString()}!`);
         this.value = converter.convert(this.value);
