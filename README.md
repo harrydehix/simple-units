@@ -95,39 +95,39 @@ expandable unit system, providing unit conversion on small and large scale
 <details>
   <summary>Length ❌</summary>
   
-  ❌ Ym
-  ❌ Zm
-  ❌ Em
-  ❌ Pm
-  ❌ Tm
-  ❌ Gm
-  ❌ Mm
-  ❌ hm
-  ❌ dam
-  ❌ m
-  ❌ dm
-  ❌ cm
-  ❌ mm
-  ❌ μm
-  ❌ nm
-  ❌ pm
-  ❌ fm
-  ❌ am
-  ❌ zm
-  ❌ ym
-  ❌ in
-  ❌ yard
-  ❌ foot
-  ❌ mile
-  ❌ thou
+  * ❌ Ym
+  * ❌ Zm
+  * ❌ Em
+  * ❌ Pm
+  * ❌ Tm
+  * ❌ Gm
+  * ❌ Mm
+  * ❌ hm
+  * ❌ dam
+  * ❌ m
+  * ❌ dm
+  * ❌ cm
+  * ❌ mm
+  * ❌ μm
+  * ❌ nm
+  * ❌ pm
+  * ❌ fm
+  * ❌ am
+  * ❌ zm
+  * ❌ ym
+  * ❌ in
+  * ❌ yard
+  * ❌ foot
+  * ❌ mile
+  * ❌ thou
 </details>
 <details>
   <summary>Temperature ✅</summary>
   
-  ✅ °C
-  ✅ °F
-  ✅ °R
-  ✅ K
+  * ✅ °C
+  * ✅ °F
+  * ✅ °R
+  * ✅ K
 </details>
 <details>
   <summary>Speed ❌</summary>
