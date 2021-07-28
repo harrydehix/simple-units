@@ -3,7 +3,7 @@ import Unit from "../Unit";
 import MyCustomGroups from "./MyCustomGroups";
 
 export class MyCustomCollection<T extends MyCustomGroups> extends DefaultUnitCollection<T>{
-    Penis = new Unit("°Penis", [], this.Groups.Body);
+    CustomUnit = new Unit("CU", [], this.Groups.CustomGroup);
 }
 
 export default new MyCustomCollection(new MyCustomGroups());

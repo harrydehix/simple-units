@@ -1,7 +1,9 @@
 import UnitPreferences from "../UnitPreferences";
 import Units from "./MyCustomCollection";
 
-console.log(Units.Convertable("300°Penis"));
+console.log(Units.Groups.CustomGroup)
+
+console.log(Units.Convertable("300CU"));
 
 const data = {
     temperature: Units.Convertable(12, Units.Celsius),
