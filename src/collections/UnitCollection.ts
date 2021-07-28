@@ -51,7 +51,7 @@ export default abstract class UnitCollection<G extends UnitGroups> {
         for (const property in this) {
             const propertyValue = this[property];
             if (propertyValue instanceof Unit) {
-                if (propertyValue.stringRepresentation === unitString) return propertyValue;
+                if (propertyValue.isUnit(unitString)) return propertyValue;
             }
         }
     }
@@ -60,14 +60,14 @@ export default abstract class UnitCollection<G extends UnitGroups> {
         for (const property in this) {
             const propertyValue = this[property];
             if (propertyValue instanceof Unit) {
-                if (propertyValue.stringRepresentation === unitString) return propertyValue;
+                if (propertyValue.isUnit(unitString)) return propertyValue;
             }
         }
         unitString = unitString.trim();
         for (const property in this) {
             const propertyValue = this[property];
             if (propertyValue instanceof Unit) {
-                if (propertyValue.stringRepresentation === unitString) return propertyValue;
+                if (propertyValue.isUnit(unitString)) return propertyValue;
             }
         }
         throw new ParseError(`Failed to parse unit '${unitString}'!`)
