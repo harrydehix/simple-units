@@ -47,7 +47,7 @@ expandable unit system, providing unit conversion on small and large scale
     ```
   - `DefaultUnitCollection<G extends DefaultUnitGroups>` ❌
     - A collection of all important units. The common user will not need more than this.
-    - See current state in detailed <a href="#detailsDefaultUnit">here</a>
+    - See current state in detail <a href="#detailsDefaultUnit">here</a>
 - `UnitGroups` ✅
   - In combination with `GroupSettings` `UnitGroups` make it easy to convert a huge set of data without loops or sth. like that. It is recommendend to bound any unit to a group. If you want to convert a huge
     set of data which contains many `Convertables` you are able to select one unit for every unit group. Your data gets converted accordingly - with one line of code.
