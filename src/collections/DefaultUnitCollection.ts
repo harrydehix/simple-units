@@ -1,7 +1,41 @@
+import ParseError from "../errors/ParseError";
 import Unit from "../Unit";
 import ConverterGenerator, { Prefix } from "../utils/FromPreToPre";
 import DefaultUnitGroups from "./groups/DefaultUnitGroups";
 import UnitCollection from "./UnitCollection";
+
+const meterPerSecondToBeaufort = (val: number) => {
+    if (val < 0.5) return 0;
+    if (val <= 1.5) return 1;
+    if (val <= 3.3) return 2;
+    if (val <= 5.5) return 3;
+    if (val <= 7.9) return 4;
+    if (val <= 10.7) return 5;
+    if (val <= 13.8) return 6;
+    if (val <= 17.1) return 7;
+    if (val <= 20.7) return 8;
+    if (val <= 24.4) return 9;
+    if (val <= 28.4) return 10;
+    if (val <= 32.6) return 11;
+    return 12;
+}
+
+const beaufortToMeterPerSecond = (val: number) => {
+    if (val === 0) return 0.25;
+    if (val === 1) return 1;
+    if (val === 2) return 2.45;
+    if (val === 3) return 4.45;
+    if (val === 4) return 6.7;
+    if (val === 5) return 9.35;
+    if (val === 6) return 12.3;
+    if (val === 7) return 15.5;
+    if (val === 8) return 18.95;
+    if (val === 9) return 22.6;
+    if (val === 10) return 26.45;
+    if (val === 11) return 30.55;
+    if (val === 12) return 32.7;
+    throw new ParseError("Beaufort scale only support integers between 0 and 12.");
+}
 
 export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitCollection<G> {
     // TEMPERATURE
@@ -259,6 +293,52 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.y, (val) => val / 0.9144) },
         { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.y, (val) => val / 9.461e+15) },
     ], this, this.Groups.Length);
+
+    // SPEED
+    KilometerPerSecond = new Unit<this>(["km/s", "kilometer per second", "kilometer/second"], [
+        { to: "m/s", convert: (val) => val * 1000 },
+        { to: "ft/s", convert: (val) => val * 3280.83989501 },
+        { to: "km/h", convert: (val) => val * 3600 },
+        { to: "mph", convert: (val) => val * 2236.936292054 },
+        { to: "kt", convert: (val) => val * 1943.844492441 },
+        { to: "Bft", convert: (val) => meterPerSecondToBeaufort(val * 1000) },
+        { to: "Ma", convert: (val) => val / 0.3432 },
+        { to: "c", convert: (val) => val / 299_792.458 }
+    ], this, this.Groups.Speed);
+
+    MeterPerSecond = new Unit<this>(["m/s", "meter per second", "meter/second"], [
+        { to: "km/s", convert: (val) => val / 1000 },
+        { to: "Bft", convert: meterPerSecondToBeaufort },
+    ], this, this.Groups.Speed);
+
+    FeetPerSecond = new Unit<this>(["ft/s", "fps", "foot per second", "feet per second", "foot/second", "feet/second"], [
+        { to: "km/s", convert: (val) => val / 3280.83989501 },
+    ], this, this.Groups.Speed);
+
+    KilometerPerHour = new Unit<this>(["km/h", "kmh", "kilometer per hour", "kilometer/hour"], [
+        { to: "km/s", convert: (val) => val / 3600 },
+    ], this, this.Groups.Speed);
+
+    MilesPerHour = new Unit<this>(["mph", "mi/h", "mile per hour", "miles per hour", "mile/hour", "miles/hour"], [
+        { to: "km/s", convert: (val) => val / 2236.936292054 },
+    ], this, this.Groups.Speed);
+
+    Knots = new Unit<this>(["kt", "kn", "knot", "knots"], [
+        { to: "km/s", convert: (val) => val / 1943.844492441 },
+    ], this, this.Groups.Speed);
+
+    Beaufort = new Unit<this>(["Bft", "Beaufort"], [
+        { to: "m/s", convert: beaufortToMeterPerSecond },
+        { to: "km/s", convert: (val) => beaufortToMeterPerSecond(val) / 1000 },
+    ], this, this.Groups.Speed);
+
+    Mach = new Unit<this>(["Ma", "M", "mach", "Mach"], [
+        { to: "km/s", convert: (val) => val * 0.3432 },
+    ], this, this.Groups.Speed);
+
+    SpeedOfLight = new Unit<this>(["c", "speed of light"], [
+        { to: "km/s", convert: (val) => val * 299_792.458 },
+    ], this, this.Groups.Speed);
 }
 
 export default new DefaultUnitCollection(new DefaultUnitGroups());
