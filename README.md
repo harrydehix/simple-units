@@ -136,8 +136,8 @@ expandable unit system, providing unit conversion on small and large scale
   * ✅ km/s
   * ✅ m/s
   * ✅ ft/s
-  * ❌ km/h
-  * ❌ mi/h
+  * ✅ km/h
+  * ✅ mi/h
   * ❌ knot
   * ❌ beaufort scale (from 0 to 12)
   * ❌ mach number (divided to the speed of sound)
