@@ -1,17 +1,20 @@
-import Unit from "./Unit";
+import Unit from "../Unit";
 import { inspect } from "util";
-import GroupSettings from "./GroupSettings";
-import UnitCollection from "./collections/UnitCollection";
-import ConversionError from "./errors/ConversionError";
-import ParseError from "./errors/ParseError";
+import GroupSettings from "../GroupSettings";
+import UnitCollection from "../collections/UnitCollection";
+import ConversionError from "../errors/ConversionError";
+import ParseError from "../errors/ParseError";
 
 export default class Convertable<C extends UnitCollection<any>> {
     public value: number;
     public unit: Unit<C>;
     public readonly collection: C;
 
-    constructor(value: number, unit: Unit<C>, collection: C) {
+    constructor(value: number, unit: Unit<C> | string, collection: C) {
         this.value = value;
+        if (typeof unit === "string") {
+            unit = collection.parseUnit(unit);
+        }
         this.unit = unit;
         this.collection = collection;
     }
@@ -40,11 +43,10 @@ export default class Convertable<C extends UnitCollection<any>> {
         }
         const parsedNumber = Number.parseFloat(numberString);
         if (Number.isNaN(parsedNumber)) throw new ParseError(`Failed to parse '${text}'. Invalid number format.`);
-        const parsedUnit = collection.parseUnit(unitString);
-        return new Convertable(parsedNumber, parsedUnit, collection);
+        return new this(parsedNumber, unitString, collection);
     }
 
-    public to(targetUnit: Unit<C> | string): Convertable<C> {
+    public setUnit(targetUnit: Unit<C> | string): this {
         if (typeof targetUnit === "string") {
             targetUnit = this.collection.parseUnit(targetUnit);
         }
@@ -56,10 +58,15 @@ export default class Convertable<C extends UnitCollection<any>> {
         return this;
     }
 
-    public assignPreferences(preferences: GroupSettings<C>): boolean {
+    public to(targetUnit: Unit<C> | string): number {
+        this.setUnit(targetUnit);
+        return this.value;
+    }
+
+    public convertByGroupSettings(groupSettings: GroupSettings<C>): boolean {
         const groupName = this.unit.group;
-        if (groupName && preferences[groupName]) {
-            this.to(preferences[groupName]);
+        if (groupName && groupSettings[groupName]) {
+            this.setUnit(groupSettings[groupName]);
             return true;
         }
         return false;

@@ -1,6 +1,6 @@
 import Unit from "../Unit";
-import Convertable from "../Convertable";
-import GroupSettings, { PreferenceLike } from "../GroupSettings";
+import Convertable from "../convertable/Convertable";
+import GroupSettings, { DesiredGroupSettings } from "../GroupSettings";
 import UnitGroups from "./groups/UnitGroups";
 import ParseError from "../errors/ParseError";
 
@@ -17,19 +17,21 @@ export default abstract class UnitCollection<G extends UnitGroups> {
         this.Groups = groups;
     }
 
-    Convertable(value: number | string, unit?: Unit<this>): Convertable<this> {
+    Convertable(value: number | string, unit?: Unit<this> | string): Convertable<this> {
         if (typeof value === "string" && !unit) return Convertable.parse(value, this);
         else if (unit) return new Convertable(Number(value), unit, this);
         else throw new Error("Invalid arguments.");
     }
 
-    GroupSettings(preferences: PreferenceLike<this>): GroupSettings<this> {
+    from = this.Convertable;
+
+    GroupSettings(preferences: DesiredGroupSettings<this>): GroupSettings<this> {
         return new GroupSettings(preferences, this);
     }
 
     convertByGroup(data: ConvertableData<this>, preferences: GroupSettings<this>): ConvertableData<this> {
         if (data instanceof Convertable) {
-            data.assignPreferences(preferences);
+            data.convertByGroupSettings(preferences);
             return data;
         } else if (data instanceof Array) {
             data.forEach((element, index) => {
