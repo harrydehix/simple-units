@@ -120,6 +120,7 @@ expandable unit system, providing unit conversion on small and large scale
   * ✅ yd
   * ✅ ft
   * ✅ mi
+  * ✅ ly
 </details>
 <details>
   <summary>Temperature ✅</summary>
