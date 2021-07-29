@@ -134,7 +134,7 @@ expandable unit system, providing unit conversion on small and large scale
   <summary>Speed ❌</summary>
 
   * ✅ km/s
-  * ❌ m/s
+  * ✅ m/s
   * ✅ ft/s
   * ❌ km/h
   * ❌ mi/h

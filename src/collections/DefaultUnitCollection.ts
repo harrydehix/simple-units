@@ -308,13 +308,18 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
 
     MeterPerSecond = new Unit<this>(["m/s", "meter per second", "meter/second"], [
         { to: "km/s", convert: (val) => val / 1000 },
-        { to: "ft/s", convert: (val => val * 3.280839895013123) },
+        { to: "ft/s", convert: (val) => val * 3.280839895013123 },
         { to: "Bft", convert: meterPerSecondToBeaufort },
+        { to: "km/h", convert: (val) => val * 3.6 },
+        { to: "mph", convert: (val) => val * 2.2369362920544025 },
+        { to: "kt", convert: (val) => val * 1.9438444924406046 },
+        { to: "Ma", convert: (val) => val / 343 },
+        { to: "c", convert: (val) => val / 299_792_458 }
     ], this, this.Groups.Speed);
 
     FeetPerSecond = new Unit<this>(["ft/s", "fps", "foot per second", "feet per second", "foot/second", "feet/second"], [
         { to: "km/s", convert: (val) => val / 3280.83989501 },
-        { to: "m/s", convert: (val => val / 3.280839895013123) },
+        { to: "m/s", convert: (val) => val / 3.280839895013123 },
         { to: "km/h", convert: (val) => val / 0.9113444152814232 },
         { to: "mph", convert: (val) => val * 0.68181818181818 },
         { to: "kt", convert: (val) => val * 0.5924838012959 },
@@ -325,17 +330,20 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
 
     KilometerPerHour = new Unit<this>(["km/h", "kmh", "kilometer per hour", "kilometer/hour"], [
         { to: "km/s", convert: (val) => val / 3600 },
-        { to: "ft/s", convert: (val) => val * 0.9113444152814232 }
+        { to: "ft/s", convert: (val) => val * 0.9113444152814232 },
+        { to: "m/s", convert: (val) => val / 3.6 },
     ], this, this.Groups.Speed);
 
     MilesPerHour = new Unit<this>(["mph", "mi/h", "mile per hour", "miles per hour", "mile/hour", "miles/hour"], [
         { to: "km/s", convert: (val) => val / 2236.936292054 },
         { to: "ft/s", convert: (val) => val / 0.68181818181818 },
+        { to: "m/s", convert: (val) => val / 2.2369362920544025 }
     ], this, this.Groups.Speed);
 
     Knots = new Unit<this>(["kt", "kn", "knot", "knots"], [
         { to: "km/s", convert: (val) => val / 1943.844492441 },
-        { to: "ft/s", convert: (val) => val / 0.5924838012959 }
+        { to: "ft/s", convert: (val) => val / 0.5924838012959 },
+        { to: "m/s", convert: (val) => val / 1.9438444924406046 },
     ], this, this.Groups.Speed);
 
     Beaufort = new Unit<this>(["Bft", "Beaufort"], [
@@ -360,7 +368,8 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
      */
     SpeedOfLight = new Unit<this>(["c", "speed of light"], [
         { to: "km/s", convert: (val) => val * 299_792.458 },
-        { to: "ft/s", convert: (val) => val * 983571056.4304148 }
+        { to: "ft/s", convert: (val) => val * 983571056.4304148 },
+        { to: "m/s", convert: (val) => val * 299_792_458 }
     ], this, this.Groups.Speed);
 }
 
