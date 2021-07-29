@@ -350,18 +350,26 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "c", convert: (val) => val / 670616629.38 }
     ], this, this.Groups.Speed);
 
-    Knots = new Unit<this>(["kt", "kn", "knot", "knots"], [
+    Knot = new Unit<this>(["kt", "kn", "knot", "knots"], [
         { to: "km/s", convert: (val) => val / 1943.844492441 },
         { to: "ft/s", convert: (val) => val / 0.5924838012959 },
         { to: "m/s", convert: (val) => val / 1.9438444924406046 },
         { to: "km/h", convert: (val) => val / 0.5399568034557235 },
-        { to: "mph", convert: (val) => val / 0.8689762419006478 }
+        { to: "mph", convert: (val) => val / 0.8689762419006478 },
+        { to: "Bft", convert: (val) => meterPerSecondToBeaufort(val / 1.9438444924406046) },
+        { to: "Ma", convert: (val) => val / 661.4708423326134 },
+        { to: "c", convert: (val) => val / 582749918.3585312 },
     ], this, this.Groups.Speed);
 
     Beaufort = new Unit<this>(["Bft", "Beaufort"], [
         { to: "m/s", convert: beaufortToMeterPerSecond },
         { to: "km/s", convert: (val) => beaufortToMeterPerSecond(val) / 1000 },
-        { to: "ft/s", convert: (val) => beaufortToMeterPerSecond(val * 3.280839895013123) }
+        { to: "ft/s", convert: (val) => beaufortToMeterPerSecond(val) * 3.280839895013123 },
+        { to: "mph", convert: (val) => beaufortToMeterPerSecond(val) * 2.2369362920544025 },
+        { to: "km/h", convert: (val) => beaufortToMeterPerSecond(val) * 3.6 },
+        { to: "kt", convert: (val) => beaufortToMeterPerSecond(val) * 1.9438444924406046 },
+        { to: "Ma", convert: (val) => beaufortToMeterPerSecond(val) / 343 },
+        { to: "c", convert: (val) => beaufortToMeterPerSecond(val) / 299_792_458 },
     ], this, this.Groups.Speed);
 
     /**
@@ -374,6 +382,9 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft/s", convert: (val) => val * 1125.33 },
         { to: "km/h", convert: (val) => val * 1225.044 },
         { to: "mph", convert: (val) => val * 761.2070508231927 },
+        { to: "kt", convert: (val) => val * 661.4708423326134 },
+        { to: "c", convert: (val) => val / 880991.0899526875 },
+        { to: "Bft", convert: (val) => meterPerSecondToBeaufort(val * 343) },
     ], this, this.Groups.Speed);
 
     /**
@@ -382,10 +393,13 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
      */
     SpeedOfLight = new Unit<this>(["c", "speed of light"], [
         { to: "km/s", convert: (val) => val * 299_792.458 },
-        { to: "ft/s", convert: (val) => val * 983571056.4304148 },
+        { to: "ft/s", convert: (val) => val * 983_571_056.4304148 },
         { to: "m/s", convert: (val) => val * 299_792_458 },
-        { to: "km/h", convert: (val) => val * 1079252848.8 },
-        { to: "mph", convert: (val) => val * 670616629.38 }
+        { to: "km/h", convert: (val) => val * 1_079_252_848.8 },
+        { to: "mph", convert: (val) => val * 670_616_629.38 },
+        { to: "kt", convert: (val) => val * 582_749_918.3585312 },
+        { to: "Ma", convert: (val) => val * 880_991.0899526875 },
+        { to: "Bft", convert: (val) => meterPerSecondToBeaufort(val * 299_792_458) },
     ], this, this.Groups.Speed);
 }
 

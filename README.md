@@ -131,17 +131,17 @@ expandable unit system, providing unit conversion on small and large scale
   * ✅ K
 </details>
 <details>
-  <summary>Speed ❌</summary>
+  <summary>Speed ✅</summary>
 
   * ✅ km/s
   * ✅ m/s
   * ✅ ft/s
   * ✅ km/h
   * ✅ mi/h
-  * ❌ knot
-  * ❌ beaufort scale (from 0 to 12)
-  * ❌ mach number (divided to the speed of sound)
-  * ❌ c (divided to the speed of light)
+  * ✅ knot
+  * ✅ beaufort scale (from 0 to 12)
+  * ✅ mach number (divided to the speed of sound)
+  * ✅ c (divided to the speed of light)
 </details>
 <details>
   <summary>Area ❌</summary>
