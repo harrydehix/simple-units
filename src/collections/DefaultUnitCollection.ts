@@ -65,11 +65,11 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
 
     // LENGTH
     Lightyear = new Unit<this>(["ly", "light-year", "lightyear"], [
-        ...ConverterGenerator.fromOtherToAllPre("m", (val) => val * 9.461e+15),
-        { to: "yd", convert: (val) => val * 1.035e+16 },
-        { to: "ft", convert: (val) => val * 3.104e+16 },
-        { to: "mi", convert: (val) => val * 5.879e+12 },
-        { to: "in", convert: (val) => val * 3.725e+17 },
+        ...ConverterGenerator.fromOtherToAllPre("m", (val) => val * 9460730472580800),
+        { to: "yd", convert: (val) => val * 10346380656803150 },
+        { to: "ft", convert: (val) => val * 31039141970409450 },
+        { to: "mi", convert: (val) => val * 5878625373183.607 },
+        { to: "in", convert: (val) => val * 372469703644913400 },
     ], this, this.Groups.Length);
 
 
@@ -78,7 +78,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "yd", convert: (val) => val / 36 },
         { to: "ft", convert: (val) => val / 12 },
         { to: "mi", convert: (val) => val / 63360 },
-        { to: "ly", convert: (val) => val / 3.725e+17 },
+        { to: "ly", convert: (val) => val / 372469703644913400 },
     ], this, this.Groups.Length);
 
     Yard = new Unit<this>(["yd", "yard"], [
@@ -86,7 +86,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "in", convert: (val) => val * 36 },
         { to: "ft", convert: (val) => val * 3 },
         { to: "mi", convert: (val) => val / 1760 },
-        { to: "ly", convert: (val) => val / 1.035e+16 },
+        { to: "ly", convert: (val) => val / 10346380656803150 },
     ], this, this.Groups.Length);
 
     Foot = new Unit<this>(["ft", "foot", "feet"], [
@@ -94,7 +94,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "yd", convert: (val) => val / 3 },
         { to: "in", convert: (val) => val * 12 },
         { to: "mi", convert: (val) => val / 5280 },
-        { to: "ly", convert: (val) => val / 3.104e+16 },
+        { to: "ly", convert: (val) => val / 31039141970409450 },
     ], this, this.Groups.Length);
 
     Mile = new Unit<this>(["mi", "mi.", "mile", "miles"], [
@@ -102,7 +102,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "yd", convert: (val) => val * 1760 },
         { to: "in", convert: (val) => val * 63360 },
         { to: "ft", convert: (val) => val * 5280 },
-        { to: "ly", convert: (val) => val / 5.879e+12 },
+        { to: "ly", convert: (val) => val / 5878625373183.607 },
     ], this, this.Groups.Length);
 
     Yottameter = new Unit<this>(["Ym", "yottameter", "yottameters"], [
@@ -111,7 +111,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.Y, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.Y, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.Y, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.Y, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.Y, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Zettameter = new Unit<this>(["Zm", "zettameter", "zettameters"], [
@@ -120,7 +120,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.Z, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.Z, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.Z, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.Z, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.Z, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Exameter = new Unit<this>(["Em", "exameter", "exameters"], [
@@ -129,7 +129,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.E, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.E, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.E, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.E, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.E, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Petameter = new Unit<this>(["Pm", "petameter", "petameters"], [
@@ -138,7 +138,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.P, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.P, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.P, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.P, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.P, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Terameter = new Unit<this>(["Tm", "terameter", "terameters"], [
@@ -147,7 +147,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.T, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.T, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.T, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.T, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.T, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Gigameter = new Unit<this>(["Gm", "gigameter", "gigameters"], [
@@ -156,7 +156,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.G, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.G, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.G, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.G, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.G, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Megameter = new Unit<this>(["Mm", "megameter", "megameters"], [
@@ -165,7 +165,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.M, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.M, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.M, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.M, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.M, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Kilometer = new Unit<this>(["km", "kilometer", "kilometers"], [
@@ -174,7 +174,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.k, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.k, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.k, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.k, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.k, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Hectometer = new Unit<this>(["hm", "hectometer", "hectometers"], [
@@ -183,7 +183,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.h, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.h, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.h, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.h, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.h, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Decameter = new Unit<this>(["dam", "decameter", "decameters"], [
@@ -192,7 +192,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.da, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.da, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.da, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.da, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.da, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Meter = new Unit<this>(["m", "meter", "meters"], [
@@ -201,7 +201,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: (val) => val / 0.3048 },
         { to: "in", convert: (val) => val / 0.0254 },
         { to: "yd", convert: (val) => val / 0.9144 },
-        { to: "ly", convert: (val) => val / 9.461e+15 },
+        { to: "ly", convert: (val) => val / 9460730472580800 },
     ], this, this.Groups.Length);
 
     Decimeter = new Unit<this>(["dm", "decimeter", "decimeters"], [
@@ -210,7 +210,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.d, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.d, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.d, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.d, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.d, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Centimeter = new Unit<this>(["cm", "centimeter", "centimeters"], [
@@ -219,7 +219,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.c, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.c, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.c, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.c, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.c, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Millimeter = new Unit<this>(["mm", "millimeter", "millimeters"], [
@@ -228,7 +228,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.m, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.m, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.m, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.m, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.m, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Micrometer = new Unit<this>(["μm", "micrometer", "micrometers"], [
@@ -237,7 +237,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.μ, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.μ, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.μ, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.μ, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.μ, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Nanometer = new Unit<this>(["nm", "nanometer", "nanometers"], [
@@ -246,7 +246,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.n, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.n, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.n, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.n, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.n, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Picometer = new Unit<this>(["pm", "picometer", "picometers"], [
@@ -255,7 +255,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.p, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.p, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.p, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.p, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.p, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Femtometer = new Unit<this>(["fm", "femtometer", "femtometers"], [
@@ -264,7 +264,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.f, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.f, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.f, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.f, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.f, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Attometer = new Unit<this>(["am", "attometer", "attometers"], [
@@ -273,7 +273,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.a, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.a, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.a, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.a, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.a, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Zeptometer = new Unit<this>(["zm", "zeptometer", "zeptometers"], [
@@ -282,7 +282,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.z, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.z, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.z, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.z, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.z, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     Yoctometer = new Unit<this>(["ym", "yoctometer", "yoctometers"], [
@@ -291,7 +291,7 @@ export class DefaultUnitCollection<G extends DefaultUnitGroups> extends UnitColl
         { to: "ft", convert: ConverterGenerator.fromPreToOther(Prefix.y, (val) => val / 0.3048) },
         { to: "in", convert: ConverterGenerator.fromPreToOther(Prefix.y, (val) => val / 0.0254) },
         { to: "yd", convert: ConverterGenerator.fromPreToOther(Prefix.y, (val) => val / 0.9144) },
-        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.y, (val) => val / 9.461e+15) },
+        { to: "ly", convert: ConverterGenerator.fromPreToOther(Prefix.y, (val) => val / 9460730472580800) },
     ], this, this.Groups.Length);
 
     // SPEED
