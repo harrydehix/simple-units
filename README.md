@@ -132,6 +132,16 @@ expandable unit system, providing unit conversion on small and large scale
 </details>
 <details>
   <summary>Speed ❌</summary>
+
+  * ❌ km/s
+  * ❌ m/s
+  * ❌ ft/s
+  * ❌ km/h
+  * ❌ mi/h
+  * ❌ knot
+  * ❌ beaufort scale
+  * ❌ mach number (divided to the speed of sound)
+  * ❌ natural unit (divided to the speed of light)
 </details>
 <details>
   <summary>Area ❌</summary>
