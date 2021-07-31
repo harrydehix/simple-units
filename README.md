@@ -5,12 +5,12 @@ expandable unit system, providing unit conversion on small and large scale
 # Roadmap
 - `Unit<C extends UnitCollection<any>>` ✅
   - Units are the base of this library. A unit is an instance of the `Unit` class. It holds so called `converters`, which "tell" unitjs how
-    convert values to other units. Units are always part of a `UnitCollection`. Additionally it is recommended to bound a unit to a `UnitGroup` to support preferenced-based
+    to convert values to other units. Units are always part of a `UnitCollection`. Additionally it is recommended to bound a unit to a `UnitGroup` to support group-based
     conversion on large data sets (see below). Units that are part of the same unit group should be convertible bidirectionally. 
     ```typescript
     ...
     
-    Fahrnheit = new Unit("°F", [
+    Fahrenheit = new Unit("°F", [
       { to: "°C", convert: (val) => val * 1.8 + 32 }, // a 'to-converter'
       { from: "°C", convert: (val) => (val - 32) / 1.8 }, // a 'from-converter'
       ...
@@ -66,8 +66,8 @@ expandable unit system, providing unit conversion on small and large scale
         },
     ]
     const settings = Collection.GroupSettings({
-        [Collection.Groups.Temperature]: Collection.Fahrenheit,
-        [Collection.Groups.Length]: Collection.Metre,
+        [Collection.Groups.Temperature]: "°F",
+        [Collection.Groups.Length]: Collection.Meter,
     });
 
     const convertedData = Collection.convertByGroup(players, settings);

@@ -1,9 +1,9 @@
-import Unit from "../Unit";
+import Unit from "./Unit";
 import { inspect } from "util";
-import GroupSettings from "../GroupSettings";
-import UnitCollection from "../collections/UnitCollection";
-import ConversionError from "../errors/ConversionError";
-import ParseError from "../errors/ParseError";
+import GroupSettings from "./GroupSettings";
+import UnitCollection from "./collections/UnitCollection";
+import ConversionError from "./errors/ConversionError";
+import ParseError from "./errors/ParseError";
 
 export default class Convertable<C extends UnitCollection<any>> {
     public value: number;
@@ -13,7 +13,7 @@ export default class Convertable<C extends UnitCollection<any>> {
     constructor(value: number, unit: Unit<C> | string, collection: C) {
         this.value = value;
         if (typeof unit === "string") {
-            unit = collection.parseUnit(unit);
+            unit = collection.parse(unit);
         }
         this.unit = unit;
         this.collection = collection;
@@ -46,9 +46,9 @@ export default class Convertable<C extends UnitCollection<any>> {
         return new this(parsedNumber, unitString, collection);
     }
 
-    public setUnit(targetUnit: Unit<C> | string): this {
+    public as(targetUnit: Unit<C> | string): this {
         if (typeof targetUnit === "string") {
-            targetUnit = this.collection.parseUnit(targetUnit);
+            targetUnit = this.collection.parse(targetUnit);
         }
         if (targetUnit === this.unit) return this;
         const converter = this.unit.findConverter(targetUnit);
@@ -59,14 +59,18 @@ export default class Convertable<C extends UnitCollection<any>> {
     }
 
     public to(targetUnit: Unit<C> | string): number {
-        this.setUnit(targetUnit);
+        this.as(targetUnit);
         return this.value;
+    }
+
+    public possibilities(): string[] {
+        return this.unit.possibilities();
     }
 
     public convertByGroupSettings(groupSettings: GroupSettings<C>): boolean {
         const groupName = this.unit.group;
         if (groupName && groupSettings[groupName]) {
-            this.setUnit(groupSettings[groupName]);
+            this.as(groupSettings[groupName]);
             return true;
         }
         return false;

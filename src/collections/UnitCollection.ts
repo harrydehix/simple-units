@@ -1,8 +1,9 @@
 import Unit from "../Unit";
-import Convertable from "../convertable/Convertable";
+import Convertable from "../Convertable";
 import GroupSettings, { DesiredGroupSettings } from "../GroupSettings";
 import UnitGroups from "./groups/UnitGroups";
 import ParseError from "../errors/ParseError";
+import ConversionError from "../errors/ConversionError";
 
 
 export type ConvertableData<T extends UnitCollection<any>> = {
@@ -49,16 +50,17 @@ export default abstract class UnitCollection<G extends UnitGroups> {
         }
     }
 
-    getUnit(unitString: string): Unit<this> | undefined {
+    find(unitString: string): Unit<this> {
         for (const property in this) {
             const propertyValue = this[property];
             if (propertyValue instanceof Unit) {
                 if (propertyValue.isUnit(unitString)) return propertyValue;
             }
         }
+        throw new Error(`'${unitString}' is not a valid unit!`)
     }
 
-    parseUnit(unitString: string): Unit<this> {
+    parse(unitString: string): Unit<this> {
         for (const property in this) {
             const propertyValue = this[property];
             if (propertyValue instanceof Unit) {

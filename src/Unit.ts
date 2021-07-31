@@ -12,7 +12,7 @@ export default class Unit<C extends UnitCollection<any>> {
     public readonly group?: number;
     public readonly collection: C;
 
-    constructor(symbols: string | string[], converters: Converter[] = [], collection: C, group?: number) {
+    constructor(symbols: string | string[], collection: C, converters: Converter[] = [], group?: number) {
         this.converters = converters;
 
         if (symbols instanceof Array) this.symbols = symbols;
@@ -40,6 +40,17 @@ export default class Unit<C extends UnitCollection<any>> {
                 return converter;
             }
         }
+    }
+
+    public possibilities(): string[] {
+        const possibilities = [this.symbols[0]];
+        for (const property in this.collection) {
+            const unit = this.collection[property];
+            if (unit instanceof Unit) {
+                if (this.findConverter(unit)) possibilities.push(unit.symbols[0]);
+            }
+        }
+        return possibilities;
     }
 
     [inspect.custom](depth: any, options: any): string {

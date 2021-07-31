@@ -19,7 +19,7 @@ export default class GroupSettings<C extends UnitCollection<any>> {
         for (const property in settings) {
             let value = settings[property];
             if (typeof value === "string") {
-                value = collection.parseUnit(value);
+                value = collection.parse(value);
             }
             settings[property] = value;
         }
