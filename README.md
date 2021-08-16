@@ -83,10 +83,10 @@ console.log(convertable.format({ length: "long", divider: " "}));
   * ✅ lb (av)
 </details>
 <details>
-  <summary>Digital 📅</summary>
+  <summary>Digital ✅</summary>
 
-  * 📅 B (including every SI prefix from `kB` to `YB` and every IEC prefix from `KiB` to `YiB`)
-  * 📅 b (including every SI prefix from `kb` to `Yb` and every IEC prefix from `Kib` to `Yib`)
+  * ✅ B (including every SI prefix from `kB` to `YB` and every IEC prefix from `KiB` to `YiB`)
+  * ✅ b (including every SI prefix from `kb` to `Yb` and every IEC prefix from `Kib` to `Yib`)
 </details>
 <details>
   <summary>Volume 📅</summary>
