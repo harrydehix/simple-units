@@ -83,7 +83,13 @@ console.log(convertable.format({ length: "long", divider: " "}));
   * ✅ lb (av)
 </details>
 <details>
-  <summary>Volume ❌</summary>
+  <summary>Digital 📅</summary>
+
+  * 📅 B (including every SI prefix from `kB` to `YB` and every IEC prefix from `KiB` to `YiB`)
+  * 📅 b (including every SI prefix from `kb` to `Yb` and every IEC prefix from `Kib` to `Yib`)
+</details>
+<details>
+  <summary>Volume 📅</summary>
 </details>
 <details>
   <summary>Time ✅</summary>
@@ -97,41 +103,38 @@ console.log(convertable.format({ length: "long", divider: " "}));
   * ✅ a
 </details>
 <details>
-  <summary>Acceleration ❌</summary>
+  <summary>Acceleration 📅</summary>
 </details>
 <details>
-  <summary>Force ❌</summary>
+  <summary>Force 📅</summary>
 </details>
 <details>
-  <summary>Voltage ❌</summary>
+  <summary>Voltage 📅</summary>
 </details>
 <details>
-  <summary>Current ❌</summary>
+  <summary>Current 📅</summary>
 </details>
 <details>
-  <summary>Power ❌</summary>
+  <summary>Power 📅</summary>
 </details>
 <details>
-  <summary>Energy ❌</summary>
+  <summary>Energy 📅</summary>
 </details>
 <details>
-  <summary>Pace ❌</summary>
+  <summary>Pace 📅</summary>
 </details>
 <details>
-  <summary>Pressure ❌</summary>
+  <summary>Pressure 📅</summary>
 </details>
 <details>
-  <summary>Illuminance ❌</summary>
+  <summary>Illuminance 📅</summary>
 </details>
 <details>
-  <summary>PartsPer ❌</summary>
+  <summary>PartsPer 📅</summary>
 </details>
 <details>
-  <summary>Speed ❌</summary>
+  <summary>Angle 📅</summary>
 </details>
 <details>
-  <summary>Angle ❌</summary>
-</details>
-<details>
-  <summary>Frequency ❌</summary>
+  <summary>Frequency 📅</summary>
 </details>
