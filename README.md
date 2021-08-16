@@ -77,7 +77,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 <details>
   <summary>Mass ❌</summary>
 
-  * ❌ g (including every SI prefix from `yg` to `Yg`, e.g. `kg`, `mg`, ...)
+  * ✅ g (including every SI prefix from `yg` to `Yg`, e.g. `kg`, `mg`, ...)
   * ❌ t (including every SI prefix from `dat` to `Yt`, e.g. `Mt`, `Gt`, ...)
   * ❌ oz 
   * ❌ lb 

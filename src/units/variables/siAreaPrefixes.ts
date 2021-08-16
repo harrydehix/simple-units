@@ -26,7 +26,7 @@ const siAreaPrefixes = [
 
 type SIPrefix = "Y" | "Z" | "E" | "P" | "T" | "G" | "M" | "k" | "h" | "da" | "d" | "c" | "m" | "μ" | "n" | "p" | "f" | "a" | "z" | "y";
 export default (from: SIPrefix = "y", to: SIPrefix = "Y") => {
-    const fromIndex = siAreaPrefixes.findIndex((val) => val.short === from);
-    const toIndex = siAreaPrefixes.findIndex((val) => val.short === to);
+    const toIndex = siAreaPrefixes.findIndex((val) => val.short === from);
+    const fromIndex = siAreaPrefixes.findIndex((val) => val.short === to);
     return new Variable(true, ...siAreaPrefixes.filter((val, index) => index >= fromIndex && index <= toIndex));
 }
