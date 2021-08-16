@@ -87,6 +87,14 @@ console.log(convertable.format({ length: "long", divider: " "}));
 </details>
 <details>
   <summary>Time ❌</summary>
+
+  * ❌ s (including every SI prefix from `ys` to `ds`, e.g. `ns`, `μs`, ...)
+  * ❌ min
+  * ❌ h
+  * ❌ d
+  * ❌ wk
+  * ❌ m
+  * ❌ a
 </details>
 <details>
   <summary>Acceleration ❌</summary>
