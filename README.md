@@ -1,6 +1,35 @@
 # unitjs
  ![GitHub milestones](https://img.shields.io/github/milestones/all/harrydehix/unitjs) ![GitHub last commit](https://img.shields.io/github/last-commit/harrydehix/unitjs)<br>
-expandable unit system, providing unit conversion on small and large scale
+expandable, flexible unit system, providing unit conversion on small and large scale
+
+# Usage
+## Importing
+```javascript
+const units = require("unitjs");
+```
+or
+```typescript
+import units from "unitjs";
+```
+## Converting
+### `from-to-Syntax`
+```typescript
+let converted = units.from(3, "cm").to("in"); // converts value, returns number
+console.log(converted); // output: 1.1811
+```
+### `Convertable-Syntax`
+```typescript
+const convertable = units.Convertable(3, "cm"); // creates convertable
+convertable.as("dm"); // converts convertable
+console.log(convertable.value); // Output: 0.3
+console.log(convertable.to("m")); // Output: 0.03
+```
+## Formatting
+```typescript
+const convertable = units.Convertable(3, "cm"); 
+console.log(convertable.format({ length: "long", divider: " "})); 
+// Output: 3 centimeters
+```
 
 # Supported Units
 

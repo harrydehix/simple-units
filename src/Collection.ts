@@ -24,15 +24,15 @@ export default class Collection {
         else throw new Error(`Cannot override group '${groupname}'. Group doesn't exist.`);
     }
 
-    findUnit(prefixedUnit: string) {
+    find(prefixedUnit: string) {
         for (const group of this.groups) {
             const unit = group.findUnit(prefixedUnit);
             if (unit) return unit;
         }
     }
 
-    isSupporting(prefixedUnit: string): boolean {
-        return this.findUnit(prefixedUnit) !== undefined;
+    isSupported(prefixedUnit: string): boolean {
+        return this.find(prefixedUnit) !== undefined;
     }
 
     from(value: number | string, unit?: string) {
