@@ -50,8 +50,21 @@ export default class SelectedUnit {
 
             return result + prefix + this.unit.format(value, formatOptions);
         } else if (this.unit instanceof FlexibleUnit) {
-            // TODO:
+            const template = this.unit.format(value, formatOptions);
+            let filledTemplate = "";
+            let varIndex = 0;
+            for (let i = 0; i < template.length; i++) {
+                if (template[i] === "%") {
+                    if (formatOptions?.length === "long") filledTemplate += this.multiplicators[varIndex].long;
+                    else filledTemplate += this.multiplicators[varIndex].short;
+                    varIndex++;
+                } else {
+                    filledTemplate += template[i];
+                }
+            }
+            return result + filledTemplate;
         }
+        throw new Error("Not supported yet!");
     }
 }
 

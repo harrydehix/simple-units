@@ -1,7 +1,7 @@
 import Group from "../../../Group";
 import dividedByTimes from "../../../multiplicators/dividedByTimes";
 import siPrefixes from "../../../multiplicators/siPrefixes";
-import FlexibleUnit, { Definition } from "../../../unit/FlexibleUnit";
+import FlexibleUnit from "../../../unit/FlexibleUnit";
 import Formats from "../../../unit/formatting/Formats";
 import PrefixedUnit from "../../../unit/PrefixedUnit";
 import SimpleUnit from "../../../unit/SimpleUnit";
@@ -11,14 +11,14 @@ import { beaufortToMeterPerSecond, meterPerSecondToBeaufort } from "./beaufort";
 const speed = new Group("speed");
 
 speed.addUnits(
-    new FlexibleUnit(new Formats(["m/"], {
-        sg: ["meter/", "metre/", "meter per ", "metre per "],
-        pl: ["meters/", "metres/", "meters per ", "metres per "],
-    }), (val) => val, (val) => val, Definition.var(siPrefixes).base().var(dividedByTimes)),
-    new FlexibleUnit(new Formats(["ft/", "fp"], {
-        sg: ["foot/", "foot per "],
-        pl: ["feet/", "feet per "],
-    }), (val) => val / 3.280839895013123, (val) => val * 3.280839895013123, Definition.base().var(dividedByTimes)),
+    new FlexibleUnit(new Formats(["%m/%"], {
+        sg: ["%meter/%", "%metre/%", "%meter per %", "%metre per %"],
+        pl: ["%meters/%", "%metres/%", "%meters per %", "%metres per %"],
+    }), (val) => val, (val) => val, [siPrefixes, dividedByTimes]),
+    new FlexibleUnit(new Formats(["ft/%", "fp%"], {
+        sg: ["foot/%", "foot per %"],
+        pl: ["feet/%", "feet per %"],
+    }), (val) => val / 3.280839895013123, (val) => val * 3.280839895013123, [dividedByTimes]),
     // new SimpleUnit(
     //         new Formats(["ft/s", "fps"], {
     //             sg: ["foot/second", "foot per second"],
@@ -35,10 +35,10 @@ speed.addUnits(
     //     (val) => val / 2.2369362920544025,
     //     (val) => val * 2.2369362920544025,
     // ),
-    new FlexibleUnit(new Formats(["mp", "mi/"], {
-        sg: ["mile/", "mile per "],
-        pl: ["miles/", "miles per "],
-    }), (val) => val / 2.2369362920544025, (val) => val * 2.2369362920544025, Definition.base().var(dividedByTimes)),
+    new FlexibleUnit(new Formats(["mi/%", "mp%"], {
+        sg: ["mile/%", "mile per %"],
+        pl: ["miles/%", "miles per %"],
+    }), (val) => val * 1609.344, (val) => val / 1609.344, [dividedByTimes]),
     new SimpleUnit(
         new Formats(["kt", "kn"], {
             sg: ["knot"],

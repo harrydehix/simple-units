@@ -2,7 +2,7 @@ import Multiplicator from "./Multiplicator";
 import Variable from "./Variable";
 
 /** Multiplicators for any/[time, default: s] */
-const dividedByTimes = new Variable(
+const dividedByTimes = new Variable(false,
     new Multiplicator("a", "year", 1 / 31556952),
     new Multiplicator("m", "month", 1 / 2_592_000),
     new Multiplicator("wk", "week", 1 / 604_800),

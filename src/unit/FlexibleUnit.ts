@@ -6,73 +6,44 @@ import siPrefixes from "../multiplicators/siPrefixes";
 import Variable from "../multiplicators/Variable";
 import SelectedUnit from "../SelectedUnit";
 import { Converter } from "./Converter";
+import { FormatOptions } from "./formatting/FormatOptions";
 import Formats from "./formatting/Formats";
 import Unit from "./Unit";
 
-export class Definition {
-    private definition: (Variable | [null])[];
-    private index = 0;
-
-    private constructor() {
-        this.definition = [];
-    }
-
-    var(variable: Variable) {
-        this.definition.push(variable);
-        return this;
-    }
-
-    base() {
-        this.definition.push([null]);
-        return this;
-    }
-
-    static var(variable: Variable) {
-        return new Definition().var(variable);
-    }
-
-    static base() {
-        return new Definition().base();
-    }
-
-    product(): IterableIterator<(Multiplicator | null)[]> {
-        return product(...this.definition) as IterableIterator<(Multiplicator | null)[]>;
-    }
-}
-
 export default class FlexibleUnit extends Unit {
-    definition: Definition;
+    variables: Variable[];
 
-    constructor(formats: Formats, toBase: Converter, fromBase: Converter, definition: Definition) {
+    constructor(formats: Formats, toBase: Converter, fromBase: Converter, variables: Variable[]) {
         super(formats, toBase, fromBase);
-        this.definition = definition;
+        this.variables = variables;
     }
 
-    private findCombinations(callback: (combo: string) => boolean) {
-        for (const combination of this.definition.product()) {
-            // short combinations
-            const shorts = this.formats.shorts();
-            for (const short of shorts) {
+    private generateMultiplicatorCombinations() {
+        return [...product(...this.variables)] as Multiplicator[][]
+    }
+
+    public findCombinations(callback: (combo: string) => boolean) {
+        // short combinations
+        const variableCombos = this.generateMultiplicatorCombinations();
+        for (const short of this.formats.shorts()) {
+            for (const combo of variableCombos) {
+                let varIndex = 0;
                 let result = "";
-                for (const item of combination) {
-                    if (item instanceof Multiplicator) {
-                        result += item.short;
-                    } else {
-                        result += short;
-                    }
+                for (let i = 0; i < short.length; i++) {
+                    if (short[i] === "%") result += combo[varIndex++].short;
+                    else result += short[i];
                 }
                 if (callback(result)) return;
             }
-            // long combinations
-            const longs = this.formats.longs();
-            for (const long of longs) {
+        }
+        // long combinations
+        for (const long of this.formats.longs()) {
+            for (const combo of variableCombos) {
+                let varIndex = 0;
                 let result = "";
-                for (const item of combination) {
-                    if (item instanceof Multiplicator) {
-                        result += item.long;
-                    } else {
-                        result += long;
-                    }
+                for (let i = 0; i < long.length; i++) {
+                    if (long[i] === "%") result += combo[varIndex++].long;
+                    else result += long[i];
                 }
                 if (callback(result)) return;
             }
@@ -80,36 +51,29 @@ export default class FlexibleUnit extends Unit {
     }
 
     private findCombinationsWithMultiplicators(callback: (combo: string, multiplicators: Multiplicator[]) => boolean) {
-        for (const combination of this.definition.product()) {
-            // short combinations
-            const shorts = this.formats.shorts();
-            for (const short of shorts) {
+        // short combinations
+        const variableCombos = this.generateMultiplicatorCombinations();
+        for (const short of this.formats.shorts()) {
+            for (const combo of variableCombos) {
+                let varIndex = 0;
                 let result = "";
-                const multiplicators: Multiplicator[] = [];
-                for (const item of combination) {
-                    if (item instanceof Multiplicator) {
-                        result += item.short;
-                        multiplicators.push(item);
-                    } else {
-                        result += short;
-                    }
+                for (let i = 0; i < short.length; i++) {
+                    if (short[i] === "%") result += combo[varIndex++].short;
+                    else result += short[i];
                 }
-                if (callback(result, multiplicators)) return;
+                if (callback(result, combo)) return;
             }
-            // long combinations
-            const longs = this.formats.longs();
-            for (const long of longs) {
+        }
+        // long combinations
+        for (const long of this.formats.longs()) {
+            for (const combo of variableCombos) {
+                let varIndex = 0;
                 let result = "";
-                const multiplicators: Multiplicator[] = [];
-                for (const item of combination) {
-                    if (item instanceof Multiplicator) {
-                        result += item.long;
-                        multiplicators.push(item);
-                    } else {
-                        result += long;
-                    }
+                for (let i = 0; i < long.length; i++) {
+                    if (long[i] === "%") result += combo[varIndex++].long;
+                    else result += long[i];
                 }
-                if (callback(result, multiplicators)) return;
+                if (callback(result, combo)) return;
             }
         }
     }

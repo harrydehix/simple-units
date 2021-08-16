@@ -1,7 +1,7 @@
 import Multiplicator from "./Multiplicator";
 import Variable from "./Variable";
 
-const siPrefixes = new Variable(
+const siPrefixes = new Variable(true,
     new Multiplicator("Y", "yotta", 1e24),
     new Multiplicator("Z", "zetta", 1e21),
     new Multiplicator("E", "exa", 1e18),

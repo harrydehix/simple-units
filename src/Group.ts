@@ -34,6 +34,8 @@ export default class Group {
         return result;
     }
 
+    Convertable = this.from;
+
     _from(value: number, unit: string): Convertable | undefined {
         return ConvertableParser.parse(value, unit, this);
     }
@@ -42,7 +44,7 @@ export default class Group {
         return this.units.find((unit) => unit.isUnit(prefixedUnit));
     }
 
-    isSupporting(prefixedUnit: string): boolean {
+    isSupported(prefixedUnit: string): boolean {
         return this.findUnit(prefixedUnit) !== undefined;
     }
 

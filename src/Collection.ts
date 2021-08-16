@@ -49,4 +49,6 @@ export default class Collection {
         }
         throw new Error(`Didn't find unit '${unit}'!`);
     }
+
+    Convertable = this.from;
 }
