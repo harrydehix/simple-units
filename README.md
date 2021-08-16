@@ -2,7 +2,7 @@
  ![GitHub milestones](https://img.shields.io/github/milestones/all/harrydehix/unitjs) ![GitHub last commit](https://img.shields.io/github/last-commit/harrydehix/unitjs)<br>
 expandable unit system, providing unit conversion on small and large scale
 
-# Roadmap
+# Supported Units
 
 <div id="detailsDefaultUnit"></div>
 <details>
@@ -26,11 +26,9 @@ expandable unit system, providing unit conversion on small and large scale
 <details>
   <summary>Speed ✅</summary>
 
-  * ✅ m/s (including every SI prefix from ym/s to Ym/s, e.g. `km/s`, `cm/s`, `nm/s`, ...)
-  * ✅ m/h (including every SI prefix from ym/h to Ym/h, e.g. `km/h`, `cm/h`, `nm/h`, ...)
-  * ✅ ft/s
-  * ✅ km/h
-  * ✅ mph
+  * ✅ m/s (`m` is combinable with any SI prefix, `s` is replaceable with any valid time unit, e.g. `km/min`, `cm/ns`, `dm/a`, ...)
+  * ✅ ft/s (`s` is replaceable with any valid time unit, e.g. `ft/min`, `ft/ms`, `ft/d`, ...)
+  * ✅ mi/s (`s` is replaceable with any valid time unit, e.g. `mi/h`, `mi/wk`, `mi/m`, ...)
   * ✅ knot
   * ✅ beaufort scale (from 0 to 12)
   * ✅ mach number (divided to the speed of sound)

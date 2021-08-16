@@ -1,9 +1,8 @@
 import { inspect } from "util";
 import Convertable from "./convertable/Convertable";
 import ConvertableParser from "./convertable/ConvertableParser";
-import PrefixedUnit from "./PrefixedUnit";
-import Prefix from "./prefixes/Prefix";
-import Unit from "./Unit";
+import SelectedUnit from "./SelectedUnit";
+import Unit from "./unit/Unit";
 
 export default class Group {
     name: string;
@@ -35,6 +34,8 @@ export default class Group {
         return result;
     }
 
+    Convertable = this.from;
+
     _from(value: number, unit: string): Convertable | undefined {
         return ConvertableParser.parse(value, unit, this);
     }
@@ -43,17 +44,15 @@ export default class Group {
         return this.units.find((unit) => unit.isUnit(prefixedUnit));
     }
 
-    isSupporting(prefixedUnit: string): boolean {
+    isSupported(prefixedUnit: string): boolean {
         return this.findUnit(prefixedUnit) !== undefined;
     }
 
-    findPrefixedUnit(prefixedUnit: string): PrefixedUnit | undefined {
+    parse(prefixedUnit: string): SelectedUnit | undefined {
         for (const unit of this.units) {
-            const prefix = unit.findPrefix(prefixedUnit);
+            const result = unit.parse(prefixedUnit);
 
-            if (prefix !== null) {
-                return new PrefixedUnit(unit, prefix);
-            }
+            if (result) return result;
         }
     }
 

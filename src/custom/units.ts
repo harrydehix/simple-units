@@ -1,4 +1,3 @@
-import Unit from "../Unit";
 import units from "../units/units";
 import newGroup from "./newGroup";
 

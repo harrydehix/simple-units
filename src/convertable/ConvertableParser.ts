@@ -27,8 +27,8 @@ export default class ConvertableParser {
     }
 
     static parse(value: number, unit: string, group: Group): Convertable | undefined {
-        const prefixedUnit = group.findPrefixedUnit(unit);
-        if (!prefixedUnit) return undefined;
-        return new Convertable(prefixedUnit.removePrefixFromValue(value), prefixedUnit.unit, group);
+        const selectedUnit = group.parse(unit);
+        if (!selectedUnit) return undefined;
+        return new Convertable(value, selectedUnit, group);
     }
 }
