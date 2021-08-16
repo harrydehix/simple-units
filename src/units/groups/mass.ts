@@ -10,6 +10,10 @@ mass.addUnits(
         sg: ["gram", "gramme"],
         pl: ["gram", "grams"],
     }), (val) => val, (val) => val, siPrefixes()),
+    new PrefixedUnit(new Formats(["t"], {
+        sg: ["tonne", "metric ton"],
+        pl: ["tonnes", "metric tons"],
+    }), (val) => val * 1e6, (val) => val / 1e6, siPrefixes("da")),
 );
 
 export default mass;
