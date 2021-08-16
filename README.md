@@ -75,12 +75,12 @@ console.log(convertable.format({ length: "long", divider: " "}));
   * ✅ ac
 </details>
 <details>
-  <summary>Mass ❌</summary>
+  <summary>Mass ✅</summary>
 
   * ✅ g (including every SI prefix from `yg` to `Yg`, e.g. `kg`, `mg`, ...)
   * ✅ t (metric ton; including every SI prefix from `dat` to `Yt`, e.g. `Mt`, `Gt`, ...)
-  * ✅ oz av 
-  * ❌ lb 
+  * ✅ oz (av) 
+  * ✅ lb (av)
 </details>
 <details>
   <summary>Volume ❌</summary>
