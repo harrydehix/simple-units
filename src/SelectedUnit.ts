@@ -1,4 +1,4 @@
-import Multiplicator from "./multiplicators/Multiplicator";
+import Multiplicator from "./multiplicator/Multiplicator";
 import FlexibleUnit from "./unit/FlexibleUnit";
 import { FormatOptions } from "./unit/formatting/FormatOptions";
 import PrefixedUnit from "./unit/PrefixedUnit";

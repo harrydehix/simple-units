@@ -1,7 +1,6 @@
 
-import { inspect } from "util";
-import Multiplicator from "../multiplicators/Multiplicator";
-import Variable from "../multiplicators/Variable";
+import Multiplicator from "../multiplicator/Multiplicator";
+import Variable from "../multiplicator/Variable";
 import SelectedUnit from "../SelectedUnit";
 import { Converter } from "./Converter";
 import Formats from "./formatting/Formats";

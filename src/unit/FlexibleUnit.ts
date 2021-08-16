@@ -1,12 +1,8 @@
 import { product } from "cartesian-product-generator";
-import { EventEmitter } from "stream";
-import dividedByTimes from "../multiplicators/dividedByTimes";
-import Multiplicator from "../multiplicators/Multiplicator";
-import siPrefixes from "../multiplicators/siPrefixes";
-import Variable from "../multiplicators/Variable";
+import Multiplicator from "../multiplicator/Multiplicator";
+import Variable from "../multiplicator/Variable";
 import SelectedUnit from "../SelectedUnit";
 import { Converter } from "./Converter";
-import { FormatOptions } from "./formatting/FormatOptions";
 import Formats from "./formatting/Formats";
 import Unit from "./Unit";
 

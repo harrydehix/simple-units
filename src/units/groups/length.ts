@@ -1,8 +1,8 @@
 import Group from "../../Group";
-import siPrefixes from "../../multiplicators/siPrefixes";
 import Formats from "../../unit/formatting/Formats";
 import PrefixedUnit from "../../unit/PrefixedUnit";
 import SimpleUnit from "../../unit/SimpleUnit";
+import siPrefixes from "../variables/siPrefixes";
 
 const length = new Group("length");
 
@@ -10,7 +10,7 @@ length.setUnits(
     new PrefixedUnit(new Formats(["m"], {
         sg: ["meter", "metre"],
         pl: ["meters", "metres"]
-    }), (val) => val, (val) => val, siPrefixes),
+    }), (val) => val, (val) => val, siPrefixes()),
     new SimpleUnit(new Formats(["in", "″"], {
         sg: ["inch"],
         pl: ["inches"]

@@ -37,7 +37,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 <details>
   <summary>Length ✅</summary>
   
-  * ✅ m (including every SI prefix from ym to Ym, e.g. `km`, `cm`, `nm`, ...)
+  * ✅ m (including every SI prefix from `ym` to `Ym`, e.g. `km`, `cm`, `nm`, ...)
   * ✅ in
   * ✅ yd
   * ✅ ft
@@ -66,7 +66,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 <details>
   <summary>Area ✅</summary>
 
-  * ✅ m² (including every SI prefix from ym² to Ym², e.g. `km²`, `cm²`, `nm²`, ...)
+  * ✅ m² (including every SI prefix from `ym²` to `Ym²`, e.g. `km²`, `cm²`, `nm²`, ...)
   * ✅ a (including `ca`, `da`, `daa` and `ha`)
   * ✅ in²
   * ✅ ft²
@@ -76,6 +76,11 @@ console.log(convertable.format({ length: "long", divider: " "}));
 </details>
 <details>
   <summary>Mass ❌</summary>
+
+  * ❌ g (including every SI prefix from `yg` to `Yg`, e.g. `kg`, `mg`, ...)
+  * ❌ t (including every SI prefix from `dat` to `Yt`, e.g. `Mt`, `Gt`, ...)
+  * ❌ oz 
+  * ❌ lb 
 </details>
 <details>
   <summary>Volume ❌</summary>

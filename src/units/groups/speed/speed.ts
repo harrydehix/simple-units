@@ -1,10 +1,10 @@
 import Group from "../../../Group";
-import dividedByTimes from "../../../multiplicators/dividedByTimes";
-import siPrefixes from "../../../multiplicators/siPrefixes";
 import FlexibleUnit from "../../../unit/FlexibleUnit";
 import Formats from "../../../unit/formatting/Formats";
 import PrefixedUnit from "../../../unit/PrefixedUnit";
 import SimpleUnit from "../../../unit/SimpleUnit";
+import dividedByTimes from "../../variables/dividedByTimes";
+import siPrefixes from "../../variables/siPrefixes";
 import { beaufortToMeterPerSecond, meterPerSecondToBeaufort } from "./beaufort";
 
 
@@ -14,27 +14,11 @@ speed.addUnits(
     new FlexibleUnit(new Formats(["%m/%"], {
         sg: ["%meter/%", "%metre/%", "%meter per %", "%metre per %"],
         pl: ["%meters/%", "%metres/%", "%meters per %", "%metres per %"],
-    }), (val) => val, (val) => val, [siPrefixes, dividedByTimes]),
+    }), (val) => val, (val) => val, [siPrefixes(), dividedByTimes]),
     new FlexibleUnit(new Formats(["ft/%", "fp%"], {
         sg: ["foot/%", "foot per %"],
         pl: ["feet/%", "feet per %"],
     }), (val) => val / 3.280839895013123, (val) => val * 3.280839895013123, [dividedByTimes]),
-    // new SimpleUnit(
-    //         new Formats(["ft/s", "fps"], {
-    //             sg: ["foot/second", "foot per second"],
-    //             pl: ["feet/second", "feet per second"],
-    //         }),
-    //         (val) => val / 3.280839895013123,
-    //         (val) => val * 3.280839895013123,
-    //     ),
-    // new SimpleUnit(
-    //     new Formats(["mph", "mi/h"], {
-    //         sg: ["mile/hour", "mile per hour"],
-    //         pl: ["miles/hour", "miles per hour"],
-    //     }),
-    //     (val) => val / 2.2369362920544025,
-    //     (val) => val * 2.2369362920544025,
-    // ),
     new FlexibleUnit(new Formats(["mi/%", "mp%"], {
         sg: ["mile/%", "mile per %"],
         pl: ["miles/%", "miles per %"],

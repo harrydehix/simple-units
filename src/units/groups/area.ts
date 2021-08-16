@@ -1,7 +1,7 @@
 import Group from "../../Group";
-import Multiplicator from "../../multiplicators/Multiplicator";
-import siAreaPrefixes from "../../multiplicators/siAreaPrefixes";
-import Variable from "../../multiplicators/Variable";
+import Multiplicator from "../../multiplicator/Multiplicator";
+import siAreaPrefixes from "../variables/siAreaPrefixes";
+import Variable from "../../multiplicator/Variable";
 import FlexibleUnit from "../../unit/FlexibleUnit";
 import Formats from "../../unit/formatting/Formats";
 import PrefixedUnit from "../../unit/PrefixedUnit";
@@ -13,7 +13,7 @@ area.addUnits(
     new FlexibleUnit(new Formats(["%m²", "%m^2", "%m2"], {
         sg: ["square %meter", "sq %meter", "sq %metre", "square %metre"],
         pl: ["square %meters", "sq %meters", "sq %metres", "square %metres"],
-    }), (val) => val, (val) => val, [siAreaPrefixes]),
+    }), (val) => val, (val) => val, [siAreaPrefixes()]),
     new PrefixedUnit(new Formats(["a"], ["are"]), (val) => val * 100, (val) => val / 100, new Variable(true,
         new Multiplicator("c", "centi", 1e-2),
         new Multiplicator("d", "deci", 1e-1),

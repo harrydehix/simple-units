@@ -1,7 +1,7 @@
-import Multiplicator from "./Multiplicator";
-import Variable from "./Variable";
+import Multiplicator from "../../multiplicator/Multiplicator";
+import Variable from "../../multiplicator/Variable";
 
-const siAreaPrefixes = new Variable(true,
+const siAreaPrefixes = [
     new Multiplicator("Y", "yotta", 1e48),
     new Multiplicator("Z", "zetta", 1e42),
     new Multiplicator("E", "exa", 1e36),
@@ -22,6 +22,11 @@ const siAreaPrefixes = new Variable(true,
     new Multiplicator("a", "atto", 1e-36),
     new Multiplicator("z", "zepto", 1e-42),
     new Multiplicator("y", "yocto", 1e-48),
-);
+];
 
-export default siAreaPrefixes;
+type SIPrefix = "Y" | "Z" | "E" | "P" | "T" | "G" | "M" | "k" | "h" | "da" | "d" | "c" | "m" | "μ" | "n" | "p" | "f" | "a" | "z" | "y";
+export default (from: SIPrefix = "y", to: SIPrefix = "Y") => {
+    const fromIndex = siAreaPrefixes.findIndex((val) => val.short === from);
+    const toIndex = siAreaPrefixes.findIndex((val) => val.short === to);
+    return new Variable(true, ...siAreaPrefixes.filter((val, index) => index >= fromIndex && index <= toIndex));
+}
