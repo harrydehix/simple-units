@@ -4,16 +4,18 @@ import length from "./groups/length";
 import mass from "./groups/mass";
 import speed from "./groups/speed/speed";
 import temperature from "./groups/temperatures";
+import time from "./groups/time";
 
 
 const units = new Collection();
 
 units.setGroups(
-    temperature,
+    time,
     length,
     speed,
     area,
-    mass
+    temperature,
+    mass,
 );
 
 export default units;
