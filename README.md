@@ -124,7 +124,13 @@ console.log(convertable.format({ length: "long", divider: " "}));
   <summary>Pace 📅</summary>
 </details>
 <details>
-  <summary>Pressure 📅</summary>
+  <summary>Pressure ✅</summary>
+
+  * ✅ Pa (including SI Prefixes from `µPa` to `YPa`)
+  * ✅ bar
+  * ✅ torr
+  * ✅ atm
+  * ✅ psi, ksi, Mpsi
 </details>
 <details>
   <summary>Illuminance 📅</summary>
