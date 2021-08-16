@@ -1,5 +1,4 @@
 import Group from "../Group";
-import Unit from "../Unit";
 
 const myUnits = new Group("myUnits");
 

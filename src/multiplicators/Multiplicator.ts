@@ -1,11 +1,11 @@
-export default class Prefix {
+export default class Multiplicator {
     readonly short: string;
     readonly long: string;
-    readonly multiplicator: number;
+    readonly value: number;
 
     constructor(short: string, long: string, multiplicator: number) {
         this.short = short;
         this.long = long;
-        this.multiplicator = multiplicator;
+        this.value = multiplicator;
     }
 }

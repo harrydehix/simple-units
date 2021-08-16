@@ -1,4 +1,5 @@
 import units from "./units/units";
+import * as sourceMapping from 'source-map-support';
+sourceMapping.install();
 
-
-console.log(units.from(1, "c").to("meter per second"));
+console.log(units.from(2, "km/h").as("mph").format({ length: "long", divider: " " }));
