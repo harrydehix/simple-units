@@ -64,7 +64,15 @@ console.log(convertable.format({ length: "long", divider: " "}));
   * ✅ c (divided to the speed of light)
 </details>
 <details>
-  <summary>Area ❌</summary>
+  <summary>Area ✅</summary>
+
+  * ✅ m² (including every SI prefix from ym² to Ym², e.g. `km²`, `cm²`, `nm²`, ...)
+  * ✅ a (including `ca`, `da`, `daa` and `ha`)
+  * ✅ in²
+  * ✅ ft²
+  * ✅ mi²
+  * ✅ yd²
+  * ✅ ac
 </details>
 <details>
   <summary>Mass ❌</summary>

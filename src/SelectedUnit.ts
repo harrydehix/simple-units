@@ -33,6 +33,20 @@ export default class SelectedUnit {
             return this.unit.toString();
         else if (this.unit instanceof PrefixedUnit)
             return this.multiplicators[0].short + this.unit.toString();
+        else if (this.unit instanceof FlexibleUnit) {
+            const template = this.unit.toString();
+            let filledTemplate = "";
+            let varIndex = 0;
+            for (let i = 0; i < template.length; i++) {
+                if (template[i] === "%") {
+                    filledTemplate += this.multiplicators[varIndex].short;
+                    varIndex++;
+                } else {
+                    filledTemplate += template[i];
+                }
+            }
+            return filledTemplate;
+        }
         throw new Error("Feature not implemented yet!");
     }
 
