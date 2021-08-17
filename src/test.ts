@@ -1,5 +1,5 @@
 import units from "./units/units";
-import testFunction from "../performance/testFunction";
+import testFunction from "./performance/testFunction";
 import { Symbols } from "./Collection";
 
 units.setSettings({
