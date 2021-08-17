@@ -144,3 +144,8 @@ console.log(convertable.format({ length: "long", divider: " "}));
 <details>
   <summary>Frequency 📅</summary>
 </details>
+
+# Roadmap
+
+* Implement units listed above
+* Document functions, classes, etc.
