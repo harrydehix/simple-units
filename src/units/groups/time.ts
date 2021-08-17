@@ -7,10 +7,10 @@ const time = new Group("time");
 
 time.setUnits(
     ...UnitCreator.create({
-        short: ["s"],
+        short: ["%s"],
         long: {
-            sg: ["second"],
-            pl: ["seconds"],
+            sg: ["%second"],
+            pl: ["%seconds"],
         }
     }, (val) => val, (val) => val, [siPrefixes("y", "d")]),
     new Unit({

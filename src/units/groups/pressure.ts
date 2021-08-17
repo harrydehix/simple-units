@@ -7,8 +7,8 @@ const pressure = new Group("pressure");
 
 pressure.setUnits(
     ...UnitCreator.create({
-        short: ["Pa"],
-        long: { sg: ["Pascal"], pl: ["Pascals"] },
+        short: ["%Pa"],
+        long: { sg: ["%pascal"], pl: ["%pascals"] },
     }, (val) => val, (val) => val, [siPrefixes("μ")]),
     new Unit({
         short: ["bar"],
