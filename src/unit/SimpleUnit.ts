@@ -8,12 +8,13 @@ export default class SimpleUnit extends Unit {
         super(formats, fromBase, toBase);
     }
 
-    isUnit(unit: string): boolean {
-        return this.formats.shorts().includes(unit) || this.formats.longs().includes(unit);
+    isUnit(unit: string, performanceMode: boolean): boolean {
+        if (performanceMode) return this.formats.default() === unit;
+        else return this.formats.shorts().includes(unit) || this.formats.longs().includes(unit);
     }
 
-    parse(unit: string): SelectedUnit | undefined {
-        if (this.isUnit(unit))
+    parse(unit: string, performanceMode: boolean): SelectedUnit | undefined {
+        if (this.isUnit(unit, performanceMode))
             return new SelectedUnit(this);
     }
 }

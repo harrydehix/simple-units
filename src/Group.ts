@@ -1,4 +1,5 @@
 import { inspect } from "util";
+import Collection from "./Collection";
 import Convertable from "./convertable/Convertable";
 import ConvertableParser from "./convertable/ConvertableParser";
 import SelectedUnit from "./SelectedUnit";
@@ -7,6 +8,7 @@ import Unit from "./unit/Unit";
 export default class Group {
     name: string;
     units: Unit[] = [];
+    collection?: Collection;
 
     constructor(name: string) {
         this.name = name;
@@ -41,16 +43,21 @@ export default class Group {
     }
 
     findUnit(prefixedUnit: string) {
-        return this.units.find((unit) => unit.isUnit(prefixedUnit));
+        return this.units.find((unit) => unit.isUnit(prefixedUnit, this.isInPerformanceMode()));
     }
 
     isSupported(prefixedUnit: string): boolean {
         return this.findUnit(prefixedUnit) !== undefined;
     }
 
+    private isInPerformanceMode(): boolean {
+        if (this.collection) return this.collection.performanceMode;
+        else return true;
+    }
+
     parse(prefixedUnit: string): SelectedUnit | undefined {
         for (const unit of this.units) {
-            const result = unit.parse(prefixedUnit);
+            const result = unit.parse(prefixedUnit, this.isInPerformanceMode());
 
             if (result) return result;
         }

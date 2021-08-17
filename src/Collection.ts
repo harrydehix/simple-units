@@ -3,16 +3,23 @@ import Group from "./Group";
 
 export default class Collection {
     groups: Group[] = [];
+    performanceMode = false;
 
     setGroups(...groups: Group[]) {
         this.groups = groups;
+        for (const group of groups) {
+            group.collection = this;
+        }
     }
 
     addGroups(...groups: Group[]) {
         this.groups.push(...groups);
+        for (const group of groups) {
+            group.collection = this;
+        }
     }
 
-    getGroup(groupname: string) {
+    group(groupname: string) {
         const group = this.groups.find((group) => group.name === groupname);
         if (!group) throw new Error(`Cannot get group '${groupname}'. Group doesn't exist.`);
         return group;
@@ -20,7 +27,10 @@ export default class Collection {
 
     overrideGroup(groupname: string, group: Group) {
         const index = this.groups.findIndex((group) => group.name === groupname);
-        if (index !== -1) this.groups[index] = group;
+        if (index !== -1) {
+            this.groups[index] = group;
+            group.collection = this;
+        }
         else throw new Error(`Cannot override group '${groupname}'. Group doesn't exist.`);
     }
 
@@ -29,6 +39,14 @@ export default class Collection {
             const unit = group.findUnit(prefixedUnit);
             if (unit) return unit;
         }
+    }
+
+    disablePerformanceMode() {
+        this.performanceMode = false;
+    }
+
+    enablePerformanceMode() {
+        this.performanceMode = true;
     }
 
     isSupported(prefixedUnit: string): boolean {

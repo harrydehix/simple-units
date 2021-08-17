@@ -18,63 +18,92 @@ export default class FlexibleUnit extends Unit {
         return [...product(...this.variables)] as Multiplicator[][]
     }
 
-    public findCombinations(callback: (combo: string) => boolean) {
-        // short combinations
-        const variableCombos = this.generateMultiplicatorCombinations();
-        for (const short of this.formats.shorts()) {
+    public findCombinations(callback: (combo: string) => boolean, performanceMode: boolean) {
+        if (performanceMode) {
+            const variableCombos = this.generateMultiplicatorCombinations();
+            const unit = this.formats.default();
             for (const combo of variableCombos) {
                 let varIndex = 0;
                 let result = "";
-                for (let i = 0; i < short.length; i++) {
-                    if (short[i] === "%") result += combo[varIndex++].short;
-                    else result += short[i];
+                for (let i = 0; i < unit.length; i++) {
+                    if (unit[i] === "%") result += combo[varIndex++].short;
+                    else result += unit[i];
                 }
                 if (callback(result)) return;
             }
-        }
-        // long combinations
-        for (const long of this.formats.longs()) {
-            for (const combo of variableCombos) {
-                let varIndex = 0;
-                let result = "";
-                for (let i = 0; i < long.length; i++) {
-                    if (long[i] === "%") result += combo[varIndex++].long;
-                    else result += long[i];
+        } else {
+            // short combinations
+            const variableCombos = this.generateMultiplicatorCombinations();
+            for (const short of this.formats.shorts()) {
+                for (const combo of variableCombos) {
+                    let varIndex = 0;
+                    let result = "";
+                    for (let i = 0; i < short.length; i++) {
+                        if (short[i] === "%") result += combo[varIndex++].short;
+                        else result += short[i];
+                    }
+                    if (callback(result)) return;
                 }
-                if (callback(result)) return;
+            }
+            // long combinations
+            for (const long of this.formats.longs()) {
+                for (const combo of variableCombos) {
+                    let varIndex = 0;
+                    let result = "";
+                    for (let i = 0; i < long.length; i++) {
+                        if (long[i] === "%") result += combo[varIndex++].long;
+                        else result += long[i];
+                    }
+                    if (callback(result)) return;
+                }
             }
         }
     }
 
-    private findCombinationsWithMultiplicators(callback: (combo: string, multiplicators: Multiplicator[]) => boolean) {
-        // short combinations
-        const variableCombos = this.generateMultiplicatorCombinations();
-        for (const short of this.formats.shorts()) {
+    private findCombinationsWithMultiplicators(callback: (combo: string, multiplicators: Multiplicator[]) => boolean, performanceMode: boolean) {
+        if (performanceMode) {
+            const variableCombos = this.generateMultiplicatorCombinations();
+            const unit = this.formats.default();
             for (const combo of variableCombos) {
                 let varIndex = 0;
                 let result = "";
-                for (let i = 0; i < short.length; i++) {
-                    if (short[i] === "%") result += combo[varIndex++].short;
-                    else result += short[i];
+                for (let i = 0; i < unit.length; i++) {
+                    if (unit[i] === "%") result += combo[varIndex++].short;
+                    else result += unit[i];
                 }
                 if (callback(result, combo)) return;
             }
-        }
-        // long combinations
-        for (const long of this.formats.longs()) {
-            for (const combo of variableCombos) {
-                let varIndex = 0;
-                let result = "";
-                for (let i = 0; i < long.length; i++) {
-                    if (long[i] === "%") result += combo[varIndex++].long;
-                    else result += long[i];
+        } else {
+            // short combinations
+            const variableCombos = this.generateMultiplicatorCombinations();
+            for (const short of this.formats.shorts()) {
+                for (const combo of variableCombos) {
+                    let varIndex = 0;
+                    let result = "";
+                    for (let i = 0; i < short.length; i++) {
+                        if (short[i] === "%") result += combo[varIndex++].short;
+                        else result += short[i];
+                    }
+                    if (callback(result, combo)) return;
                 }
-                if (callback(result, combo)) return;
+            }
+            // long combinations
+            for (const long of this.formats.longs()) {
+                for (const combo of variableCombos) {
+                    let varIndex = 0;
+                    let result = "";
+                    for (let i = 0; i < long.length; i++) {
+                        if (long[i] === "%") result += combo[varIndex++].long;
+                        else result += long[i];
+                    }
+                    if (callback(result, combo)) return;
+                }
             }
         }
+
     }
 
-    isUnit(prefixedUnit: string): boolean {
+    isUnit(prefixedUnit: string, performanceMode: boolean) {
         let result = false;
         this.findCombinations((combo) => {
             if (prefixedUnit === combo) {
@@ -82,11 +111,11 @@ export default class FlexibleUnit extends Unit {
                 return true;
             }
             return false;
-        });
+        }, performanceMode);
         return result;
     }
 
-    parse(prefixedUnit: string): SelectedUnit | undefined {
+    parse(prefixedUnit: string, performanceMode: boolean): SelectedUnit | undefined {
         let result;
         this.findCombinationsWithMultiplicators((combo, multiplicators) => {
             if (prefixedUnit === combo) {
@@ -94,7 +123,7 @@ export default class FlexibleUnit extends Unit {
                 return true;
             }
             return false;
-        });
+        }, performanceMode);
         return result;
     }
 }

@@ -15,9 +15,9 @@ export default abstract class Unit {
         this.formats = formats;
     }
 
-    abstract isUnit(prefixedUnit: string): boolean;
+    abstract isUnit(prefixedUnit: string, performanceMode: boolean): boolean;
 
-    abstract parse(prefixedUnit: string): SelectedUnit | undefined;
+    abstract parse(prefixedUnit: string, performanceMode: boolean): SelectedUnit | undefined;
 
     [inspect.custom](depth: any, options: any): string {
         return options.stylize("Unit { ", "special") + options.stylize(`'${this.formats.default()}'`, "string") + options.stylize(" }", "special");
