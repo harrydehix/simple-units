@@ -1,3 +1,5 @@
+import { Converter } from "../../unit/Converter";
+
 export default class Multiplicator {
     readonly short: string;
     readonly long: string;
@@ -8,4 +10,10 @@ export default class Multiplicator {
         this.long = long;
         this.value = multiplicator;
     }
+
+
+    remove: Converter = (value: number) => value * this.value;
+
+
+    add: Converter = (value: number) => value / this.value;
 }

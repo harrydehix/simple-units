@@ -6,6 +6,7 @@ export default class Variable extends Array<Multiplicator>{
         if (isOptional) this.push(new Multiplicator("", "", 1));
     }
 
+
     shorts(): string[] {
         const shorts = [];
         for (const mult of this) {
