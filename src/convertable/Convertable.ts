@@ -13,7 +13,7 @@ export default class Convertable {
     }
 
     to(identifier: string) {
-        const resolvedUnit = this.unit.group.getUnit(identifier);
+        const resolvedUnit = this.unit.group.tryToFindUnit(identifier);
         if (!resolvedUnit) throw new Error("Unit not part of this group!");
         this.value = this.unit.toBase(this.value);
         this.value = resolvedUnit.fromBase(this.value);
@@ -24,6 +24,10 @@ export default class Convertable {
     as(identifier: string) {
         this.to(identifier);
         return this;
+    }
+
+    possibilities(): string[] {
+        return this.unit.possibilities();
     }
 
 

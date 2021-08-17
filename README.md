@@ -99,7 +99,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
   * ✅ h
   * ✅ d
   * ✅ wk
-  * ✅ m
+  * ✅ mth
   * ✅ a
 </details>
 <details>

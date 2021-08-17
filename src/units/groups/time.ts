@@ -38,7 +38,7 @@ time.setUnits(
         }
     }, (val) => val * 604_800, (val) => val / 604_800),
     new Unit({
-        short: ["m"], long: {
+        short: ["mth"], long: {
             sg: ["month"],
             pl: ["months"],
         }

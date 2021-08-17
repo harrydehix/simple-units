@@ -3,7 +3,7 @@ import Variable from "../../unitCreator/variable/Variable";
 
 const times = new Variable(false,
     new Multiplicator("a", "year", 31556952),
-    new Multiplicator("m", "month", 2_592_000),
+    new Multiplicator("mth", "month", 2_592_000),
     new Multiplicator("wk", "week", 604_800),
     new Multiplicator("d", "day", 86_400),
     new Multiplicator("h", "hour", 3_600),

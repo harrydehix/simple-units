@@ -1,10 +1,11 @@
 import Multiplicator from "../../unitCreator/variable/Multiplicator";
 import Variable from "../../unitCreator/variable/Variable";
 
+
 /** Multiplicators for any/[time, default: s] */
 const dividedByTimes = new Variable(false,
     new Multiplicator("a", "year", 1 / 31556952),
-    new Multiplicator("m", "month", 1 / 2_592_000),
+    new Multiplicator("mth", "month", 1 / 2_592_000),
     new Multiplicator("wk", "week", 1 / 604_800),
     new Multiplicator("d", "day", 1 / 86_400),
     new Multiplicator("h", "hour", 1 / 3_600),

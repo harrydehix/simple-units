@@ -29,6 +29,16 @@ export default class Unit {
         }
     }
 
+    possibilities(): string[] {
+        const possibilities = [];
+        for (const unit of this.group.units) possibilities.push(unit.toString());
+        return possibilities;
+    }
+
+    description(): string {
+        return `{\n  abbr: ${this.format.short.join(", ")}\n  measure: ${this.group.name}\n  singular: ${this.format.long.sg.join(", ")}\n  plural: ${this.format.long.pl.join(", ")}\n}`;
+    }
+
     [inspect.custom](depth: any, options: any): string {
         return options.stylize("Unit { ", "special") + options.stylize(`'${this.format.short[0]}'`, "string") + options.stylize(" }", "special");
     }

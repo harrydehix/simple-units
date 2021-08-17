@@ -44,6 +44,14 @@ export default class Collection {
         return group;
     }
 
+    unit(identifier: string) {
+        for (const group of this.groups) {
+            const unit = group.tryToFindUnit(identifier);
+            if (unit) return unit;
+        }
+        throw new Error(`Cannot get unit '${identifier}'. Unit doesn't exist.`);
+    }
+
     overrideGroup(groupname: string, group: Group) {
         const index = this.groups.findIndex((group) => group.name === groupname);
         if (index !== -1) {
@@ -55,7 +63,7 @@ export default class Collection {
 
     getUnit(identifier: string) {
         for (const group of this.groups) {
-            const unit = group.getUnit(identifier);
+            const unit = group.tryToFindUnit(identifier);
             if (unit) return unit;
         }
     }

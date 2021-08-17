@@ -20,7 +20,13 @@ export default class Group {
         }
     }
 
-    getUnit(identifier: string) {
+    unit(identifier: string) {
+        const unit = this.units.find((unit) => unit.isUnit(identifier));
+        if (!unit) throw new Error(`Cannot get unit '${identifier}'. Unit doesn't exist.`);
+        return unit;
+    }
+
+    tryToFindUnit(identifier: string) {
         return this.units.find((unit) => unit.isUnit(identifier));
     }
 
