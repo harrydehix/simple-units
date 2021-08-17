@@ -16,10 +16,10 @@ area.setUnits(
         },
     }, (val) => val, (val) => val, [siAreaPrefixes()]),
     ...UnitCreator.create({
-        short: ["a"],
+        short: ["%a"],
         long: {
-            sg: ["are"],
-            pl: ["ares"],
+            sg: ["%are"],
+            pl: ["%ares"],
         }
     }, (val) => val * 100, (val) => val / 100, [new Variable(true,
         new Multiplicator("c", "centi", 1e-2),

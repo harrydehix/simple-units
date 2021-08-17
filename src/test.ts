@@ -10,4 +10,4 @@ function convert() {
     units.from(12, "Bft").to("knots");
 }
 
-console.log(testFunction(convert));
+console.log(units);
