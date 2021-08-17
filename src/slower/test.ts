@@ -5,7 +5,7 @@ sourceMapping.install();
 
 units.disablePerformanceMode();
 function convert() {
-    units.from(12, "cm").to("in");
+    units.from(12, "Bft").to("kt");
 }
 
-console.log(testFunction(convert, 1000000));
+console.log(testFunction(convert));

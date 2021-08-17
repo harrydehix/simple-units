@@ -3,11 +3,11 @@ import testFunction from "../performance/testFunction";
 import { Symbols } from "./Collection";
 
 units.setSettings({
-    symbols: Symbols.SHORT_FORMS
+    symbols: Symbols.ALL
 })
 
 function convert() {
-    units.from(12, "kB").to("KiB");
+    units.from(12, "Bft").to("knots");
 }
 
 console.log(testFunction(convert));

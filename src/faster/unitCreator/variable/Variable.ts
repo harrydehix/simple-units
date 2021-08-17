@@ -5,4 +5,9 @@ export default class Variable extends Array<Multiplicator>{
         super(...multiplicators);
         if (isOptional) this.push(new Multiplicator("", "", 1));
     }
+
+    combine(variable: Variable) {
+        this.push(...variable);
+        return this;
+    }
 }
