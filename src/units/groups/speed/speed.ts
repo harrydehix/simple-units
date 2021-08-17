@@ -14,48 +14,48 @@ speed.setUnits(
             sg: ["%meter/%", "%metre/%", "%meter per %", "%metre per %"],
             pl: ["%meters/%", "%metres/%", "%meters per %", "%metres per %"],
         }
-    }, (val) => val, (val) => val, [siPrefixes(), dividedByTimes]),
+    }, (val) => val, (val) => val, "metric", [siPrefixes(), dividedByTimes]),
     ...UnitCreator.create({
         short: ["ft/%", "fp%"],
         long: {
             sg: ["foot/%", "foot per %"],
             pl: ["feet/%", "feet per %"],
         }
-    }, (val) => val / 3.280839895013123, (val) => val * 3.280839895013123, [dividedByTimes]),
+    }, (val) => val / 3.280839895013123, (val) => val * 3.280839895013123, "us", [dividedByTimes]),
     ...UnitCreator.create({
         short: ["mi/%", "mp%"],
         long: {
             sg: ["mile/%", "mile per %"],
             pl: ["miles/%", "miles per %"],
         }
-    }, (val) => val * 1609.344, (val) => val / 1609.344, [dividedByTimes]),
+    }, (val) => val * 1609.344, (val) => val / 1609.344, "us", [dividedByTimes]),
     new Unit({
         short: ["kt", "kn"], long: {
             sg: ["knot"],
             pl: ["knots"]
         }
-    }, (val) => val / 1.9438444924406046, (val) => val * 1.9438444924406046),
+    }, (val) => val / 1.9438444924406046, (val) => val * 1.9438444924406046, "us"),
     new Unit({
         short: ["Bft"],
         long: {
             sg: ["Beaufort"],
             pl: ["Beaufort"]
         }
-    }, beaufortToMeterPerSecond, meterPerSecondToBeaufort),
+    }, beaufortToMeterPerSecond, meterPerSecondToBeaufort, "us"),
     new Unit({
         short: ["Ma", "M"],
         long: {
             sg: ["mach", "Mach"],
             pl: ["mach", "Mach"]
         }
-    }, (val) => val * 343, (val) => val / 343),
+    }, (val) => val * 343, (val) => val / 343, "metric"),
     new Unit({
         short: ["c"],
         long: {
             sg: ["lightspeed", "light-speed"],
             pl: ["lightspeed", "light-speed"],
         }
-    }, (val) => val * 299_792_458, (val) => val / 299_792_458),
+    }, (val) => val * 299_792_458, (val) => val / 299_792_458, "metric"),
 );
 
 export default speed;

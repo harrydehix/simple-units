@@ -29,6 +29,7 @@
     },
     "homepage": "https://github.com/harrydehix/unitjs#readme",
     "devDependencies": {
+        "@types/convert-units": "^2.3.4",
         "@types/node": "^15.14.0",
         "@types/source-map-support": "^0.5.4",
         "@typescript-eslint/eslint-plugin": "^4.28.1",
@@ -40,6 +41,7 @@
     },
     "dependencies": {
         "cartesian-product-generator": "^1.1.1",
+        "convert-units": "^2.3.4",
         "infix-to-postfix": "^0.0.3"
     }
 }

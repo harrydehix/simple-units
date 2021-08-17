@@ -13,14 +13,14 @@ digital.setUnits(
             sg: ["%byte"],
             pl: ["%bytes"],
         }
-    }, (val) => val * 8, (val) => val / 8, [siPrefixes("k").combine(iecPrefixes())]),
+    }, (val) => val * 8, (val) => val / 8, "metric", [siPrefixes("k").combine(iecPrefixes())]),
     ...UnitCreator.create({
         short: ["%b"],
         long: {
             sg: ["%bit"],
             pl: ["%bits"],
         }
-    }, (val) => val, (val) => val, [siPrefixes("k").combine(iecPrefixes())]),
+    }, (val) => val, (val) => val, "metric", [siPrefixes("k").combine(iecPrefixes())]),
 )
 
 export default digital;

@@ -9,11 +9,13 @@ export default class Unit {
     group: Group = new Group("no-group");
     toBase: Converter;
     fromBase: Converter;
+    system: string;
 
-    constructor(format: UnitFormat, toBase: Converter, fromBase: Converter) {
+    constructor(format: UnitFormat, toBase: Converter, fromBase: Converter, system: string) {
         this.format = format;
         this.toBase = toBase;
         this.fromBase = fromBase;
+        this.system = system;
     }
 
     isUnit(identifier: string) {
@@ -36,7 +38,7 @@ export default class Unit {
     }
 
     description(): string {
-        return `{\n  abbr: ${this.format.short.join(", ")}\n  measure: ${this.group.name}\n  singular: ${this.format.long.sg.join(", ")}\n  plural: ${this.format.long.pl.join(", ")}\n}`;
+        return `{\n  abbr: ${this.format.short.join(", ")}\n  measure: ${this.group.name}\n  system: ${this.system}\n  singular: ${this.format.long.sg.join(", ")}\n  plural: ${this.format.long.pl.join(", ")}\n}`;
     }
 
     [inspect.custom](depth: any, options: any): string {

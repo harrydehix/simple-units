@@ -6,14 +6,14 @@ import Multiplicator from "./variable/Multiplicator";
 import Variable from "./variable/Variable";
 
 export default class UnitCreator {
-    static create(format: UnitFormat, toBase: Converter, fromBase: Converter, variables: Variable[]): Unit[] {
+    static create(format: UnitFormat, toBase: Converter, fromBase: Converter, system: string, variables: Variable[]): Unit[] {
         const units: Unit[] = [];
         const combos = this.generateCombinations(variables);
         for (const combo of combos) {
             const newFormat = this.generateUnitFormat(format, combo);
             const newToBase = this.generateToBase(toBase, combo);
             const newFromBase = this.generateFromBase(fromBase, combo);
-            units.push(new Unit(newFormat, newToBase, newFromBase));
+            units.push(new Unit(newFormat, newToBase, newFromBase, system));
         }
         return units;
     }
