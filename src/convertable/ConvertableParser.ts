@@ -26,9 +26,9 @@ export default class ConvertableParser {
         return [parsedNumber, text.substr(i).trim()];
     }
 
-    static parse(value: number, unit: string, group: Group): Convertable | undefined {
-        const selectedUnit = group.parse(unit);
-        if (!selectedUnit) return undefined;
-        return new Convertable(value, selectedUnit, group);
+    static parse(value: number, identifier: string, group: Group): Convertable | undefined {
+        const unit = group.getUnit(identifier);
+        if (!unit) return undefined;
+        return new Convertable(value, unit);
     }
 }

@@ -1,6 +1,5 @@
-import Multiplicator from "../../multiplicator/Multiplicator";
-import Variable from "../../multiplicator/Variable";
-
+import Multiplicator from "../../unitCreator/variable/Multiplicator";
+import Variable from "../../unitCreator/variable/Variable";
 
 /** Multiplicators for any/[time, default: s] */
 const dividedByTimes = new Variable(false,

@@ -8,18 +8,17 @@ import speed from "./groups/speed/speed";
 import temperature from "./groups/temperature";
 import time from "./groups/time";
 
-
 const units = new Collection();
 
 units.setGroups(
     time,
     length,
-    speed,
-    area,
     temperature,
-    mass,
     digital,
-    pressure
+    area,
+    mass,
+    pressure,
+    speed
 );
 
 export default units;

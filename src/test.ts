@@ -1,4 +1,13 @@
 import units from "./units/units";
-import * as sourceMapping from 'source-map-support';
+import testFunction from "./performance/testFunction";
+import { Symbols } from "./Collection";
 
-sourceMapping.install();
+units.setSettings({
+    symbols: Symbols.ALL
+})
+
+function convert() {
+    units.from(12, "Bft").to("knots");
+}
+
+console.log(testFunction(convert));

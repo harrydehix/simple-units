@@ -1,44 +1,54 @@
-import Group from "../Group";
-import SelectedUnit from "../SelectedUnit";
 import { inspect } from "util";
-import { FormatOptions } from "../unit/formatting/FormatOptions";
+import Group from "../Group";
+import Unit from "../unit/Unit";
+import { FormatOptions } from "./FormatOptions";
 
 export default class Convertable {
     value: number;
-    selectedUnit: SelectedUnit;
-    group: Group;
+    unit: Unit;
 
-    constructor(value: number, unit: SelectedUnit, group: Group) {
+    constructor(value: number, unit: Unit) {
         this.value = value;
-        this.selectedUnit = unit;
-        this.group = group;
+        this.unit = unit;
     }
 
-    to(unit: string): number {
-        const prefixedUnit = this.group.parse(unit);
-        if (!prefixedUnit) throw new Error(`Unit '${unit}' is not part of the group '${this.group.name}'!`);
-        this.value = this.selectedUnit.removeMultiplicators(this.value);
-        this.value = this.selectedUnit.unit.toBase(this.value);
-        this.value = prefixedUnit.unit.fromBase(this.value);
-        this.value = prefixedUnit.addMultiplicators(this.value);
-        this.selectedUnit = prefixedUnit;
+    to(identifier: string) {
+        const resolvedUnit = this.unit.group.getUnit(identifier);
+        if (!resolvedUnit) throw new Error("Unit not part of this group!");
+        this.value = this.unit.toBase(this.value);
+        this.value = resolvedUnit.fromBase(this.value);
+        this.unit = resolvedUnit;
         return this.value;
     }
 
-    as(unit: string): this {
-        this.to(unit);
+    as(identifier: string) {
+        this.to(identifier);
         return this;
     }
 
+
     [inspect.custom](depth: any, options: any): string {
-        return options.stylize(this.value + this.selectedUnit.toString(), "special");
+        return options.stylize(this.value + this.unit.toString(), "special");
     }
 
     toString(): string {
-        return this.value + this.selectedUnit.toString();
+        return this.value + this.unit.toString();
     }
 
     format(formatOptions?: FormatOptions): string {
-        return this.selectedUnit.format(this.value, formatOptions);
+        let divider = "", length = "short", count = "pl";
+
+        if (formatOptions?.divider) divider = formatOptions.divider;
+        if (formatOptions?.length) length = formatOptions.length;
+        if (this.value === 1) count = "sg";
+
+        let unit;
+        if (length === "short") {
+            unit = this.unit.format.short;
+        } else {
+            if (count === "sg") unit = this.unit.format.long.sg[0];
+            else unit = this.unit.format.long.pl[0];
+        }
+        return this.value + divider + unit;
     }
 }

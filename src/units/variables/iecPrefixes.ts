@@ -1,5 +1,5 @@
-import Multiplicator from "../../multiplicator/Multiplicator";
-import Variable from "../../multiplicator/Variable";
+import Multiplicator from "../../unitCreator/variable/Multiplicator";
+import Variable from "../../unitCreator/variable/Variable";
 
 const iecPrefixes = [
     new Multiplicator("Yi", "yobi", 1024 ** 8),

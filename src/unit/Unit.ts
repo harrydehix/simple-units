@@ -1,43 +1,40 @@
 import { inspect } from "util";
-import SelectedUnit from "../SelectedUnit";
+import { Symbols } from "../Collection";
+import Group from "../Group";
 import { Converter } from "./Converter";
-import { FormatOptions } from "./formatting/FormatOptions";
-import Formats from "./formatting/Formats";
+import { UnitFormat } from "./UnitFormat";
 
-export default abstract class Unit {
-    readonly toBase: Converter;
-    readonly fromBase: Converter;
-    readonly formats: Formats;
+export default class Unit {
+    format: UnitFormat;
+    group: Group = new Group("no-group");
+    toBase: Converter;
+    fromBase: Converter;
 
-    constructor(formats: Formats, toBase: Converter, fromBase: Converter) {
+    constructor(format: UnitFormat, toBase: Converter, fromBase: Converter) {
+        this.format = format;
         this.toBase = toBase;
         this.fromBase = fromBase;
-        this.formats = formats;
     }
 
-    abstract isUnit(prefixedUnit: string, performanceMode: boolean): boolean;
-
-    abstract parse(prefixedUnit: string, performanceMode: boolean): SelectedUnit | undefined;
+    isUnit(identifier: string) {
+        switch (this.group.collection.settings.symbols) {
+            case Symbols.SINGLE_IDENTIFIER:
+                return this.format.short[0] === identifier;
+            case Symbols.SHORT_FORMS:
+                return this.format.short.includes(identifier);
+            case Symbols.LONG_FORMS:
+                return this.format.long.sg.includes(identifier) || this.format.long.pl.includes(identifier);
+            case Symbols.ALL:
+                return this.format.short.includes(identifier) || this.format.long.sg.includes(identifier) || this.format.long.pl.includes(identifier);
+        }
+    }
 
     [inspect.custom](depth: any, options: any): string {
-        return options.stylize("Unit { ", "special") + options.stylize(`'${this.formats.default()}'`, "string") + options.stylize(" }", "special");
+        return options.stylize("Unit { ", "special") + options.stylize(`'${this.format.short[0]}'`, "string") + options.stylize(" }", "special");
     }
 
     toString(): string {
-        return this.formats.default();
+        return this.format.short[0];
     }
 
-    format(val: number, formatOptions?: FormatOptions): string {
-        if (val === 1) {
-            if (formatOptions?.length === "long") {
-                return this.formats.longSingular();
-            }
-            return this.formats.shortSingular();
-        } else {
-            if (formatOptions?.length === "long") {
-                return this.formats.longPlural();
-            }
-            return this.formats.shortPlural();
-        }
-    }
 }

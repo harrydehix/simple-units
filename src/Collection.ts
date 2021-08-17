@@ -1,9 +1,24 @@
+import { inspect } from "util";
+import Convertable from "./convertable/Convertable";
 import ConvertableParser from "./convertable/ConvertableParser";
 import Group from "./Group";
 
+export enum Symbols {
+    ALL,
+    SHORT_FORMS,
+    LONG_FORMS,
+    SINGLE_IDENTIFIER
+}
+
+export type CollectionSettings = {
+    symbols: Symbols,
+}
+
 export default class Collection {
     groups: Group[] = [];
-    performanceMode = false;
+    settings: CollectionSettings = {
+        symbols: Symbols.ALL
+    }
 
     setGroups(...groups: Group[]) {
         this.groups = groups;
@@ -17,6 +32,10 @@ export default class Collection {
         for (const group of groups) {
             group.collection = this;
         }
+    }
+
+    setSettings(settings: Partial<CollectionSettings>) {
+        this.settings = Object.assign(this.settings, settings);
     }
 
     group(groupname: string) {
@@ -34,26 +53,20 @@ export default class Collection {
         else throw new Error(`Cannot override group '${groupname}'. Group doesn't exist.`);
     }
 
-    find(prefixedUnit: string) {
+    getUnit(identifier: string) {
         for (const group of this.groups) {
-            const unit = group.findUnit(prefixedUnit);
+            const unit = group.getUnit(identifier);
             if (unit) return unit;
         }
     }
 
-    disablePerformanceMode() {
-        this.performanceMode = false;
+    isSupported(identifier: string): boolean {
+        return this.getUnit(identifier) !== undefined;
     }
 
-    enablePerformanceMode() {
-        this.performanceMode = true;
-    }
-
-    isSupported(prefixedUnit: string): boolean {
-        return this.find(prefixedUnit) !== undefined;
-    }
-
-    from(value: number | string, unit?: string) {
+    from(value: string): Convertable;
+    from(value: number, unit: string): Convertable;
+    from(value: number | string, unit?: string): Convertable {
         if (typeof value === "string") {
             const result = ConvertableParser.divide(value);
             value = result[0];
@@ -69,4 +82,26 @@ export default class Collection {
     }
 
     Convertable = this.from;
+
+    [inspect.custom](depth: any, options: any): string {
+        let result = `Collection [\n`;
+        for (let i = 0; i < this.groups.length; i++) {
+            result += this.groups[i].inspectWithIndent(3, depth, options)
+            if (i + 1 !== this.groups.length) result += ",\n";
+            else result += "\n";
+        }
+        result += "]";
+        return result;
+    }
+
+    toString(): string {
+        let result = `Collection [\n`;
+        for (let i = 0; i < this.groups.length; i++) {
+            result += this.groups[i].toStringWithIndent(3)
+            if (i + 1 !== this.groups.length) result += ",\n";
+            else result += "\n";
+        }
+        result += "]";
+        return result;
+    }
 }
