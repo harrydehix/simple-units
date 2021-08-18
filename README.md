@@ -35,6 +35,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 
 ## Performance
 To enhance the converter's performance you can limit the parseable unit variants. To do so overwrite the collection's settings.
+Changing these settings doesn't affect the `.format()` method.
 ```typescript
 import units from "unitjs";
 
