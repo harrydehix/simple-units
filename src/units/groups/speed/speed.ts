@@ -21,41 +21,41 @@ speed.setUnits(
             sg: ["foot/%", "foot per %"],
             pl: ["feet/%", "feet per %"],
         }
-    }, (val) => val / 3.280839895013123, (val) => val * 3.280839895013123, "us", [dividedByTimes]),
+    }, (val) => val / 3.280839895013123, (val) => val * 3.280839895013123, "imperial", [dividedByTimes]),
     ...UnitCreator.create({
         short: ["mi/%", "mp%"],
         long: {
             sg: ["mile/%", "mile per %"],
             pl: ["miles/%", "miles per %"],
         }
-    }, (val) => val * 1609.344, (val) => val / 1609.344, "us", [dividedByTimes]),
+    }, (val) => val * 1609.344, (val) => val / 1609.344, "imperial", [dividedByTimes]),
     new Unit({
         short: ["kt", "kn"], long: {
             sg: ["knot"],
             pl: ["knots"]
         }
-    }, (val) => val / 1.9438444924406046, (val) => val * 1.9438444924406046, "us"),
+    }, (val) => val / 1.9438444924406046, (val) => val * 1.9438444924406046, "imperial"),
     new Unit({
         short: ["Bft"],
         long: {
             sg: ["Beaufort"],
             pl: ["Beaufort"]
         }
-    }, beaufortToMeterPerSecond, meterPerSecondToBeaufort, "us"),
+    }, beaufortToMeterPerSecond, meterPerSecondToBeaufort, "imperial"),
     new Unit({
         short: ["Ma", "M"],
         long: {
             sg: ["mach", "Mach"],
             pl: ["mach", "Mach"]
         }
-    }, (val) => val * 343, (val) => val / 343, "metric"),
+    }, (val) => val * 343, (val) => val / 343, "other"),
     new Unit({
         short: ["c"],
         long: {
             sg: ["lightspeed", "light-speed"],
             pl: ["lightspeed", "light-speed"],
         }
-    }, (val) => val * 299_792_458, (val) => val / 299_792_458, "metric"),
+    }, (val) => val * 299_792_458, (val) => val / 299_792_458, "other"),
 );
 
 export default speed;

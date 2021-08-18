@@ -1,3 +1,5 @@
 import units from "./units/units";
+import convertUnits from "convert-units";
 
-console.log(units.from(2500, "m").asBest())
+console.log(convertUnits(250).describe("b"))
+console.log(units.from(25000000, "m").asBest())

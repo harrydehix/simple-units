@@ -24,14 +24,14 @@ temperature.setUnits(
             sg: ["degree Fahrenheit"],
             pl: ["degrees Fahrenheit"],
         }
-    }, (val) => (val - 32) * 5 / 9 + 273.15, (val) => (val - 273.15) * 9 / 5 + 32, "us"),
+    }, (val) => (val - 32) * 5 / 9 + 273.15, (val) => (val - 273.15) * 9 / 5 + 32, "imperial"),
     new Unit({
         short: ["°R"],
         long: {
             sg: ["degree Rankine"],
             pl: ["degrees Rankine"],
         }
-    }, (val) => val * 5 / 9, (val) => val * 9 / 5, "metric"),
+    }, (val) => val * 5 / 9, (val) => val * 9 / 5, "imperial"),
 );
 
 export default temperature;

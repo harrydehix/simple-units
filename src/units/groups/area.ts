@@ -33,35 +33,35 @@ area.setUnits(
             sg: ["square inch", "sq inch"],
             pl: ["square inches", "sq inches"],
         }
-    }, (val) => val * 0.00064516, (val) => val / 0.00064516, "us"),
+    }, (val) => val * 0.00064516, (val) => val / 0.00064516, "imperial"),
     new Unit({
         short: ["ft²", "ft^2", "ft2"],
         long: {
             sg: ["square foot", "sq foot"],
             pl: ["square feet", "sq feet"],
         }
-    }, (val) => val * 0.09290304, (val) => val / 0.09290304, "us"),
+    }, (val) => val * 0.09290304, (val) => val / 0.09290304, "imperial"),
     new Unit({
         short: ["mi²", "mi^2", "mi2"],
         long: {
             sg: ["square mile", "sq mile"],
             pl: ["square miles", "sq miles"],
         }
-    }, (val) => val * 2589988.110336, (val) => val / 2589988.110336, "us"),
+    }, (val) => val * 2589988.110336, (val) => val / 2589988.110336, "imperial"),
     new Unit({
         short: ["yd²", "yd^2", "yd2"],
         long: {
             sg: ["square yard", "sq yard"],
             pl: ["square yards", "sq yards"],
         }
-    }, (val) => val * 0.83612736, (val) => val / 0.83612736, "us"),
+    }, (val) => val * 0.83612736, (val) => val / 0.83612736, "imperial"),
     new Unit({
         short: ["ac"],
         long: {
             sg: ["acre"],
             pl: ["acres"],
         }
-    }, (val) => val * 4046.8564224, (val) => val / 4046.8564224, "us"),
+    }, (val) => val * 4046.8564224, (val) => val / 4046.8564224, "imperial"),
 );
 
 export default area;

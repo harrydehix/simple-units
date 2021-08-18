@@ -17,23 +17,23 @@ pressure.setUnits(
     new Unit({
         short: ["torr"],
         long: { sg: ["Torr"], pl: ["Torrs"] }
-    }, (val) => val * 133.3224, (val) => val / 133.3224, "us"),
+    }, (val) => val * 133.3224, (val) => val / 133.3224, "metric"),
     new Unit({
         short: ["atm"],
         long: { sg: ["standard atmosphere"], pl: ["standard atmospheres"] }
-    }, (val) => val * 101325, (val) => val / 101325, "us"),
+    }, (val) => val * 101325, (val) => val / 101325, "imperial"),
     new Unit({
         short: ["Mpsi"],
         long: { sg: ["megapound per square inch"], pl: ["megapounds per square inch"] }
-    }, (val) => val * 6_894_757_293.16836133672267344534689069378, (val) => val / 6_894_757_293.16836133672267344534689069378, "us"),
+    }, (val) => val * 6_894_757_293.16836133672267344534689069378, (val) => val / 6_894_757_293.16836133672267344534689069378, "imperial"),
     new Unit({
         short: ["psi", "lb. p. sq. in.", "psia", "psig"],
         long: { sg: ["pound-force per square inch", "pound per square inch"], pl: ["pounds per square inch"] }
-    }, (val) => val * 6894.75729316836133672267344534689069378, (val) => val / 6894.75729316836133672267344534689069378, "us"),
+    }, (val) => val * 6894.75729316836133672267344534689069378, (val) => val / 6894.75729316836133672267344534689069378, "imperial"),
     new Unit({
         short: ["ksi"],
         long: { sg: ["kilopound per square inch"], pl: ["kilopounds per square inch"] }
-    }, (val) => val * 6894757.29316836133672267344534689069378, (val) => val / 6894757.29316836133672267344534689069378, "us"),
+    }, (val) => val * 6894757.29316836133672267344534689069378, (val) => val / 6894757.29316836133672267344534689069378, "imperial"),
 );
 
 export default pressure;
