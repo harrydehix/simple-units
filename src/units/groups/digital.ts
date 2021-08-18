@@ -6,7 +6,7 @@ import siPrefixes from "../variables/siPrefixes";
 
 const digital = new Group("digital");
 
-digital.setUnits(
+digital.Editor.add(
     ...UnitCreator.create({
         short: ["%B"],
         long: {
@@ -21,6 +21,6 @@ digital.setUnits(
             pl: ["%bits"],
         }
     }, (val) => val, (val) => val, "bits", [siPrefixes("k").combine(iecPrefixes())]),
-)
+);
 
 export default digital;

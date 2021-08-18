@@ -3,7 +3,7 @@ import Unit from "../../unit/Unit";
 
 const temperature = new Group("temperature");
 
-temperature.setUnits(
+temperature.Editor.add(
     new Unit({
         short: ["K"],
         long: {

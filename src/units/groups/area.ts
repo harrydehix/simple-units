@@ -7,7 +7,7 @@ import siAreaPrefixes from "../variables/siAreaPrefixes";
 
 const area = new Group("area");
 
-area.setUnits(
+area.Editor.add(
     ...UnitCreator.create({
         short: ["%m²", "%m^2", "%m2"],
         long: {

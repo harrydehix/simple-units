@@ -6,28 +6,107 @@ import Unit from "./unit/Unit";
 
 export default class Group {
     name: string;
-    collection = new Collection();
-    units: Unit[] = [];
+    private _collection = new Collection();
+    private units: Unit[] = [];
+    readonly _internal = {
+        _possibilities: () => {
+            const possibilities = [];
+            for (const unit of this.units) possibilities.push(unit.toString());
+            return possibilities;
+        },
+
+        _tryToFindUnit: (identifier: string) => {
+            return this.units.find((unit) => unit.validate(identifier));
+        },
+
+        _from: (value: number, unit: string): Convertable | undefined => {
+            return ConvertableParser.parse(value, unit, this);
+        },
+
+        _inspectWithIndent: (indent: number, depth: any, options: any) => {
+            let result = "";
+            for (let k = 0; k < indent; k++) result += " ";
+            result += "Group " + options.stylize(`'${this.name}'`, "string") + " [\n  ";
+            for (let k = 0; k < indent; k++) result += " ";
+            for (let i = 0; i < this.units.length; i++) {
+                const unit = this.units[i];
+                result += options.stylize(`${unit.toString()}`, "special");
+                if ((i + 1) === this.units.length) {
+                    result += "\n";
+                    for (let k = 0; k < indent; k++) result += " ";
+                } else if ((i + 1) % 12 === 0) {
+                    result += "\n  ";
+                    for (let k = 0; k < indent; k++) result += " ";
+                } else {
+                    result += ", ";
+                }
+            }
+            result += "]";
+            return result;
+        },
+
+        _toStringWithIndent: (indent: number) => {
+            let result = "";
+            for (let k = 0; k < indent; k++) result += " ";
+            result += "Group " + `'${this.name}'` + " [\n  ";
+            for (let k = 0; k < indent; k++) result += " ";
+            for (let i = 0; i < this.units.length; i++) {
+                const unit = this.units[i];
+                result += unit.toString()
+                if ((i + 1) === this.units.length) {
+                    result += "\n";
+                    for (let k = 0; k < indent; k++) result += " ";
+                } else if ((i + 1) % 12 === 0) {
+                    result += "\n  ";
+                    for (let k = 0; k < indent; k++) result += " ";
+                } else {
+                    result += ", ";
+                }
+            }
+            result += "]";
+            return result;
+        }
+    }
+
+    readonly Editor = {
+        add: (...units: Unit[]) => {
+            for (const unit of units) {
+                if (this._internal._tryToFindUnit(unit.identifier)) throw new Error(`Unit '${unit.identifier}' already exists!`);
+                unit.group = this;
+            }
+            this.units.push(...units);
+        },
+
+        remove: (identifier: string) => {
+            this.units = this.units.filter((unit) => unit.identifier !== identifier);
+        },
+
+        override: (identifier: string, unit: Unit) => {
+            this.Editor.remove(identifier);
+            this.Editor.add(unit);
+        }
+    }
 
     constructor(name: string) {
         this.name = name;
     }
 
-    setUnits(...units: Unit[]) {
-        this.units = units;
-        for (const unit of units) {
-            unit.group = this;
-        }
+    set collection(collection: Collection) {
+        this._collection = collection;
+    }
+
+    get collection() {
+        return this._collection;
+    }
+
+    * iterator(): IterableIterator<Unit> {
+        for (const unit of this.units) yield unit;
     }
 
     unit(identifier: string) {
-        const unit = this.units.find((unit) => unit.isUnit(identifier));
+        const unit = this.units.find((unit) => unit.validate(identifier));
         if (!unit) throw new Error(`Cannot get unit '${identifier}'. Unit doesn't exist.`);
         return unit;
-    }
-
-    tryToFindUnit(identifier: string) {
-        return this.units.find((unit) => unit.isUnit(identifier));
     }
 
     from(value: string): Convertable;
@@ -46,10 +125,6 @@ export default class Group {
         return result;
     }
 
-    _from(value: number, unit: string): Convertable | undefined {
-        return ConvertableParser.parse(value, unit, this);
-    }
-
     [inspect.custom](depth: any, options: any): string {
         let result = "Group " + options.stylize(`'${this.name}'`, "string") + " [\n  ";
         for (let i = 0; i < this.units.length; i++) {
@@ -59,50 +134,6 @@ export default class Group {
                 result += "\n";
             } else if ((i + 1) % 12 === 0) {
                 result += "\n  ";
-            } else {
-                result += ", ";
-            }
-        }
-        result += "]";
-        return result;
-    }
-
-    inspectWithIndent(indent: number, depth: any, options: any) {
-        let result = "";
-        for (let k = 0; k < indent; k++) result += " ";
-        result += "Group " + options.stylize(`'${this.name}'`, "string") + " [\n  ";
-        for (let k = 0; k < indent; k++) result += " ";
-        for (let i = 0; i < this.units.length; i++) {
-            const unit = this.units[i];
-            result += options.stylize(`${unit.toString()}`, "special");
-            if ((i + 1) === this.units.length) {
-                result += "\n";
-                for (let k = 0; k < indent; k++) result += " ";
-            } else if ((i + 1) % 12 === 0) {
-                result += "\n  ";
-                for (let k = 0; k < indent; k++) result += " ";
-            } else {
-                result += ", ";
-            }
-        }
-        result += "]";
-        return result;
-    }
-
-    toStringWithIndent(indent: number) {
-        let result = "";
-        for (let k = 0; k < indent; k++) result += " ";
-        result += "Group " + `'${this.name}'` + " [\n  ";
-        for (let k = 0; k < indent; k++) result += " ";
-        for (let i = 0; i < this.units.length; i++) {
-            const unit = this.units[i];
-            result += unit.toString()
-            if ((i + 1) === this.units.length) {
-                result += "\n";
-                for (let k = 0; k < indent; k++) result += " ";
-            } else if ((i + 1) % 12 === 0) {
-                result += "\n  ";
-                for (let k = 0; k < indent; k++) result += " ";
             } else {
                 result += ", ";
             }

@@ -15,61 +15,71 @@ export type CollectionSettings = {
 }
 
 export default class Collection {
-    groups: Group[] = [];
-    settings: CollectionSettings = {
+    private groups: Group[] = [];
+    private readonly _internal = {
+        _tryToFindUnit: (identifier: string) => {
+            for (const group of this.groups) {
+                const unit = group._internal._tryToFindUnit(identifier);
+                if (unit) return unit;
+            }
+        },
+
+        _tryToFindGroup: (groupname: string) => {
+            return this.groups.find((group) => group.name === groupname);
+        }
+    }
+
+    readonly Editor = {
+        add: (...groups: Group[]) => {
+            for (const group of groups) {
+                if (this._internal._tryToFindGroup(group.name)) throw new Error(`Group '${group.name}' already exists!`);
+                group.collection = this;
+            }
+            this.groups.push(...groups);
+        },
+
+        remove: (groupname: string) => {
+            this.groups = this.groups.filter((group) => group.name !== groupname);
+        },
+
+        override: (groupname: string, group: Group) => {
+            this.Editor.remove(groupname);
+            this.Editor.add(group);
+        }
+    }
+
+    private _settings: CollectionSettings = {
         symbols: Symbols.ALL
     }
 
-    setGroups(...groups: Group[]) {
-        this.groups = groups;
-        for (const group of groups) {
-            group.collection = this;
-        }
+    set settings(settings: Partial<CollectionSettings>) {
+        this._settings = Object.assign(this._settings, settings);
     }
 
-    addGroups(...groups: Group[]) {
-        this.groups.push(...groups);
-        for (const group of groups) {
-            group.collection = this;
-        }
-    }
-
-    setSettings(settings: Partial<CollectionSettings>) {
-        this.settings = Object.assign(this.settings, settings);
+    get settings(): CollectionSettings {
+        return this._settings;
     }
 
     group(groupname: string) {
-        const group = this.groups.find((group) => group.name === groupname);
-        if (!group) throw new Error(`Cannot get group '${groupname}'. Group doesn't exist.`);
-        return group;
+        const group = this._internal._tryToFindGroup(groupname);
+        if (group) return group;
+        throw new Error("Invalid group!");
     }
 
     unit(identifier: string) {
         for (const group of this.groups) {
-            const unit = group.tryToFindUnit(identifier);
+            const unit = group._internal._tryToFindUnit(identifier);
             if (unit) return unit;
         }
         throw new Error(`Cannot get unit '${identifier}'. Unit doesn't exist.`);
     }
 
-    overrideGroup(groupname: string, group: Group) {
-        const index = this.groups.findIndex((group) => group.name === groupname);
-        if (index !== -1) {
-            this.groups[index] = group;
-            group.collection = this;
-        }
-        else throw new Error(`Cannot override group '${groupname}'. Group doesn't exist.`);
-    }
-
-    getUnit(identifier: string) {
-        for (const group of this.groups) {
-            const unit = group.tryToFindUnit(identifier);
-            if (unit) return unit;
-        }
-    }
-
     isSupported(identifier: string): boolean {
-        return this.getUnit(identifier) !== undefined;
+        return this._internal._tryToFindUnit(identifier) !== undefined;
+    }
+
+    * iterator(): IterableIterator<Group> {
+        for (const group of this.groups) yield group;
     }
 
     from(value: string): Convertable;
@@ -83,7 +93,7 @@ export default class Collection {
         if (!unit)
             throw new Error(`Missing unit in '${value}'!`);
         for (const group of this.groups) {
-            const convertible = group._from(value, unit);
+            const convertible = group._internal._from(value, unit);
             if (convertible) return convertible;
         }
         throw new Error(`Didn't find unit '${unit}'!`);
@@ -93,10 +103,12 @@ export default class Collection {
 
     [inspect.custom](depth: any, options: any): string {
         let result = `Collection [\n`;
-        for (let i = 0; i < this.groups.length; i++) {
-            result += this.groups[i].inspectWithIndent(3, depth, options)
+        let i = 0;
+        for (const group of this.groups) {
+            result += group._internal._inspectWithIndent(3, depth, options)
             if (i + 1 !== this.groups.length) result += ",\n";
             else result += "\n";
+            i++;
         }
         result += "]";
         return result;
@@ -104,10 +116,12 @@ export default class Collection {
 
     toString(): string {
         let result = `Collection [\n`;
-        for (let i = 0; i < this.groups.length; i++) {
-            result += this.groups[i].toStringWithIndent(3)
+        let i = 0;
+        for (const group of this.groups) {
+            result += group._internal._toStringWithIndent(3)
             if (i + 1 !== this.groups.length) result += ",\n";
             else result += "\n";
+            i++;
         }
         result += "]";
         return result;

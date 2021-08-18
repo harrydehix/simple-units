@@ -7,7 +7,7 @@ import { beaufortToMeterPerSecond, meterPerSecondToBeaufort } from "./beaufort";
 
 const speed = new Group("speed");
 
-speed.setUnits(
+speed.Editor.add(
     ...UnitCreator.create({
         short: ["%m/%"],
         long: {

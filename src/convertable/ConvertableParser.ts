@@ -27,7 +27,7 @@ export default class ConvertableParser {
     }
 
     static parse(value: number, identifier: string, group: Group): Convertable | undefined {
-        const unit = group.tryToFindUnit(identifier);
+        const unit = group._internal._tryToFindUnit(identifier);
         if (!unit) return undefined;
         return new Convertable(value, unit);
     }

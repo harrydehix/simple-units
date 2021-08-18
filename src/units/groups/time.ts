@@ -5,7 +5,7 @@ import siPrefixes from "../variables/siPrefixes";
 
 const time = new Group("time");
 
-time.setUnits(
+time.Editor.add(
     ...UnitCreator.create({
         short: ["%s"],
         long: {

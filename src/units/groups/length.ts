@@ -5,7 +5,7 @@ import siPrefixes from "../variables/siPrefixes";
 
 const length = new Group("length");
 
-length.setUnits(
+length.Editor.add(
     ...UnitCreator.create({
         short: ["%m"],
         long: {

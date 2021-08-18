@@ -10,7 +10,7 @@ import time from "./groups/time";
 
 const units = new Collection();
 
-units.setGroups(
+units.Editor.add(
     time,
     length,
     temperature,

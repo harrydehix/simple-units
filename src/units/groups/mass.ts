@@ -5,7 +5,7 @@ import siPrefixes from "../variables/siPrefixes";
 
 const mass = new Group("mass");
 
-mass.setUnits(
+mass.Editor.add(
     ...UnitCreator.create({
         short: ["%g"],
         long: {

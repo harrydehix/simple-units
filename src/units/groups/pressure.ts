@@ -5,7 +5,7 @@ import siPrefixes from "../variables/siPrefixes";
 
 const pressure = new Group("pressure");
 
-pressure.setUnits(
+pressure.Editor.add(
     ...UnitCreator.create({
         short: ["%Pa"],
         long: { sg: ["%pascal"], pl: ["%pascals"] },

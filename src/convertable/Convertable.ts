@@ -16,14 +16,14 @@ export default class Convertable {
     }
 
     to(identifier: string) {
-        const resolvedUnit = this.unit.group.tryToFindUnit(identifier);
+        const resolvedUnit = this.unit.group._internal._tryToFindUnit(identifier);
         if (!resolvedUnit) throw new Error("Unit not part of this group!");
         return this._toUnit(resolvedUnit);
     }
 
     private _toUnit(unit: Unit) {
-        this.value = this.unit.toBase(this.value);
-        this.value = unit.fromBase(this.value);
+        this.value = this.unit._toBase(this.value);
+        this.value = unit._fromBase(this.value);
         this.unit = unit;
         return this.value;
     }
@@ -31,7 +31,7 @@ export default class Convertable {
     toBest(options?: BestOptions): number {
         let bestUnit = this.unit;
         let bestCount = Number.MAX_VALUE;
-        for (const unit of this.unit.group.units) {
+        for (const unit of this.unit.group.iterator()) {
             if (options?.allowMultipleSystems || unit.system === this.unit.system) {
                 this._toUnit(unit);
                 if (this.value >= 1 || this.value <= -1) {
@@ -90,10 +90,10 @@ export default class Convertable {
 
         let unit;
         if (length === "short") {
-            unit = this.unit.format.short;
+            unit = this.unit._format.short;
         } else {
-            if (count === "sg") unit = this.unit.format.long.sg[0];
-            else unit = this.unit.format.long.pl[0];
+            if (count === "sg") unit = this.unit._format.long.sg[0];
+            else unit = this.unit._format.long.pl[0];
         }
         return this.value + divider + unit;
     }

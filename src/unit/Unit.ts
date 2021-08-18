@@ -5,48 +5,50 @@ import { Converter } from "./Converter";
 import { UnitFormat } from "./UnitFormat";
 
 export default class Unit {
-    format: UnitFormat;
+    _format: UnitFormat;
     group: Group = new Group("no-group");
-    toBase: Converter;
-    fromBase: Converter;
+    _toBase: Converter;
+    _fromBase: Converter;
     system: string;
 
     constructor(format: UnitFormat, toBase: Converter, fromBase: Converter, system: string) {
-        this.format = format;
-        this.toBase = toBase;
-        this.fromBase = fromBase;
+        this._format = format;
+        this._toBase = toBase;
+        this._fromBase = fromBase;
         this.system = system;
     }
 
-    isUnit(identifier: string) {
+    get identifier() {
+        return this._format.short[0];
+    }
+
+    validate(identifier: string) {
         switch (this.group.collection.settings.symbols) {
             case Symbols.SINGLE_IDENTIFIER:
-                return this.format.short[0] === identifier;
+                return this.identifier === identifier;
             case Symbols.SHORT_FORMS:
-                return this.format.short.includes(identifier);
+                return this._format.short.includes(identifier);
             case Symbols.LONG_FORMS:
-                return this.format.long.sg.includes(identifier) || this.format.long.pl.includes(identifier);
+                return this._format.long.sg.includes(identifier) || this._format.long.pl.includes(identifier);
             case Symbols.ALL:
-                return this.format.short.includes(identifier) || this.format.long.sg.includes(identifier) || this.format.long.pl.includes(identifier);
+                return this._format.short.includes(identifier) || this._format.long.sg.includes(identifier) || this._format.long.pl.includes(identifier);
         }
     }
 
     possibilities(): string[] {
-        const possibilities = [];
-        for (const unit of this.group.units) possibilities.push(unit.toString());
-        return possibilities;
+        return this.group._internal._possibilities();
     }
 
     description(): string {
-        return `{\n  abbr: ${this.format.short.join(", ")}\n  measure: ${this.group.name}\n  system: ${this.system}\n  singular: ${this.format.long.sg.join(", ")}\n  plural: ${this.format.long.pl.join(", ")}\n}`;
+        return `{\n  abbr: ${this._format.short.join(", ")}\n  measure: ${this.group.name}\n  system: ${this.system}\n  singular: ${this._format.long.sg.join(", ")}\n  plural: ${this._format.long.pl.join(", ")}\n}`;
     }
 
     [inspect.custom](depth: any, options: any): string {
-        return options.stylize("Unit { ", "special") + options.stylize(`'${this.format.short[0]}'`, "string") + options.stylize(" }", "special");
+        return options.stylize("Unit { ", "special") + options.stylize(`'${this._format.short[0]}'`, "string") + options.stylize(" }", "special");
     }
 
     toString(): string {
-        return this.format.short[0];
+        return this._format.short[0];
     }
 
 }

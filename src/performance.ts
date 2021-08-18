@@ -2,10 +2,12 @@ import units from "./units/units";
 import { Symbols } from "./Collection";
 import convertUnits from "convert-units";
 import compareFunctions from "./performance/compareFunctions";
+import sourceMapSupport from 'source-map-support';
+sourceMapSupport.install()
 
-units.setSettings({
+units.settings = {
     symbols: Symbols.ALL
-})
+};
 
 const conv = units.from(12, "m²");
 function convert() {
