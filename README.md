@@ -19,10 +19,12 @@ console.log(converted); // output: 1.1811
 ```
 ### `Convertable-Syntax`
 ```typescript
-const convertable = units.Convertable(3, "cm"); // creates convertable
-convertable.as("dm"); // converts convertable
+const convertable = units.Convertable(30, "cm"); // creates convertable
+console.log(convertable) // Output: 30cm
+convertable.as("m"); // converts convertable
 console.log(convertable.value); // Output: 0.3
-console.log(convertable.to("m")); // Output: 0.03
+console.log(convertable.as("cm")); // Output: 30cm
+console.log(convertable.asBest()); // Output: 3dm
 ```
 ## Formatting
 ```typescript
@@ -30,6 +32,22 @@ const convertable = units.Convertable(3, "cm");
 console.log(convertable.format({ length: "long", divider: " "})); 
 // Output: 3 centimeters
 ```
+
+## Performance
+To enhance the converter's performance you can limit the parseable unit variants. To do so overwrite the collection's settings.
+```typescript
+import units from "unitjs";
+
+units.settings = {
+  symbols: Symbols.SHORT_FORMS
+}
+
+console.log(units.isSupported("meter")); // Output: false
+```
+* `Symbols.ALL` (default): Any unit variant is supported (e.g. `in`, `″`, `inch`, `inches`...)
+* `Symbols.SHORT_FORMS`: Only short unit variants are supported (e.g. `in` and `″`, but not `inch`, `inches`...)
+* `Symbols.LONG_FORMS`: Only long unit variants are supported (e.g. `inch` and `inches`, but not `in` and `″`)
+* `Symbols.SINGLE_IDENTIFIER`: Only one single unit variant (the most common) is supported (e.g. `in`, but not `inch`, `inches` and `″`)
 
 # Supported Units
 
