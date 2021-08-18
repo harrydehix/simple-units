@@ -45,7 +45,7 @@ units.settings = {
 console.log(units.isSupported("meter")); // Output: false
 ```
 * `Symbols.ALL` (default): Any unit variant is supported (e.g. `in`, `″`, `inch`, `inches`...)
-* `Symbols.SHORT_FORMS`: Only short unit variants are supported (e.g. `in` and `″`, but not `inch`, `inches`...)
+* `Symbols.SHORT_FORMS` (recommended): Only short unit variants are supported (e.g. `in` and `″`, but not `inch`, `inches`...)
 * `Symbols.LONG_FORMS`: Only long unit variants are supported (e.g. `inch` and `inches`, but not `in` and `″`)
 * `Symbols.SINGLE_IDENTIFIER`: Only one single unit variant (the most common) is supported (e.g. `in`, but not `inch`, `inches` and `″`)
 
