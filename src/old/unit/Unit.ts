@@ -10,12 +10,14 @@ export default class Unit {
     _toBase: Converter;
     _fromBase: Converter;
     system: string;
+    _symbols: string[] = [];
 
     constructor(format: UnitFormat, toBase: Converter, fromBase: Converter, system: string) {
         this._format = format;
         this._toBase = toBase;
         this._fromBase = fromBase;
         this.system = system;
+        this._symbols.push(...format.short, ...format.long.sg, ...format.long.pl);
     }
 
     get identifier() {
@@ -32,7 +34,7 @@ export default class Unit {
             case Symbols.LONGS:
                 return this._format.long.sg.includes(identifier) || this._format.long.pl.includes(identifier);
             case Symbols.ALL:
-                return this._format.short.includes(identifier) || this._format.long.sg.includes(identifier) || this._format.long.pl.includes(identifier);
+                return this._symbols.includes(identifier);
         }
     }
 

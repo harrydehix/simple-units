@@ -4,37 +4,44 @@ import testFunction from "./testFunction"
 import wunderbar from "@gribnoysup/wunderbar";
 import units from "../old/units/units";
 
-export default (fn1: (...any: any[]) => any, fn2: (...any: any[]) => any) => {
-    const avg1 = units.from(testFunction(fn1), "s");
-    const avg2 = units.from(testFunction(fn2), "s");
-    if (avg2.value < avg1.value) {
-        avg1.asBest();
-        avg2.as(avg1.unit.identifier);
-    } else {
-        avg2.asBest();
-        avg1.as(avg2.unit.identifier);
+export default (...fns: ((...any: any[]) => any)[]) => {
+    const avgs = [];
+    for (const fn of fns) {
+        avgs.push(units.from(testFunction(fn), "s"));
+    }
+    let min = avgs[0];
+    for (const avg of avgs) {
+        if (avg.value < min.value) min = avg;
+    }
+    min.asBest();
+    const avgValues = [];
+    for (const avg of avgs) {
+        avgValues.push(avg.as(min.unit.identifier).value);
     }
 
-    console.log(`'${fn1.name}' took ${avg1} per call.`);
-    console.log(`'${fn2.name}' took ${avg2} per call.`);
-    if (avg1 > avg2) {
-        const percentageFaster = Math.round((avg1.value / avg2.value - 1) * 100);
-        console.log(`'${fn2.name}' is ~${percentageFaster}% faster than '${fn1.name}'!`);
-    } else {
-        const percentageFaster = Math.round((avg2.value / avg1.value - 1) * 100);
-        console.log(`'${fn1.name}' is ~${percentageFaster}% faster than '${fn2.name}'!`);
+    for (let i = 0; i < fns.length; i++) {
+        console.log(`'${fns[i].name}' took ${avgs[i]} per call.`);
     }
 
-    const printData = () => {
-        const { chart, legend, scale, __raw } = wunderbar([avg1.value, avg2.value], {
-            min: 0,
-            length: 50,
-        });
-        console.log();
-        console.log(chart);
-        console.log();
-        console.log(scale);
-        console.log();
-    };
-    printData();
+    printGraph(...avgValues);
+
+    const cps = [];
+    for (let i = 0; i < fns.length; i++) {
+        avgs[i].as("s");
+        cps.push(Math.round(1 / avgs[i].value));
+        console.log(`That are ${cps[i]} calls per second for '${fns[i].name}'`);
+    }
+    printGraph(...cps);
+}
+
+function printGraph(...data: number[]) {
+    const { chart, legend, scale, __raw } = wunderbar(data, {
+        min: 0,
+        length: 50,
+    });
+    console.log();
+    console.log(chart);
+    console.log();
+    console.log(scale);
+    console.log();
 }
