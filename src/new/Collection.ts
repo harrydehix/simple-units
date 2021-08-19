@@ -1,5 +1,7 @@
 import { inspect } from "util";
 import Convertable from "./Convertable";
+import UnknownGroupError from "./errors/UnknownGroupError";
+import UnknownUnitError from "./errors/UnknownUnitError";
 import Group from "./Group";
 import Unit from "./Unit";
 
@@ -62,15 +64,19 @@ export default class Collection {
         return keys;
     }
 
+    isSupported(unit: string) {
+        return Boolean(this.units.get(unit));
+    }
+
     unit(unit: string) {
         const result = this.units.get(unit);
-        if (!result) throw Error(`Invalid unit '${unit}'!`);
+        if (!result) throw new UnknownUnitError(`Unknown unit '${unit}'!`);
         return result;
     }
 
     group(group: string) {
         const result = this.groups.get(group);
-        if (!result) throw Error();
+        if (!result) throw new UnknownGroupError(`Unknown unit '${group}'!`);
         return result;
     }
 

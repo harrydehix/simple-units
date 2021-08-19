@@ -1,6 +1,7 @@
 import { inspect } from "util";
 import Collection from "./Collection";
 import Convertable from "./Convertable";
+import UnknownUnitError from "./errors/UnknownUnitError";
 import FlexibleUnit from "./FlexibleUnit";
 import Unit from "./Unit";
 
@@ -70,12 +71,16 @@ export default class Group {
 
     unit(unit: string) {
         const result = this.units.get(unit);
-        if (!result) throw Error();
+        if (!result) throw new UnknownUnitError(`Unknown unit '${unit}'!`);
         return result;
     }
 
     from(value: number, unit: string) {
         return new Convertable(value, this.unit(unit));
+    }
+
+    isSupported(unit: string) {
+        return Boolean(this.units.get(unit));
     }
 
     toString() {

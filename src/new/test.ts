@@ -24,4 +24,4 @@ units.group("length").Editor.add(new Unit({
 }, 1.31, 0, "other"));
 
 
-console.log(units)
+console.log(units.isSupported("manga"))

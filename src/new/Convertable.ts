@@ -1,4 +1,5 @@
 import { inspect } from "util";
+import ConversionError from "./errors/ConversionError";
 import Unit from "./Unit";
 
 export type FormatOptions = {
@@ -27,7 +28,8 @@ export default class Convertable {
     }
 
     to(unit: string): number {
-        const target = this.unit.group.unit(unit);
+        const target = this.unit.group._internal._units().get(unit);
+        if (!target) throw new ConversionError(`Unit '${unit}' does not belong to group '${this.unit.group.name}'!`)
         this.value = this.unit._internal.toBase(this.value);
         this.value = target._internal.fromBase(this.value);
         this.unit = target;
