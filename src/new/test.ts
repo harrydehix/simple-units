@@ -1,5 +1,5 @@
 import Group from "./Group";
-import Unit from "./Unit";
+import Unit from "./SimpleUnit";
 import units from "./units/units";
 
 const customGroup = new Group("custom");
@@ -25,3 +25,4 @@ units.group("length").Editor.add(new Unit({
 
 
 console.log(units.isSupported("manga"))
+console.log(units.from(12, "knot").as("Bft"));

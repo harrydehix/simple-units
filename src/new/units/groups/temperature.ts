@@ -1,31 +1,31 @@
 import Group from "../../Group";
-import Unit from "../../Unit";
+import SimpleUnit from "../../SimpleUnit";
 
 const temperature = new Group("temperature");
 
 temperature.Editor.add(
-    new Unit({
+    new SimpleUnit({
         short: ["°F"],
         long: {
             sg: ["degree Fahrenheit"],
             pl: ["degrees Fahrenheit"]
         }
     }, 5 / 9, 45967 / 180, "imperial"),
-    new Unit({
+    new SimpleUnit({
         short: ["°C"],
         long: {
             sg: ["degree Celsius"],
             pl: ["degrees Celsius"]
         }
     }, 1, 273.15, "metric"),
-    new Unit({
+    new SimpleUnit({
         short: ["K"],
         long: {
             sg: ["Kelvin"],
             pl: ["Kelvin"]
         }
     }, 1, 0, "metric"),
-    new Unit({
+    new SimpleUnit({
         short: ["°R"],
         long: {
             sg: ["degree Rankine"],

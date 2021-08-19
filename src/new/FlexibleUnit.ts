@@ -1,5 +1,6 @@
 import { product } from "cartesian-product-generator";
 import Group from "./Group";
+import RatioUnit from "./SimpleUnit";
 import Unit, { UnitFormat } from "./Unit";
 import Multiplicator from "./variable/Multiplicator";
 import Variable from "./variable/Variable";
@@ -28,7 +29,7 @@ export default class FlexibleUnit {
         for (const combo of combos) {
             const newFormat = this.generateUnitFormat(combo);
             const newRatio = this.generateRatio(combo);
-            units.push(new Unit(newFormat, newRatio, this.shift, this.system));
+            units.push(new RatioUnit(newFormat, newRatio, this.shift, this.system));
         }
         return units;
     }

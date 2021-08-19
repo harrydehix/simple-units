@@ -3,7 +3,7 @@ import Convertable from "./Convertable";
 import UnknownGroupError from "./errors/UnknownGroupError";
 import UnknownUnitError from "./errors/UnknownUnitError";
 import Group from "./Group";
-import Unit from "./Unit";
+import Unit from "./SimpleUnit";
 
 export default class Collection {
     public static None = new Collection();

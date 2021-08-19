@@ -12,25 +12,23 @@ export type UnitFormat = {
 }
 
 export default class Unit {
-    private mult: number;
-    private add: number;
     group: Group = Group.None;
     format: UnitFormat;
     system: string;
     readonly _internal = {
         toBase: (val: number) => {
-            return val * this.mult + this.add;
+            return val;
         },
         fromBase: (val: number) => {
-            return (val - this.add) / this.mult;
+            return val;
         }
     }
 
-    constructor(format: UnitFormat, mult: number, add: number, system: string) {
-        this.mult = mult;
-        this.add = add;
+    constructor(format: UnitFormat, toBase: Converter, fromBase: Converter, system: string) {
         this.format = format;
         this.system = system;
+        this._internal.toBase = toBase;
+        this._internal.fromBase = fromBase;
     }
 
     toString() {

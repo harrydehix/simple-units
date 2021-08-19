@@ -1,6 +1,6 @@
 import { inspect } from "util";
 import ConversionError from "./errors/ConversionError";
-import Unit from "./Unit";
+import Unit from "./SimpleUnit";
 
 export type FormatOptions = {
     length?: "long" | "short",
