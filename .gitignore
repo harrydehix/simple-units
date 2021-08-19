@@ -1,3 +1,5 @@
 node_modules
 dist
 *.py
+src/performance.ts
+src/test.ts
