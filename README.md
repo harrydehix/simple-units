@@ -33,23 +33,6 @@ console.log(convertable.format({ length: "long", divider: " "}));
 // Output: 3 centimeters
 ```
 
-## Performance
-To enhance the converter's performance you can limit the parseable unit variants. To do so overwrite the collection's settings.
-Changing these settings doesn't affect the `.format()` method.
-```typescript
-import units from "unitjs";
-
-units.settings = {
-  symbols: Symbols.SHORT_FORMS
-}
-
-console.log(units.isSupported("meter")); // Output: false
-```
-* `Symbols.ALL` (default): Any unit variant is supported (e.g. `in`, `″`, `inch`, `inches`...)
-* `Symbols.SHORT_FORMS` (recommended): Only short unit variants are supported (e.g. `in` and `″`, but not `inch`, `inches`...)
-* `Symbols.LONG_FORMS`: Only long unit variants are supported (e.g. `inch` and `inches`, but not `in` and `″`)
-* `Symbols.SINGLE_IDENTIFIER`: Only one single unit variant (the most common) is supported (e.g. `in`, but not `inch`, `inches` and `″`)
-
 # Supported Units
 
 <div id="detailsDefaultUnit"></div>
