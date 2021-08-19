@@ -29,6 +29,7 @@
     },
     "homepage": "https://github.com/harrydehix/unitjs#readme",
     "devDependencies": {
+        "@gribnoysup/wunderbar": "^2.2.2",
         "@types/convert-units": "^2.3.4",
         "@types/node": "^15.14.0",
         "@types/source-map-support": "^0.5.4",

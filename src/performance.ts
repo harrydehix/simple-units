@@ -6,17 +6,21 @@ import sourceMapSupport from 'source-map-support';
 sourceMapSupport.install()
 
 units.settings = {
-    symbols: Symbols.ALL
+    symbols: Symbols.SHORT_FORMS
 };
 
-const conv = units.from(12, "m²");
 function convert() {
-    conv.to("cm²");
+    // prefix conversion
+    units.from(12, "cm").to("m");
+    // conversion in same group
+    units.from(100, "cm").to("in");
 }
 
-const conv2 = convertUnits(12).from("m2");
 function convert2() {
-    conv2.to("cm2");
+    // prefix conversion
+    convertUnits(12).from("cm").to("m");
+    // conversion in same group
+    convertUnits(100).from("cm").to("in");
 }
 
 compareFunctions(convert, convert2);
