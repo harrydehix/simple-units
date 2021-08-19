@@ -83,6 +83,7 @@ export default class Collection {
     from(value: number, unit: string) {
         return new Convertable(value, this.unit(unit));
     }
+    Convertable = this.from;
 
     toString() {
         let result = "Collection [\n";

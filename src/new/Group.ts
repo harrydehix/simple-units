@@ -78,6 +78,7 @@ export default class Group {
     from(value: number, unit: string) {
         return new Convertable(value, this.unit(unit));
     }
+    Convertable = this.from;
 
     isSupported(unit: string) {
         return Boolean(this.units.get(unit));
