@@ -1,3 +1,4 @@
+import { inspect } from "util";
 import Convertable from "./Convertable";
 import Group from "./Group";
 import Unit from "./Unit";
@@ -9,14 +10,23 @@ export default class Collection {
     private groups = new Map<string, Group>();
 
     readonly _internal = {
-        _addUnit: (name: string, unit: Unit) => {
+        _setUnit: (name: string, unit: Unit) => {
             this.units.set(name, unit);
+        },
+
+        _deleteUnit: (name: string) => {
+            this.units.delete(name);
         }
     }
 
     readonly Editor = {
         add: (...groups: Group[]) => {
             for (const group of groups) {
+                // Remove group if already existing
+                if (this.groups.get(group.name)) {
+                    this.Editor.remove(group.name);
+                }
+                // Add group
                 group.collection = this;
                 this.groups.set(group.name, group);
 
@@ -26,7 +36,31 @@ export default class Collection {
                 });
             }
         },
+
+        remove: (...groups: string[]) => {
+            for (const group of groups) {
+                const resolvedGroup = this.groups.get(group);
+                if (resolvedGroup) {
+                    this.groups.delete(group);
+                    resolvedGroup._internal._units().forEach((unit, key) => {
+                        this.units.delete(key);
+                    });
+                }
+            }
+        },
     };
+
+    possibilities() {
+        const units: Unit[] = [];
+        const keys: string[] = [];
+        this.units.forEach((unit, key) => {
+            if (!units.includes(unit)) {
+                units.push(unit);
+                keys.push(key);
+            }
+        });
+        return keys;
+    }
 
     unit(unit: string) {
         const result = this.units.get(unit);
@@ -42,5 +76,41 @@ export default class Collection {
 
     from(value: number, unit: string) {
         return new Convertable(value, this.unit(unit));
+    }
+
+    toString() {
+        let result = "Collection [\n";
+        this.groups.forEach((group, key) => {
+            result += `  Group '${key}' [\n    `;
+            const possibilities = group.possibilities();
+            for (let i = 0; i < possibilities.length; i++) {
+                result += possibilities[i];
+                if (i + 1 === possibilities.length) result += "\n";
+                else if ((i + 1) % 12 === 0) result += ",\n    ";
+                else result += ", ";
+            }
+            result += "  ],\n"
+        });
+        result += "]";
+        return result;
+    }
+
+    [inspect.custom](depth: any, options: any) {
+        let result = "Collection [\n";
+        this.groups.forEach((group, key) => {
+            result += `  Group `;
+            result += options.stylize(`'${key}'`, "string");
+            result += ` [\n    `;
+            const possibilities = group.possibilities();
+            for (let i = 0; i < possibilities.length; i++) {
+                result += options.stylize(possibilities[i], "special");
+                if (i + 1 === possibilities.length) result += "\n";
+                else if ((i + 1) % 12 === 0) result += ",\n    ";
+                else result += ", ";
+            }
+            result += "  ],\n"
+        });
+        result += "]";
+        return result;
     }
 }

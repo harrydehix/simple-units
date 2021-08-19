@@ -1,3 +1,4 @@
+import { inspect } from "util";
 import Group from "./Group";
 
 export type Converter = (val: number) => number;
@@ -30,5 +31,17 @@ export default class Unit {
         this.add = add;
         this.format = format;
         this.system = system;
+    }
+
+    toString() {
+        return this.format.short[0];
+    }
+
+    [inspect.custom](depth: any, options: any) {
+        return options.stylize(this.toString(), "special");
+    }
+
+    possibilities() {
+        return this.group.possibilities();
     }
 }
