@@ -1,37 +1,37 @@
 import Group from "../../Group";
-import Unit from "../../unit/Unit";
+import SimpleUnit from "../../SimpleUnit";
 
 const temperature = new Group("temperature");
 
 temperature.Editor.add(
-    new Unit({
-        short: ["K"],
-        long: {
-            sg: ["Kelvin"],
-            pl: ["Kelvin"],
-        }
-    }, (val) => val, (val) => val, "metric"),
-    new Unit({
-        short: ["°C"],
-        long: {
-            sg: ["degree Celsius"],
-            pl: ["degrees Celsius"],
-        }
-    }, (val) => val + 273.15, (val) => val - 273.15, "metric"),
-    new Unit({
+    new SimpleUnit({
         short: ["°F"],
         long: {
             sg: ["degree Fahrenheit"],
-            pl: ["degrees Fahrenheit"],
+            pl: ["degrees Fahrenheit"]
         }
-    }, (val) => (val - 32) * 5 / 9 + 273.15, (val) => (val - 273.15) * 9 / 5 + 32, "imperial"),
-    new Unit({
+    }, 5 / 9, 45967 / 180, "imperial"),
+    new SimpleUnit({
+        short: ["°C"],
+        long: {
+            sg: ["degree Celsius"],
+            pl: ["degrees Celsius"]
+        }
+    }, 1, 273.15, "metric"),
+    new SimpleUnit({
+        short: ["K"],
+        long: {
+            sg: ["Kelvin"],
+            pl: ["Kelvin"]
+        }
+    }, 1, 0, "metric"),
+    new SimpleUnit({
         short: ["°R"],
         long: {
             sg: ["degree Rankine"],
             pl: ["degrees Rankine"],
         }
-    }, (val) => val * 5 / 9, (val) => val * 9 / 5, "imperial"),
+    }, 5 / 9, 0, "imperial"),
 );
 
 export default temperature;

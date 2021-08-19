@@ -1,26 +1,30 @@
-import units from "./units/units";
-import { Symbols } from "./Collection";
-import convertUnits from "convert-units";
 import compareFunctions from "./performance/compareFunctions";
-import sourceMapSupport from 'source-map-support';
-sourceMapSupport.install()
+import units from "./units/units";
+import convert1 from "convert";
+import convert2 from "convert-units";
 
-units.settings = {
-    symbols: Symbols.SHORT_FORMS
-};
+function unitjs() {
+    units.from(12, "°C").to("°F");
+    units.from(100, "m").to("inch");
+    units.from(200, "Gb").to("MB");
+}
+
+function math() {
+    (12 * 9 / 5) + 32;
+    100 * 39.3701;
+    200 * 128;
+}
 
 function convert() {
-    // prefix conversion
-    units.from(12, "cm").to("m");
-    // conversion in same group
-    units.from(100, "cm").to("in");
+    convert1(12, "C").to("K");
+    convert1(100, "m").to("inch");
+    convert1(200, "Gb").to("MB");
 }
 
-function convert2() {
-    // prefix conversion
-    convertUnits(12).from("cm").to("m");
-    // conversion in same group
-    convertUnits(100).from("cm").to("in");
+function convertUnits() {
+    convert2(12).from("C").to("K");
+    convert2(100).from("m").to("in");
+    convert2(200).from("Gb").to("MB");
 }
 
-compareFunctions(convert, convert2);
+compareFunctions(convertUnits, convert, unitjs, math);

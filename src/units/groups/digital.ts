@@ -1,26 +1,25 @@
+import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
-import UnitCreator from "../../unitCreator/UnitCreator";
-import Variable from "../../unitCreator/variable/Variable";
-import iecPrefixes from "../variables/iecPrefixes";
 import siPrefixes from "../variables/siPrefixes";
+import iecPrefixes from "../variables/iecPrefixes";
 
 const digital = new Group("digital");
 
 digital.Editor.add(
-    ...UnitCreator.create({
+    new FlexibleUnit({
         short: ["%B"],
         long: {
             sg: ["%byte"],
             pl: ["%bytes"],
         }
-    }, (val) => val * 8, (val) => val / 8, "bytes", [siPrefixes("k").combine(iecPrefixes())]),
-    ...UnitCreator.create({
+    }, 8, 0, "bytes", [siPrefixes("k").combine(iecPrefixes())]),
+    new FlexibleUnit({
         short: ["%b"],
         long: {
             sg: ["%bit"],
             pl: ["%bits"],
         }
-    }, (val) => val, (val) => val, "bits", [siPrefixes("k").combine(iecPrefixes())]),
+    }, 1, 0, "bits", [siPrefixes("k").combine(iecPrefixes())]),
 );
 
 export default digital;

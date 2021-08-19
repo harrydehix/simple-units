@@ -1,3 +1,28 @@
-import sourceMapSupport from 'source-map-support';
-import units from './units/units';
-sourceMapSupport.install()
+import Group from "./Group";
+import Unit from "./SimpleUnit";
+import units from "./units/units";
+
+const customGroup = new Group("custom");
+
+customGroup.Editor.add(
+    new Unit({
+        short: ["ss"],
+        long: {
+            sg: ["some"],
+            pl: ["somes"],
+        }
+    }, 1, 0, "other")
+)
+
+units.Editor.add(customGroup);
+units.group("length").Editor.add(new Unit({
+    short: ["m"],
+    long: {
+        sg: ["manga"],
+        pl: ["mangas"],
+    }
+}, 1.31, 0, "other"));
+
+
+console.log(units.isSupported("manga"))
+console.log(units.from(12, "knot").as("Bft"));

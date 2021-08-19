@@ -1,3 +1,5 @@
+import ConversionError from "../../../errors/ConversionError";
+
 export const meterPerSecondToBeaufort = (val: number) => {
     if (val < 0.5) return 0;
     if (val <= 1.5) return 1;
@@ -28,5 +30,5 @@ export const beaufortToMeterPerSecond = (val: number) => {
     if (val === 10) return 26.45;
     if (val === 11) return 30.55;
     if (val === 12) return 32.7;
-    throw new Error("Beaufort scale only support integers between 0 and 12.");
+    throw new ConversionError("Beaufort scale only support integers between 0 and 12.");
 }

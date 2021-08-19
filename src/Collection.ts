@@ -1,128 +1,122 @@
 import { inspect } from "util";
-import Convertable from "./convertable/Convertable";
-import ConvertableParser from "./convertable/ConvertableParser";
+import Convertable from "./Convertable";
+import UnknownGroupError from "./errors/UnknownGroupError";
+import UnknownUnitError from "./errors/UnknownUnitError";
 import Group from "./Group";
-
-export enum Symbols {
-    ALL,
-    SHORT_FORMS,
-    LONG_FORMS,
-    SINGLE_IDENTIFIER
-}
-
-export type CollectionSettings = {
-    symbols: Symbols,
-}
+import Unit from "./SimpleUnit";
 
 export default class Collection {
-    private groups: Group[] = [];
-    private readonly _internal = {
-        _tryToFindUnit: (identifier: string) => {
-            for (const group of this.groups) {
-                const unit = group._internal._tryToFindUnit(identifier);
-                if (unit) return unit;
-            }
+    public static None = new Collection();
+
+    private units = new Map<string, Unit>();
+    private groups = new Map<string, Group>();
+
+    readonly _internal = {
+        _setUnit: (name: string, unit: Unit) => {
+            this.units.set(name, unit);
         },
 
-        _tryToFindGroup: (groupname: string) => {
-            return this.groups.find((group) => group.name === groupname);
+        _deleteUnit: (name: string) => {
+            this.units.delete(name);
         }
     }
 
     readonly Editor = {
         add: (...groups: Group[]) => {
             for (const group of groups) {
-                if (this._internal._tryToFindGroup(group.name)) throw new Error(`Group '${group.name}' already exists!`);
+                // Remove group if already existing
+                if (this.groups.get(group.name)) {
+                    this.Editor.remove(group.name);
+                }
+                // Add group
                 group.collection = this;
+                this.groups.set(group.name, group);
+
+                const unitMap = group._internal._units();
+                unitMap.forEach((unit, key) => {
+                    this.units.set(key, unit);
+                });
             }
-            this.groups.push(...groups);
         },
 
-        remove: (groupname: string) => {
-            this.groups = this.groups.filter((group) => group.name !== groupname);
+        remove: (...groups: string[]) => {
+            for (const group of groups) {
+                const resolvedGroup = this.groups.get(group);
+                if (resolvedGroup) {
+                    this.groups.delete(group);
+                    resolvedGroup._internal._units().forEach((unit, key) => {
+                        this.units.delete(key);
+                    });
+                }
+            }
         },
+    };
 
-        override: (groupname: string, group: Group) => {
-            this.Editor.remove(groupname);
-            this.Editor.add(group);
-        }
+    possibilities() {
+        const units: Unit[] = [];
+        const keys: string[] = [];
+        this.units.forEach((unit, key) => {
+            if (!units.includes(unit)) {
+                units.push(unit);
+                keys.push(key);
+            }
+        });
+        return keys;
     }
 
-    private _settings: CollectionSettings = {
-        symbols: Symbols.ALL
+    isSupported(unit: string) {
+        return Boolean(this.units.get(unit));
     }
 
-    set settings(settings: Partial<CollectionSettings>) {
-        this._settings = Object.assign(this._settings, settings);
+    unit(unit: string) {
+        const result = this.units.get(unit);
+        if (!result) throw new UnknownUnitError(`Unknown unit '${unit}'!`);
+        return result;
     }
 
-    get settings(): CollectionSettings {
-        return this._settings;
+    group(group: string) {
+        const result = this.groups.get(group);
+        if (!result) throw new UnknownGroupError(`Unknown unit '${group}'!`);
+        return result;
     }
 
-    group(groupname: string) {
-        const group = this._internal._tryToFindGroup(groupname);
-        if (group) return group;
-        throw new Error("Invalid group!");
+    from(value: number, unit: string) {
+        return new Convertable(value, this.unit(unit));
     }
-
-    unit(identifier: string) {
-        for (const group of this.groups) {
-            const unit = group._internal._tryToFindUnit(identifier);
-            if (unit) return unit;
-        }
-        throw new Error(`Cannot get unit '${identifier}'. Unit doesn't exist.`);
-    }
-
-    isSupported(identifier: string): boolean {
-        return this._internal._tryToFindUnit(identifier) !== undefined;
-    }
-
-    * iterator(): IterableIterator<Group> {
-        for (const group of this.groups) yield group;
-    }
-
-    from(value: string): Convertable;
-    from(value: number, unit: string): Convertable;
-    from(value: number | string, unit?: string): Convertable {
-        if (typeof value === "string") {
-            const result = ConvertableParser.divide(value);
-            value = result[0];
-            unit = result[1];
-        }
-        if (!unit)
-            throw new Error(`Missing unit in '${value}'!`);
-        for (const group of this.groups) {
-            const convertible = group._internal._from(value, unit);
-            if (convertible) return convertible;
-        }
-        throw new Error(`Didn't find unit '${unit}'!`);
-    }
-
     Convertable = this.from;
 
-    [inspect.custom](depth: any, options: any): string {
-        let result = `Collection [\n`;
-        let i = 0;
-        for (const group of this.groups) {
-            result += group._internal._inspectWithIndent(3, depth, options)
-            if (i + 1 !== this.groups.length) result += ",\n";
-            else result += "\n";
-            i++;
-        }
+    toString() {
+        let result = "Collection [\n";
+        this.groups.forEach((group, key) => {
+            result += `  Group '${key}' [\n    `;
+            const possibilities = group.possibilities();
+            for (let i = 0; i < possibilities.length; i++) {
+                result += possibilities[i];
+                if (i + 1 === possibilities.length) result += "\n";
+                else if ((i + 1) % 12 === 0) result += ",\n    ";
+                else result += ", ";
+            }
+            result += "  ],\n"
+        });
         result += "]";
         return result;
     }
 
-    toString(): string {
-        let result = `Collection [\n`;
-        let i = 0;
-        for (const group of this.groups) {
-            result += group._internal._toStringWithIndent(3)
-            if (i + 1 !== this.groups.length) result += ",\n";
-            else result += "\n";
-            i++;
-        }
+    [inspect.custom](depth: any, options: any) {
+        let result = "Collection [\n";
+        this.groups.forEach((group, key) => {
+            result += `  Group `;
+            result += options.stylize(`'${key}'`, "string");
+            result += ` [\n    `;
+            const possibilities = group.possibilities();
+            for (let i = 0; i < possibilities.length; i++) {
+                result += options.stylize(possibilities[i], "special");
+                if (i + 1 === possibilities.length) result += "\n";
+                else if ((i + 1) % 12 === 0) result += ",\n    ";
+                else result += ", ";
+            }
+            result += "  ],\n"
+        });
         result += "]";
         return result;
     }

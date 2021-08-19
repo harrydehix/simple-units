@@ -1,5 +1,5 @@
-import Multiplicator from "../../unitCreator/variable/Multiplicator";
-import Variable from "../../unitCreator/variable/Variable";
+import Multiplicator from "../../variable/Multiplicator";
+import Variable from "../../variable/Variable";
 
 const siPrefixes = [
     new Multiplicator("Y", "yotta", 1e24),
