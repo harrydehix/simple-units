@@ -22,13 +22,14 @@ export default class Unit {
         return this._format.short[0];
     }
 
-    validate(identifier: string) {
-        switch (this.group.collection.settings.symbols) {
-            case Symbols.SINGLE_IDENTIFIER:
+    validate(identifier: string, symbols?: Symbols) {
+        if (symbols === undefined) symbols = this.group.collection.settings.symbols;
+        switch (symbols) {
+            case Symbols.SINGLE:
                 return this.identifier === identifier;
-            case Symbols.SHORT_FORMS:
+            case Symbols.SHORTS:
                 return this._format.short.includes(identifier);
-            case Symbols.LONG_FORMS:
+            case Symbols.LONGS:
                 return this._format.long.sg.includes(identifier) || this._format.long.pl.includes(identifier);
             case Symbols.ALL:
                 return this._format.short.includes(identifier) || this._format.long.sg.includes(identifier) || this._format.long.pl.includes(identifier);
