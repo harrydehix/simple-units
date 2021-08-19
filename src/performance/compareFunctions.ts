@@ -2,7 +2,7 @@ import testFunction from "./testFunction"
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import wunderbar from "@gribnoysup/wunderbar";
-import units from "../old/units/units";
+import units from "../units/units";
 
 export default (...fns: ((...any: any[]) => any)[]) => {
     const avgs = [];
@@ -16,7 +16,7 @@ export default (...fns: ((...any: any[]) => any)[]) => {
     min.asBest();
     const avgValues = [];
     for (const avg of avgs) {
-        avgValues.push(avg.as(min.unit.identifier).value);
+        avgValues.push(avg.as(min.unit.toString()).value);
     }
 
     for (let i = 0; i < fns.length; i++) {

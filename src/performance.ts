@@ -1,9 +1,7 @@
-import compareFunctions from "../performance/compareFunctions";
+import compareFunctions from "./performance/compareFunctions";
 import units from "./units/units";
-import unitsOld from "../old/units/units";
 import convert1 from "convert";
 import convert2 from "convert-units";
-import { Symbols } from "../old/Collection";
 
 function unitjs() {
     units.from(12, "°C").to("°F");
@@ -29,13 +27,4 @@ function convertUnits() {
     convert2(200).from("Gb").to("MB");
 }
 
-unitsOld.settings = {
-    symbols: Symbols.ALL
-}
-function oldUnitjs() {
-    unitsOld.from(12, "°C").to("°F");
-    unitsOld.from(100, "m").to("inch");
-    unitsOld.from(200, "Gb").to("MB");
-}
-
-compareFunctions(convertUnits, convert, unitjs, oldUnitjs, math);
+compareFunctions(convertUnits, convert, unitjs, math);
