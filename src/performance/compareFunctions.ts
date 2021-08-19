@@ -1,6 +1,8 @@
 import testFunction from "./testFunction"
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import wunderbar from "@gribnoysup/wunderbar";
-import units from "../units/units";
+import units from "../old/units/units";
 
 export default (fn1: (...any: any[]) => any, fn2: (...any: any[]) => any) => {
     const avg1 = units.from(testFunction(fn1), "s");
