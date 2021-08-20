@@ -49,7 +49,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 		<tr>
 			<th>%m²</th>
 			<td><code>%m^2, %m2, square %meter, sq %meter, sq %metre, square %metre, square %meters, sq %meters, sq %metres, square %metres</code></td>
-            <td>SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
+            <td>(SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
 		</tr>
 		<tr>
 			<th>%a</th>
@@ -98,12 +98,12 @@ console.log(convertable.format({ length: "long", divider: " "}));
 		<tr>
 			<th>%B</th>
 			<td><code>%byte, %bytes</code></td>
-			<td>SI-Prefixes from <code>k</code>(kilo) to <code>Y</code> (yotta) and IEC-Prefixes from <code>Ki</code> (kibi) to <code>Yi</code> (yobi)</td>
+			<td>(SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>k</code>(kilo) to <code>Y</code> (yotta) and (IEC-Prefixes)[https://en.wikipedia.org/wiki/Binary_prefix] from <code>Ki</code> (kibi) to <code>Yi</code> (yobi)</td>
 		</tr>
 		<tr>
 			<th>%b</th>
 			<td><code>%bit, %bits</code></td>
-			<td>SI-Prefixes from <code>k</code>(kilo) to <code>Y</code> (yotta) and IEC-Prefixes from <code>Ki</code> (kibi) to <code>Yi</code> (yobi)</td>
+			<td>(SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>k</code>(kilo) to <code>Y</code> (yotta) and (IEC-Prefixes)[https://en.wikipedia.org/wiki/Binary_prefix] from <code>Ki</code> (kibi) to <code>Yi</code> (yobi)</td>
 		</tr>
 	</tbody>
 </table>
@@ -122,7 +122,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 		<tr>
 			<th>%m</th>
 			<td><code>%meter, %meters, %metre, %metres</code></td>
-            <td>SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
+            <td>(SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
 		</tr>
 		<tr>
 			<th>in</th>
@@ -166,12 +166,12 @@ console.log(convertable.format({ length: "long", divider: " "}));
 		<tr>
 			<th>%g</th>
 			<td><code>%gram, %gramme, %grams</code></td>
-            <td>SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
+            <td>(SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
 		</tr>
 		<tr>
 			<th>%mt</th>
 			<td><code>%metric ton, %metric tons</code></td>
-			<td>SI-Prefixes from <code>da</code> (deca) to <code>Y</code> (yotta) </td>
+			<td>(SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>da</code> (deca) to <code>Y</code> (yotta) </td>
 		</tr>
 		<tr>
 			<th>t</th>
@@ -205,7 +205,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 		<tr>
 			<th>%Pa</th>
 			<td><code>%pascal, %pascals</code></td>
-            <td>SI-Prefixes from <code>μ</code> (micro) to <code>Y</code> (yotta) </td>
+            <td>(SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>μ</code> (micro) to <code>Y</code> (yotta) </td>
 		</tr>
 		<tr>
 			<th>bar</th>
@@ -256,7 +256,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 			<td><code>%meter/%, %metre/%, %meter per %, %metre per %, %meters/%, %metres/%, %meters per %, %metres per %</code></td>
             <td>
             <p>
-                <b>1.</b> SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta)
+                <b>1.</b> (SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>y</code> (yocto) to <code>Y</code> (yotta)
             </p>
             <p>
                 <b>2.</b> Any time unit
@@ -345,7 +345,7 @@ console.log(convertable.format({ length: "long", divider: " "}));
 		<tr>
 			<th>%s</th>
 			<td><code>%second, %seconds</code></td>
-            <td>SI-Prefixes from <code>y</code> (yocto) to <code>d</code> (deci) </td>
+            <td>(SI-Prefixes)[https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes] from <code>y</code> (yocto) to <code>d</code> (deci) </td>
 		</tr>
 		<tr>
 			<th>min</th>
