@@ -52,9 +52,34 @@ console.log(convertable.format({ length: "long", divider: " "}));
             <td>SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
 		</tr>
 		<tr>
-			<th>%b</th>
-			<td><code>%bit, %bits</code></td>
-			<td>SI-Prefixes from <code>k</code>(kilo) to <code>Y</code> (yotta) and IEC-Prefixes from <code>Ki</code> (kibi) to <code>Yi</code> (yobi)</td>
+			<th>%a</th>
+			<td><code>%are, %ares</code></td>
+			<td><code>c</code>(centiare), <code>d</code>(deciare), <code>da</code>(decare), <code>h</code>(hectare)</td>
+		</tr>
+        <tr>
+			<th>in²</th>
+			<td><code>″², in^2, ″^2, ″2, in2, square inch, sq inch, square inches, sq inches</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>ft²</th>
+			<td><code>ft^2, ft2, square foot, sq foot, square feet, sq feet</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>mi²</th>
+			<td><code>mi^2, mi2, square mile, sq mile, square miles, sq miles</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>yd²</th>
+			<td><code>yd^2, yd2, square yard, sq yard, square yards, sq yards</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>ac</th>
+			<td><code>acre, acres</code></td>
+			<td>-</td>
 		</tr>
 	</tbody>
 </table>
