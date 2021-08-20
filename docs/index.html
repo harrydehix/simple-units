@@ -1,0 +1,282 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>unitjs</title>
+	<meta name="description" content="Documentation for unitjs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">unitjs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>unitjs</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#unitjs" id="unitjs" style="color: inherit; text-decoration: none;">
+					<h1>unitjs</h1>
+				</a>
+				<p> <img src="https://img.shields.io/github/milestones/all/harrydehix/unitjs" alt="GitHub milestones"> <img src="https://img.shields.io/github/last-commit/harrydehix/unitjs" alt="GitHub last commit"><br>
+				expandable, flexible unit system, providing unit conversion on small and large scale</p>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h1>Usage</h1>
+				</a>
+				<a href="#importing" id="importing" style="color: inherit; text-decoration: none;">
+					<h2>Importing</h2>
+				</a>
+				<pre><code class="language-javascript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">units</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;unitjs&quot;</span><span style="color: #000000">);</span>
+</code></pre>
+				<p>or</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">units</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;unitjs&quot;</span><span style="color: #000000">;</span>
+</code></pre>
+				<a href="#converting" id="converting" style="color: inherit; text-decoration: none;">
+					<h2>Converting</h2>
+				</a>
+				<a href="#from-to-syntax" id="from-to-syntax" style="color: inherit; text-decoration: none;">
+					<h3><code>from-to-Syntax</code></h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">converted</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">from</span><span style="color: #000000">(</span><span style="color: #098658">3</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;cm&quot;</span><span style="color: #000000">).</span><span style="color: #795E26">to</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;in&quot;</span><span style="color: #000000">); </span><span style="color: #008000">// converts value, returns number</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">converted</span><span style="color: #000000">); </span><span style="color: #008000">// output: 1.1811</span>
+</code></pre>
+				<a href="#convertable-syntax" id="convertable-syntax" style="color: inherit; text-decoration: none;">
+					<h3><code>Convertable-Syntax</code></h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertable</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertable</span><span style="color: #000000">(</span><span style="color: #098658">30</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;cm&quot;</span><span style="color: #000000">); </span><span style="color: #008000">// creates convertable</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertable</span><span style="color: #000000">) </span><span style="color: #008000">// Output: 30cm</span>
+<span style="color: #001080">convertable</span><span style="color: #000000">.</span><span style="color: #795E26">as</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;m&quot;</span><span style="color: #000000">); </span><span style="color: #008000">// converts convertable</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertable</span><span style="color: #000000">.</span><span style="color: #001080">value</span><span style="color: #000000">); </span><span style="color: #008000">// Output: 0.3</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertable</span><span style="color: #000000">.</span><span style="color: #795E26">as</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;cm&quot;</span><span style="color: #000000">)); </span><span style="color: #008000">// Output: 30cm</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertable</span><span style="color: #000000">.</span><span style="color: #795E26">asBest</span><span style="color: #000000">()); </span><span style="color: #008000">// Output: 3dm</span>
+</code></pre>
+				<a href="#formatting" id="formatting" style="color: inherit; text-decoration: none;">
+					<h2>Formatting</h2>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertable</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertable</span><span style="color: #000000">(</span><span style="color: #098658">3</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;cm&quot;</span><span style="color: #000000">); </span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertable</span><span style="color: #000000">.</span><span style="color: #795E26">format</span><span style="color: #000000">({ </span><span style="color: #001080">length:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;long&quot;</span><span style="color: #000000">, </span><span style="color: #001080">divider:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot; &quot;</span><span style="color: #000000">})); </span>
+<span style="color: #008000">// Output: 3 centimeters</span>
+</code></pre>
+				<a href="#supported-units" id="supported-units" style="color: inherit; text-decoration: none;">
+					<h1>Supported Units</h1>
+				</a>
+				<div id="detailsDefaultUnit"></div>
+				<details>
+					<summary>Length ✅</summary>
+					<ul>
+						<li><p>✅ m (including every SI prefix from <code>ym</code> to <code>Ym</code>, e.g. <code>km</code>, <code>cm</code>, <code>nm</code>, ...)</p>
+						</li>
+						<li><p>✅ in</p>
+						</li>
+						<li><p>✅ yd</p>
+						</li>
+						<li><p>✅ ft</p>
+						</li>
+						<li><p>✅ mi</p>
+						</li>
+						<li><p>✅ ly</p>
+				</details>
+				<details>
+					<summary>Temperature ✅</summary></li>
+					<li><p>✅ °C</p>
+					</li>
+					<li><p>✅ °F</p>
+					</li>
+					<li><p>✅ °R</p>
+					</li>
+					<li><p>✅ K</p>
+				</details>
+				<details>
+					<summary>Speed ✅</summary></li>
+					<li><p>✅ m/s (<code>m</code> is combinable with any SI prefix, <code>s</code> is replaceable with any valid time unit, e.g. <code>km/min</code>, <code>cm/ns</code>, <code>dm/a</code>, ...)</p>
+					</li>
+					<li><p>✅ ft/s (<code>s</code> is replaceable with any valid time unit, e.g. <code>ft/min</code>, <code>ft/ms</code>, <code>ft/d</code>, ...)</p>
+					</li>
+					<li><p>✅ mi/s (<code>s</code> is replaceable with any valid time unit, e.g. <code>mi/h</code>, <code>mi/wk</code>, <code>mi/m</code>, ...)</p>
+					</li>
+					<li><p>✅ knot</p>
+					</li>
+					<li><p>✅ beaufort scale (from 0 to 12)</p>
+					</li>
+					<li><p>✅ mach number (divided to the speed of sound)</p>
+					</li>
+					<li><p>✅ c (divided to the speed of light)</p>
+				</details>
+				<details>
+					<summary>Area ✅</summary></li>
+					<li><p>✅ m² (including every SI prefix from <code>ym²</code> to <code>Ym²</code>, e.g. <code>km²</code>, <code>cm²</code>, <code>nm²</code>, ...)</p>
+					</li>
+					<li><p>✅ a (including <code>ca</code>, <code>da</code>, <code>daa</code> and <code>ha</code>)</p>
+					</li>
+					<li><p>✅ in²</p>
+					</li>
+					<li><p>✅ ft²</p>
+					</li>
+					<li><p>✅ mi²</p>
+					</li>
+					<li><p>✅ yd²</p>
+					</li>
+					<li><p>✅ ac</p>
+				</details>
+				<details>
+					<summary>Mass ✅</summary></li>
+					<li><p>✅ g (including every SI prefix from <code>yg</code> to <code>Yg</code>, e.g. <code>kg</code>, <code>mg</code>, ...)</p>
+					</li>
+					<li><p>✅ t (metric ton; including every SI prefix from <code>dat</code> to <code>Yt</code>, e.g. <code>Mt</code>, <code>Gt</code>, ...)</p>
+					</li>
+					<li><p>✅ oz (av) </p>
+					</li>
+					<li><p>✅ lb (av)</p>
+				</details>
+				<details>
+					<summary>Digital ✅</summary></li>
+					<li><p>✅ B (including every SI prefix from <code>kB</code> to <code>YB</code> and every IEC prefix from <code>KiB</code> to <code>YiB</code>)</p>
+					</li>
+					<li><p>✅ b (including every SI prefix from <code>kb</code> to <code>Yb</code> and every IEC prefix from <code>Kib</code> to <code>Yib</code>)</p>
+				</details>
+				<details>
+					<summary>Volume 📅</summary>
+				</details>
+				<details>
+					<summary>Time ✅</summary></li>
+					<li><p>✅ s (including every SI prefix from <code>ys</code> to <code>ds</code>, e.g. <code>ns</code>, <code>μs</code>, ...)</p>
+					</li>
+					<li><p>✅ min</p>
+					</li>
+					<li><p>✅ h</p>
+					</li>
+					<li><p>✅ d</p>
+					</li>
+					<li><p>✅ wk</p>
+					</li>
+					<li><p>✅ mth</p>
+					</li>
+					<li><p>✅ a</p>
+				</details>
+				<details>
+					<summary>Acceleration 📅</summary>
+				</details>
+				<details>
+					<summary>Force 📅</summary>
+				</details>
+				<details>
+					<summary>Voltage 📅</summary>
+				</details>
+				<details>
+					<summary>Current 📅</summary>
+				</details>
+				<details>
+					<summary>Power 📅</summary>
+				</details>
+				<details>
+					<summary>Energy 📅</summary>
+				</details>
+				<details>
+					<summary>Pace 📅</summary>
+				</details>
+				<details>
+					<summary>Pressure ✅</summary></li>
+					<li><p>✅ Pa (including SI Prefixes from <code>µPa</code> to <code>YPa</code>)</p>
+					</li>
+					<li><p>✅ bar</p>
+					</li>
+					<li><p>✅ torr</p>
+					</li>
+					<li><p>✅ atm</p>
+					</li>
+					<li><p>✅ psi, ksi, Mpsi</p>
+				</details>
+				<details>
+					<summary>Illuminance 📅</summary>
+				</details>
+				<details>
+					<summary>PartsPer 📅</summary>
+				</details>
+				<details>
+					<summary>Angle 📅</summary>
+				</details>
+				<details>
+					<summary>Frequency 📅</summary>
+				</details></li>
+				</ul>
+				<a href="#roadmap" id="roadmap" style="color: inherit; text-decoration: none;">
+					<h1>Roadmap</h1>
+				</a>
+				<ul>
+					<li>Implement units listed above</li>
+					<li>Document functions, classes, etc.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

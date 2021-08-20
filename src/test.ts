@@ -26,3 +26,4 @@ units.group("length").Editor.add(new Unit({
 
 console.log(units.isSupported("manga"))
 console.log(units.from(12, "knot").as("Bft"));
+console.log(units.possibilities())

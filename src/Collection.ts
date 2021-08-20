@@ -22,6 +22,14 @@ export default class Collection {
     }
 
     readonly Editor = {
+        select: (...groups: string[]) => {
+            const groupsToRemove: string[] = [];
+            this.groups.forEach((group, key) => {
+                if (!groups.includes(key)) groupsToRemove.push(key);
+            });
+            this.Editor.remove(...groupsToRemove);
+        },
+
         add: (...groups: Group[]) => {
             for (const group of groups) {
                 // Remove group if already existing

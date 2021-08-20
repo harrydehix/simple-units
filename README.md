@@ -35,117 +35,325 @@ console.log(convertable.format({ length: "long", divider: " "}));
 
 # Supported Units
 
-<div id="detailsDefaultUnit"></div>
-<details>
-  <summary>Length ✅</summary>
-  
-  * ✅ m (including every SI prefix from `ym` to `Ym`, e.g. `km`, `cm`, `nm`, ...)
-  * ✅ in
-  * ✅ yd
-  * ✅ ft
-  * ✅ mi
-  * ✅ ly
-</details>
-<details>
-  <summary>Temperature ✅</summary>
-  
-  * ✅ °C
-  * ✅ °F
-  * ✅ °R
-  * ✅ K
-</details>
-<details>
-  <summary>Speed ✅</summary>
+## Area
 
-  * ✅ m/s (`m` is combinable with any SI prefix, `s` is replaceable with any valid time unit, e.g. `km/min`, `cm/ns`, `dm/a`, ...)
-  * ✅ ft/s (`s` is replaceable with any valid time unit, e.g. `ft/min`, `ft/ms`, `ft/d`, ...)
-  * ✅ mi/s (`s` is replaceable with any valid time unit, e.g. `mi/h`, `mi/wk`, `mi/m`, ...)
-  * ✅ knot
-  * ✅ beaufort scale (from 0 to 12)
-  * ✅ mach number (divided to the speed of sound)
-  * ✅ c (divided to the speed of light)
-</details>
-<details>
-  <summary>Area ✅</summary>
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%m²</th>
+			<td><code>%m^2, %m2, square %meter, sq %meter, sq %metre, square %metre, square %meters, sq %meters, sq %metres, square %metres</code></td>
+            <td>SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
+		</tr>
+		<tr>
+			<th>%b</th>
+			<td><code>%bit, %bits</code></td>
+			<td>SI-Prefixes from <code>k</code>(kilo) to <code>Y</code> (yotta) and IEC-Prefixes from <code>Ki</code> (kibi) to <code>Yi</code> (yobi)</td>
+		</tr>
+	</tbody>
+</table>
 
-  * ✅ m² (including every SI prefix from `ym²` to `Ym²`, e.g. `km²`, `cm²`, `nm²`, ...)
-  * ✅ a (including `ca`, `da`, `daa` and `ha`)
-  * ✅ in²
-  * ✅ ft²
-  * ✅ mi²
-  * ✅ yd²
-  * ✅ ac
-</details>
-<details>
-  <summary>Mass ✅</summary>
+## Digital
 
-  * ✅ g (including every SI prefix from `yg` to `Yg`, e.g. `kg`, `mg`, ...)
-  * ✅ t (metric ton; including every SI prefix from `dat` to `Yt`, e.g. `Mt`, `Gt`, ...)
-  * ✅ oz (av) 
-  * ✅ lb (av)
-</details>
-<details>
-  <summary>Digital ✅</summary>
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%B</th>
+			<td><code>%byte, %bytes</code></td>
+			<td>SI-Prefixes from <code>k</code>(kilo) to <code>Y</code> (yotta) and IEC-Prefixes from <code>Ki</code> (kibi) to <code>Yi</code> (yobi)</td>
+		</tr>
+		<tr>
+			<th>%b</th>
+			<td><code>%bit, %bits</code></td>
+			<td>SI-Prefixes from <code>k</code>(kilo) to <code>Y</code> (yotta) and IEC-Prefixes from <code>Ki</code> (kibi) to <code>Yi</code> (yobi)</td>
+		</tr>
+	</tbody>
+</table>
 
-  * ✅ B (including every SI prefix from `kB` to `YB` and every IEC prefix from `KiB` to `YiB`)
-  * ✅ b (including every SI prefix from `kb` to `Yb` and every IEC prefix from `Kib` to `Yib`)
-</details>
-<details>
-  <summary>Volume 📅</summary>
-</details>
-<details>
-  <summary>Time ✅</summary>
+## Length
 
-  * ✅ s (including every SI prefix from `ys` to `ds`, e.g. `ns`, `μs`, ...)
-  * ✅ min
-  * ✅ h
-  * ✅ d
-  * ✅ wk
-  * ✅ mth
-  * ✅ a
-</details>
-<details>
-  <summary>Acceleration 📅</summary>
-</details>
-<details>
-  <summary>Force 📅</summary>
-</details>
-<details>
-  <summary>Voltage 📅</summary>
-</details>
-<details>
-  <summary>Current 📅</summary>
-</details>
-<details>
-  <summary>Power 📅</summary>
-</details>
-<details>
-  <summary>Energy 📅</summary>
-</details>
-<details>
-  <summary>Pace 📅</summary>
-</details>
-<details>
-  <summary>Pressure ✅</summary>
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+            <th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%m</th>
+			<td><code>%meter, %meters, %metre, %metres</code></td>
+            <td>SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
+		</tr>
+		<tr>
+			<th>in</th>
+			<td><code>″, inch, inches</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>yd</th>
+			<td><code>yard, yards</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>ly</th>
+			<td><code>light-year, lightyear, light-years, lightyears</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>ft</th>
+			<td><code>foot, feet</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>mi</th>
+			<td><code>mi., mile, miles</code></td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
 
-  * ✅ Pa (including SI Prefixes from `µPa` to `YPa`)
-  * ✅ bar
-  * ✅ torr
-  * ✅ atm
-  * ✅ psi, ksi, Mpsi
-</details>
-<details>
-  <summary>Illuminance 📅</summary>
-</details>
-<details>
-  <summary>PartsPer 📅</summary>
-</details>
-<details>
-  <summary>Angle 📅</summary>
-</details>
-<details>
-  <summary>Frequency 📅</summary>
-</details>
+## Mass
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+            <th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%g</th>
+			<td><code>%gram, %gramme, %grams</code></td>
+            <td>SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta) </td>
+		</tr>
+		<tr>
+			<th>%mt</th>
+			<td><code>%metric ton, %metric tons</code></td>
+			<td>SI-Prefixes from <code>da</code> (deca) to <code>Y</code> (yotta) </td>
+		</tr>
+		<tr>
+			<th>t</th>
+			<td><code>ton, short ton, tons, short tons</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>oz</th>
+			<td><code>oz av, ounce, avoirdupois ounce, ounces, avoirdupois ounces</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>lb</th>
+			<td><code>lb av, pound, avoirdupois pound, pound-mass, pounds, avoirdupois pounds</code></td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+## Pressure
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%Pa</th>
+			<td><code>%pascal, %pascals</code></td>
+            <td>SI-Prefixes from <code>μ</code> (micro) to <code>Y</code> (yotta) </td>
+		</tr>
+		<tr>
+			<th>bar</th>
+			<td><code>Bar, Bars</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>torr</th>
+			<td><code>Torr, Torrs</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>atm</th>
+			<td><code>standard atmosphere, standard atmospheres</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>Mpsi</th>
+			<td><code>megapound per square inch, megapounds per square inch</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>psi</th>
+			<td><code>lb. p. sq. in., psia, psig, pound-force per square inch, pound per square inch, pounds per square inch</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>ksi</th>
+			<td><code>kilopound per square inch, kilopounds per square inch</code></td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+## Speed
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%m/%</th>
+			<td><code>%meter/%, %metre/%, %meter per %, %metre per %, %meters/%, %metres/%, %meters per %, %metres per %</code></td>
+            <td>
+            <p>
+                <b>1.</b> SI-Prefixes from <code>y</code> (yocto) to <code>Y</code> (yotta)
+            </p>
+            <p>
+                <b>2.</b> Any time unit
+            </p>
+            </td>
+		</tr>
+		<tr>
+			<th>ft/%</th>
+			<td><code>foot/%, foot per %, feet/%, feet per %</code></td>
+			<td>Any time unit</td>
+		</tr>
+		<tr>
+			<th>mi/%</th>
+			<td><code>mp%, mile/%, mile per %, miles/%, miles per %</code></td>
+			<td>Any time unit</td>
+		</tr>
+		<tr>
+			<th>kt</th>
+			<td><code>kn, knot, knots</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>Bft</th>
+			<td><code>Beaufort</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>Ma</th>
+			<td><code>M, mach, Mach</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>c</th>
+			<td><code>lightspeed, light-speed</code></td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+## Temperature
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>°C</th>
+			<td><code>degree Celsius, degrees Celsius</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>°F</th>
+			<td><code>degree Fahrenheit, degrees Fahrenheit</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>°R</th>
+			<td><code>degree Rankine, degrees Rankine</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>K</th>
+			<td><code>Kelvin</code></td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+
+## Time
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%s</th>
+			<td><code>%second, %seconds</code></td>
+            <td>SI-Prefixes from <code>y</code> (yocto) to <code>d</code> (deci) </td>
+		</tr>
+		<tr>
+			<th>min</th>
+			<td><code>minute, minutes</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>h</th>
+			<td><code>hour, hours</code></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<th>d</th>
+			<td><code>day, days</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>wk</th>
+			<td><code>week, weeks</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>mth</th>
+			<td><code>month, months</code></td>
+			<td>-</td>
+		</tr>
+        <tr>
+			<th>a</th>
+			<td><code>year, years</code></td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
 
 # Roadmap
 
