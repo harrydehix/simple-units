@@ -1,5 +1,10 @@
 import ConversionError from "../../../errors/ConversionError";
 
+/**
+ * Converts a value from `m/s` to `Bft`.
+ * @param val value in m/s
+ * @returns value in Bft
+ */
 export const meterPerSecondToBeaufort = (val: number) => {
     if (val < 0.5) return 0;
     if (val <= 1.5) return 1;
@@ -16,6 +21,11 @@ export const meterPerSecondToBeaufort = (val: number) => {
     return 12;
 }
 
+/**
+ * Converts a value from `Bft` to `M/s`.
+ * @param val value in Bft
+ * @returns value in m/s
+ */
 export const beaufortToMeterPerSecond = (val: number) => {
     if (val === 0) return 0.25;
     if (val === 1) return 1;

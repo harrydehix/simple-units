@@ -1,9 +1,9 @@
-import Multiplicator from "./Multiplicator";
+import Multiplier from "./Multiplier";
 
-export default class Variable extends Array<Multiplicator>{
-    constructor(isOptional = true, ...multiplicators: Multiplicator[]) {
-        super(...multiplicators);
-        if (isOptional) this.push(new Multiplicator("", "", 1));
+export default class Variable extends Array<Multiplier>{
+    constructor(isOptional = true, ...Multipliers: Multiplier[]) {
+        super(...Multipliers);
+        if (isOptional) this.push(new Multiplier("", "", 1));
     }
 
     combine(variable: Variable) {

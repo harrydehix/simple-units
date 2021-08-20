@@ -23,7 +23,7 @@ export default class Group {
             const hasCollection = this.collection !== Collection.None;
             for (const unit of units) {
                 if (unit instanceof FlexibleUnit) {
-                    this.Editor.add(...unit.units);
+                    this.Editor.add(...unit._units);
                 } else {
                     unit.group = this;
                     if (this.units.get(unit.toString())) {

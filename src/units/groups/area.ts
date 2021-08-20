@@ -1,10 +1,13 @@
 import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
 import SimpleUnit from "../../SimpleUnit";
-import Multiplicator from "../../variable/Multiplicator";
+import Multiplier from "../../variable/Multiplier";
 import Variable from "../../variable/Variable";
 import siAreaPrefixes from "../variables/siAreaPrefixes";
 
+/**
+ * {@link Group} holding all area units.
+ */
 const area = new Group("area");
 
 area.Editor.add(
@@ -22,10 +25,10 @@ area.Editor.add(
             pl: ["%ares"],
         }
     }, 100, 0, "metric", [new Variable(true,
-        new Multiplicator("c", "centi", 1e-2),
-        new Multiplicator("d", "deci", 1e-1),
-        new Multiplicator("da", "dec", 1e1),
-        new Multiplicator("h", "hect", 1e2),
+        new Multiplier("c", "centi", 1e-2),
+        new Multiplier("d", "deci", 1e-1),
+        new Multiplier("da", "dec", 1e1),
+        new Multiplier("h", "hect", 1e2),
     )]),
     new SimpleUnit({
         short: ["in²", "″²", "in^2", "″^2", "″2", "in2"],

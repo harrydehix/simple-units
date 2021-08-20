@@ -1,6 +1,9 @@
 import Group from "../../Group";
 import SimpleUnit from "../../SimpleUnit";
 
+/**
+ * {@link Group} holding all temperature units.
+ */
 const temperature = new Group("temperature");
 
 temperature.Editor.add(

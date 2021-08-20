@@ -8,6 +8,28 @@ import area from "./groups/area";
 import digital from "./groups/digital";
 import speed from "./groups/speed/speed";
 
+/**
+ * Collection of a variety of different units arranged in different
+ * groups like `length`, `mass`, `temperature`, etc.
+ * 
+ * To simply convert a value from one unit to another use the `from-to`-syntax.
+ * @example
+ * ```
+ * const converted = units.from(12, "°C").to("°F");
+ * console.log(converted); // Output: 56.6
+ * ```
+ * If you want to convert the same value into different units you should use the  `Convertable`-syntax to safe some time
+ * and memory.
+ * @example
+ * ```
+ * const convertable = units.Convertable(12, "°C");
+ * console.log(convertable.to("°F")); // Output: 56.6
+ * console.log(convertable.to("K"));  // Output: 285.15
+ * console.log(convertable.to("°R")); // Output: 513.27
+ * ```
+ * 
+ * To learn more about the features that this library offers, e.g. editing the collection, removing and adding units and much more, go to the official documentation.
+ */
 const units = new Collection();
 
 units.Editor.add(

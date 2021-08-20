@@ -3,6 +3,9 @@ import Group from "../../Group";
 import SimpleUnit from "../../SimpleUnit";
 import siPrefixes from "../variables/siPrefixes";
 
+/**
+ * {@link Group} holding all length units.
+ */
 const length = new Group("length");
 
 length.Editor.add(

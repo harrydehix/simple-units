@@ -8,7 +8,8 @@
     "scripts": {
         "watch": "npx tsc --watch",
         "start": "cd ./dist && node",
-        "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx"
+        "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
+        "docs": "npx typedoc --out docs"
     },
     "repository": {
         "type": "git",

@@ -7,6 +7,9 @@ import dividedByTimes from "../../variables/dividedByTimes";
 import siPrefixes from "../../variables/siPrefixes";
 import { beaufortToMeterPerSecond, meterPerSecondToBeaufort } from "./beaufort";
 
+/**
+ * {@link Group} holding all speed units.
+ */
 const speed = new Group("speed");
 
 speed.Editor.add(

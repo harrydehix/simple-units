@@ -3,6 +3,9 @@ import Group from "../../Group";
 import SimpleUnit from "../../SimpleUnit";
 import siPrefixes from "../variables/siPrefixes";
 
+/**
+ * {@link Group} holding all time units.
+ */
 const time = new Group("time");
 
 time.Editor.add(
