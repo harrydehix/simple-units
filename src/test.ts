@@ -1,11 +1,11 @@
+import { Unit } from ".";
 import Group from "./Group";
-import Unit from "./SimpleUnit";
 import units from "./units/units";
 
 const customGroup = new Group("custom");
 
 customGroup.Editor.add(
-    new Unit({
+    Unit.create({
         short: ["ss"],
         long: {
             sg: ["some"],
@@ -15,7 +15,7 @@ customGroup.Editor.add(
 )
 
 units.Editor.add(customGroup);
-units.group("length").Editor.add(new Unit({
+units.group("length").Editor.add(Unit.create({
     short: ["m"],
     long: {
         sg: ["manga"],

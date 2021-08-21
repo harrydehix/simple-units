@@ -1,7 +1,6 @@
 
 import FlexibleUnit from "../../../FlexibleUnit";
 import Group from "../../../Group";
-import SimpleUnit from "../../../SimpleUnit";
 import Unit from "../../../Unit";
 import dividedByTimes from "../../variables/dividedByTimes";
 import siPrefixes from "../../variables/siPrefixes";
@@ -34,7 +33,7 @@ speed.Editor.add(
             pl: ["miles/%", "miles per %"],
         }
     }, 1609.344, 0, "imperial", [dividedByTimes]),
-    new SimpleUnit({
+    Unit.create({
         short: ["kt", "kn"], long: {
             sg: ["knot"],
             pl: ["knots"]
@@ -47,14 +46,14 @@ speed.Editor.add(
             pl: ["Beaufort"]
         }
     }, beaufortToMeterPerSecond, meterPerSecondToBeaufort, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["Ma", "M"],
         long: {
             sg: ["mach", "Mach"],
             pl: ["mach", "Mach"]
         }
     }, 343, 0, "other"),
-    new SimpleUnit({
+    Unit.create({
         short: ["c"],
         long: {
             sg: ["lightspeed", "light-speed"],

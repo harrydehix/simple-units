@@ -1,5 +1,5 @@
 import Group from "../../Group";
-import SimpleUnit from "../../SimpleUnit";
+import Unit from "../../Unit";
 
 /**
  * {@link Group} holding all temperature units.
@@ -7,28 +7,28 @@ import SimpleUnit from "../../SimpleUnit";
 const temperature = new Group("temperature");
 
 temperature.Editor.add(
-    new SimpleUnit({
+    Unit.create({
         short: ["°F"],
         long: {
             sg: ["degree Fahrenheit"],
             pl: ["degrees Fahrenheit"]
         }
     }, 5 / 9, 45967 / 180, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["°C"],
         long: {
             sg: ["degree Celsius"],
             pl: ["degrees Celsius"]
         }
     }, 1, 273.15, "metric"),
-    new SimpleUnit({
+    Unit.create({
         short: ["K"],
         long: {
             sg: ["Kelvin"],
             pl: ["Kelvin"]
         }
     }, 1, 0, "metric"),
-    new SimpleUnit({
+    Unit.create({
         short: ["°R"],
         long: {
             sg: ["degree Rankine"],

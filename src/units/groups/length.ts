@@ -1,6 +1,6 @@
 import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
-import SimpleUnit from "../../SimpleUnit";
+import Unit from "../../Unit";
 import siPrefixes from "../variables/siPrefixes";
 
 /**
@@ -16,14 +16,14 @@ length.Editor.add(
             pl: ["%meters", "%metres"]
         }
     }, 1, 0, "metric", [siPrefixes()]),
-    new SimpleUnit({
+    Unit.create({
         short: ["in", "″"],
         long: {
             sg: ["inch"],
             pl: ["inches"]
         }
     }, 0.0254, 0, "imperial"),
-    new SimpleUnit(
+    Unit.create(
         {
             short: ["yd"],
             long: {
@@ -31,21 +31,21 @@ length.Editor.add(
                 pl: ["yards"]
             }
         }, 0.9144, 0, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["ly"],
         long: {
             sg: ["light-year", "lightyear"],
             pl: ["light-years", "lightyears"]
         }
     }, 9460730472580800, 0, "astronomy units"),
-    new SimpleUnit({
+    Unit.create({
         short: ["ft"],
         long: {
             sg: ["foot"],
             pl: ["feet"]
         }
     }, 0.3048, 0, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["mi", "mi."],
         long: {
             sg: ["mile"],

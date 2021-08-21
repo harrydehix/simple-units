@@ -1,6 +1,6 @@
 import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
-import SimpleUnit from "../../SimpleUnit";
+import Unit from "../../Unit";
 import siPrefixes from "../variables/siPrefixes";
 
 /**
@@ -23,21 +23,21 @@ mass.Editor.add(
             pl: ["%metric tons"],
         }
     }, 1e6, 0, "metric", [siPrefixes("da")]),
-    new SimpleUnit({
+    Unit.create({
         short: ["t"],
         long: {
             sg: ["ton", "short ton"],
             pl: ["tons", "short tons"],
         }
     }, 907_184.74, 0, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["oz", "oz av"],
         long: {
             sg: ["ounce", "avoirdupois ounce"],
             pl: ["ounces", "avoirdupois ounces"],
         }
     }, 28.349523125, 0, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["lb", "lb av"],
         long: {
             sg: ["pound", "avoirdupois pound", "pound-mass"],

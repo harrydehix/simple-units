@@ -1,4 +1,4 @@
-import Multiplier from "../../variable/Multiplier";
+import Option from "../../variable/Option";
 import Variable from "../../variable/Variable";
 
 /**
@@ -6,14 +6,14 @@ import Variable from "../../variable/Variable";
  * @see Multiplier
  */
 const iecPrefixes = [
-    new Multiplier("Yi", "yobi", 1024 ** 8),
-    new Multiplier("Zi", "zebi", 1024 ** 7),
-    new Multiplier("Ei", "exbi", 1024 ** 6),
-    new Multiplier("Pi", "pebi", 1024 ** 5),
-    new Multiplier("Ti", "tebi", 1024 ** 4),
-    new Multiplier("Gi", "gibi", 1024 ** 3),
-    new Multiplier("Mi", "mebi", 1024 ** 2),
-    new Multiplier("Ki", "kibi", 1024 ** 1),
+    new Option("Yi", "yobi", 1024 ** 8),
+    new Option("Zi", "zebi", 1024 ** 7),
+    new Option("Ei", "exbi", 1024 ** 6),
+    new Option("Pi", "pebi", 1024 ** 5),
+    new Option("Ti", "tebi", 1024 ** 4),
+    new Option("Gi", "gibi", 1024 ** 3),
+    new Option("Mi", "mebi", 1024 ** 2),
+    new Option("Ki", "kibi", 1024 ** 1),
 ];
 
 /**

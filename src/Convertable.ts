@@ -1,6 +1,6 @@
 import { inspect } from "util";
 import ConversionError from "./errors/ConversionError";
-import Unit from "./SimpleUnit";
+import Unit from "./Unit";
 
 export type FormatOptions = {
     length?: "long" | "short",
@@ -11,8 +11,8 @@ export default class Convertable {
     unit: Unit;
     _internal = {
         _toUnit: (unit: Unit) => {
-            this.value = this.unit._internal.toBase(this.value);
-            this.value = unit._internal.fromBase(this.value);
+            this.value = this.unit.toBase(this.value);
+            this.value = unit.fromBase(this.value);
             this.unit = unit;
             return this.value;
         }
@@ -30,8 +30,8 @@ export default class Convertable {
     to(unit: string): number {
         const target = this.unit.group._internal._units().get(unit);
         if (!target) throw new ConversionError(`Unit '${unit}' does not belong to group '${this.unit.group.name}'!`)
-        this.value = this.unit._internal.toBase(this.value);
-        this.value = target._internal.fromBase(this.value);
+        this.value = this.unit.toBase(this.value);
+        this.value = target.fromBase(this.value);
         this.unit = target;
         return this.value;
     }

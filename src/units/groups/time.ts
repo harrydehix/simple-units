@@ -1,6 +1,6 @@
 import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
-import SimpleUnit from "../../SimpleUnit";
+import Unit from "../../Unit";
 import siPrefixes from "../variables/siPrefixes";
 
 /**
@@ -16,37 +16,37 @@ time.Editor.add(
             pl: ["%seconds"],
         }
     }, 1, 0, "SI", [siPrefixes("y", "d")]),
-    new SimpleUnit({
+    Unit.create({
         short: ["min"], long: {
             sg: ["minute"],
             pl: ["minutes"],
         }
     }, 60, 0, "SI"),
-    new SimpleUnit({
+    Unit.create({
         short: ["h"], long: {
             sg: ["hour"],
             pl: ["hours"],
         }
     }, 3_600, 0, "SI"),
-    new SimpleUnit({
+    Unit.create({
         short: ["d"], long: {
             sg: ["day"],
             pl: ["days"],
         }
     }, 86_400, 0, "SI"),
-    new SimpleUnit({
+    Unit.create({
         short: ["wk"], long: {
             sg: ["week"],
             pl: ["weeks"],
         }
     }, 604_800, 0, "SI"),
-    new SimpleUnit({
+    Unit.create({
         short: ["mth"], long: {
             sg: ["month"],
             pl: ["months"],
         }
     }, 2_592_000, 0, "SI"),
-    new SimpleUnit({
+    Unit.create({
         short: ["a"], long: {
             sg: ["year"],
             pl: ["years"],

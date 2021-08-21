@@ -1,7 +1,7 @@
 import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
-import SimpleUnit from "../../SimpleUnit";
-import Multiplier from "../../variable/Multiplier";
+import Unit from "../../Unit";
+import Option from "../../variable/Option";
 import Variable from "../../variable/Variable";
 import siAreaPrefixes from "../variables/siAreaPrefixes";
 
@@ -25,40 +25,40 @@ area.Editor.add(
             pl: ["%ares"],
         }
     }, 100, 0, "metric", [new Variable(true,
-        new Multiplier("c", "centi", 1e-2),
-        new Multiplier("d", "deci", 1e-1),
-        new Multiplier("da", "dec", 1e1),
-        new Multiplier("h", "hect", 1e2),
+        new Option("c", "centi", 1e-2),
+        new Option("d", "deci", 1e-1),
+        new Option("da", "dec", 1e1),
+        new Option("h", "hect", 1e2),
     )]),
-    new SimpleUnit({
+    Unit.create({
         short: ["in²", "″²", "in^2", "″^2", "″2", "in2"],
         long: {
             sg: ["square inch", "sq inch"],
             pl: ["square inches", "sq inches"],
         }
     }, 0.00064516, 0, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["ft²", "ft^2", "ft2"],
         long: {
             sg: ["square foot", "sq foot"],
             pl: ["square feet", "sq feet"],
         }
     }, 0.09290304, 0, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["mi²", "mi^2", "mi2"],
         long: {
             sg: ["square mile", "sq mile"],
             pl: ["square miles", "sq miles"],
         }
     }, 2589988.110336, 0, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["yd²", "yd^2", "yd2"],
         long: {
             sg: ["square yard", "sq yard"],
             pl: ["square yards", "sq yards"],
         }
     }, 0.83612736, 0, "imperial"),
-    new SimpleUnit({
+    Unit.create({
         short: ["ac"],
         long: {
             sg: ["acre"],
