@@ -9,8 +9,7 @@ import digital from "./groups/digital";
 import speed from "./groups/speed/speed";
 
 /**
- * Collection of a variety of different units arranged in different
- * groups like `length`, `mass`, `temperature`, etc.
+ * {@link Collection} of a variety of common units.
  * 
  * To simply convert a value from one unit to another use the `from-to`-syntax.
  * @example
@@ -28,7 +27,7 @@ import speed from "./groups/speed/speed";
  * console.log(convertable.to("°R")); // Output: 513.27
  * ```
  * 
- * To learn more about the features that this library offers, e.g. editing the collection, removing and adding units and much more, go to the official documentation.
+ * To learn more about collections in general, like editing this one, creating custom ones and many more read the documentation of the {@link Collection} class.
  */
 const units = new Collection();
 

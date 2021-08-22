@@ -70,20 +70,16 @@
 					<div class="lead">
 						<p>Represents a standard measure that is used to express amounts.</p>
 					</div>
-					<p>A unit is always part of a <a href="Group.html">Group</a> (attribute: <a href="Unit.html#group">Unit.group</a>). Groups combine units of one quantity.
-						All units of one group are described in relation to a special unit of the group - the base unit.
-						To add a unit to a group use the <a href="Group.html#Editor">Group.Editor</a>. Remember that a unit cannot be part
-					of multiple groups due to the bidirectional relation.</p>
-					<p>The exact relation between the base and another unit of the same group is defined in the converter functions <a href="Unit.html#fromBase">Unit.fromBase</a> and <a href="Unit.html#toBase">Unit.toBase</a>,
-						which are passed to every unit&#39;s constructor.
-						Thereby <code>fromBase(val: number) =&gt; number</code> defines the conversion from the base unit to the newly
-						created unit and <code>toBase(val: number) =&gt; number</code> vice versa. As a result of this simple concept, all units of a group
-					are convertible into each other.</p>
+					<p>A unit is always part of one single <a href="Group.html">Group</a> (attribute: <a href="Unit.html#group">Unit.group</a>).
+					It is always defined in relation to the base unit of its group.</p>
+					<p>The exact relation is defined in the converter functions <a href="Unit.html#fromBase">Unit.fromBase</a> and <a href="Unit.html#toBase">Unit.toBase</a>.
+						Thereby <code>fromBase(val: number) =&gt; number</code> defines the conversion from the base unit to <code>this</code> and <code>toBase(val: number) =&gt; number</code> vice versa.
+					As a result of this simple concept, all units of a group are convertible into each other.</p>
 					<p>The third important property of each unit is its <a href="Unit.html#format">Unit.format</a>.
 						This defines the unit&#39;s shape. It allows firstly the parser to recognize the unit in a string and
-					secondly it provides the basis for the <code>.format()</code> method of the <a href="Group.html#Convertable">Convertable</a>.</p>
+					secondly it provides the basis for the <code>.format()</code> method of the <a href="Collection.html#Convertable">Convertable</a>.</p>
 					<p>Lastly every unit is part of a unit system (attribute: <a href="Unit.html#system">Unit.system</a>).
-						This meta information is used for the <a href="Group.html#Convertable">Convertable</a>&#39;s <code>.asBest()</code> method.
+						This meta information is used for the <a href="Collection.html#Convertable">Convertable</a>&#39;s <code>.asBest()</code> method.
 					By default, the Convertable always remains in the same system of units.</p>
 				</div>
 			</section>
@@ -138,7 +134,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L76">src/Unit.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L73">src/Unit.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -176,7 +172,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L97">src/Unit.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L94">src/Unit.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -234,14 +230,14 @@
 					<div class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">UnitFormat</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L47">src/Unit.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L44">src/Unit.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The unit&#39;s {@link UnitFormat}. Holds the unit&#39;s unique symbols,
 								which allow the parser to recognize the unit in a string.
-							Added to that it provides the basis for the <code>.format()</code> method of the <a href="Group.html#Convertable">Convertable</a>.</p>
+							Added to that it provides the basis for the <code>.format()</code> method of the <a href="Collection.html#Convertable">Convertable</a>.</p>
 						</div>
 					</div>
 				</section>
@@ -251,7 +247,7 @@
 					<div class="tsd-signature tsd-kind-icon">from<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Converter</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L67">src/Unit.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L64">src/Unit.ts:64</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -274,7 +270,7 @@
 					<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L41">src/Unit.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L38">src/Unit.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -289,14 +285,14 @@
 					<div class="tsd-signature tsd-kind-icon">system<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L54">src/Unit.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L51">src/Unit.ts:51</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The unit system the unit is belonging to. E.g. <code>imperial</code>, <code>metric</code>, ...</p>
 						</div>
-						<p>This meta information is used for the <a href="Group.html#Convertable">Convertable</a>&#39;s <code>.asBest()</code> method.
+						<p>This meta information is used for the <a href="Collection.html#Convertable">Convertable</a>&#39;s <code>.asBest()</code> method.
 						By default, the Convertable always remains in the same system of units.</p>
 					</div>
 				</section>
@@ -306,7 +302,7 @@
 					<div class="tsd-signature tsd-kind-icon">to<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Converter</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L61">src/Unit.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L58">src/Unit.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -336,7 +332,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L144">src/Unit.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L143">src/Unit.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -359,7 +355,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L129">src/Unit.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Unit.ts#L128">src/Unit.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -386,6 +382,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
 						<a href="Collection.html" class="tsd-kind-icon">Collection</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="CollectionEditor.html" class="tsd-kind-icon">Collection<wbr>Editor</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="Convertable.html" class="tsd-kind-icon">Convertable</a>
@@ -454,9 +453,6 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>

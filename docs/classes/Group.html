@@ -65,6 +65,41 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A group combines units of one quantity. Units of one group are convertible into each other.
+							A group is always part of one single <a href="Collection.html">Collection</a>. Groups can be edited through the
+							<a href="Group.html#Editor">Group.Editor</a>. Like collections they can be modified in their entirety at runtime.
+						Each group has a unique name (<a href="Group.html#name">Group.name</a>) that serves as an id.</p>
+					</div>
+					<p>As said all units of one group are convertible into each other.
+					This works through the concept of &quot;base units&quot;:</p>
+					<p>Every group has one single base unit.
+						All other units of the group are defined in relation to this special unit.
+					In this way, the library can figure out any conversion between any units of one group.</p>
+					<p><b>Example</b>:</p>
+					<p>You create the group &quot;length&quot;.</p>
+					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">length</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Group</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;length&quot;</span><span style="color: #000000">);</span>
+</code></pre>
+					<p>You want to implement the units &quot;meter&quot;, &quot;inch&quot; and &quot;yard&quot;.
+					Now you have to decide on a unit that you want to be the base. You take &quot;meter&quot;.</p>
+					<p>After that you have to define the other units in relation to your base unit.
+					You know: <code>1 inch = 0.0254 meter</code>. So you set the ratio to <code>0.0254</code> and the shift to <code>0</code>.</p>
+					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">inch</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, </span><span style="color: #098658">0.0254</span><span style="color: #000000">, </span><span style="color: #098658">0</span><span style="color: #000000">, ...);</span>
+</code></pre>
+					<p>You know aswell: <code>1 yard = 0.9144 meter</code>. So you set the ratio to <code>0.9144</code> and the shift to <code>0</code>.</p>
+					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">yard</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, </span><span style="color: #098658">0.9144</span><span style="color: #000000">, </span><span style="color: #098658">0</span><span style="color: #000000">, ...);</span>
+</code></pre>
+					<p>The base unit&#39;s ratio is always <code>1</code>, its shift is always <code>0</code> (because <code>1 meter = 1 meter</code>).</p>
+					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">meter</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #098658">0</span><span style="color: #000000">, ...);</span>
+</code></pre>
+					<p>Now you finally have to add the units to your group. You can do that using the <a href="Group.html#Editor">Group.Editor</a>.</p>
+					<pre><code><span style="color: #001080">length</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #001080">inch</span><span style="color: #000000">, </span><span style="color: #001080">yard</span><span style="color: #000000">, </span><span style="color: #001080">meter</span><span style="color: #000000">);</span>
+</code></pre>
+					<p>And you&#39;re done.</p>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -86,24 +121,17 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Group.html#Convertable" class="tsd-kind-icon">Convertable</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Group.html#Editor" class="tsd-kind-icon">Editor</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Group.html#_internal" class="tsd-kind-icon">_internal</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Group.html#collection" class="tsd-kind-icon">collection</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Group.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Group.html#units" class="tsd-kind-icon">units</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="Group.html#None" class="tsd-kind-icon">None</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Group.html#_custom_" class="tsd-kind-icon">[custom]</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Group.html#from" class="tsd-kind-icon">from</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Group.html#isSupported" class="tsd-kind-icon">is<wbr>Supported</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Group.html#possibilities" class="tsd-kind-icon">possibilities</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Group.html#toString" class="tsd-kind-icon">to<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Group.html#unit" class="tsd-kind-icon">unit</a></li>
 							</ul>
 						</section>
 					</div>
@@ -121,13 +149,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L68">src/Group.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Group.ts#L104">src/Group.ts:104</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new group.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the group&#39;s unique name</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a></h4>
@@ -138,124 +176,23 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="Convertable" class="tsd-anchor"></a>
-					<h3>Convertable</h3>
-					<div class="tsd-signature tsd-kind-icon">Convertable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="Convertable.html" class="tsd-signature-type" data-tsd-kind="Class">Convertable</a><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L81">src/Group.ts:81</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertable.html" class="tsd-signature-type" data-tsd-kind="Class">Convertable</a></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>value: <span class="tsd-signature-type">number</span></h5>
-											</li>
-											<li>
-												<h5>unit: <span class="tsd-signature-type">string</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="Convertable.html" class="tsd-signature-type" data-tsd-kind="Class">Convertable</a></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="Editor" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> Editor</h3>
-					<div class="tsd-signature tsd-kind-icon">Editor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>add<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>units<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol"> | </span><a href="FlexibleUnit.html" class="tsd-signature-type" data-tsd-kind="Class">FlexibleUnit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">; </span>remove<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>units<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">Editor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">default</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L21">src/Group.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Group.ts#L82">src/Group.ts:82</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5>add<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>units<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol"> | </span><a href="FlexibleUnit.html" class="tsd-signature-type" data-tsd-kind="Class">FlexibleUnit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>units<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol"> | </span><a href="FlexibleUnit.html" class="tsd-signature-type" data-tsd-kind="Class">FlexibleUnit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-parameters-title">Parameters</h4>
-												<ul class="tsd-parameters">
-													<li>
-														<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>units: <span class="tsd-signature-symbol">(</span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol"> | </span><a href="FlexibleUnit.html" class="tsd-signature-type" data-tsd-kind="Class">FlexibleUnit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
-													</li>
-												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li class="tsd-parameter">
-								<h5>remove<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>units<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>units<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-parameters-title">Parameters</h4>
-												<ul class="tsd-parameters">
-													<li>
-														<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>units: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-													</li>
-												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="_internal" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> _internal</h3>
-					<div class="tsd-signature tsd-kind-icon">_internal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>_units<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L15">src/Group.ts:15</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5>_units<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol">&gt;</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol">&gt;</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol">&gt;</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The group&#39;s editor. Provides methods to add, remove and overwrite units.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p>GroupEditor</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -264,9 +201,14 @@
 					<div class="tsd-signature tsd-kind-icon">collection<span class="tsd-signature-symbol">:</span> <a href="Collection.html" class="tsd-signature-type" data-tsd-kind="Class">Collection</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L12">src/Group.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Group.ts#L61">src/Group.ts:61</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The group&#39;s collection.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="name" class="tsd-anchor"></a>
@@ -274,9 +216,14 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L13">src/Group.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Group.ts#L66">src/Group.ts:66</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The group&#39;s name. Has to be unique.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="units" class="tsd-anchor"></a>
@@ -284,98 +231,18 @@
 					<div class="tsd-signature tsd-kind-icon">units<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L11">src/Group.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Group.ts#L56">src/Group.ts:56</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="None" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> None</h3>
-					<div class="tsd-signature tsd-kind-icon">None<span class="tsd-signature-symbol">:</span> <a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L9">src/Group.ts:9</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The units of the group.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="_custom_" class="tsd-anchor"></a>
-					<h3>[custom]</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">[custom]<span class="tsd-signature-symbol">(</span>depth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L100">src/Group.ts:100</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>depth: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>options: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="from" class="tsd-anchor"></a>
-					<h3>from</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertable.html" class="tsd-signature-type" data-tsd-kind="Class">Convertable</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L78">src/Group.ts:78</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">number</span></h5>
-								</li>
-								<li>
-									<h5>unit: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="Convertable.html" class="tsd-signature-type" data-tsd-kind="Class">Convertable</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="isSupported" class="tsd-anchor"></a>
-					<h3>is<wbr>Supported</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Supported<span class="tsd-signature-symbol">(</span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L83">src/Group.ts:83</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>unit: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="possibilities" class="tsd-anchor"></a>
 					<h3>possibilities</h3>
@@ -386,10 +253,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L56">src/Group.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Group.ts#L88">src/Group.ts:88</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a string array containing the short names of all units of this group.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>a string array containing the short names of all units of this group.</p>
 						</li>
 					</ul>
 				</section>
@@ -403,33 +276,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L87">src/Group.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/4270e15/src/Group.ts#L112">src/Group.ts:112</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the group as human-readable string.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="unit" class="tsd-anchor"></a>
-					<h3>unit</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">unit<span class="tsd-signature-symbol">(</span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Group.ts#L72">src/Group.ts:72</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>unit: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></h4>
+							<p>the group as string</p>
 						</li>
 					</ul>
 				</section>
@@ -449,6 +305,9 @@
 						<a href="Collection.html" class="tsd-kind-icon">Collection</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="CollectionEditor.html" class="tsd-kind-icon">Collection<wbr>Editor</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="Convertable.html" class="tsd-kind-icon">Convertable</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -463,13 +322,7 @@
 								<a href="Group.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="Group.html#Convertable" class="tsd-kind-icon">Convertable</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="Group.html#Editor" class="tsd-kind-icon">Editor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="Group.html#_internal" class="tsd-kind-icon">_internal</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="Group.html#collection" class="tsd-kind-icon">collection</a>
@@ -480,26 +333,11 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="Group.html#units" class="tsd-kind-icon">units</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="Group.html#None" class="tsd-kind-icon">None</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="Group.html#_custom_" class="tsd-kind-icon">[custom]</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="Group.html#from" class="tsd-kind-icon">from</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="Group.html#isSupported" class="tsd-kind-icon">is<wbr>Supported</a>
-							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Group.html#possibilities" class="tsd-kind-icon">possibilities</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Group.html#toString" class="tsd-kind-icon">to<wbr>String</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="Group.html#unit" class="tsd-kind-icon">unit</a>
 							</li>
 						</ul>
 					</li>
@@ -533,9 +371,6 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>

@@ -1,16 +1,62 @@
 import { inspect } from "util";
+import CollectionEditor from "./CollectionEditor";
 import Convertable from "./Convertable";
 import UnknownGroupError from "./errors/UnknownGroupError";
 import UnknownUnitError from "./errors/UnknownUnitError";
 import Group from "./Group";
 import Unit from "./Unit";
 
+/**
+ * Represents a collection of units (see {@link Unit}) structured in groups (see {@link Group}).
+ * 
+ * Offers key functionality like converting from one unit to another.
+ * Is the center at which all of the library's features are brought together.
+ * 
+ * The basic structure of any collection is basically following: A collection is the parent of
+ * multiple groups. Groups are parents of multiple units.
+ * 
+ * <b>Example</b>:
+ * ```
+ * Collection
+ *  |
+ *  |____Group "length"
+ *  |      |___Unit "meter"
+ *  |      |___Unit "inch"
+ *  |      |___ (...)
+ *  |____Group "mass"
+ *  |      |___Unit "kilogram"
+ *  |      |___Unit "pound"
+ *  |      |___ (...)
+ *  |____Group "custom"
+ *  |      |___Unit "small coins"
+ *  |      |___Unit "big coins"
+ * 
+ * ```
+ * 
+ * Collections are not static. In fact they are very flexible. You can add, overwrite and remove unit groups using the {@link Collection.Editor}.
+ * Added to that groups are editable in the same way (see {@link Group.Editor}), 
+ * which leads to the fact that groups can be modified in their entirety at runtime.
+ */
 export default class Collection {
+    /**
+     * @hidden
+     */
     public static None = new Collection();
 
+    /**
+     * All units of the collection arranged in a map.
+     * @hidden
+     */
     private units = new Map<string, Unit>();
+
+    /**
+     * All groups of the collection arranged in a map.
+     */
     private groups = new Map<string, Group>();
 
+    /**
+     * @hidden
+     */
     readonly _internal = {
         _setUnit: (name: string, unit: Unit) => {
             this.units.set(name, unit);
@@ -18,48 +64,32 @@ export default class Collection {
 
         _deleteUnit: (name: string) => {
             this.units.delete(name);
-        }
+        },
+
+        _groups: () => this.groups,
+
+        _units: () => this.units,
     }
 
-    readonly Editor = {
-        select: (...groups: string[]) => {
-            const groupsToRemove: string[] = [];
-            this.groups.forEach((group, key) => {
-                if (!groups.includes(key)) groupsToRemove.push(key);
-            });
-            this.Editor.remove(...groupsToRemove);
-        },
+    /**
+     * The collection's editor. Provides methods to add, remove and overwrite unit groups.
+     * 
+     * @see CollectionEditor
+     */
+    readonly Editor = new CollectionEditor(this);
 
-        add: (...groups: Group[]) => {
-            for (const group of groups) {
-                // Remove group if already existing
-                if (this.groups.get(group.name)) {
-                    this.Editor.remove(group.name);
-                }
-                // Add group
-                group.collection = this;
-                this.groups.set(group.name, group);
+    /**
+     * Creates a new collection.
+     */
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    constructor() {
 
-                const unitMap = group._internal._units();
-                unitMap.forEach((unit, key) => {
-                    this.units.set(key, unit);
-                });
-            }
-        },
+    }
 
-        remove: (...groups: string[]) => {
-            for (const group of groups) {
-                const resolvedGroup = this.groups.get(group);
-                if (resolvedGroup) {
-                    this.groups.delete(group);
-                    resolvedGroup._internal._units().forEach((unit, key) => {
-                        this.units.delete(key);
-                    });
-                }
-            }
-        },
-    };
-
+    /**
+     * Returns a string array containing the short names of all units.
+     * @returns a string array containing the short names of all units
+     */
     possibilities() {
         const units: Unit[] = [];
         const keys: string[] = [];
@@ -72,16 +102,33 @@ export default class Collection {
         return keys;
     }
 
+    /**
+     * Returns whether the passed unit is supported.
+     * @param unit the unit
+     * @returns whether the passed unit is supported
+     */
     isSupported(unit: string) {
         return Boolean(this.units.get(unit));
     }
 
+    /**
+     * Returns the unit object belonging to the given unit.
+     * @param unit the unit
+     * @returns the unit object belonging to the given unit
+     * @see Unit
+     */
     unit(unit: string) {
         const result = this.units.get(unit);
         if (!result) throw new UnknownUnitError(`Unknown unit '${unit}'!`);
         return result;
     }
 
+    /**
+     * Returns the group having the passed name.
+     * @param group the group's name
+     * @returns the group itself
+     * @see Group
+     */
     group(group: string) {
         const result = this.groups.get(group);
         if (!result) throw new UnknownGroupError(`Unknown unit '${group}'!`);
@@ -91,8 +138,15 @@ export default class Collection {
     from(value: number, unit: string) {
         return new Convertable(value, this.unit(unit));
     }
+    /**
+     * @method
+     */
     Convertable = this.from;
 
+    /**
+     * Returns the collection as human-readable string.
+     * @returns the collection as string
+     */
     toString() {
         let result = "Collection [\n";
         this.groups.forEach((group, key) => {
@@ -110,6 +164,9 @@ export default class Collection {
         return result;
     }
 
+    /**
+     * @hidden
+     */
     [inspect.custom](depth: any, options: any) {
         let result = "Collection [\n";
         this.groups.forEach((group, key) => {

@@ -16,16 +16,12 @@ export type UnitFormat = {
 /**
  * Represents a standard measure that is used to express amounts. 
  * 
- * A unit is always part of a {@link Group} (attribute: {@link Unit.group}). Groups combine units of one quantity.
- * All units of one group are described in relation to a special unit of the group - the base unit.
- * To add a unit to a group use the {@link Group.Editor}. Remember that a unit cannot be part
- * of multiple groups due to the bidirectional relation.
+ * A unit is always part of one single {@link Group} (attribute: {@link Unit.group}).
+ * It is always defined in relation to the base unit of its group.
  * 
- * The exact relation between the base and another unit of the same group is defined in the converter functions {@link Unit.fromBase} and {@link Unit.toBase},
- * which are passed to every unit's constructor. 
- * Thereby `fromBase(val: number) => number` defines the conversion from the base unit to the newly
- * created unit and `toBase(val: number) => number` vice versa. As a result of this simple concept, all units of a group
- * are convertible into each other.
+ * The exact relation is defined in the converter functions {@link Unit.fromBase} and {@link Unit.toBase}.
+ * Thereby `fromBase(val: number) => number` defines the conversion from the base unit to `this` and `toBase(val: number) => number` vice versa. 
+ * As a result of this simple concept, all units of a group are convertible into each other.
  *
  * The third important property of each unit is its {@link Unit.format}. 
  * This defines the unit's shape. It allows firstly the parser to recognize the unit in a string and 

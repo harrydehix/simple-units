@@ -9,6 +9,9 @@ export type FormatOptions = {
 export default class Convertable {
     value: number;
     unit: Unit;
+    /**
+     * @hidden
+     */
     _internal = {
         _toUnit: (unit: Unit) => {
             this.value = this.unit.toBase(this.value);
