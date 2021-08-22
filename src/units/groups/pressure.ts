@@ -13,27 +13,27 @@ pressure.Editor.add(
         short: ["%Pa"],
         long: { sg: ["%pascal"], pl: ["%pascals"] },
     }, 1, 0, "metric", [siPrefixes("μ")]),
-    Unit.create({
+    new Unit({
         short: ["bar"],
         long: { sg: ["Bar"], pl: ["Bars"] }
     }, 1e5, 0, "metric"),
-    Unit.create({
+    new Unit({
         short: ["torr"],
         long: { sg: ["Torr"], pl: ["Torrs"] }
     }, 133.3224, 0, "metric"),
-    Unit.create({
+    new Unit({
         short: ["atm"],
         long: { sg: ["standard atmosphere"], pl: ["standard atmospheres"] }
     }, 101325, 0, "imperial"),
-    Unit.create({
+    new Unit({
         short: ["Mpsi"],
         long: { sg: ["megapound per square inch"], pl: ["megapounds per square inch"] }
     }, 6_894_757_293.16836133672267344534689069378, 0, "imperial"),
-    Unit.create({
+    new Unit({
         short: ["psi", "lb. p. sq. in.", "psia", "psig"],
         long: { sg: ["pound-force per square inch", "pound per square inch"], pl: ["pounds per square inch"] }
     }, 6894.75729316836133672267344534689069378, 0, "imperial"),
-    Unit.create({
+    new Unit({
         short: ["ksi"],
         long: { sg: ["kilopound per square inch"], pl: ["kilopounds per square inch"] }
     }, 6894757.29316836133672267344534689069378, 0, "imperial"),

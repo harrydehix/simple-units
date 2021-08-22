@@ -5,7 +5,7 @@ import units from "./units/units";
 const customGroup = new Group("custom");
 
 customGroup.Editor.add(
-    Unit.create({
+    new Unit({
         short: ["ss"],
         long: {
             sg: ["some"],
@@ -15,7 +15,7 @@ customGroup.Editor.add(
 )
 
 units.Editor.add(customGroup);
-units.group("length").Editor.add(Unit.create({
+units.group("length").Editor.add(new Unit({
     short: ["m"],
     long: {
         sg: ["manga"],

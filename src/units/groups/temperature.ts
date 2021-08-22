@@ -7,28 +7,28 @@ import Unit from "../../Unit";
 const temperature = new Group("temperature");
 
 temperature.Editor.add(
-    Unit.create({
+    new Unit({
         short: ["°F"],
         long: {
             sg: ["degree Fahrenheit"],
             pl: ["degrees Fahrenheit"]
         }
     }, 5 / 9, 45967 / 180, "imperial"),
-    Unit.create({
+    new Unit({
         short: ["°C"],
         long: {
             sg: ["degree Celsius"],
             pl: ["degrees Celsius"]
         }
     }, 1, 273.15, "metric"),
-    Unit.create({
+    new Unit({
         short: ["K"],
         long: {
             sg: ["Kelvin"],
             pl: ["Kelvin"]
         }
     }, 1, 0, "metric"),
-    Unit.create({
+    new Unit({
         short: ["°R"],
         long: {
             sg: ["degree Rankine"],

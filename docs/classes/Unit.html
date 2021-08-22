@@ -120,7 +120,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Unit.html#possibilities" class="tsd-kind-icon">possibilities</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Unit.html#toString" class="tsd-kind-icon">to<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="Unit.html#create" class="tsd-kind-icon">create</a></li>
 							</ul>
 						</section>
 					</div>
@@ -132,13 +131,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Unit<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UnitFormat</span>, toBase<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Converter</span>, fromBase<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Converter</span>, system<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Unit<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UnitFormat</span>, fromBase<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Converter</span>, toBase<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Converter</span>, system<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Unit<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UnitFormat</span>, ratio<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, shift<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, system<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L76">src/Unit.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L76">src/Unit.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -157,20 +157,60 @@
 									</div>
 								</li>
 								<li>
+									<h5>fromBase: <span class="tsd-signature-type">Converter</span></h5>
+								</li>
+								<li>
 									<h5>toBase: <span class="tsd-signature-type">Converter</span></h5>
+								</li>
+								<li>
+									<h5>system: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>function to convert a value from this unit to the group&#39;s base unit</p>
+											<p>the unit system the unit is belonging to</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L97">src/Unit.ts:97</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a standard measure that is used to express amounts.</p>
+								</div>
+								<p>Using this constructor function one doesn&#39;t need to specify functions describing how to convert the unit to the group&#39;s base unit and vice versa.</p>
+								<p>Instead one only specifies the mathematical relation the the base unit - in the form of a ratio and a shift.</p>
+								<p><b>Example</b>: You want to define the unit <i>Celsius</i> and you have already defined the base unit <i>Kelvin</i>.
+									You know the formula to convert a value from <i>Celsius</i> to <i>Kelvin</i> is: <code>°C + 273.15 = °K</code>.
+								Using the other constructor function you had to write the following:</p>
+								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> + </span><span style="color: #098658">273.15</span><span style="color: #000000">, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> - </span><span style="color: #098658">273.15</span><span style="color: #000000">, ...);</span>
+</code></pre>
+								<p>As you see there is repetitive code. Couldn&#39;t one save one of the two converter functions?
+								Lets see how we create the unit using this constructor.</p>
+								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #098658">273.15</span><span style="color: #000000">, ...)</span>
+</code></pre>
+								<p><code>1</code> is the ratio between the units, <code>273.15</code> the shift. Much easier, isn&#39;t it? And no repetitive code!</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>format: <span class="tsd-signature-type">UnitFormat</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the unit&#39;s format, holds the unit&#39;s different symbols (e.g. <code>m, metre, meters</code> for the unit meter)</p>
 										</div>
 									</div>
 								</li>
 								<li>
-									<h5>fromBase: <span class="tsd-signature-type">Converter</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>function to convert a value from the group&#39;s base unit to this unit</p>
-										</div>
-									</div>
+									<h5>ratio: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>shift: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
 									<h5>system: <span class="tsd-signature-type">string</span></h5>
@@ -194,7 +234,7 @@
 					<div class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">UnitFormat</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L47">src/Unit.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L47">src/Unit.ts:47</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -211,7 +251,7 @@
 					<div class="tsd-signature tsd-kind-icon">from<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Converter</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L67">src/Unit.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L67">src/Unit.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -234,7 +274,7 @@
 					<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L41">src/Unit.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L41">src/Unit.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -249,7 +289,7 @@
 					<div class="tsd-signature tsd-kind-icon">system<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L54">src/Unit.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L54">src/Unit.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -266,7 +306,7 @@
 					<div class="tsd-signature tsd-kind-icon">to<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Converter</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L61">src/Unit.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L61">src/Unit.ts:61</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -296,7 +336,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L133">src/Unit.ts:133</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L144">src/Unit.ts:144</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -319,7 +359,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L118">src/Unit.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/Unit.ts#L129">src/Unit.ts:129</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -329,55 +369,6 @@
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 							<p>the unit&#39;s standard string representation</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="create" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UnitFormat</span>, ratio<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, shift<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, system<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/Unit.ts#L103">src/Unit.ts:103</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>An alternative to the unit&#39;s default constructor.</p>
-								</div>
-								<p>Using this static method one doesn&#39;t need to specify functions describing how to convert the unit to the group&#39;s base unit and vice versa.</p>
-								<p>Instead one only specifies the mathematical relation the the base unit - in the form of a ratio and a shift.</p>
-								<p><b>Example</b>: You want to define the unit <i>Celsius</i> and you have already defined the base unit <i>Kelvin</i>.
-									You know the formula to convert a value from <i>Celsius</i> to <i>Kelvin</i> is: <code>°C + 273.15 = °K</code>.
-								Using the <code>Unit</code> class you had to write the following:</p>
-								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> + </span><span style="color: #098658">273.15</span><span style="color: #000000">, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> - </span><span style="color: #098658">273.15</span><span style="color: #000000">, ...);</span>
-</code></pre>
-								<p>As you see there is repetitive code. Couldn&#39;t one save one of the two converter functions?
-								Lets see how we create the unit using the <code>SimpleUnit</code> class.</p>
-								<pre><code><span style="color: #001080">Unit</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">({...}, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #098658">273.15</span><span style="color: #000000">, ...)</span>
-</code></pre>
-								<p><code>1</code> is the ratio between the units, <code>273.15</code> the shift. Much easier, isn&#39;t it? And no repetitive code!</p>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>format: <span class="tsd-signature-type">UnitFormat</span></h5>
-								</li>
-								<li>
-									<h5>ratio: <span class="tsd-signature-type">number</span></h5>
-								</li>
-								<li>
-									<h5>shift: <span class="tsd-signature-type">number</span></h5>
-								</li>
-								<li>
-									<h5>system: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -437,9 +428,6 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Unit.html#toString" class="tsd-kind-icon">to<wbr>String</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="Unit.html#create" class="tsd-kind-icon">create</a>
-							</li>
 						</ul>
 					</li>
 				</ul>
@@ -465,11 +453,10 @@
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>

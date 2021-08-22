@@ -16,14 +16,14 @@ length.Editor.add(
             pl: ["%meters", "%metres"]
         }
     }, 1, 0, "metric", [siPrefixes()]),
-    Unit.create({
+    new Unit({
         short: ["in", "″"],
         long: {
             sg: ["inch"],
             pl: ["inches"]
         }
     }, 0.0254, 0, "imperial"),
-    Unit.create(
+    new Unit(
         {
             short: ["yd"],
             long: {
@@ -31,21 +31,21 @@ length.Editor.add(
                 pl: ["yards"]
             }
         }, 0.9144, 0, "imperial"),
-    Unit.create({
+    new Unit({
         short: ["ly"],
         long: {
             sg: ["light-year", "lightyear"],
             pl: ["light-years", "lightyears"]
         }
     }, 9460730472580800, 0, "astronomy units"),
-    Unit.create({
+    new Unit({
         short: ["ft"],
         long: {
             sg: ["foot"],
             pl: ["feet"]
         }
     }, 0.3048, 0, "imperial"),
-    Unit.create({
+    new Unit({
         short: ["mi", "mi."],
         long: {
             sg: ["mile"],

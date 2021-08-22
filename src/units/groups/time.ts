@@ -16,37 +16,37 @@ time.Editor.add(
             pl: ["%seconds"],
         }
     }, 1, 0, "SI", [siPrefixes("y", "d")]),
-    Unit.create({
+    new Unit({
         short: ["min"], long: {
             sg: ["minute"],
             pl: ["minutes"],
         }
     }, 60, 0, "SI"),
-    Unit.create({
+    new Unit({
         short: ["h"], long: {
             sg: ["hour"],
             pl: ["hours"],
         }
     }, 3_600, 0, "SI"),
-    Unit.create({
+    new Unit({
         short: ["d"], long: {
             sg: ["day"],
             pl: ["days"],
         }
     }, 86_400, 0, "SI"),
-    Unit.create({
+    new Unit({
         short: ["wk"], long: {
             sg: ["week"],
             pl: ["weeks"],
         }
     }, 604_800, 0, "SI"),
-    Unit.create({
+    new Unit({
         short: ["mth"], long: {
             sg: ["month"],
             pl: ["months"],
         }
     }, 2_592_000, 0, "SI"),
-    Unit.create({
+    new Unit({
         short: ["a"], long: {
             sg: ["year"],
             pl: ["years"],

@@ -75,7 +75,7 @@
 					<p>This is done via so-called &quot;variables&quot; (<a href="Variable.html">Variable</a>),
 					which are integrated into the format of the unit (<a href="Unit.html#format">Unit.format</a>).</p>
 					<p><b>Example</b>: We have the unit &quot;meter&quot; (as base unit):</p>
-					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">meter</span><span style="color: #000000"> = </span><span style="color: #001080">Unit</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">({ </span><span style="color: #001080">short:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;m&quot;</span><span style="color: #000000">],</span>
+					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">meter</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({ </span><span style="color: #001080">short:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;m&quot;</span><span style="color: #000000">],</span>
 <span style="color: #000000">     </span><span style="color: #001080">long:</span><span style="color: #000000"> {</span>
 <span style="color: #000000">         </span><span style="color: #001080">sg:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;meter&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;metre&quot;</span><span style="color: #000000">],</span>
 <span style="color: #000000">         </span><span style="color: #001080">pl:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;meters&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;metres&quot;</span><span style="color: #000000">]</span>
@@ -83,14 +83,14 @@
 <span style="color: #000000">}, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #098658">0</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;metric&quot;</span><span style="color: #000000">);</span>
 </code></pre>
 					<p>Now we also want to create the units &quot;kilometers&quot; and &quot;centimeters&quot;. We could now simply define two more units:</p>
-					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">kilometer</span><span style="color: #000000"> = </span><span style="color: #001080">Unit</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">({ </span><span style="color: #001080">short:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;km&quot;</span><span style="color: #000000">],</span>
+					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">kilometer</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({ </span><span style="color: #001080">short:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;km&quot;</span><span style="color: #000000">],</span>
 <span style="color: #000000">     </span><span style="color: #001080">long:</span><span style="color: #000000"> {</span>
 <span style="color: #000000">         </span><span style="color: #001080">sg:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;kilometer&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;kilometre&quot;</span><span style="color: #000000">],</span>
 <span style="color: #000000">         </span><span style="color: #001080">pl:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;kilometers&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;kilometres&quot;</span><span style="color: #000000">]</span>
 <span style="color: #000000">     }</span>
 <span style="color: #000000">}, </span><span style="color: #098658">1000</span><span style="color: #000000">, </span><span style="color: #098658">0</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;metric&quot;</span><span style="color: #000000">);</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">centimeter</span><span style="color: #000000"> = </span><span style="color: #001080">Unit</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">({ </span><span style="color: #001080">short:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;cm&quot;</span><span style="color: #000000">],</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">centimeter</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({ </span><span style="color: #001080">short:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;cm&quot;</span><span style="color: #000000">],</span>
 <span style="color: #000000">     </span><span style="color: #001080">long:</span><span style="color: #000000"> {</span>
 <span style="color: #000000">         </span><span style="color: #001080">sg:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;centimeter&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;centimetre&quot;</span><span style="color: #000000">],</span>
 <span style="color: #000000">         </span><span style="color: #001080">pl:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;centimeters&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;centimetres&quot;</span><span style="color: #000000">]</span>
@@ -120,9 +120,9 @@
 					<p>The second new thing is the changed definition of the format of the unit.
 						Each term is now preceded by a <code>%</code>. This serves as a placeholder for the previously defined variable.
 						Thus <code>%m</code> becomes <code>km</code>, <code>cm</code> and <code>m</code>. Of course, the FlexibleUnit knows nothing about the previous definition of
-						the variable, which is why we pass it into the constructor. You may wonder why we pass it in an array.
-						The reason is that multiple variables are also supported. In this case, the first percent sign in the format
-					then represents the first variable, the second percent sign represents the second variable, and so on.</p>
+						the variable, which is why we pass it into the constructor. You may wonder why we pass it as a part of an array.
+						The reason for this is that not only one but also several variables are supported. In this case, the first <code>%</code> in the format
+					then represents the first variable, the second <code>%</code> represents the second variable, and so on.</p>
 					<p>And that&#39;s it!</p>
 				</div>
 			</section>
@@ -159,7 +159,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/fdd4ace/src/FlexibleUnit.ts#L132">src/FlexibleUnit.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/084e4a9/src/FlexibleUnit.ts#L132">src/FlexibleUnit.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -175,7 +175,7 @@
 									<h5>format: <span class="tsd-signature-type">UnitFormat</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>the unit&#39;s format</p>
+											<p>the unit&#39;s format (<code>%</code> = variable)</p>
 										</div>
 									</div>
 								</li>
@@ -276,11 +276,10 @@
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>

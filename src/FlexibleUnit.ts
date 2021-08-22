@@ -16,7 +16,7 @@ import Variable from "./variable/Variable";
  * 
  * <b>Example</b>: We have the unit "meter" (as base unit):
  * ```
- * const meter = Unit.create({ short: ["m"],
+ * const meter = new Unit({ short: ["m"],
  *      long: {
  *          sg: ["meter", "metre"],
  *          pl: ["meters", "metres"]
@@ -25,14 +25,14 @@ import Variable from "./variable/Variable";
  * ```
  * Now we also want to create the units "kilometers" and "centimeters". We could now simply define two more units:
  * ```
- * const kilometer = Unit.create({ short: ["km"],
+ * const kilometer = new Unit({ short: ["km"],
  *      long: {
  *          sg: ["kilometer", "kilometre"],
  *          pl: ["kilometers", "kilometres"]
  *      }
  * }, 1000, 0, "metric");
  * 
- * const centimeter = Unit.create({ short: ["cm"],
+ * const centimeter = new Unit({ short: ["cm"],
  *      long: {
  *          sg: ["centimeter", "centimetre"],
  *          pl: ["centimeters", "centimetres"]
@@ -148,7 +148,7 @@ export default class FlexibleUnit {
         for (const combo of combos) {
             const newFormat = this.generateUnitFormat(combo);
             const newRatio = this.generateRatio(combo);
-            units.push(Unit.create(newFormat, newRatio, this.shift, this.system));
+            units.push(new Unit(newFormat, newRatio, this.shift, this.system));
         }
         return units;
     }

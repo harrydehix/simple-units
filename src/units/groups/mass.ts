@@ -23,21 +23,21 @@ mass.Editor.add(
             pl: ["%metric tons"],
         }
     }, 1e6, 0, "metric", [siPrefixes("da")]),
-    Unit.create({
+    new Unit({
         short: ["t"],
         long: {
             sg: ["ton", "short ton"],
             pl: ["tons", "short tons"],
         }
     }, 907_184.74, 0, "imperial"),
-    Unit.create({
+    new Unit({
         short: ["oz", "oz av"],
         long: {
             sg: ["ounce", "avoirdupois ounce"],
             pl: ["ounces", "avoirdupois ounces"],
         }
     }, 28.349523125, 0, "imperial"),
-    Unit.create({
+    new Unit({
         short: ["lb", "lb av"],
         long: {
             sg: ["pound", "avoirdupois pound", "pound-mass"],

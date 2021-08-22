@@ -69,46 +69,57 @@ export default class Unit {
     /**
      * Creates a standard measure that is used to express amounts.
      * @param format the unit's format, holds the unit's different symbols (e.g. `m, metre, meters` for the unit meter)
-     * @param toBase function to convert a value from this unit to the group's base unit
-     * @param fromBase function to convert a value from the group's base unit to this unit
+     * @param var1 function to convert a value from this unit to the group's base unit
+     * @param var2 function to convert a value from the group's base unit to this unit
      * @param system the unit system the unit is belonging to
      */
-    constructor(format: UnitFormat, toBase: Converter, fromBase: Converter, system: string) {
-        this.format = format;
-        this.system = system;
-        this.toBase = toBase;
-        this.fromBase = fromBase;
-    }
-
+    constructor(format: UnitFormat, fromBase: Converter, toBase: Converter, system: string);
     /**
-     * An alternative to the unit's default constructor.
+     * Creates a standard measure that is used to express amounts.
      *
-     * Using this static method one doesn't need to specify functions describing how to convert the unit to the group's base unit and vice versa.
+     * Using this constructor function one doesn't need to specify functions describing how to convert the unit to the group's base unit and vice versa.
      *
      * Instead one only specifies the mathematical relation the the base unit - in the form of a ratio and a shift.
      *
      * <b>Example</b>: You want to define the unit <i>Celsius</i> and you have already defined the base unit <i>Kelvin</i>.
      * You know the formula to convert a value from <i>Celsius</i> to <i>Kelvin</i> is: `°C + 273.15 = °K`.
-     * Using the `Unit` class you had to write the following:
+     * Using the other constructor function you had to write the following:
      * ```
      * new Unit({...}, (val) => val + 273.15, (val) => val - 273.15, ...);
      * ```
      * As you see there is repetitive code. Couldn't one save one of the two converter functions?
-     * Lets see how we create the unit using the `SimpleUnit` class.
+     * Lets see how we create the unit using this constructor.
      * ```
-     * Unit.create({...}, 1, 273.15, ...)
+     * new Unit({...}, 1, 273.15, ...)
      * ```
      * `1` is the ratio between the units, `273.15` the shift. Much easier, isn't it? And no repetitive code!
     */
-    static create(format: UnitFormat, ratio: number, shift: number, system: string): Unit {
-        return new Unit(format,
-            (val: number) => {
-                return val * ratio + shift;
-            },
-            (val: number) => {
-                return (val - shift) / ratio;
-            },
-            system);
+    constructor(format: UnitFormat, ratio: number, shift: number, system: string);
+    /**
+     * @hidden
+     * @param format 
+     * @param var1 
+     * @param var2 
+     * @param system 
+     */
+    constructor(format: UnitFormat, var1: Converter | number, var2: Converter | number, system: string) {
+        this.format = format;
+        this.system = system;
+        if (typeof var1 === "object" && typeof var2 === "object") {
+            this.toBase = var1;
+            this.fromBase = var2;
+        }
+        if (typeof var1 === "number" && typeof var2 === "number") {
+            this.toBase =
+                (val: number) => {
+                    return val * var1 + var2;
+                }
+            this.fromBase =
+                (val: number) => {
+                    return (val - var2) / var1;
+                }
+        }
+        throw new Error("");
     }
 
     /**
