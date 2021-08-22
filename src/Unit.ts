@@ -1,6 +1,7 @@
 import { inspect } from "util";
 import Group from "./Group";
 import { Convertable } from ".";
+import IllegalArgumentsError from "./errors/IllegalArgumentsError";
 
 export type Converter = (val: number) => number;
 
@@ -95,7 +96,9 @@ export default class Unit {
      * `1` is the ratio between the units, `273.15` the shift. Much easier, isn't it? And no repetitive code!
     */
     constructor(format: UnitFormat, ratio: number, shift: number, system: string);
+
     /**
+     * See overloads above. 
      * @hidden
      * @param format 
      * @param var1 
@@ -119,7 +122,7 @@ export default class Unit {
                     return (val - var2) / var1;
                 }
         }
-        throw new Error("");
+        throw new IllegalArgumentsError(`Failed to create unit '${format.short[0]}'. Illegal arguments were passed. Read the documentation for more details.`);
     }
 
     /**
