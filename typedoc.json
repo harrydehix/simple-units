@@ -2,5 +2,6 @@
     "entryPoints": [
         "src/index.ts"
     ],
-    "out": "docs"
+    "out": "docs",
+    "theme": "pages-plugin"
 }

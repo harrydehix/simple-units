@@ -1,5 +1,5 @@
 # simple-units
- ![GitHub milestones](https://img.shields.io/github/milestones/all/harrydehix/unitjs) ![GitHub last commit](https://img.shields.io/github/last-commit/harrydehix/unitjs)<br>
+ ![GitHub milestones](https://img.shields.io/github/milestones/all/harrydehix/simple-units) ![GitHub last commit](https://img.shields.io/github/last-commit/harrydehix/simple-units)<br>
 unit converter with focus on the golden mean between simplicity, customizability and performance
 
 # Key Features
@@ -24,9 +24,8 @@ units.group("length").Editor.add(myCustomUnit);
 ```
 
 # Documentation
-It is recommended to read the [introduction](./guides/introduction.md) first.
 
-The full documentation is still in progress.
+Read the full documentation including useful guides [here]().
 
 # Supported Units
 

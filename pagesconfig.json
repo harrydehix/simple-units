@@ -1,0 +1,13 @@
+{
+    "groups": [
+        {
+            "title": "Guides",
+            "pages": [
+                {
+                    "title": "Introduction",
+                    "source": "./guides/introduction.md"
+                }
+            ]
+        }
+    ]
+}

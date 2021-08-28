@@ -3,7 +3,7 @@ import units from "./units/units";
 import convert1 from "convert";
 import convert2 from "convert-units";
 
-function unitjs() {
+function simpleUnits() {
     units.from(12, "°C").to("°F");
     units.from(100, "m").to("inch");
     units.from(200, "Gb").to("MB");
@@ -27,4 +27,4 @@ function convertUnits() {
     convert2(200).from("Gb").to("MB");
 }
 
-compareFunctions(convertUnits, convert, unitjs, math);
+compareFunctions(convertUnits, convert, simpleUnits, math);
