@@ -25,7 +25,9 @@ units.group("length").Editor.add(myCustomUnit);
 
 # Documentation
 
-Read the full documentation including useful guides [here]().
+⛔ Documentation still in progress ⛔
+
+Read the full documentation including useful guides [here](). 
 
 # Supported Units
 
@@ -376,5 +378,6 @@ Read the full documentation including useful guides [here]().
 
 # Roadmap
 
-* Implement units listed above
-* Document functions, classes, etc.
+* Implement more units
+* Finish documentation
+* Host documentation on my website
