@@ -1,4 +1,6 @@
-import { Collection, Group } from ".";
+import Collection from "./Collection";
+import Group from "./Group";
+
 
 /**
  * Editor of a {@link Collection}. Provides methods to add, remove and overwrite unit groups.

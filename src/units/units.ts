@@ -17,14 +17,14 @@ import speed from "./groups/speed/speed";
  * const converted = units.from(12, "°C").to("°F");
  * console.log(converted); // Output: 56.6
  * ```
- * If you want to convert the same value into different units you should use the  `Convertable`-syntax to safe some time
+ * If you want to convert the same value into different units you should use the  `Convertible`-syntax to safe some time
  * and memory.
  * @example
  * ```
- * const convertable = units.Convertable(12, "°C");
- * console.log(convertable.to("°F")); // Output: 56.6
- * console.log(convertable.to("K"));  // Output: 285.15
- * console.log(convertable.to("°R")); // Output: 513.27
+ * const convertible = units.Convertible(12, "°C");
+ * console.log(convertible.to("°F")); // Output: 56.6
+ * console.log(convertible.to("K"));  // Output: 285.15
+ * console.log(convertible.to("°R")); // Output: 513.27
  * ```
  * 
  * To learn more about collections in general, like editing this one, creating custom ones and many more read the documentation of the {@link Collection} class.

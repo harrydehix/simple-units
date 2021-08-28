@@ -1,9 +1,13 @@
-import { Unit } from ".";
-import Group from "./Group";
+import 'source-map-support/register'
 import units from "./units/units";
+import Group from "./Group";
+import Unit from "./Unit";
 
+
+console.log("LOL")
 const customGroup = new Group("custom");
 
+console.log("WTF")
 customGroup.Editor.add(
     new Unit({
         short: ["ss"],
@@ -13,8 +17,9 @@ customGroup.Editor.add(
         }
     }, 1, 0, "other")
 )
-
+console.log("here")
 units.Editor.add(customGroup);
+
 units.group("length").Editor.add(new Unit({
     short: ["m"],
     long: {
@@ -25,5 +30,7 @@ units.group("length").Editor.add(new Unit({
 
 
 console.log(units.isSupported("manga"))
-console.log(units.from(12, "knot").as("Bft"));
-console.log(units.possibilities())
+console.log(units.from(12.2323123, "knot").format("%.2f %s", { length: "long" }));
+const convertible = units.Convertible(12, "kt");
+
+console.log(convertible.possibilities());

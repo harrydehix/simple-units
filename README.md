@@ -1,37 +1,30 @@
-# unitjs
+# simple-units
  ![GitHub milestones](https://img.shields.io/github/milestones/all/harrydehix/unitjs) ![GitHub last commit](https://img.shields.io/github/last-commit/harrydehix/unitjs)<br>
-expandable, flexible unit system, providing unit conversion on small and large scale
+unit converter with focus on the golden mean between simplicity, customizability and performance
 
-# Usage
-## Importing
-```javascript
-const units = require("unitjs");
-```
-or
-```typescript
-import units from "unitjs";
-```
+# Key Features
 ## Converting
-### `from-to-Syntax`
 ```typescript
-let converted = units.from(3, "cm").to("in"); // converts value, returns number
-console.log(converted); // output: 1.1811
+const converted = units.from(3, "cm").to("in");
+console.log(converted); 
+// Output: 1.1811
 ```
-### `Convertable-Syntax`
-```typescript
-const convertable = units.Convertable(30, "cm"); // creates convertable
-console.log(convertable) // Output: 30cm
-convertable.as("m"); // converts convertable
-console.log(convertable.value); // Output: 0.3
-console.log(convertable.as("cm")); // Output: 30cm
-console.log(convertable.asBest()); // Output: 3dm
-```
+Read more about converting [here]().
 ## Formatting
 ```typescript
-const convertable = units.Convertable(3, "cm"); 
-console.log(convertable.format({ length: "long", divider: " "})); 
+const convertible = units.Convertible(3, "cm"); 
+console.log(convertible.format({ length: "long", divider: " "})); 
 // Output: 3 centimeters
 ```
+Read more about formatting [here]().
+## Customizing
+```typescript
+
+const myCustomUnit = new Unit(...);
+
+units.group("length").Editor.add(myCustomUnit);
+```
+Read more about customizing [here]().
 
 # Supported Units
 

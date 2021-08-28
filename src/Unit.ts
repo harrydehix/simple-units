@@ -1,6 +1,6 @@
 import { inspect } from "util";
 import Group from "./Group";
-import { Convertable } from ".";
+import Convertible from "./Convertible";
 import IllegalArgumentsError from "./errors/IllegalArgumentsError";
 
 export type Converter = (val: number) => number;
@@ -23,13 +23,13 @@ export type UnitFormat = {
  * Thereby `fromBase(val: number) => number` defines the conversion from the base unit to `this` and `toBase(val: number) => number` vice versa. 
  * As a result of this simple concept, all units of a group are convertible into each other.
  *
- * The third important property of each unit is its {@link Unit.format}. 
+ * The 4th important property of each unit is its {@link Unit.format}. 
  * This defines the unit's shape. It allows firstly the parser to recognize the unit in a string and 
- * secondly it provides the basis for the `.format()` method of the {@link Convertable}.
+ * secondly it provides the basis for the `.format()` method of the {@link Convertible}.
  * 
  * Lastly every unit is part of a unit system (attribute: {@link Unit.system}).
- * This meta information is used for the {@link Convertable}'s `.asBest()` method.
- * By default, the Convertable always remains in the same system of units.
+ * This meta information is used for the {@link Convertible}'s `.asBest()` method.
+ * By default, the Convertible always remains in the same system of units.
 */
 export default class Unit {
     /**
@@ -39,14 +39,14 @@ export default class Unit {
     /**
      * The unit's {@link UnitFormat}. Holds the unit's unique symbols, 
      * which allow the parser to recognize the unit in a string.
-     * Added to that it provides the basis for the `.format()` method of the {@link Convertable}.
+     * Added to that it provides the basis for the `.format()` method of the {@link Convertible}.
      */
     format: UnitFormat;
     /**
      * The unit system the unit is belonging to. E.g. `imperial`, `metric`, ...
      * 
-     * This meta information is used for the {@link Convertable}'s `.asBest()` method.
-     * By default, the Convertable always remains in the same system of units.
+     * This meta information is used for the {@link Convertible}'s `.asBest()` method.
+     * By default, the Convertible always remains in the same system of units.
      */
     system: string;
 
@@ -104,11 +104,11 @@ export default class Unit {
     constructor(format: UnitFormat, var1: Converter | number, var2: Converter | number, system: string) {
         this.format = format;
         this.system = system;
-        if (typeof var1 === "object" && typeof var2 === "object") {
+        if (typeof var1 === "function" && typeof var2 === "function") {
             this.toBase = var1;
             this.fromBase = var2;
         }
-        if (typeof var1 === "number" && typeof var2 === "number") {
+        else if (typeof var1 === "number" && typeof var2 === "number") {
             this.toBase =
                 (val: number) => {
                     return val * var1 + var2;
@@ -117,8 +117,9 @@ export default class Unit {
                 (val: number) => {
                     return (val - var2) / var1;
                 }
+        } else {
+            throw new IllegalArgumentsError(`Failed to create unit '${format.short[0]}'. Illegal arguments were passed. Read the documentation for more details.`);
         }
-        throw new IllegalArgumentsError(`Failed to create unit '${format.short[0]}'. Illegal arguments were passed. Read the documentation for more details.`);
     }
 
     /**

@@ -1,6 +1,6 @@
 import { inspect } from "util";
 import CollectionEditor from "./CollectionEditor";
-import Convertable from "./Convertable";
+import Convertible from "./Convertible";
 import UnknownGroupError from "./errors/UnknownGroupError";
 import UnknownUnitError from "./errors/UnknownUnitError";
 import Group from "./Group";
@@ -136,12 +136,12 @@ export default class Collection {
     }
 
     from(value: number, unit: string) {
-        return new Convertable(value, this.unit(unit));
+        return new Convertible(value, this.unit(unit));
     }
     /**
      * @method
      */
-    Convertable = this.from;
+    Convertible = this.from;
 
     /**
      * Returns the collection as human-readable string.

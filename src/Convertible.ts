@@ -1,12 +1,12 @@
 import { inspect } from "util";
 import ConversionError from "./errors/ConversionError";
 import Unit from "./Unit";
+import { sprintf } from "sprintf-js";
 
 export type FormatOptions = {
     length?: "long" | "short",
-    divider?: string,
 }
-export default class Convertable {
+export default class Convertible {
     value: number;
     unit: Unit;
     /**
@@ -76,20 +76,19 @@ export default class Convertable {
         return options.stylize(this.toString(), "special")
     }
 
-    format(formatOptions?: FormatOptions): string {
-        let divider = "", length = "short", count = "pl";
+    format(format: string, formatOptions?: FormatOptions): string {
+        let length = "short", count = "pl";
 
-        if (formatOptions?.divider) divider = formatOptions.divider;
         if (formatOptions?.length) length = formatOptions.length;
         if (this.value === 1) count = "sg";
 
         let unit;
         if (length === "short") {
-            unit = this.unit.format.short;
+            unit = this.unit.format.short[0];
         } else {
             if (count === "sg") unit = this.unit.format.long.sg[0];
             else unit = this.unit.format.long.pl[0];
         }
-        return this.value + divider + unit;
+        return sprintf(format, this.value, unit);
     }
 }
