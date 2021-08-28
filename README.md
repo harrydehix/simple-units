@@ -11,9 +11,9 @@ console.log(converted);
 ```
 ## Formatting
 ```typescript
-const convertible = units.Convertible(3, "cm"); 
-console.log(convertible.format({ length: "long", divider: " "})); 
-// Output: 3 centimeters
+const convertible = units.Convertible(12.2323123, "kt");
+console.log(convertible.format("%.2f %s", { length: "long" })); 
+// Output: 12.23 knots
 ```
 ## Customizing
 ```typescript
