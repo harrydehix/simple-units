@@ -9,14 +9,12 @@ const converted = units.from(3, "cm").to("in");
 console.log(converted); 
 // Output: 1.1811
 ```
-Read more about converting [here]().
 ## Formatting
 ```typescript
 const convertible = units.Convertible(3, "cm"); 
 console.log(convertible.format({ length: "long", divider: " "})); 
 // Output: 3 centimeters
 ```
-Read more about formatting [here]().
 ## Customizing
 ```typescript
 
@@ -24,7 +22,11 @@ const myCustomUnit = new Unit(...);
 
 units.group("length").Editor.add(myCustomUnit);
 ```
-Read more about customizing [here]().
+
+# Documentation
+It is recommended to read the [introduction](./guides/introduction.md) first.
+
+The full documentation is still in progress.
 
 # Supported Units
 

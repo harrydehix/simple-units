@@ -1,4 +1,4 @@
-# Converting
+# Introduction
 
 The key concept behind converting in _simple-units_ is the `Convertible`.
 _A convertible is a javascript object combining a number with a unit._ The convertible's unit and value are mutable. 
