@@ -10,8 +10,8 @@ const pressure = new Group("pressure");
 
 pressure.Editor.add(
     new FlexibleUnit({
-        short: ["%Pa"],
-        long: { sg: ["%pascal"], pl: ["%pascals"] },
+        short: ["%0Pa"],
+        long: { sg: ["%0pascal"], pl: ["%0pascals"] },
     }, 1, 0, "metric", [siPrefixes("μ")]),
     new Unit({
         short: ["bar"],

@@ -1,11 +1,11 @@
 {
     "groups": [
         {
-            "title": "Guides",
+            "title": "Documentation",
             "pages": [
                 {
-                    "title": "Introduction",
-                    "source": "./guides/introduction.md"
+                    "title": "My Page",
+                    "source": "./test.md"
                 }
             ]
         }

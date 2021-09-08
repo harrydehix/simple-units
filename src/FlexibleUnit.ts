@@ -1,4 +1,5 @@
 import { product } from "cartesian-product-generator";
+import InvalidVariableSyntaxError from "./errors/InvalidVariableSyntaxError";
 import Group from "./Group";
 import Unit, { UnitFormat } from "./Unit";
 import Option from "./variable/Option";
@@ -14,59 +15,73 @@ import Variable from "./variable/Variable";
  * This is done via so-called "variables" ({@link Variable}), 
  * which are integrated into the format of the unit ({@link Unit.format}).
  * 
- * <b>Example</b>: We have the unit "meter" (as base unit):
+ * <b>Example</b>: We have the unit "meter per second" (as base unit):
  * ```
- * const meter = new Unit({ short: ["m"],
+ * const meterPerSecond = new Unit({ short: ["m/s"],
  *      long: {
- *          sg: ["meter", "metre"],
- *          pl: ["meters", "metres"]
+ *          sg: ["meter per second", "metre per second"],
+ *          pl: ["meters per second", "metres per second"]
  *      }
  * }, 1, 0, "metric");
  * ```
- * Now we also want to create the units "kilometers" and "centimeters". We could now simply define two more units:
+ * Now we also want to create the units "meters per minute", "kilometers per second" and "kilometers per minute". We could now simply define three more units:
  * ```
- * const kilometer = new Unit({ short: ["km"],
+ * // 1 m/min = 1/60 m/s
+ * const meterPerMinute = new Unit({ short: ["m/min"],
  *      long: {
- *          sg: ["kilometer", "kilometre"],
- *          pl: ["kilometers", "kilometres"]
+ *          sg: ["meter per minute", "metre per minute"],
+ *          pl: [["meters per minutes", "metres per minutes"]
+ *      }
+ * }, 1/60, 0, "metric");
+ * 
+ * // 1 km/s = 1000 m/s
+ * const kilometerPerSecond = new Unit({ short: ["km/s"],
+ *      long: {
+ *          sg: ["kilometer per second", "kilometre per second"],
+ *          pl: ["kilometers per second", "kilometres per second"]
  *      }
  * }, 1000, 0, "metric");
  * 
- * const centimeter = new Unit({ short: ["cm"],
+ * // 1 km/min = 16.666666667 m/s
+ * const kilometerPerMinute = new Unit({ short: ["km/min"],
  *      long: {
- *          sg: ["centimeter", "centimetre"],
- *          pl: ["centimeters", "centimetres"]
+ *          sg: ["kilometer per minute", "kilometre per minute"],
+ *          pl: [["kilometers per minutes", "kilometres per minutes"]
  *      }
- * }, 0.01, 0, "metric");
+ * }, 16.666666667, 0, "metric");
  * ```
  * But as we see, we would have unnecessary repetitive code. This is exactly the kind of case where the FlexibleUnit comes in handy.
  * This is how the code would look like with the FlexibleUnit:
  * ```
- * const prefix = new Variable(true,
+ * const var1 = new Variable(true,
  *      new Option("k", "kilo", 1000),
- *      new Option("c", "centi", 0.01),
+ * );
+ * const var2 = new Variable(false,
+ *      new Option("s", "second", 1),
+ *      new Option("min", "minute", 1/60),
  * );
  * 
- * const meter = new FlexibleUnit({ short: ["%m"],
+ * const unit = new FlexibleUnit({ short: ["%0m/%1"],
  *      long: {
- *          sg: ["%meter", "%metre"],
- *          pl: ["%meters", "%metres"
+ *          sg: ["%0meter per %1", "%0metre per %1"],
+ *          pl: ["%0meters per %1", "%0metres per %1]"
  *      }
- * }, 1, 0, "metric", [prefix]);
+ * }, 1, 0, "metric", [var1, var2]);
  * ```
  * Much shorter, isn't it? But what exactly is happening here?
- * First, we create a {@link Variable}. A variable is nothing else than something that can take different states. 
+ * First, we create the {@link Variable} `var1`. A variable is nothing else than a placeholder that can take different states. 
  * With `true` we set the variable as optional. Then follows the definition of the different values the 
- * variable can take. The first option is the prefix `k` (long term: `kilo`). We know `1km = 1000m`, so we 
- * specify `1000` for the ratio. We do the same for the prefix `c` (long term: `centi`). We know `1cm = 0.01m`, 
- * which is why we specify `0.01` for the ratio.
+ * variable can take. Because we only need the optional prefix `k` (long term: `kilo`) we just define one single option here. We know `1km = 1000m`, so we 
+ * specify `1000` for the ratio.
+ * After that we create the second variable `var2`. With `false` we set the variable as mandatory. Then
+ * follows the definition of the different values the variable can take. These are the different times we want to support.
+ * First we define the option for the `second` (short term: `s`). We set the ratio to 1 because `m/s` is our base. After
+ * that we define the option for the `minute` (short term: `min`). We know `1m/s = 1/60m/min`. Therefore we set the ratio to `1/60`.
  * 
- * The second new thing is the changed definition of the format of the unit. 
- * Each term is now preceded by a `%`. This serves as a placeholder for the previously defined variable. 
- * Thus `%m` becomes `km`, `cm` and `m`. Of course, the FlexibleUnit knows nothing about the previous definition of
- * the variable, which is why we pass it into the constructor. You may wonder why we pass it as a part of an array.
- * The reason for this is that not only one but also several variables are supported. In this case, the first `%` in the format 
- * then represents the first variable, the second `%` represents the second variable, and so on.
+ * The second new thing is the unit's different format. 
+ * There are new weird looking `%number` terms. These serve as a indicators for the previously defined variables. 
+ * Thus `%0m/%1` becomes `km/s`, `m/s`, `m/min` and `km/min`. Of course, the FlexibleUnit knows nothing about the previous variables, 
+ * which is why we pass them into the constructor. The number after the `%` indicates the variable's index in the passed array.
  * 
  * And that's it!
  */
@@ -203,16 +218,28 @@ export default class FlexibleUnit {
      */
     private fillFormat(format: string, combo: Option[], long: boolean): string {
         let result = "";
-        let multIndex = 0;
         for (let i = 0; i < format.length; i++) {
-            if (format[i] === "%") {
-                if (long) result += combo[multIndex++].long;
-                else result += combo[multIndex++].short;
+            if (format[i] === "%" && i + 1 < format.length) {
+                const variableIndex = this.cutInteger(format.substr(i + 1));
+                if (variableIndex === false) throw new InvalidVariableSyntaxError(`Inside the flexible unit's format a '%' must be followed by a number indicating the variable's index!`);
+                if (long) result += combo[Number(variableIndex)].long;
+                else result += combo[Number(variableIndex)].short;
+                i += variableIndex.length;
             } else {
                 result += format[i];
             }
         }
         return result;
+    }
+
+    private cutInteger(string: string): string | false {
+        let result = "";
+        for (let i = 0; i < string.length; i++) {
+            if (string[i].match(/[0-9]/)) result += string[i];
+            else break;
+        }
+        if (result.length !== 0) return result;
+        return false;
     }
 
 }

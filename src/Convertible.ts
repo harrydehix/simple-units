@@ -6,8 +6,21 @@ import { sprintf } from "sprintf-js";
 export type FormatOptions = {
     length?: "long" | "short",
 }
+
+/**
+ * A convertible combines a number with a unit.
+ * It offers several methods to convert itself into
+ * different units and therefore is the key concept behind converting
+ * in _simple-units_.
+ */
 export default class Convertible {
+    /**
+     * The convertible's value. Changes through converting.
+     */
     value: number;
+    /**
+     * The convertible's unit. Changes through converting.
+     */
     unit: Unit;
     /**
      * @hidden
@@ -21,15 +34,67 @@ export default class Convertible {
         }
     }
 
+    /**
+     * Creates a convertible with the passed value and unit.
+     * It is not recommended to create a convertible this way. Instead
+     * use the collection's `.from(value: number, unit: string)` or `.Convertible(value: number, unit: string)` method.
+     * 
+     * **Recommended way to create a convertible**:
+     * @example
+     * ```
+     * import units from "simple-units";
+     *
+     * const convertible = units.Convertible(12, "m");
+     * console.log(convertible.value); // Output: 12
+     * console.log(convertible.unit.toString()); // Output: m
+     * ```
+     * 
+     * @param value the convertible's value
+     * @param unit the convertible's unit
+     */
     constructor(value: number, unit: Unit) {
         this.value = value;
         this.unit = unit;
     }
 
+    /**
+     * Returns an array of units to which the convertible can be converted.
+     * 
+     * @example
+     * ```typescript
+     * const convertible = units.Convertible(12, "kt");
+     * 
+     * for(const unit of convertible.possibilities()){
+     *    console.log(unit); // Output: Ym/a, Zm/a, Em/a, Pm/a, ...
+     * }
+     * ```
+     * 
+     * @returns an array of units to which the convertible can be converted
+    */
     possibilities() {
         return this.unit.possibilities();
     }
 
+    /**
+     * Converts the convertible to the passed unit and returns tthe conversion's result.
+     * 
+     * @example
+     * ```
+     * const convertible = units.Convertible(12, "°C");
+     * 
+     * console.log(convertible.to("K"));
+     * // Output: 261.15
+     * 
+     * console.log(convertible.value);
+     * // Output: 261.15
+     * 
+     * console.log(convertible.unit.toString());
+     * // Output: K
+     * ```
+     * 
+     * @param unit the target unit as string
+     * @returns the conversion's result
+     */
     to(unit: string): number {
         const target = this.unit.group._internal._units().get(unit);
         if (!target) throw new ConversionError(`Unit '${unit}' does not belong to group '${this.unit.group.name}'!`)
@@ -39,16 +104,51 @@ export default class Convertible {
         return this.value;
     }
 
+    /**
+     * Converts the convertible to the passed unit and returns the convertible itself.
+     * 
+     * @example
+     * ```
+     * const convertible = units.from(12, "°C").as("K");
+     *
+     * console.log(convertible.value);
+     * // Output: 261.15
+     *
+     * console.log(convertible.unit.toString());
+     * // Output: K
+     * ```
+     * @param unit the target unit
+     * @returns the convertible itself
+     */
     as(unit: string) {
         this.to(unit);
         return this;
     }
 
-    asBest(crossSystem = false) {
+    /**
+     * Converts the convertible to the best possible unit. In this case the best means having as few digits
+     * as possible before the decimal point. Returns the convertible itself.
+     * 
+     * @example
+     * ```
+     * const convertible = units.Convertible(1000, "m").asBest();
+     *
+     * console.log(convertible.value);
+     * // Output: 1
+     * 
+     * console.log(convertible.unit.toString());
+     * // Output: km
+     * ```
+     * 
+     * By default the convertible remains in the same unit system. If `false` is passed, this behaviour is disabled.
+     * @param remainInUnitSystem whether to remain in the same unit system (default is `true`)
+     * @returns the convertible itself
+     */
+    asBest(remainInUnitSystem = true) {
         let bestUnit = this.unit;
         let bestCount = Number.MAX_VALUE;
         this.unit.group._internal._units().forEach((unit, key) => {
-            if (crossSystem || unit.system === this.unit.system) {
+            if (!remainInUnitSystem || unit.system === this.unit.system) {
                 this._internal._toUnit(unit);
                 if (this.value >= 1 || this.value <= -1) {
                     const str = String(this.value);
@@ -68,14 +168,53 @@ export default class Convertible {
         return this;
     }
 
+    /**
+     * Returns the convertible as short string.
+     * 
+     * @example
+     * ```
+     * const convertible = units.Convertible(1000, "meter");
+     * 
+     * console.log(convertible.toString());
+     * // Output: 1000m
+     * 
+     * console.log(convertible);
+     * // Output: 1000m (but in blue :D)
+     * ```
+     * 
+     * @returns 
+     */
     toString() {
         return this.value + this.unit.toString();
     }
 
+    /**
+     * @hidden
+     */
     [inspect.custom](depth: any, options: any) {
         return options.stylize(this.toString(), "special")
     }
 
+    /**
+     * Returns the convertible as formatted string. 
+     * 
+     * The first argument specifies the _string's format_ (see example), the second one _additional format options_.
+     * 
+     * Currently there is only the format option `length`. Setting this to `"long"` will result in a long unit symbol
+     *  (e.g. "meter" or "meters"), `"short"` will result in a short unit symbol (e.g. "m").
+     * 
+     * @example
+     * ```
+     * const convertible = units.Convertible(12.2323123, "kt");
+     * 
+     * console.log(convertible.format("%.2f %s", { length: "long" }));
+     * // Output: 12.23 knots
+     * ```
+     * 
+     * @param format the string's format
+     * @param formatOptions additional format options
+     * @returns the convertible as formatted string
+     */
     format(format: string, formatOptions?: FormatOptions): string {
         let length = "short", count = "pl";
 

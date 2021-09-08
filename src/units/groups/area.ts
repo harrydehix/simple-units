@@ -12,17 +12,17 @@ const area = new Group("area");
 
 area.Editor.add(
     new FlexibleUnit({
-        short: ["%m²", "%m^2", "%m2"],
+        short: ["%0m²", "%0m^2", "%0m2"],
         long: {
-            sg: ["square %meter", "sq %meter", "sq %metre", "square %metre"],
-            pl: ["square %meters", "sq %meters", "sq %metres", "square %metres"],
+            sg: ["square %0meter", "sq %0meter", "sq %0metre", "square %0metre"],
+            pl: ["square %0meters", "sq %0meters", "sq %0metres", "square %0metres"],
         },
     }, 1, 0, "metric", [siAreaPrefixes()]),
     new FlexibleUnit({
-        short: ["%a"],
+        short: ["%0a"],
         long: {
-            sg: ["%are"],
-            pl: ["%ares"],
+            sg: ["%0are"],
+            pl: ["%0ares"],
         }
     }, 100, 0, "metric", [new Variable(true,
         new Option("c", "centi", 1e-2),

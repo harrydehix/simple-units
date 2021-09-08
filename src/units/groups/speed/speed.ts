@@ -13,24 +13,24 @@ const speed = new Group("speed");
 
 speed.Editor.add(
     new FlexibleUnit({
-        short: ["%m/%"],
+        short: ["%0m/%1"],
         long: {
-            sg: ["%meter/%", "%metre/%", "%meter per %", "%metre per %"],
-            pl: ["%meters/%", "%metres/%", "%meters per %", "%metres per %"],
+            sg: ["%0meter/%1", "%0metre/%1", "%0meter per %1", "%0metre per %1"],
+            pl: ["%0meters/%1", "%0metres/%1", "%0meters per %1", "%0metres per %1"],
         }
     }, 1, 0, "metric", [siPrefixes(), dividedByTimes]),
     new FlexibleUnit({
-        short: ["ft/%", "fp%"],
+        short: ["ft/%0", "fp%0"],
         long: {
-            sg: ["foot/%", "foot per %"],
-            pl: ["feet/%", "feet per %"],
+            sg: ["foot/%0", "foot per %0"],
+            pl: ["feet/%0", "feet per %0"],
         }
     }, 1 / 3.280839895013123, 0, "imperial", [dividedByTimes]),
     new FlexibleUnit({
-        short: ["mi/%", "mp%"],
+        short: ["mi/%0", "mp%0"],
         long: {
-            sg: ["mile/%", "mile per %"],
-            pl: ["miles/%", "miles per %"],
+            sg: ["mile/%0", "mile per %0"],
+            pl: ["miles/%0", "miles per %0"],
         }
     }, 1609.344, 0, "imperial", [dividedByTimes]),
     new Unit({

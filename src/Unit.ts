@@ -1,6 +1,5 @@
 import { inspect } from "util";
 import Group from "./Group";
-import Convertible from "./Convertible";
 import IllegalArgumentsError from "./errors/IllegalArgumentsError";
 
 export type Converter = (val: number) => number;

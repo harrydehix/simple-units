@@ -10,17 +10,17 @@ const digital = new Group("digital");
 
 digital.Editor.add(
     new FlexibleUnit({
-        short: ["%B"],
+        short: ["%0B"],
         long: {
-            sg: ["%byte"],
-            pl: ["%bytes"],
+            sg: ["%0byte"],
+            pl: ["%0bytes"],
         }
     }, 8, 0, "bytes", [siPrefixes("k").combine(iecPrefixes())]),
     new FlexibleUnit({
-        short: ["%b"],
+        short: ["%0b"],
         long: {
-            sg: ["%bit"],
-            pl: ["%bits"],
+            sg: ["%0bit"],
+            pl: ["%0bits"],
         }
     }, 1, 0, "bits", [siPrefixes("k").combine(iecPrefixes())]),
 );

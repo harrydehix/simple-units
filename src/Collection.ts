@@ -135,13 +135,25 @@ export default class Collection {
         return result;
     }
 
+    /**
+     * 
+     * @param value 
+     * @param unit 
+     * @returns 
+     */
     from(value: number, unit: string) {
         return new Convertible(value, this.unit(unit));
     }
+
     /**
-     * @method
+     * 
+     * @param value 
+     * @param unit 
+     * @returns 
      */
-    Convertible = this.from;
+    Convertible(value: number, unit: string): Convertible {
+        return this.from(value, unit);
+    }
 
     /**
      * Returns the collection as human-readable string.

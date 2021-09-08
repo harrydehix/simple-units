@@ -10,17 +10,17 @@ const mass = new Group("mass");
 
 mass.Editor.add(
     new FlexibleUnit({
-        short: ["%g"],
+        short: ["%0g"],
         long: {
-            sg: ["%gram", "%gramme"],
-            pl: ["%gram", "%grams"],
+            sg: ["%0gram", "%0gramme"],
+            pl: ["%0gram", "%0grams"],
         }
     }, 1, 0, "metric", [siPrefixes()]),
     new FlexibleUnit({
-        short: ["%mt"],
+        short: ["%0mt"],
         long: {
-            sg: ["%metric ton"],
-            pl: ["%metric tons"],
+            sg: ["%0metric ton"],
+            pl: ["%0metric tons"],
         }
     }, 1e6, 0, "metric", [siPrefixes("da")]),
     new Unit({

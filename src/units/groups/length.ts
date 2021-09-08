@@ -10,10 +10,10 @@ const length = new Group("length");
 
 length.Editor.add(
     new FlexibleUnit({
-        short: ["%m"],
+        short: ["%0m"],
         long: {
-            sg: ["%meter", "%kilometre"],
-            pl: ["%meters", "%metres"]
+            sg: ["%0meter", "%0kilometre"],
+            pl: ["%0meters", "%0metres"]
         }
     }, 1, 0, "metric", [siPrefixes()]),
     new Unit({

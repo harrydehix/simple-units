@@ -10,10 +10,10 @@ const time = new Group("time");
 
 time.Editor.add(
     new FlexibleUnit({
-        short: ["%s"],
+        short: ["%0s"],
         long: {
-            sg: ["%second"],
-            pl: ["%seconds"],
+            sg: ["%0second"],
+            pl: ["%0seconds"],
         }
     }, 1, 0, "SI", [siPrefixes("y", "d")]),
     new Unit({

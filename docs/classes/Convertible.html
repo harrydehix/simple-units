@@ -67,6 +67,16 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A convertible combines a number with a unit.
+							It offers several methods to convert itself into
+							different units and therefore is the key concept behind converting
+						in <em>simple-units</em>.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -95,7 +105,6 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#_custom_" class="tsd-kind-icon">[custom]</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#as" class="tsd-kind-icon">as</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#asBest" class="tsd-kind-icon">as<wbr>Best</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#format" class="tsd-kind-icon">format</a></li>
@@ -119,16 +128,44 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L24">src/Convertible.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L55">src/Convertible.ts:55</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a convertible with the passed value and unit.
+										It is not recommended to create a convertible this way. Instead
+									use the collection&#39;s <code>.from(value: number, unit: string)</code> or <code>.Convertible(value: number, unit: string)</code> method.</p>
+								</div>
+								<p><strong>Recommended way to create a convertible</strong>:</p>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">units</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;simple-units&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertible</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertible</span><span style="color: #000000">(</span><span style="color: #098658">12</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;m&quot;</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #001080">value</span><span style="color: #000000">); </span><span style="color: #008000">// Output: 12</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #001080">unit</span><span style="color: #000000">.</span><span style="color: #795E26">toString</span><span style="color: #000000">()); </span><span style="color: #008000">// Output: m</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the convertible&#39;s value</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5>unit: <a href="Unit.html" class="tsd-signature-type">Unit</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the convertible&#39;s unit</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="Convertible.html" class="tsd-signature-type">Convertible</a></h4>
@@ -144,9 +181,14 @@
 					<div class="tsd-signature tsd-kind-icon">unit<span class="tsd-signature-symbol">:</span> <a href="Unit.html" class="tsd-signature-type">Unit</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L11">src/Convertible.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L24">src/Convertible.ts:24</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The convertible&#39;s unit. Changes through converting.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="value" class="tsd-anchor"></a>
@@ -154,39 +196,18 @@
 					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L10">src/Convertible.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L20">src/Convertible.ts:20</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The convertible&#39;s value. Changes through converting.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="_custom_" class="tsd-anchor"></a>
-					<h3>[custom]</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">[custom]<span class="tsd-signature-symbol">(</span>depth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L75">src/Convertible.ts:75</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>depth: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>options: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="as" class="tsd-anchor"></a>
 					<h3>as</h3>
@@ -197,16 +218,37 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L42">src/Convertible.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L123">src/Convertible.ts:123</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts the convertible to the passed unit and returns the convertible itself.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertible</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">from</span><span style="color: #000000">(</span><span style="color: #098658">12</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;°C&quot;</span><span style="color: #000000">).</span><span style="color: #795E26">as</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;K&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #001080">value</span><span style="color: #000000">);</span>
+<span style="color: #008000">// Output: 261.15</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #001080">unit</span><span style="color: #000000">.</span><span style="color: #795E26">toString</span><span style="color: #000000">());</span>
+<span style="color: #008000">// Output: K</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>unit: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the target unit</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="Convertible.html" class="tsd-signature-type">Convertible</a></h4>
+							<p>the convertible itself</p>
 						</li>
 					</ul>
 				</section>
@@ -214,22 +256,45 @@
 					<a name="asBest" class="tsd-anchor"></a>
 					<h3>as<wbr>Best</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">as<wbr>Best<span class="tsd-signature-symbol">(</span>crossSystem<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type">Convertible</a></li>
+						<li class="tsd-signature tsd-kind-icon">as<wbr>Best<span class="tsd-signature-symbol">(</span>remainInUnitSystem<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type">Convertible</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L47">src/Convertible.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L147">src/Convertible.ts:147</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts the convertible to the best possible unit. In this case the best means having as few digits
+									as possible before the decimal point. Returns the convertible itself.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertible</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertible</span><span style="color: #000000">(</span><span style="color: #098658">1000</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;m&quot;</span><span style="color: #000000">).</span><span style="color: #795E26">asBest</span><span style="color: #000000">();</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #001080">value</span><span style="color: #000000">);</span>
+<span style="color: #008000">// Output: 1</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #001080">unit</span><span style="color: #000000">.</span><span style="color: #795E26">toString</span><span style="color: #000000">());</span>
+<span style="color: #008000">// Output: km</span>
+</code></pre>
+										<p>By default the convertible remains in the same unit system. If <code>false</code> is passed, this behaviour is disabled.</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>crossSystem: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<h5>remainInUnitSystem: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>whether to remain in the same unit system (default is <code>true</code>)</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="Convertible.html" class="tsd-signature-type">Convertible</a></h4>
+							<p>the convertible itself</p>
 						</li>
 					</ul>
 				</section>
@@ -243,19 +308,43 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L79">src/Convertible.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L218">src/Convertible.ts:218</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the convertible as formatted string.</p>
+								</div>
+								<p>The first argument specifies the <em>string&#39;s format</em> (see example), the second one <em>additional format options</em>.</p>
+								<p>Currently there is only the format option <code>length</code>. Setting this to <code>&quot;long&quot;</code> will result in a long unit symbol
+								(e.g. &quot;meter&quot; or &quot;meters&quot;), <code>&quot;short&quot;</code> will result in a short unit symbol (e.g. &quot;m&quot;).</p>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertible</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertible</span><span style="color: #000000">(</span><span style="color: #098658">12.2323123</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;kt&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #795E26">format</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;%.2f %s&quot;</span><span style="color: #000000">, { </span><span style="color: #001080">length:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;long&quot;</span><span style="color: #000000"> }));</span>
+<span style="color: #008000">// Output: 12.23 knots</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>format: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the string&#39;s format</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> formatOptions: <span class="tsd-signature-type">FormatOptions</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>additional format options</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the convertible as formatted string</p>
 						</li>
 					</ul>
 				</section>
@@ -269,10 +358,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L29">src/Convertible.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L74">src/Convertible.ts:74</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns an array of units to which the convertible can be converted.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertible</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertible</span><span style="color: #000000">(</span><span style="color: #098658">12</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;kt&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #AF00DB">for</span><span style="color: #000000">(</span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">unit</span><span style="color: #000000"> </span><span style="color: #0000FF">of</span><span style="color: #000000"> </span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #795E26">possibilities</span><span style="color: #000000">()){</span>
+<span style="color: #000000">   </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">unit</span><span style="color: #000000">); </span><span style="color: #008000">// Output: Ym/a, Zm/a, Em/a, Pm/a, ...</span>
+<span style="color: #000000">}</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>an array of units to which the convertible can be converted</p>
 						</li>
 					</ul>
 				</section>
@@ -286,16 +391,40 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L33">src/Convertible.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L98">src/Convertible.ts:98</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts the convertible to the passed unit and returns tthe conversion&#39;s result.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertible</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertible</span><span style="color: #000000">(</span><span style="color: #098658">12</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;°C&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #795E26">to</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;K&quot;</span><span style="color: #000000">));</span>
+<span style="color: #008000">// Output: 261.15</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #001080">value</span><span style="color: #000000">);</span>
+<span style="color: #008000">// Output: 261.15</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #001080">unit</span><span style="color: #000000">.</span><span style="color: #795E26">toString</span><span style="color: #000000">());</span>
+<span style="color: #008000">// Output: K</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>unit: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the target unit as string</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>the conversion&#39;s result</p>
 						</li>
 					</ul>
 				</section>
@@ -309,9 +438,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/ff516cc/src/Convertible.ts#L71">src/Convertible.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Convertible.ts#L187">src/Convertible.ts:187</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the convertible as short string.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertible</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertible</span><span style="color: #000000">(</span><span style="color: #098658">1000</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;meter&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #795E26">toString</span><span style="color: #000000">());</span>
+<span style="color: #008000">// Output: 1000m</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">);</span>
+<span style="color: #008000">// Output: 1000m (but in blue :D)</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -322,10 +468,10 @@
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="label pp-nav pp-group">
-						<span>Guides</span>
+						<span>Documentation</span>
 					</li>
 					<li class=" pp-nav pp-page">
-						<a href="../pages/Guides/introduction.html">Introduction</a>
+						<a href="../pages/Documentation/test.html">My <wbr>Page</a>
 					</li>
 					<li class=" ">
 						<a href="../modules.html">Exports</a>
@@ -353,9 +499,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="Convertible.html#value" class="tsd-kind-icon">value</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="Convertible.html#_custom_" class="tsd-kind-icon">[custom]</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Convertible.html#as" class="tsd-kind-icon">as</a>
@@ -416,6 +559,7 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 		</div>
 	</div>
