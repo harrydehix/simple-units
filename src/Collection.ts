@@ -113,8 +113,8 @@ export default class Collection {
 
     /**
      * Returns the unit object belonging to the given unit.
-     * @param unit the unit
-     * @returns the unit object belonging to the given unit
+     * @param unit the unit as string
+     * @returns the unit object belonging to the given unit string
      * @see Unit
      */
     unit(unit: string) {
