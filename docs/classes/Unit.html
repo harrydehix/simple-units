@@ -1,0 +1,496 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Unit | simple-units</title>
+	<meta name="description" content="Documentation for simple-units">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">simple-units</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">simple-units</a>
+				</li>
+				<li>
+					<a href="Unit.html">Unit</a>
+				</li>
+			</ul>
+			<h1>Class Unit</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Represents a standard measure that is used to express amounts.</p>
+					</div>
+					<p>A unit is always part of one single <a href="Group.html">Group</a> (attribute: <a href="Unit.html#group">Unit.group</a>).
+					It is always defined in relation to the base unit of its group.</p>
+					<p>The exact relation is defined in the converter functions <a href="Unit.html#fromBase">Unit.fromBase</a> and <a href="Unit.html#toBase">Unit.toBase</a>.
+						Thereby <code>fromBase(val: number) =&gt; number</code> defines the conversion from the base unit to <code>this</code> and <code>toBase(val: number) =&gt; number</code> vice versa.
+					As a result of this simple concept, all units of a group are convertible into each other.</p>
+					<p>The 4th important property of each unit is its <a href="Unit.html#format">Unit.format</a>.
+						This defines the unit&#39;s shape. It allows firstly the parser to recognize the unit in a string and
+					secondly it provides the basis for the <code>.format()</code> method of the <a href="Convertible.html">Convertible</a>.</p>
+					<p>Lastly every unit is part of a unit system (attribute: <a href="Unit.html#system">Unit.system</a>).
+						This meta information is used for the <a href="Convertible.html">Convertible</a>&#39;s <code>.asBest()</code> method.
+					By default, the Convertible always remains in the same system of units.</p>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">Unit</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="Unit.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Unit.html#format" class="tsd-kind-icon">format</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Unit.html#fromBase" class="tsd-kind-icon">from<wbr>Base</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Unit.html#group" class="tsd-kind-icon">group</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Unit.html#system" class="tsd-kind-icon">system</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Unit.html#toBase" class="tsd-kind-icon">to<wbr>Base</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Unit.html#computeNotations" class="tsd-kind-icon">compute<wbr>Notations</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Unit.html#possibilities" class="tsd-kind-icon">possibilities</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Unit.html#toString" class="tsd-kind-icon">to<wbr>String</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Unit<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UnitFormat</span>, fromBase<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Converter</span>, toBase<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Converter</span>, system<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Unit<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UnitFormat</span>, ratio<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, shift<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, system<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L72">src/Unit.ts:72</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a standard measure that is used to express amounts.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>format: <span class="tsd-signature-type">UnitFormat</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the unit&#39;s format, holds the unit&#39;s different symbols (e.g. <code>m, metre, meters</code> for the unit meter)</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>fromBase: <span class="tsd-signature-type">Converter</span></h5>
+								</li>
+								<li>
+									<h5>toBase: <span class="tsd-signature-type">Converter</span></h5>
+								</li>
+								<li>
+									<h5>system: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the unit system the unit is belonging to</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L93">src/Unit.ts:93</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a standard measure that is used to express amounts.</p>
+								</div>
+								<p>Using this constructor function one doesn&#39;t need to specify functions describing how to convert the unit to the group&#39;s base unit and vice versa.</p>
+								<p>Instead one only specifies the mathematical relation the the base unit - in the form of a ratio and a shift.</p>
+								<p><b>Example</b>: You want to define the unit <i>Celsius</i> and you have already defined the base unit <i>Kelvin</i>.
+									You know the formula to convert a value from <i>Celsius</i> to <i>Kelvin</i> is: <code>°C + 273.15 = °K</code>.
+								Using the other constructor function you had to write the following:</p>
+								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> + </span><span style="color: #098658">273.15</span><span style="color: #000000">, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> - </span><span style="color: #098658">273.15</span><span style="color: #000000">, ...);</span>
+</code></pre>
+								<p>As you see there is repetitive code. Couldn&#39;t one save one of the two converter functions?
+								Lets see how we create the unit using this constructor.</p>
+								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #098658">273.15</span><span style="color: #000000">, ...)</span>
+</code></pre>
+								<p><code>1</code> is the ratio between the units, <code>273.15</code> the shift. Much easier, isn&#39;t it? And no repetitive code!</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>format: <span class="tsd-signature-type">UnitFormat</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the unit&#39;s format, holds the unit&#39;s different symbols (e.g. <code>m, metre, meters</code> for the unit meter)</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>ratio: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>shift: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>system: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the unit system the unit is belonging to</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="format" class="tsd-anchor"></a>
+					<h3>format</h3>
+					<div class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">UnitFormat</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L43">src/Unit.ts:43</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The unit&#39;s {@link UnitFormat}. Holds the unit&#39;s unique symbols,
+								which allow the parser to recognize the unit in a string.
+							Added to that it provides the basis for the <code>.format()</code> method of the <a href="Convertible.html">Convertible</a>.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="fromBase" class="tsd-anchor"></a>
+					<h3>from<wbr>Base</h3>
+					<div class="tsd-signature tsd-kind-icon">from<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Converter</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L63">src/Unit.ts:63</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Converts a value from the group&#39;s base unit to this unit.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>value in the group&#39;s base unit</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>value in this unit</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="group" class="tsd-anchor"></a>
+					<h3>group</h3>
+					<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L37">src/Unit.ts:37</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The unit&#39;s <a href="Group.html">Group</a>. Units belonging to the same group are convertible into each other.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="system" class="tsd-anchor"></a>
+					<h3>system</h3>
+					<div class="tsd-signature tsd-kind-icon">system<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L50">src/Unit.ts:50</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The unit system the unit is belonging to. E.g. <code>imperial</code>, <code>metric</code>, ...</p>
+						</div>
+						<p>This meta information is used for the <a href="Convertible.html">Convertible</a>&#39;s <code>.asBest()</code> method.
+						By default, the Convertible always remains in the same system of units.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="toBase" class="tsd-anchor"></a>
+					<h3>to<wbr>Base</h3>
+					<div class="tsd-signature tsd-kind-icon">to<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Converter</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L57">src/Unit.ts:57</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Converts a value from this unit to the group&#39;s base unit.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>value in this unit</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>value in the group&#39;s base unit</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="computeNotations" class="tsd-anchor"></a>
+					<h3>compute<wbr>Notations</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">compute<wbr>Notations<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L151">src/Unit.ts:151</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a string array holding all this unit&#39;s different notations.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>a string array holding all this unit&#39;s different notations</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="possibilities" class="tsd-anchor"></a>
+					<h3>possibilities</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">possibilities<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L143">src/Unit.ts:143</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns an array of units to which the current unit can be converted.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>an array of units to which the current unit can be converted</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="toString" class="tsd-anchor"></a>
+					<h3>to<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L128">src/Unit.ts:128</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the unit&#39;s standard string representation - therefore the most common symbol. For example <code>&#39;m&#39;</code> is returned for the unit meter.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the unit&#39;s standard string representation</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="Collection.html" class="tsd-kind-icon">Collection</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="CollectionEditor.html" class="tsd-kind-icon">Collection<wbr>Editor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Convertible.html" class="tsd-kind-icon">Convertible</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="FlexibleUnit.html" class="tsd-kind-icon">Flexible<wbr>Unit</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Group.html" class="tsd-kind-icon">Group</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="GroupEditor.html" class="tsd-kind-icon">Group<wbr>Editor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Option.html" class="tsd-kind-icon">Option</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="Unit.html" class="tsd-kind-icon">Unit</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="Unit.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Unit.html#format" class="tsd-kind-icon">format</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Unit.html#fromBase" class="tsd-kind-icon">from<wbr>Base</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Unit.html#group" class="tsd-kind-icon">group</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Unit.html#system" class="tsd-kind-icon">system</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Unit.html#toBase" class="tsd-kind-icon">to<wbr>Base</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Unit.html#computeNotations" class="tsd-kind-icon">compute<wbr>Notations</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Unit.html#possibilities" class="tsd-kind-icon">possibilities</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Unit.html#toString" class="tsd-kind-icon">to<wbr>String</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="Variable.html" class="tsd-kind-icon">Variable</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../modules.html#default" class="tsd-kind-icon">default</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

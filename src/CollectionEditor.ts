@@ -18,7 +18,6 @@ export default class CollectionEditor {
     /**
      * Removes any unit group whose name was not passed as an argument.
      * @param groups the unit group's that shouldn't get removed
-     * @method
      */
     select(...groups: string[]) {
         const groupsToRemove: string[] = [];
@@ -32,7 +31,6 @@ export default class CollectionEditor {
      * Adds all passed unit groups to the collection.
      * If the name of a group is already taken, the old group will be overwritten by the new one.
      * @param groups the unit group's to add
-     * @method
      */
     add(...groups: Group[]) {
         for (const group of groups) {

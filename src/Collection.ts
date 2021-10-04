@@ -136,20 +136,22 @@ export default class Collection {
     }
 
     /**
-     * 
-     * @param value 
-     * @param unit 
-     * @returns 
+     * Returns a convertible having the given value and unit. Does exactly the same as {@link Collection.Convertible}.
+     * @param value the convertible's value (e.g. `20`)
+     * @param unit the convertible's unit (e.g. `°F`)
+     * @returns a convertible having the given value and unit
+     * @see Convertible
      */
     from(value: number, unit: string) {
         return new Convertible(value, this.unit(unit));
     }
 
     /**
-     * 
-     * @param value 
-     * @param unit 
-     * @returns 
+     * Returns a convertible having the given value and unit. Alias to {@link Collection.from}.
+     * @param value the convertible's value (e.g. `20`)
+     * @param unit the convertible's unit (e.g. `°F`)
+     * @returns a convertible having the given value and unit
+     * @see Convertible
      */
     Convertible(value: number, unit: string): Convertible {
         return this.from(value, unit);

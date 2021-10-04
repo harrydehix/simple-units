@@ -154,8 +154,7 @@ export default class FlexibleUnit {
     }
 
     /**
-     * @hidden
-     * @returns 
+     * @hidden 
      */
     private create(): Unit[] {
         const combos = this.generateCombinations();
@@ -170,19 +169,17 @@ export default class FlexibleUnit {
 
     /**
      * @hidden
-     * @returns
      */
     private generateRatio(combo: Option[]) {
         let ratio = this.ratio;
         for (const Multiplier of combo) {
-            ratio *= Multiplier.value;
+            ratio *= Multiplier.ratio;
         }
         return ratio;
     }
 
     /**
      * @hidden
-     * @returns
      */
     private generateCombinations() {
         return [...product(...this.variables)] as Option[][]
@@ -190,7 +187,6 @@ export default class FlexibleUnit {
 
     /**
      * @hidden
-     * @returns
      */
     private generateUnitFormat(combo: Option[]) {
         const newFormat: UnitFormat = {
@@ -214,7 +210,6 @@ export default class FlexibleUnit {
 
     /**
      * @hidden
-     * @returns
      */
     private fillFormat(format: string, combo: Option[], long: boolean): string {
         let result = "";
@@ -232,6 +227,9 @@ export default class FlexibleUnit {
         return result;
     }
 
+    /**
+     * @hidden
+     */
     private cutInteger(string: string): string | false {
         let result = "";
         for (let i = 0; i < string.length; i++) {

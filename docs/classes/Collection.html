@@ -7,7 +7,7 @@
 	<meta name="description" content="Documentation for simple-units">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
-	<link rel="stylesheet" href="../assets/css/pages.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -41,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -54,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../modules.html">Globals</a>
+					<a href="../modules.html">simple-units</a>
 				</li>
 				<li>
 					<a href="Collection.html">Collection</a>
@@ -143,13 +141,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Collection<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Collection.html" class="tsd-signature-type">Collection</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Collection<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Collection.html" class="tsd-signature-type" data-tsd-kind="Class">Collection</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L85">src/Collection.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L85">src/Collection.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -157,7 +155,7 @@
 									<p>Creates a new collection.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="Collection.html" class="tsd-signature-type">Collection</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="Collection.html" class="tsd-signature-type" data-tsd-kind="Class">Collection</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -167,10 +165,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="Editor" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> Editor</h3>
-					<div class="tsd-signature tsd-kind-icon">Editor<span class="tsd-signature-symbol">:</span> <a href="CollectionEditor.html" class="tsd-signature-type">CollectionEditor</a><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">Editor<span class="tsd-signature-symbol">:</span> <a href="CollectionEditor.html" class="tsd-signature-type" data-tsd-kind="Class">CollectionEditor</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L79">src/Collection.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L79">src/Collection.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -187,10 +185,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="groups" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> groups</h3>
-					<div class="tsd-signature tsd-kind-icon">groups<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Group.html" class="tsd-signature-type">Group</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">groups<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L55">src/Collection.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L55">src/Collection.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -206,25 +204,42 @@
 					<a name="Convertible" class="tsd-anchor"></a>
 					<h3>Convertible</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">Convertible<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type">Convertible</a></li>
+						<li class="tsd-signature tsd-kind-icon">Convertible<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L154">src/Collection.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L156">src/Collection.ts:156</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a convertible having the given value and unit. Alias to <a href="Collection.html#from">Collection.from</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>Convertible</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible&#39;s value (e.g. <code>20</code>)</p>
+									</div>
 								</li>
 								<li>
 									<h5>unit: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible&#39;s unit (e.g. <code>°F</code>)</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="Convertible.html" class="tsd-signature-type">Convertible</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h4>
+							<p>a convertible having the given value and unit</p>
 						</li>
 					</ul>
 				</section>
@@ -232,25 +247,42 @@
 					<a name="from" class="tsd-anchor"></a>
 					<h3>from</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type">Convertible</a></li>
+						<li class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L144">src/Collection.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L145">src/Collection.ts:145</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a convertible having the given value and unit. Does exactly the same as <a href="Collection.html#Convertible">Collection.Convertible</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>Convertible</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible&#39;s value (e.g. <code>20</code>)</p>
+									</div>
 								</li>
 								<li>
 									<h5>unit: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible&#39;s unit (e.g. <code>°F</code>)</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="Convertible.html" class="tsd-signature-type">Convertible</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h4>
+							<p>a convertible having the given value and unit</p>
 						</li>
 					</ul>
 				</section>
@@ -258,13 +290,13 @@
 					<a name="group" class="tsd-anchor"></a>
 					<h3>group</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">(</span>group<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Group.html" class="tsd-signature-type">Group</a></li>
+						<li class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">(</span>group<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L132">src/Collection.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L132">src/Collection.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -286,7 +318,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="Group.html" class="tsd-signature-type">Group</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a></h4>
 							<p>the group itself</p>
 						</li>
 					</ul>
@@ -301,7 +333,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L110">src/Collection.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L110">src/Collection.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -333,7 +365,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L93">src/Collection.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L93">src/Collection.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -356,7 +388,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L162">src/Collection.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L164">src/Collection.ts:164</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -373,13 +405,13 @@
 					<a name="unit" class="tsd-anchor"></a>
 					<h3>unit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">unit<span class="tsd-signature-symbol">(</span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type">Unit</a></li>
+						<li class="tsd-signature tsd-kind-icon">unit<span class="tsd-signature-symbol">(</span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/unitjs/blob/039f263/src/Collection.ts#L120">src/Collection.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Collection.ts#L120">src/Collection.ts:120</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -397,12 +429,12 @@
 								<li>
 									<h5>unit: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the unit</p>
+										<p>the unit as string</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="Unit.html" class="tsd-signature-type">Unit</a></h4>
-							<p>the unit object belonging to the given unit</p>
+							<h4 class="tsd-returns-title">Returns <a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></h4>
+							<p>the unit object belonging to the given unit string</p>
 						</li>
 					</ul>
 				</section>
@@ -411,12 +443,6 @@
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="label pp-nav pp-group">
-						<span>Documentation</span>
-					</li>
-					<li class=" pp-nav pp-page">
-						<a href="../pages/Documentation/test.html">My <wbr>Page</a>
-					</li>
 					<li class=" ">
 						<a href="../modules.html">Exports</a>
 					</li>
@@ -506,7 +532,6 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 		</div>
 	</div>
@@ -516,6 +541,5 @@
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.json"><' + '/script>');</script>
 </body>
 </html>

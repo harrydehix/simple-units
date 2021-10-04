@@ -35,7 +35,7 @@ export default (...fns: ((...any: any[]) => any)[]) => {
 }
 
 function printGraph(...data: number[]) {
-    const { chart, legend, scale, __raw } = wunderbar(data, {
+    const { chart, scale } = wunderbar(data, {
         min: 0,
         length: 50,
     });
