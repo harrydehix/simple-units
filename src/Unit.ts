@@ -143,4 +143,12 @@ export default class Unit {
     possibilities() {
         return this.group.possibilities();
     }
+
+    /**
+     * Creates a string array holding all this unit's different notations.
+     * @returns a string array holding all this unit's different notations
+     */
+    computeNotations() {
+        return this.format.short.concat(this.format.long.pl, this.format.long.sg);
+    }
 }
