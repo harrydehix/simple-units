@@ -2,8 +2,7 @@ import Option from "../../variable/Option";
 import Variable from "../../variable/Variable";
 
 /**
- * The multipliers belonging to the standard IEC prefixes arranged in an array.
- * @see Multiplier
+ * {@link Variable} holding every IEC 80000 binary prefix.
  */
 const iecPrefixes = [
     new Option("Yi", "yobi", 1024 ** 8),

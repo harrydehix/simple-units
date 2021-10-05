@@ -3,7 +3,6 @@ import Variable from "../../variable/Variable";
 
 /**
  * {@link Variable} holding every time unit for use in the denominator.
- * @see Multiplier
  */
 const dividedByTimes = new Variable(false,
     new Option("a", "year", 1 / 31556952),

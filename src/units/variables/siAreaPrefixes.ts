@@ -3,8 +3,7 @@ import Variable from "../../variable/Variable";
 import { SIPrefix } from "./siPrefixes";
 
 /**
- * The multipliers belonging to the standard SI area prefixes arranged in an array.
- * @see Multiplier
+ * {@link Variable} holding every SI area prefix.
  */
 const siAreaPrefixes = [
     new Option("Y", "yotta", 1e48),

@@ -135,7 +135,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L72">src/Unit.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L72">src/Unit.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -173,7 +173,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L93">src/Unit.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L93">src/Unit.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -182,16 +182,16 @@
 								</div>
 								<p>Using this constructor function one doesn&#39;t need to specify functions describing how to convert the unit to the group&#39;s base unit and vice versa.</p>
 								<p>Instead one only specifies the mathematical relation the the base unit - in the form of a ratio and a shift.</p>
-								<p><b>Example</b>: You want to define the unit <i>Celsius</i> and you have already defined the base unit <i>Kelvin</i>.
-									You know the formula to convert a value from <i>Celsius</i> to <i>Kelvin</i> is: <code>°C + 273.15 = °K</code>.
+								<p><strong>Example</strong>: You want to define the unit <i>Fahrenheit</i> and you have already defined the base unit <i>Kelvin</i>.
+									You know the formula to convert a value from <i>Fahrenheit</i> to <i>Kelvin</i> is: <code>°F * 5/9 + (45967/180) = °K</code>.
 								Using the other constructor function you had to write the following:</p>
-								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> + </span><span style="color: #098658">273.15</span><span style="color: #000000">, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> - </span><span style="color: #098658">273.15</span><span style="color: #000000">, ...);</span>
+								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> (</span><span style="color: #001080">val</span><span style="color: #000000"> - (</span><span style="color: #098658">45967</span><span style="color: #000000">/</span><span style="color: #098658">180</span><span style="color: #000000">)) / </span><span style="color: #098658">5</span><span style="color: #000000">/</span><span style="color: #098658">9</span><span style="color: #000000">, (</span><span style="color: #001080">val</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">val</span><span style="color: #000000"> * </span><span style="color: #098658">5</span><span style="color: #000000">/</span><span style="color: #098658">9</span><span style="color: #000000"> + (</span><span style="color: #098658">45967</span><span style="color: #000000">/</span><span style="color: #098658">180</span><span style="color: #000000">), ...);</span>
 </code></pre>
 								<p>As you see there is repetitive code. Couldn&#39;t one save one of the two converter functions?
 								Lets see how we create the unit using this constructor.</p>
-								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #098658">273.15</span><span style="color: #000000">, ...)</span>
+								<pre><code><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Unit</span><span style="color: #000000">({...}, </span><span style="color: #098658">5</span><span style="color: #000000">/</span><span style="color: #098658">9</span><span style="color: #000000">, </span><span style="color: #098658">45967</span><span style="color: #000000">/</span><span style="color: #098658">180</span><span style="color: #000000">, ...)</span>
 </code></pre>
-								<p><code>1</code> is the ratio between the units, <code>273.15</code> the shift. Much easier, isn&#39;t it? And no repetitive code!</p>
+								<p><code>5/9</code> is the ratio between the units, <code>45967/180</code> the shift. Much easier, isn&#39;t it? And no repetitive code!</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -231,7 +231,7 @@
 					<div class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">UnitFormat</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L43">src/Unit.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L43">src/Unit.ts:43</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -248,7 +248,7 @@
 					<div class="tsd-signature tsd-kind-icon">from<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Converter</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L63">src/Unit.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L63">src/Unit.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -271,7 +271,7 @@
 					<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <a href="Group.html" class="tsd-signature-type" data-tsd-kind="Class">Group</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L37">src/Unit.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L37">src/Unit.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -286,7 +286,7 @@
 					<div class="tsd-signature tsd-kind-icon">system<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L50">src/Unit.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L50">src/Unit.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -303,7 +303,7 @@
 					<div class="tsd-signature tsd-kind-icon">to<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Converter</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L57">src/Unit.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L57">src/Unit.ts:57</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -333,7 +333,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L151">src/Unit.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L151">src/Unit.ts:151</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -356,16 +356,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L143">src/Unit.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L143">src/Unit.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an array of units to which the current unit can be converted.</p>
+									<p>Returns an array of units to which this unit can be converted.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
-							<p>an array of units to which the current unit can be converted</p>
+							<p>an array of units to which this unit can be converted</p>
 						</li>
 					</ul>
 				</section>
@@ -379,7 +379,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Unit.ts#L128">src/Unit.ts:128</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Unit.ts#L128">src/Unit.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

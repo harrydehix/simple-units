@@ -105,6 +105,8 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#as" class="tsd-kind-icon">as</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#asBest" class="tsd-kind-icon">as<wbr>Best</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#compare" class="tsd-kind-icon">compare</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#copy" class="tsd-kind-icon">copy</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#format" class="tsd-kind-icon">format</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#possibilities" class="tsd-kind-icon">possibilities</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#to" class="tsd-kind-icon">to</a></li>
@@ -126,7 +128,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L55">src/Convertible.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L76">src/Convertible.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -179,7 +181,7 @@
 					<div class="tsd-signature tsd-kind-icon">unit<span class="tsd-signature-symbol">:</span> <a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L24">src/Convertible.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L25">src/Convertible.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -194,7 +196,7 @@
 					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L20">src/Convertible.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L21">src/Convertible.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -210,13 +212,13 @@
 					<a name="as" class="tsd-anchor"></a>
 					<h3>as</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">as<span class="tsd-signature-symbol">(</span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></li>
+						<li class="tsd-signature tsd-kind-icon">as<span class="tsd-signature-symbol">(</span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L123">src/Convertible.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L150">src/Convertible.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -239,7 +241,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>unit: <span class="tsd-signature-type">string</span></h5>
+									<h5>unit: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>the target unit</p>
 									</div>
@@ -260,7 +262,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L147">src/Convertible.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L174">src/Convertible.ts:174</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -297,6 +299,64 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="compare" class="tsd-anchor"></a>
+					<h3>compare</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">compare<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">0</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">-1</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L277">src/Convertible.ts:277</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Compares this convertible to another. Returns <code>-1</code>, <code>0</code>,
+										or <code>1</code> as this convertible is less than, equal to, or greater
+									than the passed convertible.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible to be compared</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">0</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">-1</span></h4>
+							<p><code>-1</code>, <code>0</code>, or <code>1</code> as this convertible is less than, equal to, or greater
+							than the passed convertible</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="copy" class="tsd-anchor"></a>
+					<h3>copy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">copy<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L265">src/Convertible.ts:265</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a copy of the convertible.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h4>
+							<p>a copy of the convertible</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="format" class="tsd-anchor"></a>
 					<h3>format</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -306,7 +366,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L218">src/Convertible.ts:218</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L245">src/Convertible.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -356,7 +416,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L74">src/Convertible.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L95">src/Convertible.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -383,18 +443,18 @@
 					<a name="to" class="tsd-anchor"></a>
 					<h3>to</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">(</span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">(</span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L98">src/Convertible.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L119">src/Convertible.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Converts the convertible to the passed unit and returns tthe conversion&#39;s result.</p>
+									<p>Converts the convertible to the passed unit and returns the conversion&#39;s result.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>example</dt>
@@ -415,9 +475,9 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>unit: <span class="tsd-signature-type">string</span></h5>
+									<h5>unit: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the target unit as string</p>
+										<p>the target unit</p>
 									</div>
 								</li>
 							</ul>
@@ -436,7 +496,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/fb36c0b/src/Convertible.ts#L187">src/Convertible.ts:187</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L214">src/Convertible.ts:214</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -497,6 +557,12 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Convertible.html#asBest" class="tsd-kind-icon">as<wbr>Best</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Convertible.html#compare" class="tsd-kind-icon">compare</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Convertible.html#copy" class="tsd-kind-icon">copy</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Convertible.html#format" class="tsd-kind-icon">format</a>

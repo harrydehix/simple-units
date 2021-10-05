@@ -27,4 +27,4 @@ function convertUnits() {
     convert2(200).from("Gb").to("MB");
 }
 
-compareFunctions(convertUnits, simpleUnits, convert, math);
+compareFunctions(convertUnits, convert, simpleUnits, math);
