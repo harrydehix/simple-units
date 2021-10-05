@@ -77,18 +77,18 @@ export default class Unit {
      *
      * Instead one only specifies the mathematical relation the the base unit - in the form of a ratio and a shift.
      *
-     * <b>Example</b>: You want to define the unit <i>Celsius</i> and you have already defined the base unit <i>Kelvin</i>.
-     * You know the formula to convert a value from <i>Celsius</i> to <i>Kelvin</i> is: `°C + 273.15 = °K`.
+     * **Example**: You want to define the unit <i>Fahrenheit</i> and you have already defined the base unit <i>Kelvin</i>.
+     * You know the formula to convert a value from <i>Fahrenheit</i> to <i>Kelvin</i> is: `°F * 5/9 + (45967/180) = °K`.
      * Using the other constructor function you had to write the following:
      * ```
-     * new Unit({...}, (val) => val + 273.15, (val) => val - 273.15, ...);
+     * new Unit({...}, (val) => (val - (45967/180)) / 5/9, (val) => val * 5/9 + (45967/180), ...);
      * ```
      * As you see there is repetitive code. Couldn't one save one of the two converter functions?
      * Lets see how we create the unit using this constructor.
      * ```
-     * new Unit({...}, 1, 273.15, ...)
+     * new Unit({...}, 5/9, 45967/180, ...)
      * ```
-     * `1` is the ratio between the units, `273.15` the shift. Much easier, isn't it? And no repetitive code!
+     * `5/9` is the ratio between the units, `45967/180` the shift. Much easier, isn't it? And no repetitive code!
     */
     constructor(format: UnitFormat, ratio: number, shift: number, system: string);
 
