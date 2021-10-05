@@ -9,6 +9,21 @@ const converted = units.from(3, "cm").to("in");
 console.log(converted); 
 // Output: 1.1811
 ```
+## Comparing
+```typescript
+const c1 = units.Convertible(12, "°C");
+const c2 = units.Convertible(59, "°F")
+
+const result = c1.compare(c2);
+if(result === -1){
+  console.log("c1 is less than c2!");
+}else if(result === 0){
+  console.log("c1 and c2 are equal!");
+}else{
+  console.log("c1 is greater than c2!");
+}
+```
+
 ## Formatting
 ```typescript
 const convertible = units.Convertible(12.2323123, "kt");
