@@ -267,7 +267,7 @@ export default class Convertible {
     }
 
     /**
-     * Compares this convertible to another. Returns `-1`, `0`, 
+     * Compares this convertible semantically to another. Returns `-1`, `0`,
      * or `1` as this convertible is less than, equal to, or greater
      * than the passed convertible.
      * @param other the convertible to be compared
@@ -280,5 +280,60 @@ export default class Convertible {
         if (this.value < copyOfOther.value) return -1;
         else if (this.value === copyOfOther.value) return 0;
         else return 1;
+    }
+
+    /**
+     * Returns whether this convertible is semantically equal to the passed convertible.
+     * @param other the convertible to be compared
+     * @returns whether this convertible is semantically equal to the passed convertible
+     */
+    eq(other: Convertible) {
+        if (other.unit.group !== this.unit.group) throw new IllegalArgumentsError(`Cannot compare convertibles. Unit '${other}' does not belong to the same group as '${this.unit}'!`)
+        const copyOfOther = other.copy()._internal._asUnitUnchecked(this.unit);
+        return this.value === copyOfOther.value;
+    }
+
+    /**
+     * Returns whether this convertible is semantically less than the passed convertible.
+     * @param other the convertible to be compared
+     * @returns whether this convertible is semantically less than the passed convertible
+     */
+    lt(other: Convertible) {
+        if (other.unit.group !== this.unit.group) throw new IllegalArgumentsError(`Cannot compare convertibles. Unit '${other}' does not belong to the same group as '${this.unit}'!`)
+        const copyOfOther = other.copy()._internal._asUnitUnchecked(this.unit);
+        return this.value < copyOfOther.value;
+    }
+
+    /**
+     * Returns whether this convertible is semantically less than or equal to the passed convertible.
+     * @param other the convertible to be compared
+     * @returns whether this convertible is semantically less than or equal to the passed convertible
+     */
+    lte(other: Convertible) {
+        if (other.unit.group !== this.unit.group) throw new IllegalArgumentsError(`Cannot compare convertibles. Unit '${other}' does not belong to the same group as '${this.unit}'!`)
+        const copyOfOther = other.copy()._internal._asUnitUnchecked(this.unit);
+        return this.value <= copyOfOther.value;
+    }
+
+    /**
+     * Returns whether this convertible is semantically greater than the passed convertible.
+     * @param other the convertible to be compared
+     * @returns whether this convertible is semantically greater than the passed convertible
+     */
+    gt(other: Convertible) {
+        if (other.unit.group !== this.unit.group) throw new IllegalArgumentsError(`Cannot compare convertibles. Unit '${other}' does not belong to the same group as '${this.unit}'!`)
+        const copyOfOther = other.copy()._internal._asUnitUnchecked(this.unit);
+        return this.value > copyOfOther.value;
+    }
+
+    /**
+     * Returns whether this convertible is semantically greater than or equal to the passed convertible.
+     * @param other the convertible to be compared
+     * @returns whether this convertible is semantically greater than or equal to the passed convertible
+     */
+    gte(other: Convertible) {
+        if (other.unit.group !== this.unit.group) throw new IllegalArgumentsError(`Cannot compare convertibles. Unit '${other}' does not belong to the same group as '${this.unit}'!`)
+        const copyOfOther = other.copy()._internal._asUnitUnchecked(this.unit);
+        return this.value >= copyOfOther.value;
     }
 }
