@@ -23,13 +23,14 @@ export default class Convertible {
      * The convertible's unit. Changes through converting.
      */
     unit: Unit;
+
     /**
      * @hidden
      */
     _internal = {
         /**
          * Converts the convertible to the passed unit without checking for compatibilty.
-         * This method exists due to performance enhancement.
+         * This method exists due to performance enhancement. Returns the conversion's result.
          * @param unit the target unit
          * @returns the conversion's result
          */
@@ -38,6 +39,19 @@ export default class Convertible {
             this.value = unit.fromBase(this.value);
             this.unit = unit;
             return this.value;
+        },
+
+        /**
+         * Converts the convertible to the passed unit without checking for compatibilty.
+         * This method exists due to performance enhancement. Returns the convertible itself.
+         * @param unit the target unit
+         * @returns this
+         */
+        _asUnitUnchecked: (unit: Unit): this => {
+            this.value = this.unit.toBase(this.value);
+            this.value = unit.fromBase(this.value);
+            this.unit = unit;
+            return this;
         }
     }
 
@@ -262,7 +276,7 @@ export default class Convertible {
      */
     compare(other: Convertible) {
         if (other.unit.group !== this.unit.group) throw new IllegalArgumentsError(`Cannot compare convertibles. Unit '${other}' does not belong to the same group as '${this.unit}'!`)
-        const copyOfOther = other.copy().as(this.unit.toString());
+        const copyOfOther = other.copy()._internal._asUnitUnchecked(this.unit);
         if (this.value < copyOfOther.value) return -1;
         else if (this.value === copyOfOther.value) return 0;
         else return 1;
