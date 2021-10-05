@@ -217,8 +217,11 @@ export default class FlexibleUnit {
             if (format[i] === "%" && i + 1 < format.length) {
                 const variableIndex = this.cutInteger(format.substr(i + 1));
                 if (variableIndex === false) throw new InvalidVariableSyntaxError(`Inside the flexible unit's format a '%' must be followed by a number indicating the variable's index!`);
-                if (long) result += combo[Number(variableIndex)].long;
-                else result += combo[Number(variableIndex)].short;
+
+                const variableIndexNumber = Number(variableIndex);
+                if (variableIndexNumber >= combo.length) throw new InvalidVariableSyntaxError(`The specified variable index '%${variableIndexNumber}' is out of range!`);
+                if (long) result += combo[variableIndexNumber].long;
+                else result += combo[variableIndexNumber].short;
                 i += variableIndex.length;
             } else {
                 result += format[i];
