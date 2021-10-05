@@ -137,8 +137,8 @@ export default class Unit {
     }
 
     /**
-     * Returns an array of units to which the current unit can be converted.
-     * @returns an array of units to which the current unit can be converted
+     * Returns an array of units to which this unit can be converted.
+     * @returns an array of units to which this unit can be converted
      */
     possibilities() {
         return this.group.possibilities();

@@ -2,6 +2,7 @@ import { inspect } from "util";
 import ConversionError from "./errors/ConversionError";
 import Unit from "./Unit";
 import { sprintf } from "sprintf-js";
+import IllegalArgumentsError from "./errors/IllegalArgumentsError";
 
 export type FormatOptions = {
     length?: "long" | "short",
@@ -229,5 +230,29 @@ export default class Convertible {
             else unit = this.unit.format.long.pl[0];
         }
         return sprintf(format, this.value, unit);
+    }
+
+    /**
+     * Creates a copy of the convertible.
+     * @returns a copy of the convertible
+     */
+    copy() {
+        return new Convertible(this.value, this.unit);
+    }
+
+    /**
+     * Compares this convertible to another. Returns `-1`, `0`, 
+     * or `1` as this convertible is less than, equal to, or greater
+     * than the passed convertible.
+     * @param other the convertible to be compared
+     * @returns `-1`, `0`, or `1` as this convertible is less than, equal to, or greater
+     * than the passed convertible
+     */
+    compare(other: Convertible) {
+        if (other.unit.group !== this.unit.group) throw new IllegalArgumentsError(`Cannot compare convertibles. Unit '${other}' does not belong to the same group as '${this.unit}'!`)
+        const copyOfOther = other.copy().as(this.unit.toString());
+        if (this.value < copyOfOther.value) return -1;
+        else if (this.value === copyOfOther.value) return 0;
+        else return 1;
     }
 }

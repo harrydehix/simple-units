@@ -5,13 +5,16 @@ import wunderbar from "@gribnoysup/wunderbar";
 import units from "../units/units";
 
 export default (...fns: ((...any: any[]) => any)[]) => {
+    // Measure the function's average time per call
     const avgs = [];
     for (const fn of fns) {
-        avgs.push(units.from(testFunction(fn), "s"));
+        const time = units.from(testFunction(fn), "s");
+        avgs.push(time);
     }
+    // 
     let min = avgs[0];
     for (const avg of avgs) {
-        if (avg.value < min.value) min = avg;
+        if (avg.compare(min) === -1) min = avg;
     }
     min.asBest();
     const avgValues = [];
