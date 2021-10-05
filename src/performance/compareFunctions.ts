@@ -11,7 +11,6 @@ export default (...fns: ((...any: any[]) => any)[]) => {
         const time = units.from(testFunction(fn), "s");
         avgs.push(time);
     }
-    // 
     let min = avgs[0];
     for (const avg of avgs) {
         if (avg.compare(min) === -1) min = avg;
@@ -19,7 +18,7 @@ export default (...fns: ((...any: any[]) => any)[]) => {
     min.asBest();
     const avgValues = [];
     for (const avg of avgs) {
-        avgValues.push(avg.as(min.unit.toString()).value);
+        avgValues.push(avg.as(min.unit).value);
     }
 
     for (let i = 0; i < fns.length; i++) {

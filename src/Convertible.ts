@@ -27,7 +27,13 @@ export default class Convertible {
      * @hidden
      */
     _internal = {
-        _toUnit: (unit: Unit) => {
+        /**
+         * Converts the convertible to the passed unit without checking for compatibilty.
+         * This method exists due to performance enhancement.
+         * @param unit the target unit
+         * @returns the conversion's result
+         */
+        _toUnitUnchecked: (unit: Unit) => {
             this.value = this.unit.toBase(this.value);
             this.value = unit.fromBase(this.value);
             this.unit = unit;
@@ -77,7 +83,7 @@ export default class Convertible {
     }
 
     /**
-     * Converts the convertible to the passed unit and returns tthe conversion's result.
+     * Converts the convertible to the passed unit and returns the conversion's result.
      * 
      * @example
      * ```
@@ -93,12 +99,18 @@ export default class Convertible {
      * // Output: K
      * ```
      * 
-     * @param unit the target unit as string
+     * @param unit the target unit 
      * @returns the conversion's result
      */
-    to(unit: string): number {
-        const target = this.unit.group._internal._units().get(unit);
-        if (!target) throw new ConversionError(`Unit '${unit}' does not belong to group '${this.unit.group.name}'!`)
+    to(unit: string | Unit): number {
+        let target: Unit;
+        if (typeof unit === "string") {
+            target = this.unit.group._internal._units().get(unit)!;
+            if (!target) throw new ConversionError(`Unit '${unit}' does not belong to group '${this.unit.group.name}'!`)
+        } else {
+            target = unit;
+            if (target.group !== this.unit.group) throw new ConversionError(`Unit '${unit}' does not belong to group '${this.unit.group.name}'!`)
+        }
         this.value = this.unit.toBase(this.value);
         this.value = target.fromBase(this.value);
         this.unit = target;
@@ -121,7 +133,7 @@ export default class Convertible {
      * @param unit the target unit
      * @returns the convertible itself
      */
-    as(unit: string) {
+    as(unit: string | Unit) {
         this.to(unit);
         return this;
     }
@@ -150,7 +162,7 @@ export default class Convertible {
         let bestCount = Number.MAX_VALUE;
         this.unit.group._internal._units().forEach((unit) => {
             if (!remainInUnitSystem || unit.system === this.unit.system) {
-                this._internal._toUnit(unit);
+                this._internal._toUnitUnchecked(unit);
                 if (this.value >= 1 || this.value <= -1) {
                     const str = String(this.value);
                     if (!str.includes("e")) {
@@ -165,7 +177,7 @@ export default class Convertible {
                 }
             }
         });
-        this._internal._toUnit(bestUnit);
+        this._internal._toUnitUnchecked(bestUnit);
         return this;
     }
 

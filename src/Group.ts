@@ -69,6 +69,10 @@ export default class Group {
      * @hidden
      */
     readonly _internal = {
+        /**
+         * Returns the group's unit map. Only used internally.
+         * @returns the groups unit map
+         */
         _units: () => {
             return this.units;
         },
