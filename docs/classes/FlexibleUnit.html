@@ -110,11 +110,11 @@
 					<p>But as we see, we would have unnecessary repetitive code. This is exactly the kind of case where the FlexibleUnit comes in handy.
 					This is how the code would look like with the FlexibleUnit:</p>
 					<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">var1</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Variable</span><span style="color: #000000">([</span>
-<span style="color: #000000">     </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Option</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;k&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;kilo&quot;</span><span style="color: #000000">, </span><span style="color: #098658">1000</span><span style="color: #000000">),</span>
+<span style="color: #000000">     </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Value</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;k&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;kilo&quot;</span><span style="color: #000000">, </span><span style="color: #098658">1000</span><span style="color: #000000">),</span>
 <span style="color: #000000">], </span><span style="color: #0000FF">true</span><span style="color: #000000">);</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">var2</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Variable</span><span style="color: #000000">([</span>
-<span style="color: #000000">     </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Option</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;s&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;second&quot;</span><span style="color: #000000">, </span><span style="color: #098658">1</span><span style="color: #000000">),</span>
-<span style="color: #000000">     </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Option</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;min&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;minute&quot;</span><span style="color: #000000">, </span><span style="color: #098658">1</span><span style="color: #000000">/</span><span style="color: #098658">60</span><span style="color: #000000">),</span>
+<span style="color: #000000">     </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Value</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;s&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;second&quot;</span><span style="color: #000000">, </span><span style="color: #098658">1</span><span style="color: #000000">),</span>
+<span style="color: #000000">     </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Value</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;min&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;minute&quot;</span><span style="color: #000000">, </span><span style="color: #098658">1</span><span style="color: #000000">/</span><span style="color: #098658">60</span><span style="color: #000000">),</span>
 <span style="color: #000000">], </span><span style="color: #0000FF">false</span><span style="color: #000000">);</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">unit</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">FlexibleUnit</span><span style="color: #000000">({ </span><span style="color: #001080">short:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;%0m/%1&quot;</span><span style="color: #000000">],</span>
@@ -126,12 +126,12 @@
 </code></pre>
 					<p>Much shorter, isn&#39;t it? But what exactly is happening here?
 						First, we create the <a href="Variable.html">Variable</a> <code>var1</code>. A variable is nothing else than a placeholder that can take different states.
-						We pass an array holding the different values (called <a href="Option.html">Option</a>) the
-						variable can take to the constructor. Because we only need the optional prefix <code>k</code> (long term: <code>kilo</code>) we just define one single option here. We know <code>1km = 1000m</code>, so we
+						We pass an array holding the different values the
+						variable can take to the constructor. Because we only need the optional prefix <code>k</code> (long term: <code>kilo</code>) we just define one single value here. We know <code>1km = 1000m</code>, so we
 						specify <code>1000</code> for the ratio. With <code>true</code> we set the variable as optional.
 						After that we create the second variable <code>var2</code>. We pass an array holding the different values the variable can take. These are the different times we want to support.
-						First we define the option for the <code>second</code> (short term: <code>s</code>). We set the ratio to 1 because <code>m/s</code> is our base. After
-						that we define the option for the <code>minute</code> (short term: <code>min</code>). We know <code>1m/s = 1/60m/min</code>. Therefore we set the ratio to <code>1/60</code>.
+						First we define the value for the <code>second</code> (short term: <code>s</code>). We set the ratio to 1 because <code>m/s</code> is our base. After
+						that we define the value for the <code>minute</code> (short term: <code>min</code>). We know <code>1m/s = 1/60m/min</code>. Therefore we set the ratio to <code>1/60</code>.
 					With <code>false</code> we set the variable as mandatory.</p>
 					<p>The second new thing is the unit&#39;s different format.
 						There are new weird looking <code>%number</code> terms. These serve as a indicators for the previously defined variables.
@@ -173,7 +173,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1102913/src/FlexibleUnit.ts#L147">FlexibleUnit.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/3880e83/src/FlexibleUnit.ts#L147">FlexibleUnit.ts:147</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -270,10 +270,10 @@
 						<a href="GroupEditor.html" class="tsd-kind-icon">Group<wbr>Editor</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="Option.html" class="tsd-kind-icon">Option</a>
+						<a href="Unit.html" class="tsd-kind-icon">Unit</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="Unit.html" class="tsd-kind-icon">Unit</a>
+						<a href="Value.html" class="tsd-kind-icon">Value</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="Variable.html" class="tsd-kind-icon">Variable</a>

@@ -1,7 +1,7 @@
 import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
 import Unit from "../../Unit";
-import Option from "../../variable/Option";
+import Value from "../../variable/Value";
 import Variable from "../../variable/Variable";
 import siAreaPrefixes from "../variables/siAreaPrefixes";
 
@@ -25,10 +25,10 @@ area.Editor.add(
             pl: ["%0ares"],
         }
     }, 100, 0, "metric", [new Variable([
-        new Option("c", "centi", 1e-2),
-        new Option("d", "deci", 1e-1),
-        new Option("da", "dec", 1e1),
-        new Option("h", "hect", 1e2),
+        new Value("c", "centi", 1e-2),
+        new Value("d", "deci", 1e-1),
+        new Value("da", "dec", 1e1),
+        new Value("h", "hect", 1e2),
     ], true)]),
     new Unit({
         short: ["in²", "″²", "in^2", "″^2", "″2", "in2"],

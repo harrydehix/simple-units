@@ -70,8 +70,8 @@
 								<li class="tsd-kind-class"><a href="classes/FlexibleUnit.html" class="tsd-kind-icon">Flexible<wbr>Unit</a></li>
 								<li class="tsd-kind-class"><a href="classes/Group.html" class="tsd-kind-icon">Group</a></li>
 								<li class="tsd-kind-class"><a href="classes/GroupEditor.html" class="tsd-kind-icon">Group<wbr>Editor</a></li>
-								<li class="tsd-kind-class"><a href="classes/Option.html" class="tsd-kind-icon">Option</a></li>
 								<li class="tsd-kind-class"><a href="classes/Unit.html" class="tsd-kind-icon">Unit</a></li>
+								<li class="tsd-kind-class"><a href="classes/Value.html" class="tsd-kind-icon">Value</a></li>
 								<li class="tsd-kind-class"><a href="classes/Variable.html" class="tsd-kind-icon">Variable</a></li>
 							</ul>
 						</section>
@@ -92,29 +92,20 @@
 					<div class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">:</span> <a href="classes/Collection.html" class="tsd-signature-type" data-tsd-kind="Class">Collection</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1102913/src/units/units.ts#L32">units/units.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/3880e83/src/units/units.ts#L23">units/units.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p><a href="classes/Collection.html">Collection</a> of a variety of common units.</p>
+							<p><em>simple-units</em> default <a href="classes/Collection.html">Collection</a> holding the most common units.</p>
 						</div>
-						<p>To simply convert a value from one unit to another use the <code>from-to</code>-syntax.</p>
+						<p>Log the collection to the console to get an overview of all supported units.</p>
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
-							<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">converted</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">from</span><span style="color: #000000">(</span><span style="color: #098658">12</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;°C&quot;</span><span style="color: #000000">).</span><span style="color: #795E26">to</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;°F&quot;</span><span style="color: #000000">);</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">converted</span><span style="color: #000000">); </span><span style="color: #008000">// Output: 56.6</span>
+							<dd><pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">units</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;simple-units&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">units</span><span style="color: #000000">);</span>
 </code></pre>
-								<p>If you want to convert the same value into different units you should use the  <code>Convertible</code>-syntax to safe some time
-								and memory.</p>
-							</dd>
-							<dt>example</dt>
-							<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">convertible</span><span style="color: #000000"> = </span><span style="color: #001080">units</span><span style="color: #000000">.</span><span style="color: #795E26">Convertible</span><span style="color: #000000">(</span><span style="color: #098658">12</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;°C&quot;</span><span style="color: #000000">);</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #795E26">to</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;°F&quot;</span><span style="color: #000000">)); </span><span style="color: #008000">// Output: 56.6</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #795E26">to</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;K&quot;</span><span style="color: #000000">));  </span><span style="color: #008000">// Output: 285.15</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">convertible</span><span style="color: #000000">.</span><span style="color: #795E26">to</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;°R&quot;</span><span style="color: #000000">)); </span><span style="color: #008000">// Output: 513.27</span>
-</code></pre>
-								<p>To learn more about collections in general, like editing this one, creating custom ones and many more read the documentation of the <a href="classes/Collection.html">Collection</a> class.</p>
 							</dd>
 						</dl>
 					</div>
@@ -150,10 +141,10 @@
 						<a href="classes/GroupEditor.html" class="tsd-kind-icon">Group<wbr>Editor</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/Option.html" class="tsd-kind-icon">Option</a>
+						<a href="classes/Unit.html" class="tsd-kind-icon">Unit</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/Unit.html" class="tsd-kind-icon">Unit</a>
+						<a href="classes/Value.html" class="tsd-kind-icon">Value</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/Variable.html" class="tsd-kind-icon">Variable</a>

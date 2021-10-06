@@ -61,9 +61,9 @@ console.log(convertible.unit.toString());
 
 ### More Methods
 
-Remember that the Convertible offers even more methods to make converting easier. They are documented {@link Convertible | here}.
+Remember that the Convertible offers even more methods to make converting easier. They are documented [here]().
 
 ## Formatting Convertibles
 
-Convertibles can be output as strings very easily. Depending on the specific demands, there are different methods for this. The simpler method is {@link Convertible.toString}, {@link Convertible.format} provides more features.
+Convertibles can be output as strings very easily. Depending on the specific demands, there are different methods for this. The simpler method is [Convertible.toString](), [Convertible.format]() provides more features.
 

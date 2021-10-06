@@ -1,4 +1,4 @@
-import Option from "./Option";
+import Value from "./Value";
 
 
 /**
@@ -12,11 +12,11 @@ export default class Variable {
     /**
      * @hidden
      */
-    private _options: Option[] = [];
+    private _values: Value[] = [];
     /**
      * @hidden
      */
-    private _computedOptions: Option[] | null = null;
+    private _computedValues: Value[] | null = null;
 
     /**
      * whether the variable is optional
@@ -27,19 +27,19 @@ export default class Variable {
      * @hidden
      */
     readonly _internal = {
-        _computeOptions: () => {
-            this._computedOptions = [];
-            this._options.forEach(option => {
+        _computeValues: () => {
+            this._computedValues = [];
+            this._values.forEach(value => {
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                this._computedOptions!.push(option.copy());
+                this._computedValues!.push(value.copy());
             });
-            if (this.isOptional) this._computedOptions.push(new Option("", "", 1));
+            if (this.isOptional) this._computedValues.push(new Value("", "", 1));
         },
 
         _toArray: () => {
-            if (this._computedOptions === null) this._internal._computeOptions();
+            if (this._computedValues === null) this._internal._computeValues();
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            return this._computedOptions! as Option[];
+            return this._computedValues! as Value[];
         }
     }
 
@@ -47,86 +47,86 @@ export default class Variable {
     /**
      * Creates a new variable.
      * @param isOptional whether the variable should be optional
-     * @param options the different states the variable can take
+     * @param values the different values the variable can take
      */
-    constructor(options: Option[], isOptional = true) {
-        this._options = options;
+    constructor(values: Value[], isOptional = true) {
+        this._values = values;
         this.isOptional = isOptional;
     }
 
     /**
-     * Adds the options of another variable to this variable.
-     * @param variable variable holding more options
+     * Adds the values of another variable to this variable.
+     * @param variable variable holding more values
      * @returns this
      */
     combine(variable: Variable) {
-        this._options.push(...variable._options);
-        this._computedOptions = null;
+        this._values.push(...variable._values);
+        this._computedValues = null;
         return this;
     }
 
     /**
-     * Multiplies every's option's ratio with the specified value.
-     * @param value
+     * Multiplies every value's ratio with the specified number.
+     * @param n
      * @returns this
      */
-    multiply(value: number) {
-        for (const option of this._options) {
-            option.ratio *= value;
+    multiply(n: number) {
+        for (const value of this._values) {
+            value.ratio *= n;
         }
-        this._computedOptions = null;
+        this._computedValues = null;
         return this;
     }
 
     /**
-     * Adds the specified value to every's option's ratio.
-     * @param value
+     * Adds the specified number to every value's ratio.
+     * @param n
      * @returns this
      */
-    add(value: number) {
-        for (const option of this._options) {
-            option.ratio += value;
+    add(n: number) {
+        for (const value of this._values) {
+            value.ratio += n;
         }
-        this._computedOptions = null;
+        this._computedValues = null;
         return this;
     }
 
     /**
-     * Subtracts the specified value from every's option's ratio.
-     * @param value
+     * Subtracts the specified number from every value's ratio.
+     * @param n
      * @returns this
      */
-    subtract(value: number) {
-        for (const option of this._options) {
-            option.ratio -= value;
+    subtract(n: number) {
+        for (const value of this._values) {
+            value.ratio -= n;
         }
-        this._computedOptions = null;
+        this._computedValues = null;
         return this;
     }
 
     /**
-     * Divides every's option's ratio to the specified value.
-     * @param value
+     * Divides every value's ratio to the specified number.
+     * @param n
      * @returns this
      */
-    divide(value: number) {
-        for (const option of this._options) {
-            option.ratio /= value;
+    divide(n: number) {
+        for (const value of this._values) {
+            value.ratio /= n;
         }
-        this._computedOptions = null;
+        this._computedValues = null;
         return this;
     }
 
     /**
-     * Takes every's option's ratio to the specified power.
-     * @param value the exponent
+     * Takes every value's ratio to the specified power.
+     * @param n the exponent
      * @returns this
      */
-    pow(value: number) {
-        for (const option of this._options) {
-            option.ratio **= value;
+    pow(n: number) {
+        for (const value of this._values) {
+            value.ratio **= n;
         }
-        this._computedOptions = null;
+        this._computedValues = null;
         return this;
     }
 
@@ -138,16 +138,16 @@ export default class Variable {
     copy(isOptional?: boolean) {
         if (isOptional === undefined) isOptional = this.isOptional;
         const copy = new Variable([], isOptional);
-        for (const option of this._options) {
-            copy._options.push(option.copy());
+        for (const value of this._values) {
+            copy._values.push(value.copy());
         }
         return copy;
     }
 
     /**
-     * Creates a deep copy of this variable starting from the option having the first argument
-     * as `short` property (inclusively) and ending at the option having the second
-     * argument as `short` property (inclusively).
+     * Creates a deep copy of this variable starting inclusively from the {@link Value} having the first argument
+     * as `short` property and ending inclusively at the {@link Value} having the second
+     * argument as `short` property.
      * @param startPoint 
      * @param endPoint 
      * @param isOptional whether the subcopy should be optional
@@ -155,15 +155,15 @@ export default class Variable {
      */
     subcopy(startPoint: string, endPoint?: string, isOptional?: boolean) {
         // Find index of start and end point
-        const startIndex = this._options.findIndex((option) => {
-            if (option.short === startPoint) {
+        const startIndex = this._values.findIndex((value) => {
+            if (value.short === startPoint) {
                 return true;
             }
         });
-        let endIndex = this._options.length - 1;
+        let endIndex = this._values.length - 1;
         if (endPoint) {
-            endIndex = this._options.findIndex((option) => {
-                if (option.short === endPoint) {
+            endIndex = this._values.findIndex((value) => {
+                if (value.short === endPoint) {
                     return true;
                 }
             });
@@ -173,7 +173,7 @@ export default class Variable {
         if (isOptional === undefined) isOptional = this.isOptional;
         const subcopy = new Variable([], isOptional);
         for (let i = startIndex; i <= endIndex; i++) {
-            subcopy._options.push(this._options[i].copy());
+            subcopy._values.push(this._values[i].copy());
         }
         return subcopy;
     }

@@ -9,26 +9,17 @@ import digital from "./groups/digital";
 import speed from "./groups/speed/speed";
 
 /**
- * {@link Collection} of a variety of common units.
+ * _simple-units_ default {@link Collection} holding the most common units.
  * 
- * To simply convert a value from one unit to another use the `from-to`-syntax.
+ * Log the collection to the console to get an overview of all supported units.
  * @example
- * ```
- * const converted = units.from(12, "°C").to("°F");
- * console.log(converted); // Output: 56.6
- * ```
- * If you want to convert the same value into different units you should use the  `Convertible`-syntax to safe some time
- * and memory.
- * @example
- * ```
- * const convertible = units.Convertible(12, "°C");
- * console.log(convertible.to("°F")); // Output: 56.6
- * console.log(convertible.to("K"));  // Output: 285.15
- * console.log(convertible.to("°R")); // Output: 513.27
- * ```
+ * ```typescript
+ * import units from "simple-units";
  * 
- * To learn more about collections in general, like editing this one, creating custom ones and many more read the documentation of the {@link Collection} class.
- */
+ * console.log(units);
+ * ```
+ *
+*/
 const units = new Collection();
 
 units.Editor.add(
