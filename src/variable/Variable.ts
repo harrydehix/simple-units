@@ -9,10 +9,23 @@ import Option from "./Option";
  * @see FlexibleUnit
  */
 export default class Variable {
+    /**
+     * @hidden
+     */
     private _options: Option[] = [];
+    /**
+     * @hidden
+     */
     private _computedOptions: Option[] | null = null;
+
+    /**
+     * whether the variable is optional
+     */
     isOptional = false;
 
+    /**
+     * @hidden
+     */
     readonly _internal = {
         _computeOptions: () => {
             this._computedOptions = [];
