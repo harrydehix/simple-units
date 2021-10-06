@@ -117,9 +117,9 @@ export default class Convertible {
      * @returns the conversion's result
      */
     to(unit: string | Unit): number {
-        let target: Unit;
+        let target: Unit | undefined;
         if (typeof unit === "string") {
-            target = this.unit.group._internal._units().get(unit)!;
+            target = this.unit.group._internal._units().get(unit);
             if (!target) throw new ConversionError(`Unit '${unit}' does not belong to group '${this.unit.group.name}'!`)
         } else {
             target = unit;
