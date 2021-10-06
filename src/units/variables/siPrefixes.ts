@@ -25,4 +25,4 @@ export default new Variable([
     new Value("E", "exa", 1e18),
     new Value("Z", "zetta", 1e21),
     new Value("Y", "yotta", 1e24),
-]);
+], true);
