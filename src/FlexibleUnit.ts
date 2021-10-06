@@ -2,7 +2,7 @@ import { product } from "cartesian-product-generator";
 import InvalidVariableSyntaxError from "./errors/InvalidVariableSyntaxError";
 import Group from "./Group";
 import Unit, { UnitFormat } from "./Unit";
-import Option from "./variable/Option";
+import Value from "./variable/Value";
 import Variable from "./variable/Variable";
 
 
@@ -54,11 +54,11 @@ import Variable from "./variable/Variable";
  * This is how the code would look like with the FlexibleUnit:
  * ```
  * const var1 = new Variable([
- *      new Option("k", "kilo", 1000),
+ *      new Value("k", "kilo", 1000),
  * ], true);
  * const var2 = new Variable([
- *      new Option("s", "second", 1),
- *      new Option("min", "minute", 1/60),
+ *      new Value("s", "second", 1),
+ *      new Value("min", "minute", 1/60),
  * ], false);
  * 
  * const unit = new FlexibleUnit({ short: ["%0m/%1"],
@@ -70,12 +70,12 @@ import Variable from "./variable/Variable";
  * ```
  * Much shorter, isn't it? But what exactly is happening here?
  * First, we create the {@link Variable} `var1`. A variable is nothing else than a placeholder that can take different states. 
- * We pass an array holding the different values (called {@link Option}) the 
- * variable can take to the constructor. Because we only need the optional prefix `k` (long term: `kilo`) we just define one single option here. We know `1km = 1000m`, so we 
+ * We pass an array holding the different values the 
+ * variable can take to the constructor. Because we only need the optional prefix `k` (long term: `kilo`) we just define one single value here. We know `1km = 1000m`, so we 
  * specify `1000` for the ratio. With `true` we set the variable as optional.
  * After that we create the second variable `var2`. We pass an array holding the different values the variable can take. These are the different times we want to support.
- * First we define the option for the `second` (short term: `s`). We set the ratio to 1 because `m/s` is our base. After
- * that we define the option for the `minute` (short term: `min`). We know `1m/s = 1/60m/min`. Therefore we set the ratio to `1/60`.
+ * First we define the value for the `second` (short term: `s`). We set the ratio to 1 because `m/s` is our base. After
+ * that we define the value for the `minute` (short term: `min`). We know `1m/s = 1/60m/min`. Therefore we set the ratio to `1/60`.
  * With `false` we set the variable as mandatory.
  * 
  * The second new thing is the unit's different format. 
@@ -170,7 +170,7 @@ export default class FlexibleUnit {
     /**
      * @hidden
      */
-    private generateRatio(combo: Option[]) {
+    private generateRatio(combo: Value[]) {
         let ratio = this.ratio;
         for (const Multiplier of combo) {
             ratio *= Multiplier.ratio;
@@ -182,19 +182,19 @@ export default class FlexibleUnit {
      * @hidden
      */
     private generateCombinations() {
-        const optionArrays: (Option[])[] = [];
+        const valueArrays: (Value[])[] = [];
 
         for (const variable of this.variables) {
-            optionArrays.push(variable._internal._toArray());
+            valueArrays.push(variable._internal._toArray());
         }
 
-        return [...product(...optionArrays)] as Option[][];
+        return [...product(...valueArrays)] as Value[][];
     }
 
     /**
      * @hidden
      */
-    private generateUnitFormat(combo: Option[]) {
+    private generateUnitFormat(combo: Value[]) {
         const newFormat: UnitFormat = {
             short: [],
             long: { sg: [], pl: [] }
@@ -217,7 +217,7 @@ export default class FlexibleUnit {
     /**
      * @hidden
      */
-    private fillFormat(format: string, combo: Option[], long: boolean): string {
+    private fillFormat(format: string, combo: Value[], long: boolean): string {
         let result = "";
         for (let i = 0; i < format.length; i++) {
             if (format[i] === "%" && i + 1 < format.length) {
