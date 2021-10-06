@@ -2,8 +2,7 @@ import Option from "../../variable/Option";
 import Variable from "../../variable/Variable";
 
 /**
- * The multipliers belonging to the standard SI prefixes arranged in an array.
- * @see Multiplier
+ * {@link Variable} holding every SI prefix.
  */
 const siPrefixes = [
     new Option("Y", "yotta", 1e24),

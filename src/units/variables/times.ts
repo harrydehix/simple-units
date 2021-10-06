@@ -2,8 +2,7 @@ import Option from "../../variable/Option";
 import Variable from "../../variable/Variable";
 
 /**
- * {@link Variable} holding every time unit as multiplier.
- * @see Multiplier
+ * {@link Variable} holding every time unit.
  */
 const times = new Variable(false,
     new Option("a", "year", 31556952),
