@@ -12,7 +12,7 @@ pressure.Editor.add(
     new FlexibleUnit({
         short: ["%0Pa"],
         long: { sg: ["%0pascal"], pl: ["%0pascals"] },
-    }, 1, 0, "metric", [siPrefixes("μ")]),
+    }, 1, 0, "metric", [siPrefixes.subcopy("μ")]),
     new Unit({
         short: ["bar"],
         long: { sg: ["Bar"], pl: ["Bars"] }

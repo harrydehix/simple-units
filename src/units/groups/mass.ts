@@ -15,14 +15,14 @@ mass.Editor.add(
             sg: ["%0gram", "%0gramme"],
             pl: ["%0gram", "%0grams"],
         }
-    }, 1, 0, "metric", [siPrefixes()]),
+    }, 1, 0, "metric", [siPrefixes]),
     new FlexibleUnit({
         short: ["%0mt"],
         long: {
             sg: ["%0metric ton"],
             pl: ["%0metric tons"],
         }
-    }, 1e6, 0, "metric", [siPrefixes("da")]),
+    }, 1e6, 0, "metric", [siPrefixes.subcopy("da")]),
     new Unit({
         short: ["t"],
         long: {

@@ -10,7 +10,7 @@ export default class Option {
     /** the option's long notation (e.g. `kilo`) */
     readonly long: string;
     /** the option's ratio (e.g. `1000`) */
-    readonly ratio: number;
+    ratio: number;
 
     /**
      * Creates a new option.
@@ -22,5 +22,9 @@ export default class Option {
         this.short = short;
         this.long = long;
         this.ratio = ratio;
+    }
+
+    copy() {
+        return new Option(this.short, this.long, this.ratio);
     }
 }

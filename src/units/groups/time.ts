@@ -15,7 +15,7 @@ time.Editor.add(
             sg: ["%0second"],
             pl: ["%0seconds"],
         }
-    }, 1, 0, "SI", [siPrefixes("y", "d")]),
+    }, 1, 0, "SI", [siPrefixes.subcopy("y", "d")]),
     new Unit({
         short: ["min"], long: {
             sg: ["minute"],

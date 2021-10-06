@@ -4,7 +4,7 @@ import Variable from "../../variable/Variable";
 /**
  * {@link Variable} holding every SI prefix.
  */
-const siPrefixes = [
+export default new Variable([
     new Option("Y", "yotta", 1e24),
     new Option("Z", "zetta", 1e21),
     new Option("E", "exa", 1e18),
@@ -25,18 +25,4 @@ const siPrefixes = [
     new Option("a", "atto", 1e-18),
     new Option("z", "zepto", 1e-21),
     new Option("y", "yocto", 1e-24),
-];
-
-/**
- * One of the twenty prefixes specified by the BIPM for the Internation System of Units (SI).
- */
-export type SIPrefix = "Y" | "Z" | "E" | "P" | "T" | "G" | "M" | "k" | "h" | "da" | "d" | "c" | "m" | "μ" | "n" | "p" | "f" | "a" | "z" | "y";
-
-/**
- * Generates a {@link Variable} holding all requested standard SI prefixes.
- */
-export default (from: SIPrefix = "y", to: SIPrefix = "Y") => {
-    const toIndex = siPrefixes.findIndex((val) => val.short === from);
-    const fromIndex = siPrefixes.findIndex((val) => val.short === to);
-    return new Variable(true, ...siPrefixes.filter((val, index) => index >= fromIndex && index <= toIndex));
-}
+]);

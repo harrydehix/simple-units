@@ -53,13 +53,13 @@ import Variable from "./variable/Variable";
  * But as we see, we would have unnecessary repetitive code. This is exactly the kind of case where the FlexibleUnit comes in handy.
  * This is how the code would look like with the FlexibleUnit:
  * ```
- * const var1 = new Variable(true,
+ * const var1 = new Variable([
  *      new Option("k", "kilo", 1000),
- * );
- * const var2 = new Variable(false,
+ * ], true);
+ * const var2 = new Variable([
  *      new Option("s", "second", 1),
  *      new Option("min", "minute", 1/60),
- * );
+ * ], false);
  * 
  * const unit = new FlexibleUnit({ short: ["%0m/%1"],
  *      long: {
@@ -70,13 +70,13 @@ import Variable from "./variable/Variable";
  * ```
  * Much shorter, isn't it? But what exactly is happening here?
  * First, we create the {@link Variable} `var1`. A variable is nothing else than a placeholder that can take different states. 
- * With `true` we set the variable as optional. Then follows the definition of the different values the 
- * variable can take. Because we only need the optional prefix `k` (long term: `kilo`) we just define one single option here. We know `1km = 1000m`, so we 
- * specify `1000` for the ratio.
- * After that we create the second variable `var2`. With `false` we set the variable as mandatory. Then
- * follows the definition of the different values the variable can take. These are the different times we want to support.
+ * We pass an array holding the different values (called {@link Option}) the 
+ * variable can take to the constructor. Because we only need the optional prefix `k` (long term: `kilo`) we just define one single option here. We know `1km = 1000m`, so we 
+ * specify `1000` for the ratio. With `true` we set the variable as optional.
+ * After that we create the second variable `var2`. We pass an array holding the different values the variable can take. These are the different times we want to support.
  * First we define the option for the `second` (short term: `s`). We set the ratio to 1 because `m/s` is our base. After
  * that we define the option for the `minute` (short term: `min`). We know `1m/s = 1/60m/min`. Therefore we set the ratio to `1/60`.
+ * With `false` we set the variable as mandatory.
  * 
  * The second new thing is the unit's different format. 
  * There are new weird looking `%number` terms. These serve as a indicators for the previously defined variables. 
@@ -182,7 +182,13 @@ export default class FlexibleUnit {
      * @hidden
      */
     private generateCombinations() {
-        return [...product(...this.variables)] as Option[][]
+        const optionArrays: (Option[])[] = [];
+
+        for (const variable of this.variables) {
+            optionArrays.push(variable._internal._toArray());
+        }
+
+        return [...product(...optionArrays)] as Option[][];
     }
 
     /**

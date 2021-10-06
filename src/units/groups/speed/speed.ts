@@ -18,7 +18,7 @@ speed.Editor.add(
             sg: ["%0meter/%1", "%0metre/%1", "%0meter per %1", "%0metre per %1"],
             pl: ["%0meters/%1", "%0metres/%1", "%0meters per %1", "%0metres per %1"],
         }
-    }, 1, 0, "metric", [siPrefixes(), dividedByTimes]),
+    }, 1, 0, "metric", [siPrefixes, dividedByTimes]),
     new FlexibleUnit({
         short: ["ft/%0", "fp%0"],
         long: {

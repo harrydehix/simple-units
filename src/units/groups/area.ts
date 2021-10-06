@@ -17,19 +17,19 @@ area.Editor.add(
             sg: ["square %0meter", "sq %0meter", "sq %0metre", "square %0metre"],
             pl: ["square %0meters", "sq %0meters", "sq %0metres", "square %0metres"],
         },
-    }, 1, 0, "metric", [siAreaPrefixes()]),
+    }, 1, 0, "metric", [siAreaPrefixes]),
     new FlexibleUnit({
         short: ["%0a"],
         long: {
             sg: ["%0are"],
             pl: ["%0ares"],
         }
-    }, 100, 0, "metric", [new Variable(true,
+    }, 100, 0, "metric", [new Variable([
         new Option("c", "centi", 1e-2),
         new Option("d", "deci", 1e-1),
         new Option("da", "dec", 1e1),
         new Option("h", "hect", 1e2),
-    )]),
+    ], true)]),
     new Unit({
         short: ["in²", "″²", "in^2", "″^2", "″2", "in2"],
         long: {

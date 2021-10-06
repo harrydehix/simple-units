@@ -15,14 +15,14 @@ digital.Editor.add(
             sg: ["%0byte"],
             pl: ["%0bytes"],
         }
-    }, 8, 0, "bytes", [siPrefixes("k").combine(iecPrefixes())]),
+    }, 8, 0, "bytes", [siPrefixes.subcopy("k").combine(iecPrefixes)]),
     new FlexibleUnit({
         short: ["%0b"],
         long: {
             sg: ["%0bit"],
             pl: ["%0bits"],
         }
-    }, 1, 0, "bits", [siPrefixes("k").combine(iecPrefixes())]),
+    }, 1, 0, "bits", [siPrefixes.subcopy("k").combine(iecPrefixes)]),
 );
 
 export default digital;

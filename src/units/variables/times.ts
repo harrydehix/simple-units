@@ -4,7 +4,7 @@ import Variable from "../../variable/Variable";
 /**
  * {@link Variable} holding every time unit.
  */
-const times = new Variable(false,
+const times = new Variable([
     new Option("a", "year", 31556952),
     new Option("mth", "month", 2_592_000),
     new Option("wk", "week", 604_800),
@@ -22,6 +22,6 @@ const times = new Variable(false,
     new Option("as", "attosecond", 1e-18),
     new Option("zs", "zeptosecond", 1e-21),
     new Option("ys", "yoctosecond", 1e-24),
-);
+], false);
 
 export default times;
