@@ -15,7 +15,7 @@ length.Editor.add(
             sg: ["%0meter", "%0kilometre"],
             pl: ["%0meters", "%0metres"]
         }
-    }, 1, 0, "metric", [siPrefixes()]),
+    }, 1, 0, "metric", [siPrefixes]),
     new Unit({
         short: ["in", "″"],
         long: {
