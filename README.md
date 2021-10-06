@@ -11,16 +11,17 @@ console.log(converted);
 ```
 ## Comparing
 ```typescript
-const c1 = units.Convertible(12, "°C");
-const c2 = units.Convertible(59, "°F")
+const c1 = units.Convertible(100, "kilometer");
+const c2 = units.Convertible(1000, "meter");
 
-if(c1.lt(c2)){
-  console.log("c1 is less than c2!");
-}else if(c1.eq(c2)){
-  console.log("c1 and c2 are equal!");
-}else{
-  console.log("c1 is greater than c2!");
+if (c1.lt(c2)) {
+    console.log(`${c1} is less than ${c2}!`);
+} else if (c1.eq(c2)) {
+    console.log(`${c1} and ${c2} are equal!`);
+} else {
+    console.log(`${c1} is greater than ${c2}!`);
 }
+// Output: 100km is greater than 1000m!
 ```
 
 ## Formatting
