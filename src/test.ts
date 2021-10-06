@@ -1,5 +1,6 @@
 import 'source-map-support/register';
 import units from './units/units';
+import siPrefixes from './units/variables/siPrefixes';
 
-
-console.log(units.from(3000, "m/s").as("km/h"));
+console.log(siPrefixes.subcopy("k"))
+console.log(units);
