@@ -107,7 +107,12 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#asBest" class="tsd-kind-icon">as<wbr>Best</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#compare" class="tsd-kind-icon">compare</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#copy" class="tsd-kind-icon">copy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#eq" class="tsd-kind-icon">eq</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#format" class="tsd-kind-icon">format</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#gt" class="tsd-kind-icon">gt</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#gte" class="tsd-kind-icon">gte</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#lt" class="tsd-kind-icon">lt</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#lte" class="tsd-kind-icon">lte</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#possibilities" class="tsd-kind-icon">possibilities</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#to" class="tsd-kind-icon">to</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Convertible.html#toString" class="tsd-kind-icon">to<wbr>String</a></li>
@@ -128,7 +133,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L76">src/Convertible.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L76">Convertible.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -181,7 +186,7 @@
 					<div class="tsd-signature tsd-kind-icon">unit<span class="tsd-signature-symbol">:</span> <a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L25">src/Convertible.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L25">Convertible.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -196,7 +201,7 @@
 					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L21">src/Convertible.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L21">Convertible.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -218,7 +223,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L150">src/Convertible.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L150">Convertible.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -262,7 +267,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L174">src/Convertible.ts:174</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L174">Convertible.ts:174</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -308,12 +313,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L277">src/Convertible.ts:277</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L277">Convertible.ts:277</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Compares this convertible to another. Returns <code>-1</code>, <code>0</code>,
+									<p>Compares this convertible semantically to another. Returns <code>-1</code>, <code>0</code>,
 										or <code>1</code> as this convertible is less than, equal to, or greater
 									than the passed convertible.</p>
 								</div>
@@ -343,7 +348,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L265">src/Convertible.ts:265</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L265">Convertible.ts:265</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -357,6 +362,38 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="eq" class="tsd-anchor"></a>
+					<h3>eq</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">eq<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L290">Convertible.ts:290</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns whether this convertible is semantically equal to the passed convertible.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible to be compared</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>whether this convertible is semantically equal to the passed convertible</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="format" class="tsd-anchor"></a>
 					<h3>format</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -366,7 +403,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L245">src/Convertible.ts:245</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L245">Convertible.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -407,6 +444,134 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gt" class="tsd-anchor"></a>
+					<h3>gt</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">gt<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L323">Convertible.ts:323</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns whether this convertible is semantically greater than the passed convertible.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible to be compared</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>whether this convertible is semantically greater than the passed convertible</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gte" class="tsd-anchor"></a>
+					<h3>gte</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">gte<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L334">Convertible.ts:334</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns whether this convertible is semantically greater than or equal to the passed convertible.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible to be compared</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>whether this convertible is semantically greater than or equal to the passed convertible</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lt" class="tsd-anchor"></a>
+					<h3>lt</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">lt<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L301">Convertible.ts:301</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns whether this convertible is semantically less than the passed convertible.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible to be compared</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>whether this convertible is semantically less than the passed convertible</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lte" class="tsd-anchor"></a>
+					<h3>lte</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">lte<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L312">Convertible.ts:312</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns whether this convertible is semantically less than or equal to the passed convertible.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="Convertible.html" class="tsd-signature-type" data-tsd-kind="Class">Convertible</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the convertible to be compared</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>whether this convertible is semantically less than or equal to the passed convertible</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="possibilities" class="tsd-anchor"></a>
 					<h3>possibilities</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -416,7 +581,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L95">src/Convertible.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L95">Convertible.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -449,7 +614,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L119">src/Convertible.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L119">Convertible.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -496,7 +661,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/710c056/src/Convertible.ts#L214">src/Convertible.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/423f1ad/src/Convertible.ts#L214">Convertible.ts:214</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -565,7 +730,22 @@
 								<a href="Convertible.html#copy" class="tsd-kind-icon">copy</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Convertible.html#eq" class="tsd-kind-icon">eq</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Convertible.html#format" class="tsd-kind-icon">format</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Convertible.html#gt" class="tsd-kind-icon">gt</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Convertible.html#gte" class="tsd-kind-icon">gte</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Convertible.html#lt" class="tsd-kind-icon">lt</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Convertible.html#lte" class="tsd-kind-icon">lte</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Convertible.html#possibilities" class="tsd-kind-icon">possibilities</a>
