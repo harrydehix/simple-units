@@ -14,7 +14,7 @@ energy.Editor.add(
         short: ["%0J"],
         long: {
             sg: ["%0joule"],
-            pl: ["%0jouls"]
+            pl: ["%0joules"]
         }
     }, 1, 0, "metric", [siPrefixes]),
     new FlexibleUnit({
