@@ -84,3 +84,5 @@ volume.Editor.add(
         }
     }, 1 / 219.96924829908778, 0, "imperial"),
 );
+
+export default volume;

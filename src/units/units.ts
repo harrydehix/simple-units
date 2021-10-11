@@ -7,6 +7,8 @@ import length from "./groups/length";
 import area from "./groups/area";
 import digital from "./groups/digital";
 import speed from "./groups/speed/speed";
+import energy from "./groups/energy";
+import volume from "./groups/volume";
 
 /**
  * _simple-units_ default {@link Collection} holding the most common units.
@@ -30,7 +32,9 @@ units.Editor.add(
     area,
     temperature,
     digital,
-    speed
+    speed,
+    energy,
+    volume
 );
 
 export default units;

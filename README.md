@@ -134,6 +134,46 @@ Read the full documentation including useful guides [here]().
 	</tbody>
 </table>
 
+## Energy
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%0J</th>
+			<td><code>%0joule, %0joule, %0joules</code></td>
+            <td><p><b>0: </b><a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">SI-Prefixes</a> from <code>y</code> (yocto) to <code>Y</code> (yotta) </p></td>
+		</tr>
+		<tr>
+			<th>%0W%1</th>
+			<td><code>%0watt-%1, %0watt-%1</code></td>
+			<td><p><b>0: </b><a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">SI-Prefixes</a> from <code>y</code> (yocto) to <code>Y</code> (yotta) </p>
+            <p><b>1: </b>h (hour, hours), s (second, seconds)</p></td>
+		</tr>
+		<tr>
+			<th>%0eV</th>
+			<td><code>%0electronvolt, %0electronvolts</code></td>
+			<td><p><b>0: </b><a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">SI-Prefixes</a> from <code>y</code> (yocto) to <code>Y</code> (yotta) </p></td>
+		</tr>
+		<tr>
+			<th>%0cal</th>
+			<td><code>%0calorie, %0calories</code></td>
+			<td><p><b>0: </b>k (kilo)</p></td>
+		</tr>
+        <tr>
+			<th>erg</th>
+			<td><code>ergs</code></td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
 ## Length
 
 <table>

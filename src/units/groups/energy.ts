@@ -43,3 +43,5 @@ energy.Editor.add(
         }
     }, 1e-7, 0, "CGS"),
 );
+
+export default energy;
