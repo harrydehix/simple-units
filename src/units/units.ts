@@ -1,4 +1,5 @@
 import Collection from "../Collection";
+
 import mass from "./groups/mass";
 import pressure from "./groups/pressure";
 import temperature from "./groups/temperature";
@@ -11,6 +12,9 @@ import energy from "./groups/energy";
 import volume from "./groups/volume";
 import current from "./groups/current";
 import voltage from "./groups/voltage";
+import partsPer from "./groups/partsPer";
+import force from "./groups/force";
+import power from "./groups/power";
 
 /**
  * _simple-units_ default {@link Collection} holding the most common units.
@@ -38,7 +42,10 @@ units.Editor.add(
     energy,
     volume,
     current,
-    voltage
+    voltage,
+    power,
+    partsPer,
+    force
 );
 
 export default units;
