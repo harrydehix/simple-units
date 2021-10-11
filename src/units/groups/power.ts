@@ -3,6 +3,9 @@ import Group from "../../Group";
 import dividedByTimes from "../variables/dividedByTimes";
 import siPrefixes from "../variables/siPrefixes";
 
+/**
+ * {@link Group} holding all power units.
+ */
 const power = new Group("power");
 
 power.Editor.add(

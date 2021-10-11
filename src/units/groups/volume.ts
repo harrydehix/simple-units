@@ -3,6 +3,9 @@ import Group from "../../Group";
 import Unit from "../../Unit";
 import siVolumePrefixes from "../variables/siVolumePrefixes";
 
+/**
+ * {@link Group} holding all volume units.
+ */
 const volume = new Group("volume");
 
 volume.Editor.add(

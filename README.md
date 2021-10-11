@@ -40,9 +40,9 @@ units.group("length").Editor.add(myCustomUnit);
 
 # Documentation
 
-⛔ Documentation still in progress ⛔
+Read useful guides [here](guides/).
 
-Read the full documentation including useful guides [here](). 
+To read the full documentation clone the github repository and open the `docs/index.html` file.
 
 # Supported Units
 
@@ -193,6 +193,25 @@ Read the full documentation including useful guides [here]().
 	</tbody>
 </table>
 
+## Force
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%0N</th>
+			<td><code>%0newton</code></td>
+            <td><p><b>0: </b><a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">SI-Prefixes</a> from <code>y</code> (yocto) to <code>Y</code> (yotta) </p></td>
+		</tr>
+	</tbody>
+</table>
+
 ## Length
 
 <table>
@@ -277,6 +296,65 @@ Read the full documentation including useful guides [here]().
 			<th>lb</th>
 			<td><code>lb av, pound, avoirdupois pound, pound-mass, pounds, avoirdupois pounds</code></td>
 			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+## Parts-Per
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>ppm</th>
+			<td><code>parts per million, part per million</code></td>
+            <td>-</td>
+		</tr>
+		<tr>
+			<th>ppb</th>
+			<td><code>parts per billion, part per billion</code></td>
+            <td>-</td>
+		</tr>
+        <tr>
+			<th>ppt</th>
+			<td><code>parts per trillion, part per trillion</code></td>
+            <td>-</td>
+		</tr>
+        <tr>
+			<th>ppq</th>
+			<td><code>parts per quadrillion, part per quadrillion</code></td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+## Power
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%0W</th>
+			<td><code>%0watt, %0watts</code></td>
+            <td><p><b>0: </b><a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">SI-Prefixes</a> from <code>μ</code> (micro) to <code>Y</code> (yotta) </p></td>
+		</tr>
+		<tr>
+			<th>%0J/%1</th>
+			<td><code>%0joule/%1, %0joules/%1</code></td>
+            <td><p><b>0: </b><a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">SI-Prefixes</a> from <code>μ</code> (micro) to <code>Y</code> (yotta) </p>
+            <p><b>1: </b>All time units.</p></td>
 		</tr>
 	</tbody>
 </table>
@@ -557,9 +635,3 @@ Read the full documentation including useful guides [here]().
 		</tr>
 	</tbody>
 </table>
-
-# Roadmap
-
-* Implement more units
-* Finish documentation
-* Host documentation on my website

@@ -2,6 +2,9 @@ import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
 import siPrefixes from "../variables/siPrefixes";
 
+/**
+ * {@link Group} holding all force units.
+ */
 const force = new Group("force");
 
 force.Editor.add(

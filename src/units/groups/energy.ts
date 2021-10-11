@@ -4,6 +4,9 @@ import Unit from "../../Unit";
 import siPrefixes from "../variables/siPrefixes";
 import times from "../variables/times";
 
+/**
+ * {@link Group} holding all energy units.
+ */
 const energy = new Group("energy");
 
 energy.Editor.add(

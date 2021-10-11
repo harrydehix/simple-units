@@ -1,10 +1,10 @@
-import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
 import Unit from "../../Unit";
-import dividedByTimes from "../variables/dividedByTimes";
-import siPrefixes from "../variables/siPrefixes";
 
-const partsPer = new Group("partsPer");
+/**
+ * {@link Group} holding all parts-per units.
+ */
+const partsPer = new Group("parts-per");
 
 partsPer.Editor.add(
     new Unit({
