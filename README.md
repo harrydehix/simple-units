@@ -102,6 +102,25 @@ Read the full documentation including useful guides [here]().
 	</tbody>
 </table>
 
+## Current
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%0A</th>
+			<td><code>%0ampere, %0ampere</code></td>
+            <td><p><b>0: </b><a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">SI-Prefixes</a> from <code>y</code> (yocto) to <code>Y</code> (yotta) </p></td>
+		</tr>
+	</tbody>
+</table>
+
 ## Digital
 
 <table>
@@ -447,6 +466,25 @@ Read the full documentation including useful guides [here]().
 			<th>a</th>
 			<td><code>year, years</code></td>
 			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+## Voltage
+
+<table>
+	<thead>
+		<tr>
+			<th>unit</th>
+			<th>synonyms</th>
+			<th>%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>%0V</th>
+			<td><code>%0volt, %0volts</code></td>
+            <td><p><b>0: </b><a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">SI-Prefixes</a> from <code>y</code> (yocto) to <code>Y</code> (yotta) </p></td>
 		</tr>
 	</tbody>
 </table>

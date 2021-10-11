@@ -9,6 +9,8 @@ import digital from "./groups/digital";
 import speed from "./groups/speed/speed";
 import energy from "./groups/energy";
 import volume from "./groups/volume";
+import current from "./groups/current";
+import voltage from "./groups/voltage";
 
 /**
  * _simple-units_ default {@link Collection} holding the most common units.
@@ -34,7 +36,9 @@ units.Editor.add(
     digital,
     speed,
     energy,
-    volume
+    volume,
+    current,
+    voltage
 );
 
 export default units;
