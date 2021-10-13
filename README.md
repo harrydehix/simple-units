@@ -1,6 +1,6 @@
 # simple-units
  ![GitHub milestones](https://img.shields.io/github/milestones/all/harrydehix/simple-units) ![GitHub last commit](https://img.shields.io/github/last-commit/harrydehix/simple-units)<br>
-unit converter with focus on the golden mean between simplicity, customizability and performance
+unit converter with focus on the golden mean between simplicity, customizability and [performance](https://github.com/harrydehix/converters-performance)
 
 # Key Features
 ## Converting
