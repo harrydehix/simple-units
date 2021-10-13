@@ -1,6 +1,6 @@
 {
     "name": "simple-units",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "expandable unit system, providing unit conversion on small and large scale",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

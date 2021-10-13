@@ -177,4 +177,16 @@ export default class Variable {
         }
         return subcopy;
     }
+
+    filteredCopy(selection: string[], isOptional?: boolean) {
+        if (isOptional === undefined) isOptional = this.isOptional;
+        const subcopy = new Variable([], isOptional);
+        for (let i = 0; i < this._values.length; i++) {
+            const value = this._values[i];
+            if (selection.includes(value.short)) {
+                subcopy._values.push(value.copy());
+            }
+        }
+        return subcopy;
+    }
 }
