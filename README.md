@@ -41,8 +41,7 @@ units.group("length").Editor.add(myCustomUnit);
 # Documentation
 
 Read useful guides [here](https://github.com/harrydehix/simple-units/tree/main/guides).
-
-To read the full documentation clone the github repository and open the `docs/index.html` file.
+Read the full documentation [here](https://harrydehix.github.io/simple-units/).
 
 # Why simple-units?
 
