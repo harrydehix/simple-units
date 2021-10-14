@@ -44,6 +44,10 @@ Read useful guides [here](https://github.com/harrydehix/simple-units/tree/main/g
 
 To read the full documentation clone the github repository and open the `docs/index.html` file.
 
+# Why simple-units?
+
+_simple-units_ is one of the fastest unit converters ([see performance tests](https://github.com/harrydehix/converters-performance)) while being the most flexible and easiest one. Added to that as adding custom units to _simple-units_ is very simple, you are not dependend on the package developer. Last but not least it supports a huge amount of units and useful functionality like comparing or formatting.
+
 # Supported Units
 
 ## Area
