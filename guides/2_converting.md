@@ -61,9 +61,9 @@ console.log(convertible.unit.toString());
 
 ### More Methods
 
-Remember that the Convertible offers even more methods to make converting easier. For this purpose read the full documentation.
+Remember that the Convertible offers even more methods to make converting easier. For this purpose read the [full documentation](https://harrydehix.github.io/simple-units/).
 
 ## Formatting Convertibles
 
-Convertibles can be output as strings very easily. Depending on the specific demands, there are different methods for this. The simpler method is `Convertible.toString`, `Convertible.format` provides more features. Read the full documentation for more details.
+Convertibles can be output as strings very easily. Depending on the specific demands, there are different methods for this. The simpler method is `Convertible.toString`, `Convertible.format` provides more features. Read the [full documentation](https://harrydehix.github.io/simple-units/) for more details.
 
