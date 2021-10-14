@@ -1,6 +1,6 @@
 {
     "name": "simple-units",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "unit converter with focus on the golden mean between simplicity, customizability and performance",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

@@ -176,6 +176,4 @@ Note that you have to import your edited unit collection and not simple-units de
 
 ### You want more information?
 
-You are currently reading a quick guide, but not the official documentation. Some things have been simplified here. E.g. there are more powerful but complex ways to create units (see FlexibleUnit). Feel free to explore the official documentation! 
-
-**Note**: As the official docs are currently not hosted online you have to clone this repository and open `docs/index.html` in your browser.
+You are currently reading a quick guide, but not the official documentation. Some things have been simplified here. E.g. there are more powerful but complex ways to create units (see FlexibleUnit). Feel free to explore the [official documentation](https://harrydehix.github.io/simple-units/)! 
