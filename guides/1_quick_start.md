@@ -18,7 +18,7 @@ Note that the import-syntax differs depending on your selected module system.
 
 Either write:
 ```typescript
-const units = require("simple-units");
+const units = require("simple-units").default;
 ```
 or:
 ```typescript
