@@ -1,15 +1,20 @@
 # simple-units
- ![GitHub milestones](https://img.shields.io/github/milestones/all/harrydehix/simple-units) ![GitHub last commit](https://img.shields.io/github/last-commit/harrydehix/simple-units)<br>
+
+![GitHub milestones](https://img.shields.io/github/milestones/all/harrydehix/simple-units) ![GitHub last commit](https://img.shields.io/github/last-commit/harrydehix/simple-units)<br>
 unit converter with focus on the golden mean between simplicity, customizability and [performance](https://github.com/harrydehix/converters-performance)
 
 # Key Features
+
 ## Converting
+
 ```typescript
 const converted = units.from(3, "cm").to("in");
-console.log(converted); 
+console.log(converted);
 // Output: 1.1811
 ```
+
 ## Comparing
+
 ```typescript
 const c1 = units.Convertible(100, "kilometer");
 const c2 = units.Convertible(1000, "meter");
@@ -25,12 +30,15 @@ if (c1.lt(c2)) {
 ```
 
 ## Formatting
+
 ```typescript
 const convertible = units.Convertible(12.2323123, "kt");
-console.log(convertible.format("%.2f %s", { length: "long" })); 
+console.log(convertible.format("%.2f %s", { length: "long" }));
 // Output: 12.23 knots
 ```
+
 ## Customizing
+
 ```typescript
 
 const myCustomUnit = new Unit(...);
@@ -408,6 +416,11 @@ _simple-units_ is one of the fastest unit converters ([see performance tests](ht
 			<td><code>kilopound per square inch, kilopounds per square inch</code></td>
 			<td>-</td>
 		</tr>
+        <tr>
+			<th>inHg</th>
+			<td><code>inch of mercury, inches of mercury</code></td>
+			<td>-</td>
+		</tr>
 	</tbody>
 </table>
 
@@ -500,7 +513,6 @@ _simple-units_ is one of the fastest unit converters ([see performance tests](ht
 		</tr>
 	</tbody>
 </table>
-
 
 ## Time
 
