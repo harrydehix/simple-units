@@ -34,33 +34,44 @@ export default class Unit {
     /**
      * The unit's {@link Group}. Units belonging to the same group are convertible into each other.
      */
-    group: Group = Group.None;
+    get group(){
+        return this._internal._group as Group;
+    }
+
     /**
      * The unit's {@link UnitFormat}. Holds the unit's unique symbols, 
      * which allow the parser to recognize the unit in a string.
      * Added to that it provides the basis for the `.format()` method of the {@link Convertible}.
      */
-    format: UnitFormat;
+    readonly format: UnitFormat;
+    
     /**
      * The unit system the unit is belonging to. E.g. `imperial`, `metric`, ...
      * 
      * This meta information is used for the {@link Convertible}'s `.asBest()` method.
      * By default, the Convertible always remains in the same system of units.
      */
-    system: string;
+    readonly system: string;
 
     /**
      * Converts a value from this unit to the group's base unit.
      * @param val value in this unit
      * @returns value in the group's base unit
      */
-    toBase: Converter;
+    readonly toBase: Converter;
     /**
      * Converts a value from the group's base unit to this unit.
      * @param val value in the group's base unit
      * @returns value in this unit
      */
-    fromBase: Converter;
+    readonly fromBase: Converter;
+
+    /**
+     * @hidden
+     */
+    readonly _internal = {
+        _group : null as (Group | null),
+    }
 
     /**
      * Creates a standard measure that is used to express amounts.

@@ -39,7 +39,7 @@ export default class CollectionEditor {
                 this.remove(group.name);
             }
             // Add group
-            group.collection = this.collection;
+            group._internal._collection = this.collection;
             this.collection._internal._groups().set(group.name, group);
 
             const unitMap = group._internal._units();

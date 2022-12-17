@@ -41,31 +41,45 @@ export default class Collection {
     /**
      * @hidden
      */
-    public static None = new Collection();
+    public static readonly None = new Collection();
 
     /**
-     * All units of the collection arranged in a map.
+     * All units of the collection arranged in a map. This map is used to improve performance.
      * @hidden
      */
-    private units = new Map<string, Unit>();
+    private readonly units = new Map<string, Unit>();
 
     /**
      * All groups of the collection arranged in a map.
      */
-    private groups = new Map<string, Group>();
+    private readonly groups = new Map<string, Group>();
 
     /**
+     * These methods are only used internally.
      * @hidden
      */
     readonly _internal = {
+        /**
+         * Adds a string-unit-association to the {@link units} map.
+         * @param name the unit's string representation
+         * @param unit the unit
+         */
         _setUnit: (name: string, unit: Unit) => {
             this.units.set(name, unit);
         },
 
+        /**
+         * Removes a string-unit-association from the {@link units} map.
+         * @param name the unit's string representation
+         */
         _deleteUnit: (name: string) => {
             this.units.delete(name);
         },
 
+        /**
+         * Returns the collection's groups.
+         * @returns 
+         */
         _groups: () => this.groups,
 
         _units: () => this.units,

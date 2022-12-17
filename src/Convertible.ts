@@ -19,15 +19,24 @@ export default class Convertible {
      * The convertible's value. Changes through converting.
      */
     value: number;
+
     /**
      * The convertible's unit. Changes through converting.
      */
-    unit: Unit;
+    get unit(){
+        return this._internal._unit as Unit;
+    }
 
     /**
+     * These methods and properties are only used internally.
      * @hidden
      */
     _internal = {
+        /**
+         * The convertible's unit. Changes through converting.
+         */
+        _unit : null as (null | Unit),
+        
         /**
          * Converts the convertible to the passed unit without checking for compatibilty.
          * This method exists due to performance enhancement. Returns the conversion's result.
@@ -37,7 +46,7 @@ export default class Convertible {
         _toUnitUnchecked: (unit: Unit) => {
             this.value = this.unit.toBase(this.value);
             this.value = unit.fromBase(this.value);
-            this.unit = unit;
+            this._internal._unit = unit;
             return this.value;
         },
 
@@ -45,12 +54,12 @@ export default class Convertible {
          * Converts the convertible to the passed unit without checking for compatibilty.
          * This method exists due to performance enhancement. Returns the convertible itself.
          * @param unit the target unit
-         * @returns this
+         * @returns the convertible itself
          */
         _asUnitUnchecked: (unit: Unit): this => {
             this.value = this.unit.toBase(this.value);
             this.value = unit.fromBase(this.value);
-            this.unit = unit;
+            this._internal._unit = unit;
             return this;
         }
     }
@@ -75,7 +84,7 @@ export default class Convertible {
      */
     constructor(value: number, unit: Unit) {
         this.value = value;
-        this.unit = unit;
+        this._internal._unit = unit;
     }
 
     /**
@@ -127,7 +136,7 @@ export default class Convertible {
         }
         this.value = this.unit.toBase(this.value);
         this.value = target.fromBase(this.value);
-        this.unit = target;
+        this._internal._unit = target;
         return this.value;
     }
 

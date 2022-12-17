@@ -179,6 +179,8 @@ export default class FlexibleUnit {
     }
 
     /**
+     * Generates all possible {@link Value} combinations.
+     * @return all possible Value combinations arranged in a 2d array
      * @hidden
      */
     private generateCombinations() {

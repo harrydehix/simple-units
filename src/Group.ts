@@ -46,31 +46,35 @@ import Unit from "./Unit";
  */
 export default class Group {
     /**
-     * @hidden
+     * All units of the group arranged in a map.
      */
-    public static None = new Group("none");
-
-    /**
-     * The units of the group.
-     */
-    private units = new Map<string, Unit>();
+    private readonly units = new Map<string, Unit>();
 
     /**
      * The group's collection.
      */
-    collection: Collection = Collection.None;
+    get collection() : Collection | null {
+        return this._internal._collection;
+    }
 
     /**
      * The group's name. Has to be unique.
      */
-    name: string;
+    readonly name: string;
 
     /**
+     * These methods are only used internally.
      * @hidden
      */
     readonly _internal = {
         /**
-         * Returns the group's unit map. Only used internally.
+         * The group's collection (internally).
+         * @hidden
+         */
+        _collection : null as (null | Collection),
+
+        /**
+         * Returns the group's unit map.
          * @returns the groups unit map
          */
         _units: () => {
