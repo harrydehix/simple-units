@@ -2,6 +2,7 @@ import FlexibleUnit from "../../FlexibleUnit";
 import Group from "../../Group";
 import Unit from "../../Unit";
 import siVolumePrefixes from "../variables/siVolumePrefixes";
+import siPrefixes from "../variables/siPrefixes";
 
 /**
  * {@link Group} holding all volume units.
@@ -22,7 +23,7 @@ volume.Editor.add(
             sg: ["%0liter", "%0litre"],
             pl: ["%0liters", "%0litres"],
         },
-    }, 0.001, 0, "metric", [siVolumePrefixes.subcopy("m", "k")]),
+    }, 0.001, 0, "metric", [siPrefixes.subcopy("m", "k")]),
     new Unit({
         short: ["in³", "″³", "in^3", "″^3", "″3", "in3"],
         long: {
