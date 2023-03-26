@@ -122,9 +122,14 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Group.html#Editor" class="tsd-kind-icon">Editor</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Group.html#collection" class="tsd-kind-icon">collection</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Group.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Group.html#units" class="tsd-kind-icon">units</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="Group.html#collection" class="tsd-kind-icon">collection</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -149,7 +154,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1d4fb14/src/Group.ts#L108">Group.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/0ce87ad/src/Group.ts#L112">Group.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -181,7 +186,7 @@
 					<div class="tsd-signature tsd-kind-icon">Editor<span class="tsd-signature-symbol">:</span> <a href="GroupEditor.html" class="tsd-signature-type" data-tsd-kind="Class">GroupEditor</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1d4fb14/src/Group.ts#L86">Group.ts:86</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/0ce87ad/src/Group.ts#L90">Group.ts:90</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -196,27 +201,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="collection" class="tsd-anchor"></a>
-					<h3>collection</h3>
-					<div class="tsd-signature tsd-kind-icon">collection<span class="tsd-signature-symbol">:</span> <a href="Collection.html" class="tsd-signature-type" data-tsd-kind="Class">Collection</a><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1d4fb14/src/Group.ts#L61">Group.ts:61</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The group&#39;s collection.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1d4fb14/src/Group.ts#L66">Group.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/0ce87ad/src/Group.ts#L63">Group.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -227,18 +217,43 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="units" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> units</h3>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> units</h3>
 					<div class="tsd-signature tsd-kind-icon">units<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Unit.html" class="tsd-signature-type" data-tsd-kind="Class">Unit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1d4fb14/src/Group.ts#L56">Group.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/0ce87ad/src/Group.ts#L51">Group.ts:51</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The units of the group.</p>
+							<p>All units of the group arranged in a map.</p>
 						</div>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="collection" class="tsd-anchor"></a>
+					<h3>collection</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> collection<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="Collection.html" class="tsd-signature-type" data-tsd-kind="Class">Collection</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/0ce87ad/src/Group.ts#L56">Group.ts:56</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The group&#39;s collection.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="Collection.html" class="tsd-signature-type" data-tsd-kind="Class">Collection</a></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -253,7 +268,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1d4fb14/src/Group.ts#L92">Group.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/0ce87ad/src/Group.ts#L96">Group.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -276,7 +291,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/1d4fb14/src/Group.ts#L116">Group.ts:116</a></li>
+									<li>Defined in <a href="https://github.com/harrydehix/simple-units/blob/0ce87ad/src/Group.ts#L120">Group.ts:120</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -325,13 +340,13 @@
 								<a href="Group.html#Editor" class="tsd-kind-icon">Editor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="Group.html#collection" class="tsd-kind-icon">collection</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="Group.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="Group.html#units" class="tsd-kind-icon">units</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="Group.html#collection" class="tsd-kind-icon">collection</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="Group.html#possibilities" class="tsd-kind-icon">possibilities</a>
