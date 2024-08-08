@@ -8,13 +8,13 @@ import Unit from "./Unit";
 
 /**
  * Represents a collection of units (see {@link Unit}) structured in groups (see {@link Group}).
- * 
+ *
  * Offers key functionality like converting from one unit to another.
  * Is the center at which all of the library's features are brought together.
- * 
+ *
  * The basic structure of any collection is basically following: A collection is the parent of
  * multiple groups. Groups are parents of multiple units.
- * 
+ *
  * <b>Example</b>:
  * ```
  * Collection
@@ -30,11 +30,11 @@ import Unit from "./Unit";
  *  |____Group "custom"
  *  |      |___Unit "small coins"
  *  |      |___Unit "big coins"
- * 
+ *
  * ```
- * 
+ *
  * Collections are not static. In fact they are very flexible. You can add, overwrite and remove unit groups using the {@link Collection.Editor}.
- * Added to that groups are editable in the same way (see {@link Group.Editor}), 
+ * Added to that groups are editable in the same way (see {@link Group.Editor}),
  * which leads to the fact that groups can be modified in their entirety at runtime.
  */
 export default class Collection {
@@ -52,7 +52,7 @@ export default class Collection {
     /**
      * All groups of the collection arranged in a map.
      */
-    private readonly groups = new Map<string, Group>();
+    private readonly _groups = new Map<string, Group>();
 
     /**
      * These methods are only used internally.
@@ -78,16 +78,16 @@ export default class Collection {
 
         /**
          * Returns the collection's groups.
-         * @returns 
+         * @returns
          */
-        _groups: () => this.groups,
+        _groups: () => this._groups,
 
         _units: () => this.units,
-    }
+    };
 
     /**
      * The collection's editor. Provides methods to add, remove and overwrite unit groups.
-     * 
+     *
      * @see CollectionEditor
      */
     readonly Editor = new CollectionEditor(this);
@@ -96,8 +96,14 @@ export default class Collection {
      * Creates a new collection.
      */
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    constructor() {
+    constructor() {}
 
+    /**
+     * Returns a string array containing the names of all groups.
+     * @returns a string array containing the names of all groups
+     */
+    public groups(): string[] {
+        return Array.from(this._groups.keys());
     }
 
     /**
@@ -144,7 +150,7 @@ export default class Collection {
      * @see Group
      */
     group(group: string) {
-        const result = this.groups.get(group);
+        const result = this._groups.get(group);
         if (!result) throw new UnknownGroupError(`Unknown unit '${group}'!`);
         return result;
     }
@@ -177,7 +183,7 @@ export default class Collection {
      */
     toString() {
         let result = "Collection [\n";
-        this.groups.forEach((group, key) => {
+        this._groups.forEach((group, key) => {
             result += `  Group '${key}' [\n    `;
             const possibilities = group.possibilities();
             for (let i = 0; i < possibilities.length; i++) {
@@ -186,7 +192,7 @@ export default class Collection {
                 else if ((i + 1) % 12 === 0) result += ",\n    ";
                 else result += ", ";
             }
-            result += "  ],\n"
+            result += "  ],\n";
         });
         result += "]";
         return result;
@@ -197,7 +203,7 @@ export default class Collection {
      */
     [inspect.custom](depth: any, options: any) {
         let result = "Collection [\n";
-        this.groups.forEach((group, key) => {
+        this._groups.forEach((group, key) => {
             result += `  Group `;
             result += options.stylize(`'${key}'`, "string");
             result += ` [\n    `;
@@ -208,7 +214,7 @@ export default class Collection {
                 else if ((i + 1) % 12 === 0) result += ",\n    ";
                 else result += ", ";
             }
-            result += "  ],\n"
+            result += "  ],\n";
         });
         result += "]";
         return result;
