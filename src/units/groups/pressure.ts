@@ -1,7 +1,7 @@
-import FlexibleUnit from "../../FlexibleUnit";
-import Group from "../../Group";
-import Unit from "../../Unit";
-import siPrefixes from "../variables/siPrefixes";
+import FlexibleUnit from "../../FlexibleUnit.js";
+import Group from "../../Group.js";
+import Unit from "../../Unit.js";
+import siPrefixes from "../variables/siPrefixes.js";
 
 /**
  * {@link Group} holding all pressure units.

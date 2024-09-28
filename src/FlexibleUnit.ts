@@ -1,20 +1,19 @@
 import { product } from "cartesian-product-generator";
-import InvalidVariableSyntaxError from "./errors/InvalidVariableSyntaxError";
-import Group from "./Group";
-import Unit, { UnitFormat } from "./Unit";
-import Value from "./variable/Value";
-import Variable from "./variable/Variable";
-
+import InvalidVariableSyntaxError from "./errors/InvalidVariableSyntaxError.js";
+import Group from "./Group.js";
+import Unit, { UnitFormat } from "./Unit.js";
+import Value from "./variable/Value.js";
+import Variable from "./variable/Variable.js";
 
 /**
  * Represents a standard measure that is used to express amounts.
- * 
+ *
  * In contrast to the {@link Unit} the use of prefixes, suffixes and similar is integrated without adding
  * much complexity.
- * 
- * This is done via so-called "variables" ({@link Variable}), 
+ *
+ * This is done via so-called "variables" ({@link Variable}),
  * which are integrated into the format of the unit ({@link Unit.format}).
- * 
+ *
  * <b>Example</b>: We have the unit "meter per second" (as base unit):
  * ```
  * const meterPerSecond = new Unit({ short: ["m/s"],
@@ -33,7 +32,7 @@ import Variable from "./variable/Variable";
  *          pl: [["meters per minutes", "metres per minutes"]
  *      }
  * }, 1/60, 0, "metric");
- * 
+ *
  * // 1 km/s = 1000 m/s
  * const kilometerPerSecond = new Unit({ short: ["km/s"],
  *      long: {
@@ -41,7 +40,7 @@ import Variable from "./variable/Variable";
  *          pl: ["kilometers per second", "kilometres per second"]
  *      }
  * }, 1000, 0, "metric");
- * 
+ *
  * // 1 km/min = 16.666666667 m/s
  * const kilometerPerMinute = new Unit({ short: ["km/min"],
  *      long: {
@@ -60,7 +59,7 @@ import Variable from "./variable/Variable";
  *      new Value("s", "second", 1),
  *      new Value("min", "minute", 1/60),
  * ], false);
- * 
+ *
  * const unit = new FlexibleUnit({ short: ["%0m/%1"],
  *      long: {
  *          sg: ["%0meter per %1", "%0metre per %1"],
@@ -69,20 +68,20 @@ import Variable from "./variable/Variable";
  * }, 1, 0, "metric", [var1, var2]);
  * ```
  * Much shorter, isn't it? But what exactly is happening here?
- * First, we create the {@link Variable} `var1`. A variable is nothing else than a placeholder that can take different states. 
- * We pass an array holding the different values the 
- * variable can take to the constructor. Because we only need the optional prefix `k` (long term: `kilo`) we just define one single value here. We know `1km = 1000m`, so we 
+ * First, we create the {@link Variable} `var1`. A variable is nothing else than a placeholder that can take different states.
+ * We pass an array holding the different values the
+ * variable can take to the constructor. Because we only need the optional prefix `k` (long term: `kilo`) we just define one single value here. We know `1km = 1000m`, so we
  * specify `1000` for the ratio. With `true` we set the variable as optional.
  * After that we create the second variable `var2`. We pass an array holding the different values the variable can take. These are the different times we want to support.
  * First we define the value for the `second` (short term: `s`). We set the ratio to 1 because `m/s` is our base. After
  * that we define the value for the `minute` (short term: `min`). We know `1m/s = 1/60m/min`. Therefore we set the ratio to `1/60`.
  * With `false` we set the variable as mandatory.
- * 
- * The second new thing is the unit's different format. 
- * There are new weird looking `%number` terms. These serve as a indicators for the previously defined variables. 
- * Thus `%0m/%1` becomes `km/s`, `m/s`, `m/min` and `km/min`. Of course, the FlexibleUnit knows nothing about the previous variables, 
+ *
+ * The second new thing is the unit's different format.
+ * There are new weird looking `%number` terms. These serve as a indicators for the previously defined variables.
+ * Thus `%0m/%1` becomes `km/s`, `m/s`, `m/min` and `km/min`. Of course, the FlexibleUnit knows nothing about the previous variables,
  * which is why we pass them into the constructor. The number after the `%` indicates the variable's index in the passed array.
- * 
+ *
  * And that's it!
  */
 export default class FlexibleUnit {
@@ -103,10 +102,10 @@ export default class FlexibleUnit {
     private readonly group?: Group;
     /**
      * The unit's format, holds the unit's different symbols.
-     * 
+     *
      * Attention! The flexible unit's format differs from the (simple) unit.
-     * `%` represent variables. 
-     * 
+     * `%` represent variables.
+     *
      * For example, the string `'%m'` in combination with a variable containing the SI prefixes from yocto to yotta
      * could represent the units `km`, `cm`, `dm`, ... in one.
      * @hidden
@@ -124,7 +123,7 @@ export default class FlexibleUnit {
      * The unit's variables. The length of the array has to match the number of percentages used in the unit's format.
      * @hidden
      * @see Variable
-    */
+     */
     private readonly variables: Variable[];
 
     /**
@@ -144,7 +143,13 @@ export default class FlexibleUnit {
      * @param system the unit system the unit is belonging to
      * @param variables the unit's variables
      */
-    constructor(format: UnitFormat, ratio: number, shift: number, system: string, variables: Variable[]) {
+    constructor(
+        format: UnitFormat,
+        ratio: number,
+        shift: number,
+        system: string,
+        variables: Variable[]
+    ) {
         this.format = format;
         this.ratio = ratio;
         this.shift = shift;
@@ -154,7 +159,7 @@ export default class FlexibleUnit {
     }
 
     /**
-     * @hidden 
+     * @hidden
      */
     private create(): Unit[] {
         const combos = this.generateCombinations();
@@ -184,7 +189,7 @@ export default class FlexibleUnit {
      * @hidden
      */
     private generateCombinations() {
-        const valueArrays: (Value[])[] = [];
+        const valueArrays: Value[][] = [];
 
         for (const variable of this.variables) {
             valueArrays.push(variable._internal._toArray());
@@ -199,7 +204,7 @@ export default class FlexibleUnit {
     private generateUnitFormat(combo: Value[]) {
         const newFormat: UnitFormat = {
             short: [],
-            long: { sg: [], pl: [] }
+            long: { sg: [], pl: [] },
         };
         for (const shortFormat of this.format.short) {
             const filledFormat = this.fillFormat(shortFormat, combo, false);
@@ -224,10 +229,16 @@ export default class FlexibleUnit {
         for (let i = 0; i < format.length; i++) {
             if (format[i] === "%" && i + 1 < format.length) {
                 const variableIndex = this.cutInteger(format.substr(i + 1));
-                if (variableIndex === false) throw new InvalidVariableSyntaxError(`Inside the flexible unit's format a '%' must be followed by a number indicating the variable's index!`);
+                if (variableIndex === false)
+                    throw new InvalidVariableSyntaxError(
+                        `Inside the flexible unit's format a '%' must be followed by a number indicating the variable's index!`
+                    );
 
                 const variableIndexNumber = Number(variableIndex);
-                if (variableIndexNumber >= combo.length) throw new InvalidVariableSyntaxError(`The specified variable index '%${variableIndexNumber}' is out of range!`);
+                if (variableIndexNumber >= combo.length)
+                    throw new InvalidVariableSyntaxError(
+                        `The specified variable index '%${variableIndexNumber}' is out of range!`
+                    );
                 if (long) result += combo[variableIndexNumber].long;
                 else result += combo[variableIndexNumber].short;
                 i += variableIndex.length;
@@ -250,5 +261,4 @@ export default class FlexibleUnit {
         if (result.length !== 0) return result;
         return false;
     }
-
 }

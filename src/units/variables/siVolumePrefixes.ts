@@ -1,4 +1,4 @@
-import siPrefixes from "./siPrefixes";
+import siPrefixes from "./siPrefixes.js";
 
 /**
  * {@link Variable} holding every SI volume prefix.

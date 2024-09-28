@@ -1,4 +1,4 @@
-import ConversionError from "../../../errors/ConversionError";
+import ConversionError from "../../../errors/ConversionError.js";
 
 /**
  * Converts a value from `m/s` to `Bft`.
@@ -19,7 +19,7 @@ export const meterPerSecondToBeaufort = (val: number) => {
     if (val <= 28.4) return 10;
     if (val <= 32.6) return 11;
     return 12;
-}
+};
 
 /**
  * Converts a value from `Bft` to `M/s`.
@@ -40,5 +40,7 @@ export const beaufortToMeterPerSecond = (val: number) => {
     if (val === 10) return 26.45;
     if (val === 11) return 30.55;
     if (val === 12) return 32.7;
-    throw new ConversionError("Beaufort scale only support integers between 0 and 12.");
-}
+    throw new ConversionError(
+        "Beaufort scale only support integers between 0 and 12."
+    );
+};

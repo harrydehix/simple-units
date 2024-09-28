@@ -1,10 +1,10 @@
 import { inspect } from "util";
-import CollectionEditor from "./CollectionEditor";
-import Convertible from "./Convertible";
-import UnknownGroupError from "./errors/UnknownGroupError";
-import UnknownUnitError from "./errors/UnknownUnitError";
-import Group from "./Group";
-import Unit from "./Unit";
+import CollectionEditor from "./CollectionEditor.js";
+import Convertible from "./Convertible.js";
+import UnknownGroupError from "./errors/UnknownGroupError.js";
+import UnknownUnitError from "./errors/UnknownUnitError.js";
+import Group from "./Group.js";
+import Unit from "./Unit.js";
 
 /**
  * Represents a collection of units (see {@link Unit}) structured in groups (see {@link Group}).

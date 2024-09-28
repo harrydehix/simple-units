@@ -1,30 +1,30 @@
 import { inspect } from "util";
-import Collection from "./Collection";
-import GroupEditor from "./GroupEditor";
-import Unit from "./Unit";
+import Collection from "./Collection.js";
+import GroupEditor from "./GroupEditor.js";
+import Unit from "./Unit.js";
 
 /**
  * A group combines units of one quantity. Units of one group are convertible into each other.
  * A group is always part of one single {@link Collection}. Groups can be edited through the
  * {@link Group.Editor}. Like collections they can be modified in their entirety at runtime.
  * Each group has a unique name ({@link Group.name}) that serves as an id.
- * 
+ *
  * As said all units of one group are convertible into each other.
  * This works through the concept of "base units":
- * 
- * Every group has one single base unit. 
+ *
+ * Every group has one single base unit.
  * All other units of the group are defined in relation to this special unit.
  * In this way, the library can figure out any conversion between any units of one group.
- * 
+ *
  * <b>Example</b>:
- * 
+ *
  * You create the group "length".
  * ```
  * const length = new Group("length");
  * ```
  * You want to implement the units "meter", "inch" and "yard".
  * Now you have to decide on a unit that you want to be the base. You take "meter".
- * 
+ *
  * After that you have to define the other units in relation to your base unit.
  * You know: `1 inch = 0.0254 meter`. So you set the ratio to `0.0254` and the shift to `0`.
  * ```
@@ -53,7 +53,7 @@ export default class Group {
     /**
      * The group's collection.
      */
-    get collection() : Collection | null {
+    get collection(): Collection | null {
         return this._internal._collection;
     }
 
@@ -71,7 +71,7 @@ export default class Group {
          * The group's collection (internally).
          * @hidden
          */
-        _collection : null as (null | Collection),
+        _collection: null as null | Collection,
 
         /**
          * Returns the group's unit map.
@@ -80,7 +80,7 @@ export default class Group {
         _units: () => {
             return this.units;
         },
-    }
+    };
 
     /**
      * The group's editor. Provides methods to add, remove and overwrite units.
@@ -148,4 +148,3 @@ export default class Group {
         return result;
     }
 }
-

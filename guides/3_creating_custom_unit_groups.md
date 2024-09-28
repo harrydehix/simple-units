@@ -16,12 +16,13 @@ In this guide I will always use _currencies_ as group name from now on. _Remembe
 To create a new unit group write the following:
 
 ```ts
-import { Group } from "simple-units";
+import { Group } from "simple-units.js";
 
 const currencies = new Group("currencies");
 ```
 
 Depending on your selected module system you might use another import syntax. For example:
+
 ```js
 const { Group } = require("simple-units");
 
@@ -32,12 +33,12 @@ Both ways we create the group called "currencies". It is still empty as we haven
 
 ## 2. Creating the units
 
-Before we can fill up our group with units we have to create them. 
+Before we can fill up our group with units we have to create them.
 
 First we need to import the `Unit` class.
 
 ```ts
-import { Group, Unit } from "simple-units";
+import { Group, Unit } from "simple-units.js";
 ```
 
 Then we create our desired units. I start with the us-dollar.
@@ -49,11 +50,11 @@ const usDollar = new Unit(
         short: ["US$, $, USD"],
         long: {
             sg: ["US dollar, dollar"],
-            pl: ["US dollars, dollars"]
-        }
+            pl: ["US dollars, dollars"],
+        },
     },
     // the unit's ratio to the base unit
-    1, 
+    1,
     // the unit's shift to the base unit
     0,
     // the unit's system
@@ -73,22 +74,24 @@ In general we have to pass **four arguments** to the constructor.
 ### The unit's format
 
 The _unit's format_ describes how the unit "looks". It tells the _simple-units_ parser when to recognize a string as the specified unit. It must have the following shape:
+
 ```ts
 {
     // the unit's short forms
-    short: string[],    
+    short: string[],
     // the unit's long forms...
     long: {
-        // ...divided in singular forms         
+        // ...divided in singular forms
         sg: string[],
-         // ...and plural forms   
+         // ...and plural forms
         pl: string[]
     }
 }
-``` 
+```
+
 In `short` we specify the unit's short forms. E.g. I specify `US$`, `$` and `USD` for the US dollar.
 
-In `long` we specify the unit's long forms. But as you see `long` is not an array, it's an object! That is the case because we have to distinguish between singular and plural long forms. 
+In `long` we specify the unit's long forms. But as you see `long` is not an array, it's an object! That is the case because we have to distinguish between singular and plural long forms.
 
 In `sg` we specify the unit's long singular forms. E.g. `US dollar` and `dollar`.
 
@@ -96,7 +99,7 @@ In `pl` we specify the unit's long plural forms. E.g. `US dollars` and `dollars`
 
 ### The unit's ratio & shift to the base unit
 
-To understand what "the unit's ratio & shift to the base unit" means, you need to understand the concept of base units. 
+To understand what "the unit's ratio & shift to the base unit" means, you need to understand the concept of base units.
 
 Every unit group has to have one single **base unit**. All other units of the group are defined in relation to this special unit.
 In this way, the library can figure out any conversion between any units of one group.
@@ -135,9 +138,7 @@ After we have created our units we have to add them to our group. This is done u
 Write the following:
 
 ```typescript
-currencies.Editor.add(
-    usDollar, euro
-);
+currencies.Editor.add(usDollar, euro);
 ```
 
 ## 4. Adding the group to an existing collection
@@ -147,15 +148,14 @@ Finally we have to add the group to an existing collection. It's a good practice
 ```typescript
 export default currencies;
 ```
+
 ... then create a file called `units.ts` or `units.js` and write the following:
 
 ```typescript
-import units from "simple-units";
-import currencies from "./currencies";
+import units from "simple-units.js";
+import currencies from "./currencies.js";
 
-units.Editor.add(
-    currencies
-);
+units.Editor.add(currencies);
 
 export default units;
 ```
@@ -167,7 +167,7 @@ Now we are able to use our new group anywhere in our project.
 To test this, create a test file, e.g. `test.ts` or `test.js` and write the following:
 
 ```typescript
-import units from "./units";
+import units from "./units.js";
 
 console.log(units.from("€").to("$"));
 ```
@@ -176,4 +176,4 @@ Note that you have to import your edited unit collection and not simple-units de
 
 ### You want more information?
 
-You are currently reading a quick guide, but not the official documentation. Some things have been simplified here. E.g. there are more powerful but complex ways to create units (see FlexibleUnit). Feel free to explore the [official documentation](https://harrydehix.github.io/simple-units/)! 
+You are currently reading a quick guide, but not the official documentation. Some things have been simplified here. E.g. there are more powerful but complex ways to create units (see FlexibleUnit). Feel free to explore the [official documentation](https://harrydehix.github.io/simple-units/)!

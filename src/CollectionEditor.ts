@@ -1,6 +1,5 @@
-import Collection from "./Collection";
-import Group from "./Group";
-
+import Collection from "./Collection.js";
+import Group from "./Group.js";
 
 /**
  * Editor of a {@link Collection}. Provides methods to add, remove and overwrite unit groups.
@@ -9,7 +8,7 @@ export default class CollectionEditor {
     /**
      * Creates a collection editor.
      * @hidden
-     * @param collection 
+     * @param collection
      */
     constructor(private collection: Collection) {
         this.collection = collection;
@@ -55,7 +54,9 @@ export default class CollectionEditor {
      */
     remove(...groups: string[]) {
         for (const group of groups) {
-            const resolvedGroup = this.collection._internal._groups().get(group);
+            const resolvedGroup = this.collection._internal
+                ._groups()
+                .get(group);
             if (resolvedGroup) {
                 this.collection._internal._groups().delete(group);
                 resolvedGroup._internal._units().forEach((unit, key) => {

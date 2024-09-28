@@ -1,7 +1,6 @@
-import FlexibleUnit from "./FlexibleUnit";
-import Group from "./Group";
-import Unit from "./Unit";
-
+import FlexibleUnit from "./FlexibleUnit.js";
+import Group from "./Group.js";
+import Unit from "./Unit.js";
 
 /**
  * Editor of a {@link Group}. Provides methods to add, remove and overwrite units.
@@ -52,7 +51,8 @@ export default class GroupEditor {
                 const keys = unit.computeNotations();
                 for (const key of keys) {
                     this.group._internal._units().set(key, unit);
-                    if (this.group.collection !== null) this.group.collection._internal._setUnit(key, unit);
+                    if (this.group.collection !== null)
+                        this.group.collection._internal._setUnit(key, unit);
                 }
             }
         }
@@ -73,7 +73,8 @@ export default class GroupEditor {
                 // Removing every related entry in the group (and collection)
                 for (const key of keys) {
                     this.group._internal._units().delete(key);
-                    if (this.group.collection != null) this.group.collection._internal._deleteUnit(key);
+                    if (this.group.collection != null)
+                        this.group.collection._internal._deleteUnit(key);
                 }
             }
         }

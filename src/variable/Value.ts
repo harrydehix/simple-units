@@ -1,4 +1,4 @@
-import Variable from "./Variable";
+import Variable from "./Variable.js";
 
 /**
  * Value a {@link Variable} can take. Only used in the context of the {@link FlexibleUnit}.

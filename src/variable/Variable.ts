@@ -1,11 +1,10 @@
-import Value from "./Value";
-
+import Value from "./Value.js";
 
 /**
  * A variable is a placeholder for prefixes, suffixes and similar and is only used in the context of the {@link FlexibleUnit}.
  * Under the hood it's similar to an array.
  * To get a better understanding of variables read the Flexible Unit's documentation first.
- * 
+ *
  * @see FlexibleUnit
  */
 export default class Variable {
@@ -29,20 +28,20 @@ export default class Variable {
     readonly _internal = {
         _computeValues: () => {
             this._computedValues = [];
-            this._values.forEach(value => {
+            this._values.forEach((value) => {
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 this._computedValues!.push(value.copy());
             });
-            if (this.isOptional) this._computedValues.push(new Value("", "", 1));
+            if (this.isOptional)
+                this._computedValues.push(new Value("", "", 1));
         },
 
         _toArray: () => {
             if (this._computedValues === null) this._internal._computeValues();
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             return this._computedValues! as Value[];
-        }
-    }
-
+        },
+    };
 
     /**
      * Creates a new variable.
@@ -148,8 +147,8 @@ export default class Variable {
      * Creates a deep copy of this variable starting inclusively from the {@link Value} having the first argument
      * as `short` property and ending inclusively at the {@link Value} having the second
      * argument as `short` property.
-     * @param startPoint 
-     * @param endPoint 
+     * @param startPoint
+     * @param endPoint
      * @param isOptional whether the subcopy should be optional
      * @returns a subcopy of this variable
      */

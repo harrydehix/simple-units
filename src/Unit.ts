@@ -1,53 +1,53 @@
 import { inspect } from "util";
-import Group from "./Group";
-import IllegalArgumentsError from "./errors/IllegalArgumentsError";
+import Group from "./Group.js";
+import IllegalArgumentsError from "./errors/IllegalArgumentsError.js";
 
 export type Converter = (val: number) => number;
 
 export type UnitFormat = {
-    short: string[],
+    short: string[];
     long: {
-        sg: string[],
-        pl: string[],
-    }
-}
+        sg: string[];
+        pl: string[];
+    };
+};
 
 /**
- * Represents a standard measure that is used to express amounts. 
- * 
+ * Represents a standard measure that is used to express amounts.
+ *
  * A unit is always part of one single {@link Group} (attribute: {@link Unit.group}).
  * It is always defined in relation to the base unit of its group.
- * 
+ *
  * The exact relation is defined in the converter functions {@link Unit.fromBase} and {@link Unit.toBase}.
- * Thereby `fromBase(val: number) => number` defines the conversion from the base unit to `this` and `toBase(val: number) => number` vice versa. 
+ * Thereby `fromBase(val: number) => number` defines the conversion from the base unit to `this` and `toBase(val: number) => number` vice versa.
  * As a result of this simple concept, all units of a group are convertible into each other.
  *
- * The 4th important property of each unit is its {@link Unit.format}. 
- * This defines the unit's shape. It allows firstly the parser to recognize the unit in a string and 
+ * The 4th important property of each unit is its {@link Unit.format}.
+ * This defines the unit's shape. It allows firstly the parser to recognize the unit in a string and
  * secondly it provides the basis for the `.format()` method of the {@link Convertible}.
- * 
+ *
  * Lastly every unit is part of a unit system (attribute: {@link Unit.system}).
  * This meta information is used for the {@link Convertible}'s `.asBest()` method.
  * By default, the Convertible always remains in the same system of units.
-*/
+ */
 export default class Unit {
     /**
      * The unit's {@link Group}. Units belonging to the same group are convertible into each other.
      */
-    get group(){
+    get group() {
         return this._internal._group as Group;
     }
 
     /**
-     * The unit's {@link UnitFormat}. Holds the unit's unique symbols, 
+     * The unit's {@link UnitFormat}. Holds the unit's unique symbols,
      * which allow the parser to recognize the unit in a string.
      * Added to that it provides the basis for the `.format()` method of the {@link Convertible}.
      */
     readonly format: UnitFormat;
-    
+
     /**
      * The unit system the unit is belonging to. E.g. `imperial`, `metric`, ...
-     * 
+     *
      * This meta information is used for the {@link Convertible}'s `.asBest()` method.
      * By default, the Convertible always remains in the same system of units.
      */
@@ -70,8 +70,8 @@ export default class Unit {
      * @hidden
      */
     readonly _internal = {
-        _group : null as (Group | null),
-    }
+        _group: null as Group | null,
+    };
 
     /**
      * Creates a standard measure that is used to express amounts.
@@ -80,7 +80,12 @@ export default class Unit {
      * @param var2 function to convert a value from the group's base unit to this unit
      * @param system the unit system the unit is belonging to
      */
-    constructor(format: UnitFormat, fromBase: Converter, toBase: Converter, system: string);
+    constructor(
+        format: UnitFormat,
+        fromBase: Converter,
+        toBase: Converter,
+        system: string
+    );
     /**
      * Creates a standard measure that is used to express amounts.
      *
@@ -100,35 +105,44 @@ export default class Unit {
      * new Unit({...}, 5/9, 45967/180, ...)
      * ```
      * `5/9` is the ratio between the units, `45967/180` the shift. Much easier, isn't it? And no repetitive code!
-    */
-    constructor(format: UnitFormat, ratio: number, shift: number, system: string);
+     */
+    constructor(
+        format: UnitFormat,
+        ratio: number,
+        shift: number,
+        system: string
+    );
 
     /**
-     * See overloads above. 
+     * See overloads above.
      * @hidden
-     * @param format 
-     * @param var1 
-     * @param var2 
-     * @param system 
+     * @param format
+     * @param var1
+     * @param var2
+     * @param system
      */
-    constructor(format: UnitFormat, var1: Converter | number, var2: Converter | number, system: string) {
+    constructor(
+        format: UnitFormat,
+        var1: Converter | number,
+        var2: Converter | number,
+        system: string
+    ) {
         this.format = format;
         this.system = system;
         if (typeof var1 === "function" && typeof var2 === "function") {
             this.toBase = var1;
             this.fromBase = var2;
-        }
-        else if (typeof var1 === "number" && typeof var2 === "number") {
-            this.toBase =
-                (val: number) => {
-                    return val * var1 + var2;
-                }
-            this.fromBase =
-                (val: number) => {
-                    return (val - var2) / var1;
-                }
+        } else if (typeof var1 === "number" && typeof var2 === "number") {
+            this.toBase = (val: number) => {
+                return val * var1 + var2;
+            };
+            this.fromBase = (val: number) => {
+                return (val - var2) / var1;
+            };
         } else {
-            throw new IllegalArgumentsError(`Failed to create unit '${format.short[0]}'. Illegal arguments were passed. Read the documentation for more details.`);
+            throw new IllegalArgumentsError(
+                `Failed to create unit '${format.short[0]}'. Illegal arguments were passed. Read the documentation for more details.`
+            );
         }
     }
 
@@ -160,6 +174,9 @@ export default class Unit {
      * @returns a string array holding all this unit's different notations
      */
     computeNotations() {
-        return this.format.short.concat(this.format.long.pl, this.format.long.sg);
+        return this.format.short.concat(
+            this.format.long.pl,
+            this.format.long.sg
+        );
     }
 }

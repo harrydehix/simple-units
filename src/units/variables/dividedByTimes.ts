@@ -1,4 +1,4 @@
-import times from "./times";
+import times from "./times.js";
 
 /**
  * {@link Variable} holding every time unit for use in the denominator.
