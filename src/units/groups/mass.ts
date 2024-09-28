@@ -14,7 +14,7 @@ mass.Editor.add(
             short: ["%0g"],
             long: {
                 sg: ["%0gram", "%0gramme"],
-                pl: ["%0gram", "%0grams"],
+                pl: ["%grams", "%0grammes"],
             },
         },
         1,
